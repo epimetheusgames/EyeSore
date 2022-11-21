@@ -80,6 +80,9 @@ func _physics_process(delta):
 	# if the player is below a certain y level, aka below the map, reset the scene (this is a way to kill the player, there are better ways but they take more time)
 	if position.y > 700:
 		position = respawn_position
+		
+	if Input.is_action_just_pressed("self_destruct"):
+		position = respawn_position
 	
 	# if the player is not moving, start the animation player and play the idle animation, and the rest of the animations have not been implemented yet so if it needs to play those it just stops the animation
 	if velocity.x == 0 and is_on_floor():
