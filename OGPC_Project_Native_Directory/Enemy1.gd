@@ -75,16 +75,19 @@ func _physics_process(delta):
 	if position.y > 700:
 		died = true
 	
-	if velocity.x == 0 and is_on_floor():
-		#$AnimatedSprite.animation = "Idle"
+	if velocity.x == 0 and is_on_floor() and not result:
+		if $AnimatedSprite.animation == "IdleLeft" or $AnimatedSprite.animation == "MadLeft":
+			$AnimatedSprite.animation = "IdleLeft"
+		elif $AnimatedSprite.animation == "IdleRight" or $AnimatedSprite.animation == "MadRight":
+			$AnimatedSprite.animation = "IdleRight"
 		$AnimatedSprite.play()
 	elif velocity.x > 0 and is_on_floor():
 		#set animation to walking right
-		#$AnimatedSprite.animation = "Walking_Right"
+		$AnimatedSprite.animation = "MadRight"
 		$AnimatedSprite.play()
 	elif velocity.x < 0 and is_on_floor():
 		#set animation to walking left
-		#$AnimatedSprite.animation = "Walking_Left"
+		$AnimatedSprite.animation = "MadLeft"
 		$AnimatedSprite.play()
 	elif not is_on_floor() and movement_direction.x == 0:
 		#$AnimatedSprite.animation = "Jumping_Center"
