@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://GroundTileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://OGPC_Project_Tileset.png" type="Texture" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://OGPC_Project_WIP_Jungle_Background.png" type="Texture" id=4]
 [ext_resource path="res://Enemy1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://InfiniteHealthBoss.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -243,3 +244,6 @@ collision_layer = 4
 acceleration_speed = 3
 max_speed = 300
 fast_turnaround_threshold = 80
+
+[node name="InfiniteHealthBoss" parent="." instance=ExtResource( 6 )]
+position = Vector2( 224, 355 )
