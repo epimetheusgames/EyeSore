@@ -14,3 +14,5 @@ func _physics_process(delta):
 		self.queue_free()
 	
 	speed += speed_scaling_amount
+	
+	velocity = (Vector2.RIGHT * speed).rotated(get_node("/root/World_Root_Node/Player_Body/Player_Gun_Base").rotation_degrees) * delta

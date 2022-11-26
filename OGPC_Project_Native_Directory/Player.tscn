@@ -1,13 +1,67 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Jumper.wav" type="AudioStream" id=1]
 [ext_resource path="res://OGPC_Project_2022_Player_2_Spritesheet.png" type="Texture" id=2]
 [ext_resource path="res://Player.gd" type="Script" id=3]
 [ext_resource path="res://Player_Shooting_SFX_OGPC_Project_2022.wav" type="AudioStream" id=4]
 [ext_resource path="res://OGPC_2022_Player_2_Jumping_Spritesheet.png" type="Texture" id=5]
+[ext_resource path="res://Shoot_Debug.gd" type="Script" id=6]
+[ext_resource path="res://Gun_Rotation.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 7, 8 )
+
+[sub_resource type="AtlasTexture" id=53]
+atlas = ExtResource( 5 )
+region = Rect2( 96, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=54]
+atlas = ExtResource( 5 )
+region = Rect2( 112, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=55]
+atlas = ExtResource( 5 )
+region = Rect2( 128, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 2 )
+region = Rect2( 176, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 2 )
+region = Rect2( 208, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 2 )
+region = Rect2( 224, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 2 )
+region = Rect2( 240, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 2 )
+region = Rect2( 256, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 2 )
+region = Rect2( 272, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 2 )
+region = Rect2( 288, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 2 )
+region = Rect2( 304, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 2 )
+region = Rect2( 320, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=47]
 atlas = ExtResource( 5 )
@@ -57,45 +111,9 @@ region = Rect2( 144, 0, 16, 16 )
 atlas = ExtResource( 2 )
 region = Rect2( 160, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=37]
+[sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 2 )
-region = Rect2( 176, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=38]
-atlas = ExtResource( 2 )
-region = Rect2( 192, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=39]
-atlas = ExtResource( 2 )
-region = Rect2( 208, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=40]
-atlas = ExtResource( 2 )
-region = Rect2( 224, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=41]
-atlas = ExtResource( 2 )
-region = Rect2( 240, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=42]
-atlas = ExtResource( 2 )
-region = Rect2( 256, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=43]
-atlas = ExtResource( 2 )
-region = Rect2( 272, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=44]
-atlas = ExtResource( 2 )
-region = Rect2( 288, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=45]
-atlas = ExtResource( 2 )
-region = Rect2( 304, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=46]
-atlas = ExtResource( 2 )
-region = Rect2( 320, 0, 16, 16 )
+region = Rect2( 0, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=50]
 atlas = ExtResource( 5 )
@@ -109,24 +127,18 @@ region = Rect2( 64, 0, 16, 16 )
 atlas = ExtResource( 5 )
 region = Rect2( 80, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=53]
-atlas = ExtResource( 5 )
-region = Rect2( 96, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=54]
-atlas = ExtResource( 5 )
-region = Rect2( 112, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=55]
-atlas = ExtResource( 5 )
-region = Rect2( 128, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=26]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 16, 16 )
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
+"loop": false,
+"name": "Jumping_Left",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ) ],
+"loop": true,
+"name": "Walking_Left",
+"speed": 30.0
+}, {
 "frames": [ SubResource( 47 ), SubResource( 48 ) ],
 "loop": false,
 "name": "Jumping_Center",
@@ -137,25 +149,15 @@ animations = [ {
 "name": "Walking_Right",
 "speed": 30.0
 }, {
-"frames": [ SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ) ],
+"frames": [ SubResource( 26 ) ],
 "loop": true,
-"name": "Walking_Left",
-"speed": 30.0
+"name": "Idle",
+"speed": 5.0
 }, {
 "frames": [ SubResource( 50 ), SubResource( 51 ), SubResource( 52 ) ],
 "loop": false,
 "name": "Jumping_Right",
 "speed": 15.0
-}, {
-"frames": [ SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
-"loop": false,
-"name": "Jumping_Left",
-"speed": 15.0
-}, {
-"frames": [ SubResource( 26 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
 } ]
 
 [node name="Player_Body" type="KinematicBody2D"]
@@ -184,8 +186,17 @@ smoothing_speed = 14.8
 
 [node name="Player_Gun_Base" type="Node2D" parent="."]
 position = Vector2( 0, -8 )
+script = ExtResource( 7 )
 
 [node name="Player_Bullet_Position" type="Position2D" parent="Player_Gun_Base"]
+position = Vector2( 0, -1 )
 
 [node name="Shooting_SFX_Player" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -26.0
+margin_top = -36.0
+margin_right = 27.0
+margin_bottom = -21.0
+script = ExtResource( 6 )

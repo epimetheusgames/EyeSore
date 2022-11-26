@@ -16,6 +16,9 @@ var fastfall = false
 # the Vector2 that holds the player's current respawn position, this is updated when the player touches a checkpoint
 var respawn_position = Vector2(96, 236)
 
+# the direction that the player is currently requesting to shoot in, can be any of the cardinal directions or diagonals
+export var shoot_direction = "null"
+
 #the strength of the player's gravity while not fastfalling
 export var gravity_strength = 10
 # the strength of the player's gravity while fastfalling
@@ -36,6 +39,7 @@ export var max_speed = 200
 export var max_fall_speed = 260
 # the speed at which the player switches directions slower
 export var fast_turnaround_threshold = 180
+
 
 #anything that needs to be in a consistent update cycle goes here
 func _physics_process(delta):
@@ -110,7 +114,7 @@ func _physics_process(delta):
 func _process(delta):
 	if Input.is_action_just_pressed("Shoot"):
 		Shoot_Bullet()
-	
+		
 	$Player_Gun_Base.look_at(get_global_mouse_position())
 
 # if fastfall is false, increase the player's y velocity by the normal gravity strength, and if it is true, increase the player's y velocity by the fastfalling gravity strength
@@ -144,6 +148,24 @@ func Shoot_Bullet():
 	$Shooting_SFX_Player.play()
 	
 	get_parent().add_child(player_bullet)
-	player_bullet.position = $Player_Gun_Base/Player_Bullet_Position.global_position
 	
-	player_bullet.velocity = get_global_mouse_position() - player_bullet.position
+	if Input.is_action_pressed("movement_right") and Input.is_action_pressed("movement_up"):
+		shoot_direction = 45
+	elif Input.is_action_pressed("movement_left") and Input.is_action_pressed("movement_up"):
+		shoot_direction = -45
+	elif Input.is_action_pressed("movement_right") and Input.is_action_pressed("movement_down"):
+		shoot_direction = 135
+	elif Input.is_action_pressed("movement_left") and Input.is_action_pressed("movement_down"):
+		shoot_direction = -135
+	elif Input.is_action_pressed("movement_right") and not Input.is_action_pressed("movement_up") and not Input.is_action_pressed("movement_down"):
+		shoot_direction = 90
+	elif Input.is_action_pressed("movement_left") and not Input.is_action_pressed("movement_up") and not Input.is_action_pressed("movement_down"):
+		shoot_direction = -90
+	elif Input.is_action_pressed("movement_up") and not Input.is_action_pressed("movement_right") and not Input.is_action_pressed("movement_left") and not Input.is_action_pressed("movement_down"):
+		shoot_direction = 0
+	elif Input.is_action_pressed("movement_down") and not Input.is_action_pressed("movement_right") and not Input.is_action_pressed("movement_left") and not Input.is_action_pressed("movement_up"):
+		shoot_direction = 180
+	else:
+		shoot_direction = "null"
+	
+	player_bullet.position = $Player_Gun_Base/Player_Bullet_Position.global_position
