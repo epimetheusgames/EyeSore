@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Infinite_Health_Boss_Idle_Sprite.png.png-fc7c730ba5507f1f199db28de6a9da89.stex"
+path="res://.import/Infinite_Health_Boss_Attack_1_Sprite.png-9eea5c58cc5eb6db818e9c67516f537b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Infinite_Health_Boss_Sprites/Infinite_Health_Boss_Idle_Sprite.png.png"
-dest_files=[ "res://.import/Infinite_Health_Boss_Idle_Sprite.png.png-fc7c730ba5507f1f199db28de6a9da89.stex" ]
+source_file="res://Infinite_Health_Boss_Sprites/Infinite_Health_Boss_Attack_1_Sprite.png"
+dest_files=[ "res://.import/Infinite_Health_Boss_Attack_1_Sprite.png-9eea5c58cc5eb6db818e9c67516f537b.stex" ]
 
 [params]
 
