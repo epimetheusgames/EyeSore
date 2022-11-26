@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Infinite_Health_Boss_Sprites/Infinite_Health_Boss_Idle_1_Sprite.png" type="Texture" id=1]
 [ext_resource path="res://Infinite_Health_Boss_Sprites/Infinite_Health_Boss_Idle_2_Sprite.png" type="Texture" id=2]
 [ext_resource path="res://InfiniteHealthBoss.gd" type="Script" id=3]
 [ext_resource path="res://Infinite_Health_Boss_Sprites/Infinite_Health_Boss_Attack_1_Sprite.png" type="Texture" id=4]
 [ext_resource path="res://Infinite_Health_Boss_Sprites/Infinite_Health_Boss_Attack_2_Sprite.png" type="Texture" id=5]
+[ext_resource path="res://Infinite_Health_Boss_Sprites/Infinite_Health_Boss_Healthbar_Idle_1_Sprite.png" type="Texture" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -13,27 +14,41 @@ animations = [ {
 "name": "attacking",
 "speed": 5.0
 }, {
+"frames": [  ],
+"loop": true,
+"name": "damaged",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
 } ]
 
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+} ]
+
 [node name="InfiniteHealthBoss" type="KinematicBody2D"]
-position = Vector2( 93, 126 )
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "attacking"
+animation = "damaged"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -56, -74, -59, -69, -59, -52, -59, -38, -46, -35, -45, 17, -41, 35, -31, 39, -32, 67, -42, 72, -54, 73, -57, 82, -55, 93, -34, 97, -16, 90, -12, 82, -12, 69, -10, 39, 28, 41, 27, 67, 13, 70, 7, 78, 9, 88, 15, 95, 34, 97, 48, 97, 54, 87, 54, 79, 46, 70, 47, 39, 58, 38, 64, 27, 60, -76, 51, -82, 31, -82, -14, -69, -14, -75, -23, -81, -50, -79 )
 
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 10.0
+
+[node name="Healthbar" type="AnimatedSprite" parent="."]
+position = Vector2( 1, -92 )
+frames = SubResource( 2 )
+animation = "idle"
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]

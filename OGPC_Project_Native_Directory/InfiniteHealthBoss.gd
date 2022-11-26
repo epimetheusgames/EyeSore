@@ -28,4 +28,9 @@ func _physics_process(delta):
 
 func _on_AttackTimer_timeout():
 	attacking = true
+	
+# In the future this will be and connection from the player bullet when it damages the enemy.
+func on_knockback_event():
+	$AnimatedSprite.animation = "damaged"
+	attacking = false
  
