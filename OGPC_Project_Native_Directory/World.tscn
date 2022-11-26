@@ -237,13 +237,9 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 512, 512 )
 
 [node name="Enemy1Body4" parent="." instance=ExtResource( 5 )]
-position = Vector2( 173, 210 )
-
-[node name="Enemy1Body" parent="." instance=ExtResource( 5 )]
-position = Vector2( 213, 119 )
-
-[node name="Enemy1Body2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 70, 166 )
-
-[node name="Enemy1Body3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 124, 148 )
+position = Vector2( 1668, 249 )
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 4
+acceleration_speed = 3
+max_speed = 300
+fast_turnaround_threshold = 80

@@ -119,8 +119,8 @@ func _physics_process(delta):
 func _process(delta):
 	if Input.is_action_just_pressed("Shoot"):
 		Shoot_Bullet()
-		
-	$Player_Gun_Base.look_at(get_global_mouse_position())
+	
+	$Player_Gun_Base.rotation_degrees = int(shoot_direction)
 
 # if fastfall is false, increase the player's y velocity by the normal gravity strength, and if it is true, increase the player's y velocity by the fastfalling gravity strength
 func Apply_Gravity():
