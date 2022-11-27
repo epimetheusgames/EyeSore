@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-const bullet_file_path = preload("res://Player_Bullet.tscn")
+const normal_bullet_file_path = preload("res://Player_Bullet.tscn")
+const shockwave_bullet_file_path = preload("res://Player_Shockwave_Bullet.tscn")
 
 # the Vector2 for the player's velocity
 var velocity = Vector2.ZERO
@@ -18,6 +19,8 @@ var respawn_position = Vector2(96, 236)
 
 # the direction that the player is currently requesting to shoot in, can be any of the cardinal directions or diagonals
 export var shoot_direction = "null"
+# the type of bullet to shoot
+export var bullet_type = 0
 
 #the strength of the player's gravity while not fastfalling
 export var gravity_strength = 10
@@ -117,10 +120,12 @@ func _physics_process(delta):
 
 #anything that doesn't need to be in a consistent update cycle will go here
 func _process(delta):
-	if Input.is_action_just_pressed("Shoot"):
-		Shoot_Bullet()
-	
-	$Player_Gun_Base.rotation_degrees = int(shoot_direction)
+	if Input.is_action_just_pressed("Shoot_Normal_Bullet"):
+		bullet_type = 0
+		Shoot_Bullet(bullet_type)
+	elif Input.is_action_just_pressed("Shoot_Shockwave_Bullet"):
+		bullet_type = 1
+		Shoot_Bullet(bullet_type)
 
 # if fastfall is false, increase the player's y velocity by the normal gravity strength, and if it is true, increase the player's y velocity by the fastfalling gravity strength
 func Apply_Gravity():
@@ -147,12 +152,7 @@ func Apply_Acceleration(x_input):
 func Apply_Friction():
 	velocity.x = move_toward(velocity.x, 0, friction_strength)
 
-func Shoot_Bullet():
-	var player_bullet = bullet_file_path.instance()
-	
-	$Shooting_SFX_Player.play()
-	
-	get_parent().add_child(player_bullet)
+func Shoot_Bullet(bullet_type):
 	
 	if Input.is_action_pressed("movement_right") and Input.is_action_pressed("movement_up"):
 		shoot_direction = 45
@@ -171,6 +171,23 @@ func Shoot_Bullet():
 	elif Input.is_action_pressed("movement_down") and not Input.is_action_pressed("movement_right") and not Input.is_action_pressed("movement_left") and not Input.is_action_pressed("movement_up"):
 		shoot_direction = 180
 	else:
-		shoot_direction = "null"
+		shoot_direction = 0
 	
-	player_bullet.position = $Player_Gun_Base/Player_Bullet_Position.global_position
+	$Player_Gun_Base.rotation_degrees = int(shoot_direction)
+	
+	if bullet_type == 0:
+		var player_normal_bullet = normal_bullet_file_path.instance()
+		
+		$Shooting_SFX_Player.play()
+		
+		get_parent().add_child(player_normal_bullet)
+		
+		player_normal_bullet.position = $Player_Gun_Base/Player_Bullet_Position.global_position
+	elif bullet_type == 1:
+		var player_shockwave_bullet = shockwave_bullet_file_path.instance()
+		
+		$Shooting_SFX_Player.play()
+		
+		get_parent().add_child(player_shockwave_bullet)
+		
+		player_shockwave_bullet.position = $Player_Gun_Base/Player_Bullet_Position.global_position
