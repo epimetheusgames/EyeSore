@@ -22,6 +22,8 @@ export var shoot_direction = "null"
 # the type of bullet to shoot
 export var bullet_type = 0
 
+signal boss_hit
+
 #the strength of the player's gravity while not fastfalling
 export var gravity_strength = 10
 # the strength of the player's gravity while fastfalling
@@ -177,6 +179,7 @@ func Shoot_Bullet(bullet_type):
 	
 	if bullet_type == 0:
 		var player_normal_bullet = normal_bullet_file_path.instance()
+		player_normal_bullet.connect("boss_hit", $"../InfiniteHealthBoss", "_on_Knockback_event")
 		
 		$Shooting_SFX_Player.play()
 		

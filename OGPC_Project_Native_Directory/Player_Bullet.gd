@@ -8,10 +8,8 @@ var has_been_fired = false
 
 onready var player_body = get_node("/root/World_Root_Node/Player_Body")
 
-
 func _physics_process(_delta):
 	var enemies = get_tree().get_nodes_in_group("enemies")
-	
 	var bullet_collision_info = move_and_collide(velocity)
 	
 	if bullet_collision_info != null:

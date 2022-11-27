@@ -11,6 +11,8 @@ var attack_frames_length
 export var gravity_strength = 10
 export var friction_strength = 20
 
+signal boss_hit
+
 
 func _ready():
 	$AttackTimer.start()
@@ -36,7 +38,7 @@ func _physics_process(delta):
 	if $AnimatedSprite.frame == attack_frames_length + 2:
 		attacking = false
 		
-	position += velocity * delta
+	velocity = move_and_slide(velocity, Vector2.UP)
 		
 	var was_attacking = attacking
 	
@@ -50,7 +52,7 @@ func _on_AttackTimer_timeout():
 	attacking = true
 	
 # In the future this will be and connection from the player bullet when it damages the enemy.
-func on_knockback_event():
+func _on_Knockback_event():
 	$AnimatedSprite.animation = "damaged"
 	attacking = false
 	was_attacked = true 
