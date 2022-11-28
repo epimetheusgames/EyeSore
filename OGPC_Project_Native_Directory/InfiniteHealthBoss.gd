@@ -22,10 +22,12 @@ func _physics_process(delta):
 	Apply_Gravity()
 	Apply_Friction()
 	
-	if self.was_attacked:
-		velocity += Vector2(10, -5)
+	if was_attacked:
+		was_attacked = false
+		velocity = Vector2(100, -100)
 	
 	if attacking:
+		_on_Knockback_event()
 		$AnimatedSprite.animation = "attacking"
 		$AnimatedSprite.play() 
 	else:
