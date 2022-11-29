@@ -5,7 +5,6 @@ var velocity = Vector2(0, 0)
 var speed = 150
 var speed_scaling_amount = 20
 var has_been_fired = false
-var die_on_next_frame = false
 
 onready var player_body = get_node("/root/World_Root_Node/Player_Body")
 
@@ -13,11 +12,8 @@ func _physics_process(_delta):
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	var bullet_collision_info = move_and_collide(velocity)
 	
-	if die_on_next_frame:
-		self.queue_free()
-	
 	if bullet_collision_info != null:
-		die_on_next_frame = true
+		self.queue_free()
 		if bullet_collision_info.collider.name == "InfiniteHealthBoss":
 			bullet_collision_info.collider.on_Knockback_event()
 	
