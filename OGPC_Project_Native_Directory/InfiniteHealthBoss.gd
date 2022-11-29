@@ -27,7 +27,6 @@ func _physics_process(delta):
 		velocity = Vector2(100, -100)
 	
 	if attacking:
-		_on_Knockback_event()
 		$AnimatedSprite.animation = "attacking"
 		$AnimatedSprite.play() 
 	else:
@@ -54,8 +53,8 @@ func _on_AttackTimer_timeout():
 	attacking = true
 	
 # In the future this will be and connection from the player bullet when it damages the enemy.
-func _on_Knockback_event():
-	$AnimatedSprite.animation = "damaged"
+func on_Knockback_event():
+	#$AnimatedSprite.animation = "damaged"
 	attacking = false
 	was_attacked = true 
  
