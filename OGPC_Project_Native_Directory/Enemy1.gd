@@ -11,9 +11,10 @@ var velocity = Vector2.ZERO
 var movement_direction = Vector2.ZERO
 # I might need it
 var current_speed = 0
-
 # if enemy died
 var died = false
+# time tull died
+var death_countdown = 20
 
 #the strength of the player's gravity while not fastfalling
 export var gravity_strength = 10
@@ -40,10 +41,17 @@ func _physics_process(delta):
 	var self_position = position - $CollisionShape2D.shape.extents
 	var result = space_state.intersect_ray(position, player.position, [self])
 	
+	$AnimatedSprite.animation = "IdleLeft"
+	
 	if died:
-		$AnimatedSprite.visible = false 
 		$CollisionShape2D.disabled = true
-		return
+		if death_countdown < 0:
+			$AnimatedSprite.visible = false 
+			return
+		else:
+			$AnimatedSprite.animation = "Die"
+			death_countdown -= 1
+			return
 	
 	movement_direction = Vector2.ZERO
 	
@@ -123,3 +131,8 @@ func Apply_Acceleration(x_direction):
 #move the player's x velocity towards 0 by the friction_strength variable every time it is called
 func Apply_Friction():
 	velocity.x = move_toward(velocity.x, 0, friction_strength)
+	
+func die():
+	$AnimatedSprite.animation = "Die"
+	death_countdown = 20
+	died = true
