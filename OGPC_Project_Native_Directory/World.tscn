@@ -237,3 +237,4 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 512, 512 )
 
 [node name="InfiniteHealthBoss" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1202, 191 )
