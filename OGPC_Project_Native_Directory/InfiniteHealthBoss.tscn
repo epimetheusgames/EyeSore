@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Infinite_Health_Boss_Sprites/Infinite_Health_Boss_Idle_1_Sprite.png" type="Texture" id=1]
 [ext_resource path="res://Infinite_Health_Boss_Sprites/Infinite_Health_Boss_Idle_2_Sprite.png" type="Texture" id=2]
@@ -6,14 +6,10 @@
 [ext_resource path="res://Infinite_Health_Boss_Sprites/Infinite_Health_Boss_Attack_1_Sprite.png" type="Texture" id=4]
 [ext_resource path="res://Infinite_Health_Boss_Sprites/Infinite_Health_Boss_Attack_2_Sprite.png" type="Texture" id=5]
 [ext_resource path="res://Infinite_Health_Boss_Sprites/Infinite_Health_Boss_Healthbar_Idle_1_Sprite.png" type="Texture" id=6]
+[ext_resource path="res://Infinite_Health_Boss_Sprites/Infinite_Health_Boss_Healthbar_Damaged_1_Sprite.png" type="Texture" id=7]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "idle",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "attacking",
@@ -22,6 +18,19 @@ animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "damaged",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "idle",
 "speed": 5.0
 } ]
 
@@ -46,9 +55,15 @@ polygon = PoolVector2Array( -56, -74, -59, -69, -59, -52, -59, -38, -46, -35, -4
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 10.0
 
-[node name="Healthbar" type="AnimatedSprite" parent="."]
+[node name="Healthbaar_Damage" type="AnimatedSprite" parent="."]
 position = Vector2( 1, -92 )
+frames = SubResource( 3 )
+animation = "idle"
+
+[node name="Healthbar_Health" type="AnimatedSprite" parent="."]
+position = Vector2( -60, -96 )
 frames = SubResource( 2 )
 animation = "idle"
+centered = false
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
