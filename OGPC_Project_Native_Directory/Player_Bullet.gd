@@ -18,7 +18,6 @@ func _physics_process(_delta):
 			bullet_collision_info.collider.on_Knockback_event()
 		if bullet_collision_info.collider.name.begins_with("Enemy1Body"):
 			bullet_collision_info.collider.die()
-		print(bullet_collision_info.collider.name)
 	
 	speed += speed_scaling_amount
 	

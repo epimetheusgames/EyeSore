@@ -55,7 +55,7 @@ polygon = PoolVector2Array( -56, -74, -59, -69, -59, -52, -59, -38, -46, -35, -4
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 10.0
 
-[node name="Healthbaar_Damage" type="AnimatedSprite" parent="."]
+[node name="Healthbar_Damage" type="AnimatedSprite" parent="."]
 position = Vector2( 1, -92 )
 frames = SubResource( 3 )
 animation = "idle"
