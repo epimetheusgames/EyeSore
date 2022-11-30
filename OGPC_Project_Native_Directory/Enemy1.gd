@@ -34,6 +34,8 @@ export var max_speed = 200
 export var max_fall_speed = 260
 # the speed at which the player switches directions slower
 export var fast_turnaround_threshold = 180
+# the maximum the distance the player can be for the enemy to see it.
+export var max_player_distance = 600
 
 func _physics_process(delta):
 	var player = get_owner().get_node("Player_Body")
@@ -55,7 +57,7 @@ func _physics_process(delta):
 	
 	movement_direction = Vector2.ZERO
 	
-	if result and result.collider.get_class() == "KinematicBody2D":
+	if result and result.collider.get_class() == "KinematicBody2D" and position.distance_to(player.position) < max_player_distance:
 		if player.position.x < position.x:
 			movement_direction.x = -1
 		elif player.position.x > position.x:
