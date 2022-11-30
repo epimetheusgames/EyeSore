@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/OGPC_Project_Tileset.png-55b771be3f165eb3da11c9bb10ea8f73.stex"
+path="res://.import/OGPC_Project_Grass_Tileset.png-18543cdf36e15332894ad8efb8856c99.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://OGPC_Project_Tileset.png"
-dest_files=[ "res://.import/OGPC_Project_Tileset.png-55b771be3f165eb3da11c9bb10ea8f73.stex" ]
+source_file="res://OGPC_Project_Grass_Tileset.png"
+dest_files=[ "res://.import/OGPC_Project_Grass_Tileset.png-18543cdf36e15332894ad8efb8856c99.stex" ]
 
 [params]
 

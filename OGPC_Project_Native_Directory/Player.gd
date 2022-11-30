@@ -97,8 +97,7 @@ func _physics_process(delta):
 	
 	# if the player is not moving, start the animation player and play the idle animation, and the rest of the animations have not been implemented yet so if it needs to play those it just stops the animation
 	if velocity.x == 0 and is_on_floor():
-		$AnimatedSprite.animation = "Idle"
-		$AnimatedSprite.play()
+		$AnimatedSprite.stop()
 	elif velocity.x > 0 and is_on_floor():
 		#set animation to walking right
 		$AnimatedSprite.animation = "Walking_Right"
