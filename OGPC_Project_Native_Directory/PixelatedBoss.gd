@@ -21,7 +21,7 @@ export var health = 100 # Can be changed
 func _ready():
 	$AttackTimer.start()
 	$AnimatedSprite.animation = "attacking"
-	attack_frames_length = len($AnimatedSprite.frames.frames)
+	attack_frames_length = 4 #$AnimatedSprite.frames may have something but I can't find it, so I've hardcoded in the value for now.
 	$AnimatedSprite.animation = "idle"
 	one_health_unit_in_image_scale = $Healthbar_Health.scale.x / health
 	health_decreased_per_animation_frame = 0.1
@@ -58,7 +58,7 @@ func _physics_process(delta):
 	if not attacking and was_attacking:
 		$AttackTimer.start()
 		
-	if $AnimatedSprite.frame == attack_frames_length + 2:
+	if $AnimatedSprite.frame == attack_frames_length:
 		attacking = false
 		
 	velocity = move_and_slide(velocity, Vector2.UP)
