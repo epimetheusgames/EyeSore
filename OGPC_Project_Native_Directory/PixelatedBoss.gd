@@ -20,7 +20,9 @@ export var health = 100 # Can be changed
 
 func _ready():
 	$AttackTimer.start()
+	$AnimatedSprite.animation = "attacking"
 	attack_frames_length = len($AnimatedSprite.frames.frames)
+	$AnimatedSprite.animation = "idle"
 	one_health_unit_in_image_scale = $Healthbar_Health.scale.x / health
 	health_decreased_per_animation_frame = 0.1
 
