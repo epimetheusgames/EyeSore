@@ -33,7 +33,6 @@ func _physics_process(delta):
 	$Healthbar_Health.scale.x = one_health_unit_in_image_scale * health
 		
 	if decreasing_health:
-		print('hi')
 		if health <= 0:
 			died = true
 		health -= health_decreased_per_animation_frame
@@ -44,6 +43,10 @@ func _physics_process(delta):
 			
 	if died:
 		$Healthbar_Health.scale.x = one_health_unit_in_image_scale
+		$CollisionPolygon2D.disabled = true
+		$AnimatedSprite.visible = false 
+		$Healthbar_Damage.visible = false 
+		$Healthbar_Health.visible = false
 		
 	if was_attacked:
 		was_attacked = false
