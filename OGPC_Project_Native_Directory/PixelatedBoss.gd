@@ -33,6 +33,7 @@ func _physics_process(delta):
 	$Healthbar_Health.scale.x = one_health_unit_in_image_scale * health
 		
 	if decreasing_health:
+		print('hi')
 		if health <= 0:
 			died = true
 		health -= health_decreased_per_animation_frame
@@ -77,6 +78,7 @@ func _on_AttackTimer_timeout():
 # In the future this will be and connection from the player bullet when it damages the enemy.
 func on_Knockback_event():
 	#$AnimatedSprite.animation = "damaged"
+	print('hello')
 	decreasing_health = true
 	attacking = false
 	was_attacked = true 
