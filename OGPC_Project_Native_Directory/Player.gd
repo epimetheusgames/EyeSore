@@ -178,7 +178,6 @@ func Shoot_Bullet(bullet_type):
 	
 	if bullet_type == 0:
 		var player_normal_bullet = normal_bullet_file_path.instance()
-		player_normal_bullet.connect("boss_hit", $"../InfiniteHealthBoss", "_on_Knockback_event")
 		
 		$Shooting_SFX_Player.play()
 		

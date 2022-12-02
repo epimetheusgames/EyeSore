@@ -81,7 +81,6 @@ func _on_AttackTimer_timeout():
 # In the future this will be and connection from the player bullet when it damages the enemy.
 func on_Knockback_event():
 	#$AnimatedSprite.animation = "damaged"
-	print('hello')
 	decreasing_health = true
 	attacking = false
 	was_attacked = true 
