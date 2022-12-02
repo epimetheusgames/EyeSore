@@ -11,9 +11,9 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 6 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
-"name": "idle",
+"name": "attacking",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -21,9 +21,9 @@ animations = [ {
 "name": "damaged",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 5 ) ],
 "loop": true,
-"name": "attacking",
+"name": "idle",
 "speed": 5.0
 } ]
 
@@ -66,5 +66,13 @@ position = Vector2( -60, -96 )
 frames = SubResource( 2 )
 animation = "idle"
 centered = false
+
+[node name="Health_Text" type="Label" parent="."]
+margin_left = -20.0
+margin_top = -111.0
+margin_right = 20.0
+margin_bottom = -97.0
+text = "100"
+align = 1
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
