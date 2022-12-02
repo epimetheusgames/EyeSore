@@ -26,24 +26,7 @@ func _physics_process(_delta):
 	speed += speed_scaling_amount
 	
 	if has_been_fired == false:
-		if player_body.shoot_direction == 0:
-			velocity = Vector2(0, -12)
-		elif player_body.shoot_direction == 90:
-			velocity = Vector2(12, 0)
-		elif player_body.shoot_direction == -90:
-			velocity = Vector2(-12, 0)
-		elif player_body.shoot_direction == 180:
-			velocity = Vector2(0, 12)
-		elif player_body.shoot_direction == 45:
-			velocity = Vector2(6, -6)
-		elif player_body.shoot_direction == -45:
-			velocity = Vector2(-6, -6)
-		elif player_body.shoot_direction == 135:
-			velocity = Vector2(6, 6)
-		elif player_body.shoot_direction == -135:
-			velocity = Vector2(-6, 6)
-		else:
-			velocity = Vector2(12, 0)
+		velocity = Vector2(get_global_mouse_position() - player_body.position).normalized() * speed / speed * 5
 		
 		has_been_fired = true
 
