@@ -14,7 +14,7 @@ func _physics_process(_delta):
 	
 	if bullet_collision_info != null:
 		self.queue_free()
-		if bullet_collision_info.collider.name == "InfiniteHealthBoss":
+		if bullet_collision_info.collider.name == "PixelatedBoss":
 			bullet_collision_info.collider.on_Knockback_event()
 		if bullet_collision_info.collider.name.begins_with("Enemy1Body"):
 			bullet_collision_info.collider.die()
