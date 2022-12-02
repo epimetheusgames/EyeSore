@@ -17,6 +17,8 @@ var fastfall = false
 # the Vector2 that holds the player's current respawn position, this is updated when the player touches a checkpoint
 var respawn_position = Vector2(96, 236)
 
+var player_direction = "right"
+
 # the direction that the player is currently requesting to shoot in, can be any of the cardinal directions or diagonals
 export var shoot_direction = "null"
 # the type of bullet to shoot
@@ -50,6 +52,11 @@ export var fast_turnaround_threshold = 180
 func _physics_process(delta):
 	# get a float between -1 and 1 of the amount that the player is trying to move in each direction, this is especially nice for controllers becauyse the joysticks can sense a value of how far they are being pushed instead of a keyboard which is just pressed or not pressed, so this allows controller players to move a smaller amount when they move their joystick less, negativenumbers are left, positive are right
 	input.x = Input.get_action_strength("movement_right") - Input.get_action_strength("movement_left")
+	
+	if input.x > 0:
+		player_direction = "right"
+	elif input.x < 0:
+		player_direction = "left"
 	
 	#if no input is currently being registered, apply friction to slow down the player, and if an input is currently being registered, apply the acceleration for the input
 	if input.x == 0:
@@ -96,8 +103,10 @@ func _physics_process(delta):
 		position = respawn_position
 	
 	# if the player is not moving, start the animation player and play the idle animation, and the rest of the animations have not been implemented yet so if it needs to play those it just stops the animation
-	if velocity.x == 0 and is_on_floor():
-		$AnimatedSprite.stop()
+	if velocity.x == 0 and is_on_floor() and player_direction == "left":
+		$AnimatedSprite.animation = "Idle_Left"
+	elif velocity.x == 0 and is_on_floor() and player_direction == "right":
+		$AnimatedSprite.animation = "Idle_Right"
 	elif velocity.x > 0 and is_on_floor():
 		#set animation to walking right
 		$AnimatedSprite.animation = "Walking_Right"
