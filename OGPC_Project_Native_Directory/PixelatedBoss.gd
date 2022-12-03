@@ -31,6 +31,7 @@ func _physics_process(delta):
 	Apply_Friction()
 	
 	$Healthbar_Health.scale.x = one_health_unit_in_image_scale * health
+	$Health_Text.text = str(int(health))
 		
 	if decreasing_health:
 		if health <= 0:

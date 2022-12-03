@@ -1,10 +1,9 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://GroundTileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://OGPC_Project_Grass_Tileset.png" type="Texture" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://OGPC_Project_WIP_Jungle_Background.png" type="Texture" id=4]
-[ext_resource path="res://PixelatedBoss.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -236,6 +235,6 @@ texture = ExtResource( 4 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 512, 512 )
-
-[node name="PixelatedBoss" parent="." instance=ExtResource( 5 )]
-position = Vector2( 676, 122 )
+__meta__ = {
+"_edit_group_": true
+}
