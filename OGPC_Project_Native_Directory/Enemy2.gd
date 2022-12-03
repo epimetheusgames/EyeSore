@@ -21,5 +21,3 @@ func _physics_process(delta):
 		position += (point2 - point1).normalized() * speed
 		if distance(position.x, position.y, point2.x, point2.y) < 10:
 			going_to_point1 = true
-			
-	print(going_to_point1)

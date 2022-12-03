@@ -25,11 +25,6 @@ animations = [ {
 "loop": true,
 "name": "idle",
 "speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "damaged",
-"speed": 5.0
 } ]
 
 [sub_resource type="SpriteFrames" id=3]
@@ -63,21 +58,23 @@ wait_time = 10.0
 
 [node name="Healthbar_Damage" type="AnimatedSprite" parent="."]
 position = Vector2( 1, -92 )
+scale = Vector2( 1, 1.25 )
 frames = SubResource( 3 )
 animation = "idle"
 
 [node name="Healthbar_Health" type="AnimatedSprite" parent="."]
-position = Vector2( -60, -96 )
+position = Vector2( -60, -98 )
+scale = Vector2( 1, 1.5 )
 frames = SubResource( 2 )
 animation = "idle"
 centered = false
 
 [node name="Health_Text" type="Label" parent="."]
 margin_left = -20.0
-margin_top = -111.0
+margin_top = -98.0
 margin_right = 20.0
-margin_bottom = -97.0
-text = "100"
+margin_bottom = -84.0
+text = "100%"
 align = 1
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
