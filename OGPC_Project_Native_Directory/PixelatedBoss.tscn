@@ -16,16 +16,12 @@ animations = [ {
 "name": "attacking",
 "speed": 5.0
 }, {
-<<<<<<< HEAD
-"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 5 ) ],
-=======
 "frames": [  ],
 "loop": true,
 "name": "damaged",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 5 ) ],
->>>>>>> ff25145705930c3dc9b67a5b310f6e357f95adf1
 "loop": true,
 "name": "idle",
 "speed": 5.0
