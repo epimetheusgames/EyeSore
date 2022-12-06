@@ -6,6 +6,7 @@ export var point2 = Vector2(0, 0)
 export var speed = 1
 
 var going_to_point1 = false
+var died = false
 
 
 func distance(x1, y1, x2, y2):
@@ -21,3 +22,11 @@ func _physics_process(delta):
 		position += (point2 - point1).normalized() * speed
 		if distance(position.x, position.y, point2.x, point2.y) < 10:
 			going_to_point1 = true
+	
+	if died:
+		$CollisionShape2D.disabled = true
+		visible = false 
+		return
+		
+func die():
+	died = true # Add support for death animation
