@@ -11,12 +11,19 @@ func _process(delta):
 			selected -= 1
 			
 	if selected == 1:
-		$Label.text = "- Play -"
-		$Label2.text = "Options"
+		#$Label.text = "- Play -"
+		$Label.modulate = Color(2, 2, 2, 1)
+		#$Label2.text = "Options"
+		$Label2.modulate = Color(1, 1, 1, 1)
 	if selected == 2:
-		$Label2.text = "- Options -"
-		$Label.text = "Play"
-		$Label3.text = "Quit"
+		#$Label2.text = "- Options -"
+		$Label2.modulate = Color(2, 2, 2, 1) 
+		#$Label.text = "Play"
+		$Label.modulate = Color(1, 1, 1, 1)
+		#$Label3.text = "Quit"
+		$Label3.modulate = Color(1, 1, 1, 1)
 	if selected == 3:
-		$Label2.text = "Options"
-		$Label3.text = "- Quit -"
+		#$Label2.text = "Options"
+		$Label2.modulate = Color(1, 1, 1, 1)
+		#$Label3.text = "- Quit -"
+		$Label3.modulate = Color(2, 2, 2, 1)
