@@ -28,5 +28,10 @@ func _process(delta):
 		#$Label3.text = "- Quit -"
 		$Label3.modulate = Color(2, 2, 2, 1)
 	
-	if Input.is_action_just_pressed("ui_accept") and selected == 1:
-		get_tree().change_scene_to(load("res://World.tscn"))  
+	if Input.is_action_just_pressed("ui_accept"):
+		if selected == 1:
+			get_tree().change_scene_to(load("res://World.tscn"))  
+		if selected == 2:
+			get_tree().change_scene_to(load("res://OptionsMenu.tscn"))
+		if selected == 3:
+			get_tree().quit()

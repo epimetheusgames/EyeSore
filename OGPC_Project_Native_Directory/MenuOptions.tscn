@@ -1,7 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://MenuOptions.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/PTMono-Regular.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="Shader" id=6]
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 6 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 180
@@ -26,6 +31,7 @@ adjustment_enabled = true
 adjustment_saturation = 0.01
 
 [node name="MenuOptions" type="Node2D"]
+material = SubResource( 7 )
 script = ExtResource( 1 )
 
 [node name="Label" type="Label" parent="."]
