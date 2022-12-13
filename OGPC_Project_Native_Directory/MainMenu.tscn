@@ -17,8 +17,8 @@ current = true
 zoom = Vector2( 5, 5 )
 
 [node name="OgpcMainMenuBackgroundSprite" type="Sprite" parent="."]
-position = Vector2( -1.49993, 0.187437 )
-scale = Vector2( 1.6901, 1.70336 )
+position = Vector2( 116.875, -24 )
+scale = Vector2( 1.79154, 1.70336 )
 texture = ExtResource( 2 )
 
 [node name="MenuOptions" parent="." instance=ExtResource( 1 )]
