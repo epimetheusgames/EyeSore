@@ -1,6 +1,7 @@
 extends Node2D
 
 var selected = 1
+var prev_selected = 1
 
 func _process(delta):
 	if Input.is_action_just_pressed("Just_Arrowkey_Down"):
@@ -9,6 +10,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("Just_Arrowkey_Up"):
 		if selected > 1:
 			selected -= 1
+			
+	if prev_selected != selected:
+		$ClickAudio.play()
 			
 	if selected == 1:
 		#$Label.text = "- Play -"
@@ -29,9 +33,12 @@ func _process(delta):
 		$Label3.modulate = Color(2.75, 2.75, 2.75, 1)
 	
 	if Input.is_action_just_pressed("ui_accept"):
+		$ClickAudio.play()
 		if selected == 1:
 			get_tree().change_scene_to(load("res://World.tscn"))  
 		if selected == 2:
 			get_tree().change_scene_to(load("res://OptionsMenu.tscn"))
 		if selected == 3:
 			get_tree().quit()
+	
+	prev_selected = selected

@@ -1,6 +1,7 @@
 extends Node2D
 
 var selected = 0
+var prev_selected = 0
 onready var options = [$Label, $Label2, $Label3, $Label4, $Label5]
 
 func _process(delta):
@@ -10,6 +11,9 @@ func _process(delta):
 		else:
 			print(options[option])
 			options[option].modulate = Color(1, 1, 1, 1)
+			
+	if prev_selected != selected:
+		$ClickAudio.play()
 		
 	if Input.is_action_just_pressed("Just_Arrowkey_Down") and selected < 4:
 		selected += 1
@@ -17,5 +21,8 @@ func _process(delta):
 		selected -= 1
 		
 	if Input.is_action_just_pressed("ui_accept"):
+		$ClickAudio.play()
 		if selected == 4:
 			get_tree().change_scene_to(load("res://MainMenu.tscn"))
+	
+	prev_selected = selected

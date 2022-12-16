@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Fonts/PTMono-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://OptionsMenu.gd" type="Script" id=2]
 [ext_resource path="res://MainMenuSprites/OGPC_Main_Menu_Background_Sprite_Blurred.png" type="Texture" id=3]
+[ext_resource path="res://OGPC-UI-Click-SFX.ogg" type="AudioStream" id=4]
 
 [sub_resource type="Shader" id=1]
 
@@ -43,9 +44,10 @@ material = SubResource( 2 )
 script = ExtResource( 2 )
 
 [node name="OgpcMainMenuBackgroundSpriteBlurred" type="Sprite" parent="."]
-position = Vector2( 778, 331 )
+position = Vector2( -2277, -63 )
 scale = Vector2( 1.8625, 1.68333 )
 texture = ExtResource( 3 )
+offset = Vector2( 1640.27, 234.06 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 3 )
@@ -101,3 +103,6 @@ text = "Back"
 position = Vector2( 649, 336 )
 current = true
 zoom = Vector2( 5, 5 )
+
+[node name="ClickAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
