@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://TestMenuBg.wav" type="AudioStream" id=1]
+[ext_resource path="res://TestMenuBg.mp3" type="AudioStream" id=1]
 [ext_resource path="res://MainMenuHandler.gd" type="Script" id=2]
 [ext_resource path="res://OGPC-UI-Click-SFX.ogg" type="AudioStream" id=3]
 
