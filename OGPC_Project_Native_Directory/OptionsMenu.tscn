@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Fonts/PTMono-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://OptionsMenu.gd" type="Script" id=2]
@@ -18,6 +18,10 @@ glow_blend_mode = 0
 glow_hdr_luminance_cap = 16.83
 glow_bicubic_upscale = true
 glow_high_quality = true
+
+[sub_resource type="DynamicFont" id=9]
+size = 250
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 180
@@ -44,60 +48,69 @@ material = SubResource( 2 )
 script = ExtResource( 2 )
 
 [node name="OgpcMainMenuBackgroundSpriteBlurred" type="Sprite" parent="."]
-position = Vector2( -2277, -63 )
-scale = Vector2( 1.8625, 1.68333 )
+position = Vector2( -2720, -63 )
+scale = Vector2( 2.09063, 1.68333 )
 texture = ExtResource( 3 )
 offset = Vector2( 1640.27, 234.06 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 3 )
 
+[node name="Title" type="Label" parent="."]
+margin_left = 255.0
+margin_top = -430.0
+margin_right = 1289.0
+margin_bottom = -145.0
+custom_fonts/font = SubResource( 9 )
+text = "Settings"
+
 [node name="Label" type="Label" parent="."]
 modulate = Color( 2, 2, 2, 1 )
-margin_left = -43.0
+margin_left = 96.0
 margin_top = -63.0
-margin_right = 1361.0
-margin_bottom = 140.0
+margin_right = 1496.0
+margin_bottom = 142.0
 custom_fonts/font = SubResource( 4 )
 text = "Audio"
 align = 1
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 282.0
-margin_top = 167.0
-margin_right = 1038.0
-margin_bottom = 370.0
+margin_left = 91.0
+margin_top = 142.0
+margin_right = 1491.0
+margin_bottom = 347.0
 grow_horizontal = 2
 custom_fonts/font = SubResource( 5 )
 text = "Video"
 align = 1
 
 [node name="Label3" type="Label" parent="."]
-margin_left = 224.0
-margin_top = 366.0
-margin_right = 1088.0
-margin_bottom = 569.0
+margin_left = 91.0
+margin_top = 338.0
+margin_right = 1491.0
+margin_bottom = 543.0
 grow_horizontal = 2
 custom_fonts/font = SubResource( 6 )
 text = "Controls"
 align = 1
 
 [node name="Label4" type="Label" parent="."]
-margin_left = 26.0
-margin_top = 575.0
-margin_right = 1322.0
-margin_bottom = 778.0
+margin_left = 91.0
+margin_top = 550.0
+margin_right = 1491.0
+margin_bottom = 755.0
 custom_fonts/font = SubResource( 7 )
 text = "Accesibility"
 align = 1
 
 [node name="Label5" type="Label" parent="."]
-margin_left = 431.0
-margin_top = 804.0
-margin_right = 863.0
-margin_bottom = 1007.0
+margin_left = 81.0
+margin_top = 773.0
+margin_right = 1481.0
+margin_bottom = 978.0
 custom_fonts/font = SubResource( 8 )
 text = "Back"
+align = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 649, 336 )

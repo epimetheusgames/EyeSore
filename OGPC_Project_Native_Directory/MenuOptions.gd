@@ -37,7 +37,7 @@ func _process(delta):
 		if selected == 1:
 			get_tree().change_scene_to(load("res://World.tscn"))  
 		if selected == 2:
-			get_tree().change_scene_to(load("res://OptionsMenu.tscn"))
+			get_parent().Open_Options_Menu(self)
 		if selected == 3:
 			get_tree().quit()
 	

@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://MenuOptions.tscn" type="PackedScene" id=1]
-[ext_resource path="res://MainMenuSprites/OGPC_Main_Menu_Background_Sprite.png" type="Texture" id=2]
+[ext_resource path="res://MainMenuHandler.gd" type="Script" id=2]
 
 [sub_resource type="Shader" id=1]
 
@@ -10,16 +9,4 @@ shader = SubResource( 1 )
 
 [node name="MainMenuRootNode" type="Node2D"]
 material = SubResource( 2 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-z_index = -6
-current = true
-zoom = Vector2( 5, 5 )
-
-[node name="OgpcMainMenuBackgroundSprite" type="Sprite" parent="."]
-position = Vector2( 116.875, -24 )
-scale = Vector2( 1.79154, 1.70336 )
-texture = ExtResource( 2 )
-
-[node name="MenuOptions" parent="." instance=ExtResource( 1 )]
-position = Vector2( -320, 77 )
+script = ExtResource( 2 )
