@@ -6,6 +6,7 @@ onready var AudioMenu = preload("res://AudioMenu.tscn")
 
 func _ready():
 	add_child(MenuOptions.instance())
+	$BackgroundMusic.playing = true
 	# Play Main Menu Audio
 	
 func Open_Options_Menu(closed_window):

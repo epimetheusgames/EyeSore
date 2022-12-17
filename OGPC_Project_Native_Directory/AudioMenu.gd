@@ -7,7 +7,7 @@ onready var options = [$Label5]
 func _process(delta):
 	for option in range(len(options)):
 		if option == selected:
-			options[option].modulate = Color(2.75, 2.75, 2.75, 1)
+			options[option].modulate = Color(5, 5, 5, 1)
 		else:
 			print(options[option])
 			options[option].modulate = Color(1, 1, 1, 1)

@@ -222,6 +222,7 @@ script = ExtResource( 3 )
 stream = ExtResource( 1 )
 volume_db = -28.0
 autoplay = true
+mix_target = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -8 )
