@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://MenuOptions.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/PTMono-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://OGPC-UI-Click-SFX.ogg" type="AudioStream" id=3]
 [ext_resource path="res://MainMenuSprites/OGPC_Main_Menu_Background_Sprite.png" type="Texture" id=4]
 
 [sub_resource type="Shader" id=6]
@@ -40,9 +39,6 @@ script = ExtResource( 1 )
 position = Vector2( 101, -12 )
 scale = Vector2( 1.79154, 1.70336 )
 texture = ExtResource( 4 )
-
-[node name="ClickAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="."]
 modulate = Color( 2.5, 1, 1, 1 )

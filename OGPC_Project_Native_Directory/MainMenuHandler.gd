@@ -20,3 +20,6 @@ func Open_Audio_Menu(closed_window):
 func Open_Main_Menu(closed_window):
 	closed_window.queue_free()
 	add_child(MenuOptions.instance())
+
+func Play_Click_SFX():
+	$ClickAudio.play()

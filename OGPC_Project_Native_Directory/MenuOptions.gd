@@ -12,7 +12,7 @@ func _process(delta):
 			selected -= 1
 			
 	if prev_selected != selected:
-		$ClickAudio.play()
+		get_parent().Play_Click_SFX()
 			
 	if selected == 1:
 		#$Label.text = "- Play -"
@@ -33,7 +33,7 @@ func _process(delta):
 		$Label3.modulate = Color(2.75, 2.75, 2.75, 1)
 	
 	if Input.is_action_just_pressed("ui_accept"):
-		$ClickAudio.play()
+		get_parent().Play_Click_SFX()
 		if selected == 1:
 			get_tree().change_scene_to(load("res://World.tscn"))  
 		if selected == 2:

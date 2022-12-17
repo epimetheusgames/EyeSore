@@ -2,7 +2,7 @@ extends Node2D
 
 var selected = 0
 var prev_selected = 0
-onready var options = [$Label5]
+onready var options = [$Label2]
 
 func _process(delta):
 	for option in range(len(options)):
@@ -13,7 +13,7 @@ func _process(delta):
 			options[option].modulate = Color(1, 1, 1, 1)
 			
 	if prev_selected != selected:
-		$ClickAudio.play()
+		get_parent().Play_Click_SFX()
 		
 	if Input.is_action_just_pressed("Just_Arrowkey_Down") and selected < len(options):
 		selected += 1

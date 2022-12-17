@@ -12,7 +12,7 @@ func _process(delta):
 			options[option].modulate = Color(1, 1, 1, 1)
 			
 	if prev_selected != selected:
-		$ClickAudio.play()
+		get_parent().Play_Click_SFX()
 		
 	prev_selected = selected
 		
@@ -22,7 +22,7 @@ func _process(delta):
 		selected -= 1
 		
 	if Input.is_action_just_pressed("ui_accept"):
-		$ClickAudio.play()
+		get_parent().Play_Click_SFX()
 		if selected == 0:
 			get_parent().Open_Audio_Menu(self)
 		if selected == 4:
