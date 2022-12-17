@@ -3,6 +3,8 @@ extends KinematicBody2D
 const normal_bullet_file_path = preload("res://Player_Bullet.tscn")
 const shockwave_bullet_file_path = preload("res://Player_Shockwave_Bullet.tscn")
 
+var player_health = 3
+
 # the Vector2 for the player's velocity
 var velocity = Vector2.ZERO
 # the Vector2 for the player's input, ranging from 1 (right) to -1 (left)
@@ -97,10 +99,14 @@ func _physics_process(delta):
 	if position.y > 700:
 		# TODO: Reset enemy positions
 		position = respawn_position
+		player_health -= 1
 		
 	if Input.is_action_just_pressed("self_destruct"):
 		# TODO: Reset enemy positions
 		position = respawn_position
+		
+		# lower player health upon falling out of world
+		player_health -= 1
 	
 	# if the player is not moving, start the animation player and play the idle animation, and the rest of the animations have not been implemented yet so if it needs to play those it just stops the animation
 	if velocity.x == 0 and is_on_floor() and player_direction == "left":
@@ -136,6 +142,8 @@ func _process(delta):
 	elif Input.is_action_just_pressed("Shoot_Shockwave_Bullet"):
 		bullet_type = 1
 		Shoot_Bullet(bullet_type)
+	
+	Apply_Health_Sprites(player_health)
 
 # if fastfall is false, increase the player's y velocity by the normal gravity strength, and if it is true, increase the player's y velocity by the fastfalling gravity strength
 func Apply_Gravity():
@@ -201,3 +209,12 @@ func Shoot_Bullet(bullet_type):
 		get_parent().add_child(player_shockwave_bullet)
 		
 		player_shockwave_bullet.position = $Player_Gun_Base/Player_Bullet_Position.global_position
+
+func Apply_Health_Sprites(player_health):
+	if player_health == 3:
+		$Camera2D/Player_Health_Sprite.animation = "3_health"
+	elif player_health == 2:
+		$Camera2D/Player_Health_Sprite.animation = "2_health"
+	elif player_health == 1:
+		$Camera2D/Player_Health_Sprite.animation = "1_health"
+	$Camera2D/Player_Health_Sprite.play()
