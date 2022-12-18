@@ -1,9 +1,14 @@
 extends KinematicBody2D
 
+
 const normal_bullet_file_path = preload("res://Player_Bullet.tscn")
 const shockwave_bullet_file_path = preload("res://Player_Shockwave_Bullet.tscn")
 
-var player_health = 3
+var player_health = clamp(29, 3, 29)
+
+var knockback_direction = 0
+var knockback_strength = 3
+var knockback_force = 0
 
 # the Vector2 for the player's velocity
 var velocity = Vector2.ZERO
@@ -48,6 +53,8 @@ export var max_speed = 200
 export var max_fall_speed = 260
 # the speed at which the player switches directions slower
 export var fast_turnaround_threshold = 180
+# the buffer for leaving the ground and still jumping
+export var ground_buffer = 6
 
 
 #anything that needs to be in a consistent update cycle goes here
@@ -66,8 +73,12 @@ func _physics_process(delta):
 	else:
 		Apply_Acceleration(input.x)
 	
+	# if player is touching ground set ground buffer to max
+	if is_on_floor():
+		ground_buffer = 10
+	
 	# if the player is pressing jump and the player is on the ground, jump, and if the player releases the jump button before the apex of the jump, start decelerating the player's y speed by the low_jump_deceleration_speed variable
-	if Input.is_action_just_pressed("movement_jump") and is_on_floor():
+	if Input.is_action_just_pressed("movement_jump") and ground_buffer > 0:
 		velocity.y -= jump_force
 	elif Input.is_action_just_released("movement_jump") and velocity.y < low_jump_deceleration_speed / 5:
 		velocity.y /= low_jump_deceleration_speed
@@ -99,7 +110,7 @@ func _physics_process(delta):
 	if position.y > 700:
 		# TODO: Reset enemy positions
 		position = respawn_position
-		player_health -= 1
+		player_health -= 3
 		
 	if Input.is_action_just_pressed("self_destruct"):
 		# TODO: Reset enemy positions
@@ -132,6 +143,8 @@ func _physics_process(delta):
 		$AnimatedSprite.play()
 	else:
 		$AnimatedSprite.stop()
+	
+	ground_buffer -= 1
 
 
 #anything that doesn't need to be in a consistent update cycle will go here
@@ -211,10 +224,9 @@ func Shoot_Bullet(bullet_type):
 		player_shockwave_bullet.position = $Player_Gun_Base/Player_Bullet_Position.global_position
 
 func Apply_Health_Sprites(player_health):
-	if player_health == 3:
-		$Camera2D/Player_Health_Sprite.animation = "3_health"
-	elif player_health == 2:
-		$Camera2D/Player_Health_Sprite.animation = "2_health"
-	elif player_health == 1:
-		$Camera2D/Player_Health_Sprite.animation = "1_health"
-	$Camera2D/Player_Health_Sprite.play()
+	get_node("Camera2D/ProgressBar").value = player_health
+
+func Apply_Shockwave_Knockback():
+	# this should be able to return a force vector that can be added to the player's velocity to propel them away from the shockwave
+	knockback_direction = (self.position - get_node("res://Player_Bullet_Shockwave").position).normalized()
+	knockback_force = knockback_strength * knockback_direction
