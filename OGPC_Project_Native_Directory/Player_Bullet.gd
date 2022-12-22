@@ -6,7 +6,7 @@ var speed = 0.01
 var speed_scaling_amount = 20
 var has_been_fired = false
 
-onready var player_body = get_node("/root/World_Root_Node/Player_Body")
+onready var player_body = get_parent().get_node("Player_Body")
 
 func _physics_process(_delta):
 	var enemies = get_tree().get_nodes_in_group("enemies")
