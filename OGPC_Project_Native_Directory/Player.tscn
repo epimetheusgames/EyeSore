@@ -15,6 +15,22 @@ extents = Vector2( 7, 8 )
 atlas = ExtResource( 6 )
 region = Rect2( 192, 0, 16, 16 )
 
+[sub_resource type="AtlasTexture" id=85]
+atlas = ExtResource( 6 )
+region = Rect2( 96, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=78]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=79]
+atlas = ExtResource( 5 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=80]
+atlas = ExtResource( 5 )
+region = Rect2( 32, 0, 16, 16 )
+
 [sub_resource type="StreamTexture" id=81]
 load_path = "res://.import/OGPC_2022_Player_2_Jumping_Spritesheet.png-db9dbab083dd8128a4436dfaa9eb60eb.stex"
 
@@ -30,18 +46,6 @@ region = Rect2( 112, 0, 16, 16 )
 atlas = SubResource( 81 )
 region = Rect2( 128, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=78]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=79]
-atlas = ExtResource( 5 )
-region = Rect2( 16, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=80]
-atlas = ExtResource( 5 )
-region = Rect2( 32, 0, 16, 16 )
-
 [sub_resource type="AtlasTexture" id=82]
 atlas = ExtResource( 5 )
 region = Rect2( 48, 0, 16, 16 )
@@ -53,50 +57,6 @@ region = Rect2( 64, 0, 16, 16 )
 [sub_resource type="AtlasTexture" id=84]
 atlas = ExtResource( 5 )
 region = Rect2( 80, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=56]
-atlas = ExtResource( 6 )
-region = Rect2( 16, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=57]
-atlas = ExtResource( 6 )
-region = Rect2( 32, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=58]
-atlas = ExtResource( 6 )
-region = Rect2( 48, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=59]
-atlas = ExtResource( 6 )
-region = Rect2( 64, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=60]
-atlas = ExtResource( 6 )
-region = Rect2( 80, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=61]
-atlas = ExtResource( 6 )
-region = Rect2( 96, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=62]
-atlas = ExtResource( 6 )
-region = Rect2( 112, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=63]
-atlas = ExtResource( 6 )
-region = Rect2( 128, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=64]
-atlas = ExtResource( 6 )
-region = Rect2( 144, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=65]
-atlas = ExtResource( 6 )
-region = Rect2( 160, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=66]
-atlas = ExtResource( 6 )
-region = Rect2( 176, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=67]
 atlas = ExtResource( 7 )
@@ -142,9 +102,49 @@ region = Rect2( 208, 0, 16, 16 )
 atlas = ExtResource( 7 )
 region = Rect2( 192, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=85]
+[sub_resource type="AtlasTexture" id=56]
+atlas = ExtResource( 6 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=57]
+atlas = ExtResource( 6 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=58]
+atlas = ExtResource( 6 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=59]
+atlas = ExtResource( 6 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=60]
+atlas = ExtResource( 6 )
+region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=61]
 atlas = ExtResource( 6 )
 region = Rect2( 96, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=62]
+atlas = ExtResource( 6 )
+region = Rect2( 112, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=63]
+atlas = ExtResource( 6 )
+region = Rect2( 128, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=64]
+atlas = ExtResource( 6 )
+region = Rect2( 144, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=65]
+atlas = ExtResource( 6 )
+region = Rect2( 160, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=66]
+atlas = ExtResource( 6 )
+region = Rect2( 176, 0, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -153,14 +153,19 @@ animations = [ {
 "name": "Idle_Left",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
-"loop": false,
-"name": "Jumping_Left",
-"speed": 15.0
+"frames": [ SubResource( 85 ) ],
+"loop": true,
+"name": "Idle_Right",
+"speed": 5.0
 }, {
 "frames": [ SubResource( 78 ), SubResource( 79 ), SubResource( 80 ) ],
 "loop": false,
 "name": "Jumping_Center",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
+"loop": false,
+"name": "Jumping_Left",
 "speed": 15.0
 }, {
 "frames": [ SubResource( 82 ), SubResource( 83 ), SubResource( 84 ) ],
@@ -168,20 +173,15 @@ animations = [ {
 "name": "Jumping_Right",
 "speed": 15.0
 }, {
-"frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ) ],
-"loop": true,
-"name": "Walking_Right",
-"speed": 14.0
-}, {
 "frames": [ SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ), SubResource( 77 ) ],
 "loop": true,
 "name": "Walking_Left",
 "speed": 14.0
 }, {
-"frames": [ SubResource( 85 ) ],
+"frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ) ],
 "loop": true,
-"name": "Idle_Right",
-"speed": 5.0
+"name": "Walking_Right",
+"speed": 14.0
 } ]
 
 [node name="Player_Body" type="KinematicBody2D"]
