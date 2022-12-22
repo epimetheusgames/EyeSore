@@ -15,13 +15,8 @@ func _process(delta):
 	if prev_selected != selected:
 		get_parent().Play_Click_SFX()
 		
-	if Input.is_action_just_pressed("Just_Arrowkey_Down") and selected < len(options):
-		selected += 1
-	if Input.is_action_just_pressed("Just_Arrowkey_Up") and selected > 0:
-		selected -= 1
-		
 	if Input.is_action_just_pressed("ui_accept"):
-		$ClickAudio.play()
+		get_parent().Play_Click_SFX()
 		if selected == 0: # soon to be 4
 			get_parent().Open_Options_Menu(self)
 	
