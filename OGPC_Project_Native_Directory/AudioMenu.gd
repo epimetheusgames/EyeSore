@@ -21,7 +21,7 @@ func _process(delta):
 		selected -= 1
 		
 	if Input.is_action_just_pressed("ui_accept"):
-		$ClickAudio.play()
+		get_parent().Play_Click_SFX()
 		if selected == 0: # soon to be 4
 			get_parent().Open_Options_Menu(self)
 	
