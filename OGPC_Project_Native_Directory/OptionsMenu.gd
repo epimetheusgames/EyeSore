@@ -25,6 +25,8 @@ func _process(delta):
 		get_parent().Play_Click_SFX()
 		if selected == 0:
 			get_parent().Open_Audio_Menu(self)
+		if selected == 1:
+			get_parent().Open_Video_Menu(self)
 		if selected == 4:
 			get_parent().Open_Main_Menu(self)
 
