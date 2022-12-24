@@ -37,4 +37,6 @@ func Spawn_Shockwave():
 	
 	get_parent().add_child(player_bullet_shockwave)
 	
+	var player_bullet_shockwave_position = player_bullet_shockwave.position
+	
 	player_bullet_shockwave.position = self.position

@@ -8,7 +8,7 @@ var player_health = clamp(29, 3, 29)
 
 var knockback_direction = 0
 var knockback_strength = 3
-var knockback_force = 0
+var knockback_force = 300000
 
 # the Vector2 for the player's velocity
 var velocity = Vector2.ZERO
@@ -25,6 +25,8 @@ var fastfall = false
 var respawn_position = Vector2(96, 236)
 
 var player_direction = "right"
+
+var self_position = self.position
 
 # the direction that the player is currently requesting to shoot in, can be any of the cardinal directions or diagonals
 export var shoot_direction = "null"
@@ -57,7 +59,7 @@ export var fast_turnaround_threshold = 180
 export var ground_buffer = 6
 
 
-#anything that needs to be in a consistent update cycle goes here
+# anything that needs to be in a consistent update cycle goes here
 func _physics_process(delta):
 	# get a float between -1 and 1 of the amount that the player is trying to move in each direction, this is especially nice for controllers becauyse the joysticks can sense a value of how far they are being pushed instead of a keyboard which is just pressed or not pressed, so this allows controller players to move a smaller amount when they move their joystick less, negativenumbers are left, positive are right
 	input.x = Input.get_action_strength("movement_right") - Input.get_action_strength("movement_left")
@@ -149,6 +151,8 @@ func _physics_process(delta):
 
 #anything that doesn't need to be in a consistent update cycle will go here
 func _process(delta):
+	self_position = self.position
+	
 	if Input.is_action_just_pressed("Shoot_Normal_Bullet"):
 		bullet_type = 0
 		Shoot_Bullet(bullet_type)
@@ -226,7 +230,13 @@ func Shoot_Bullet(bullet_type):
 func Apply_Health_Sprites(player_health):
 	get_node("Camera2D/ProgressBar").value = player_health
 
-func Apply_Shockwave_Knockback():
+func Apply_Shockwave_Knockback(self_position, player_shockwave_bullet_node):
 	# this should be able to return a force vector that can be added to the player's velocity to propel them away from the shockwave
-	knockback_direction = (self.position - get_node("res://Player_Bullet_Shockwave").position).normalized()
+	knockback_direction = (self_position - player_shockwave_bullet_node.position).normalized()
 	knockback_force = knockback_strength * knockback_direction
+	
+	velocity = knockback_force
+
+func Shockwave_Hit_Player(player_shockwave_bullet_node_self):
+	var player_shockwave_bullet_node = player_shockwave_bullet_node_self
+	Apply_Shockwave_Knockback(self_position, player_shockwave_bullet_node)
