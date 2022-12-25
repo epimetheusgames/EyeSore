@@ -166,7 +166,7 @@ func _process(delta):
 		bullet_type = 1
 		Shoot_Bullet(bullet_type)
 		
-		shockwave_bullet_cooldown_timer = 60
+		shockwave_bullet_cooldown_timer = 30
 	
 	Apply_Health_Sprites(player_health)
 
