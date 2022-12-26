@@ -234,7 +234,7 @@ motion_scale = Vector2( 0.08, 0.08 )
 motion_mirroring = Vector2( 128, 128 )
 
 [node name="Sprite" type="Sprite" parent="Jungle_Background/Jungle_Background_Layer_1"]
-position = Vector2( 301.333, 12 )
+position = Vector2( -183, 68 )
 texture = ExtResource( 4 )
 centered = false
 region_enabled = true

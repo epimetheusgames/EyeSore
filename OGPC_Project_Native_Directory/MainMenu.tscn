@@ -2,7 +2,7 @@
 
 [ext_resource path="res://TestMenuBg.mp3" type="AudioStream" id=1]
 [ext_resource path="res://MainMenuHandler.gd" type="Script" id=2]
-[ext_resource path="res://OGPC-UI-Click-SFX.ogg" type="AudioStream" id=3]
+[ext_resource path="res://OGPC-UI-Click-SFX-2.ogg" type="AudioStream" id=3]
 
 [sub_resource type="Shader" id=1]
 
@@ -19,3 +19,4 @@ mix_target = 1
 
 [node name="ClickAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = 2.622
