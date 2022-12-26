@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Jumper.wav" type="AudioStream" id=1]
 [ext_resource path="res://ProgressBar.tscn" type="PackedScene" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://OGPC_2022_Player_2_Jumping_Spritesheet.png" type="Texture" id=5]
 [ext_resource path="res://Pixilart Sprite Sheet.png" type="Texture" id=6]
 [ext_resource path="res://OGPC_Project_Player_Spritesheet_New_Walk_Anim.png" type="Texture" id=7]
+[ext_resource path="res://OGPC_Project_Player_Health_Bar_Improved_Empty.png" type="Texture" id=8]
+[ext_resource path="res://OGPC_Project_Player_Health_Bar_Improved_Full.png" type="Texture" id=9]
+[ext_resource path="res://OWIE.ogg" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 7, 8 )
@@ -201,7 +204,6 @@ shape = SubResource( 6 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -8 )
 frames = SubResource( 1 )
-animation = "Idle_Right"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 rotating = true
@@ -210,10 +212,14 @@ smoothing_enabled = true
 smoothing_speed = 14.8
 
 [node name="ProgressBar" parent="Camera2D" instance=ExtResource( 2 )]
-modulate = Color( 1, 1, 1, 0.698039 )
-margin_top = -40.0
-margin_bottom = -26.0
-value = 29.0
+modulate = Color( 1, 1, 1, 1 )
+margin_left = -20.0
+margin_right = 20.0
+margin_bottom = -16.0
+max_value = 40.0
+value = 36.0
+texture_under = ExtResource( 8 )
+texture_progress = ExtResource( 9 )
 
 [node name="Player_Gun_Base" type="Node2D" parent="."]
 position = Vector2( 0, -9 )
@@ -222,3 +228,6 @@ position = Vector2( 0, -9 )
 
 [node name="Shooting_SFX_Player" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+
+[node name="OWIE_Player" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )

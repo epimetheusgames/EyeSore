@@ -4,10 +4,10 @@ extends KinematicBody2D
 const normal_bullet_file_path = preload("res://Player_Bullet.tscn")
 const shockwave_bullet_file_path = preload("res://Player_Shockwave_Bullet.tscn")
 
-var player_health = clamp(29, 3, 29)
+var player_health = clamp(36, 4, 36)
 
 var knockback_direction = 0
-export var shockwave_knockback_strength = Vector2(600, 400)
+export var shockwave_knockback_strength = Vector2(560, 360)
 var knockback_force = 0
 
 # the Vector2 for the player's velocity
@@ -32,6 +32,8 @@ var self_position = self.position
 export var shoot_direction = "null"
 # the type of bullet to shoot
 export var bullet_type = 0
+
+var shockwave_bullet_cooldown_timer = 0
 
 signal boss_hit
 
@@ -111,15 +113,14 @@ func _physics_process(delta):
 	# if the player is below a certain y level, aka below the map, reset the scene (this is a way to kill the player, there are better ways but they take more time)
 	if position.y > 10000:
 		# TODO: Reset enemy positions
+		$OWIE_Player.play()
 		position = respawn_position
 		player_health -= 3
 		
 	if Input.is_action_just_pressed("self_destruct"):
-		# TODO: Reset enemy positions
-		position = respawn_position
+		$OWIE_Player.play()
 		
-		# lower player health upon falling out of world
-		player_health -= 1
+		position = respawn_position
 	
 	# if the player is not moving, start the animation player and play the idle animation, and the rest of the animations have not been implemented yet so if it needs to play those it just stops the animation
 	if velocity.x == 0 and is_on_floor() and player_direction == "left":
@@ -134,8 +135,11 @@ func _physics_process(delta):
 		#set animation to walking left
 		$AnimatedSprite.animation = "Walking_Left"
 		$AnimatedSprite.play()
-	elif not is_on_floor() and input.x == 0:
-		$AnimatedSprite.animation = "Jumping_Center"
+	elif not is_on_floor() and velocity.x == 0 and player_direction == "right":
+		$AnimatedSprite.animation = "Jumping_Idle_Right"
+		$AnimatedSprite.play()
+	elif not is_on_floor() and velocity.x == 0 and player_direction == "left":
+		$AnimatedSprite.animation = "Jumping_Idle_Left"
 		$AnimatedSprite.play()
 	elif not is_on_floor() and velocity.x > 0:
 		$AnimatedSprite.animation = "Jumping_Right"
@@ -147,18 +151,22 @@ func _physics_process(delta):
 		$AnimatedSprite.stop()
 	
 	ground_buffer -= 1
+	
+	shockwave_bullet_cooldown_timer -= 1
 
 
-#anything that doesn't need to be in a consistent update cycle will go here
+#anything that doesn't need to be in a consistent update cycle goes here
 func _process(delta):
 	self_position = self.position
 	
 	if Input.is_action_just_pressed("Shoot_Normal_Bullet"):
 		bullet_type = 0
 		Shoot_Bullet(bullet_type)
-	elif Input.is_action_just_pressed("Shoot_Shockwave_Bullet"):
+	elif Input.is_action_just_pressed("Shoot_Shockwave_Bullet") and shockwave_bullet_cooldown_timer <= 0:
 		bullet_type = 1
 		Shoot_Bullet(bullet_type)
+		
+		shockwave_bullet_cooldown_timer = 30
 	
 	Apply_Health_Sprites(player_health)
 
@@ -188,25 +196,6 @@ func Apply_Friction():
 	velocity.x = move_toward(velocity.x, 0, friction_strength)
 
 func Shoot_Bullet(bullet_type):
-	
-	if Input.is_action_pressed("movement_right") and Input.is_action_pressed("movement_up"):
-		shoot_direction = 45
-	elif Input.is_action_pressed("movement_left") and Input.is_action_pressed("movement_up"):
-		shoot_direction = -45
-	elif Input.is_action_pressed("movement_right") and Input.is_action_pressed("movement_down"):
-		shoot_direction = 135
-	elif Input.is_action_pressed("movement_left") and Input.is_action_pressed("movement_down"):
-		shoot_direction = -135
-	elif Input.is_action_pressed("movement_right") and not Input.is_action_pressed("movement_up") and not Input.is_action_pressed("movement_down"):
-		shoot_direction = 90
-	elif Input.is_action_pressed("movement_left") and not Input.is_action_pressed("movement_up") and not Input.is_action_pressed("movement_down"):
-		shoot_direction = -90
-	elif Input.is_action_pressed("movement_up") and not Input.is_action_pressed("movement_right") and not Input.is_action_pressed("movement_left") and not Input.is_action_pressed("movement_down"):
-		shoot_direction = 0
-	elif Input.is_action_pressed("movement_down") and not Input.is_action_pressed("movement_right") and not Input.is_action_pressed("movement_left") and not Input.is_action_pressed("movement_up"):
-		shoot_direction = 180
-	else:
-		shoot_direction = 0
 	
 	$Player_Gun_Base.rotation_degrees = int(shoot_direction)
 	
