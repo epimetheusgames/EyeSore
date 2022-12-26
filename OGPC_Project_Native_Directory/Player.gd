@@ -135,16 +135,10 @@ func _physics_process(delta):
 		#set animation to walking left
 		$AnimatedSprite.animation = "Walking_Left"
 		$AnimatedSprite.play()
-	elif not is_on_floor() and velocity.x == 0 and player_direction == "right":
-		$AnimatedSprite.animation = "Jumping_Idle_Right"
-		$AnimatedSprite.play()
-	elif not is_on_floor() and velocity.x == 0 and player_direction == "left":
-		$AnimatedSprite.animation = "Jumping_Idle_Left"
-		$AnimatedSprite.play()
-	elif not is_on_floor() and velocity.x > 0:
+	elif not is_on_floor() and player_direction == "right":
 		$AnimatedSprite.animation = "Jumping_Right"
 		$AnimatedSprite.play()
-	elif not is_on_floor() and velocity.x < 0:
+	elif not is_on_floor() and player_direction == "left":
 		$AnimatedSprite.animation = "Jumping_Left"
 		$AnimatedSprite.play()
 	else:
