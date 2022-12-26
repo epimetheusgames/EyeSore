@@ -37,6 +37,9 @@ export var fast_turnaround_threshold = 180
 # the maximum the distance the player can be for the enemy to see it.
 export var max_player_distance = 600
 
+func _ready():
+	add_to_group("enemy1group")
+
 func _physics_process(delta):
 	var player = get_owner().get_node("Player_Body")
 	var space_state = get_world_2d().direct_space_state
@@ -51,6 +54,7 @@ func _physics_process(delta):
 			$AnimatedSprite.visible = false 
 			return
 		else:
+			remove_from_group("enemy1group")
 			$AnimatedSprite.animation = "Die"
 			death_countdown -= 1
 			return
@@ -82,7 +86,7 @@ func _physics_process(delta):
 		if velocity.y < max_fall_speed:
 			Apply_Gravity()
 			
-	if position.y > 700:
+	if position.y > 10000:
 		died = true
 	
 	if velocity.x == 0 and is_on_floor() and not result:

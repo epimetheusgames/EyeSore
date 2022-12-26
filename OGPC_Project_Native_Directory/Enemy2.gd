@@ -12,6 +12,8 @@ var died = false
 func distance(x1, y1, x2, y2):
 	return sqrt(pow((x2 - x1), 2) + pow((y2 - y1), 2))
 
+func _ready():
+	add_to_group("enemy2group")
 
 func _physics_process(delta):
 	if going_to_point1:
@@ -24,6 +26,7 @@ func _physics_process(delta):
 			going_to_point1 = true
 	
 	if died:
+		remove_from_group("enemy2group")
 		$CollisionShape2D.disabled = true
 		visible = false 
 		return
