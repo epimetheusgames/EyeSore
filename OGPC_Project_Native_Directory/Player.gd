@@ -7,7 +7,7 @@ const shockwave_bullet_file_path = preload("res://Player_Shockwave_Bullet.tscn")
 var player_health = clamp(36, 4, 36)
 
 var knockback_direction = 0
-export var shockwave_knockback_strength = Vector2(560, 360)
+export var shockwave_knockback_strength = Vector2(600, 400)
 var knockback_force = 0
 
 # the Vector2 for the player's velocity
