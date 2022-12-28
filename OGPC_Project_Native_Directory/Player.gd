@@ -22,7 +22,7 @@ var current_speed = 0
 var fastfall = false
 
 # the Vector2 that holds the player's current respawn position, this is updated when the player touches a checkpoint
-onready var respawn_position = position
+var respawn_position = Vector2(0, 0)
 
 var player_direction = "right"
 
