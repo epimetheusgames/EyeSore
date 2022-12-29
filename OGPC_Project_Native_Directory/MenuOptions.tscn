@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://MenuOptions.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/PTMono-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Save_Data.gd" type="Script" id=3]
 [ext_resource path="res://MainMenuSprites/OGPC_Main_Menu_Background_Sprite.png" type="Texture" id=4]
 
 [sub_resource type="Shader" id=6]
@@ -78,3 +79,7 @@ environment = SubResource( 3 )
 z_index = -6
 current = true
 zoom = Vector2( 5, 5 )
+
+[node name="Load_Functionality" type="Node2D" parent="."]
+script = ExtResource( 3 )
+load_saved_game = false

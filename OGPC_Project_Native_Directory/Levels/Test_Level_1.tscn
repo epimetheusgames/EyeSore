@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Levels/Level_Script.gd" type="Script" id=1]
+[ext_resource path="res://World.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Save_Data.gd" type="Script" id=3]
+
+[node name="Level_Manager" type="Node2D"]
+script = ExtResource( 1 )
+next_level = "end"
+previous_level = "start"
+current_level_number = 1
+
+[node name="Level" parent="." instance=ExtResource( 2 )]
+__meta__ = {
+"_editor_description_": "In this case the level is the world root node. "
+}
+
+[node name="Save_Functionality" type="Node2D" parent="."]
+script = ExtResource( 3 )
+load_saved_game = false

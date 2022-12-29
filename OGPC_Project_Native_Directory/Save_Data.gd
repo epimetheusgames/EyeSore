@@ -11,7 +11,7 @@ export var load_saved_game = true
 # When the game is finished, it will be a simple level
 # system and maybe some other properties like health.
 
-var default_data = {
+const default_data = {
 	"player": {
 		"health": 36.0,
 		"position_x": 0, # Add player starting position here 
@@ -19,14 +19,34 @@ var default_data = {
 		"respawn_position_x": 0, # Add respawn here too
 		"respawn_position_y": 0 
 	},
-	"pixelated_boss": {},
-	"zombie_enemies": {}, 
-	"patrolling_enemies": {},
+	"level": 0,
 }
+
+const levels = [
+	"res://Levels/Test_Level_1.tscn", 
+]
 
 var game_loaded = false
 
-func load_game():
+func get_game_data():
+	var file = File.new()
+	var data
+	
+	if not file.file_exists(file_name):
+		data = default_data 
+		
+	else:
+		file.open(file_name, file.READ)
+		data = parse_json(file.get_as_text())
+		
+	return [
+		data["level"],
+		data["player"]["health"], 
+		Vector2(data["player"]["position_x"], data["player"]["position_y"]), 
+		Vector2(data["player"]["respawn_position_x"], data["player"]["respawn_position_y"])
+	]
+
+func load_game(): # This function will likely be unused
 	var file = File.new()
 	var data
 	
@@ -71,7 +91,7 @@ func load_game():
 		enemy.point2.y = e2dat["end_position_y"]
 		add_child(enemy)
 
-func get_data():
+func get_data(level):
 	var data = {
 		"player": {
 			"health": $Player_Body.player_health,
@@ -83,6 +103,7 @@ func get_data():
 		"pixelated_boss": {},
 		"zombie_enemies": {},
 		"patrolling_enemies": {},
+		"level": level,
 	}
 	
 	var pixelated_boss = get_node("PixelatedBoss")
@@ -116,9 +137,9 @@ func get_data():
 	
 	return data
 	
-func save_game():
+func save_game(level):
 	var file = File.new()
-	var data = get_data()
+	var data = get_data(level)
 	file.open(file_name, File.WRITE)
 	file.store_line(to_json(data))
 	file.close()
@@ -130,4 +151,4 @@ func _process(delta):
 		load_game()
 		
 	if Input.is_action_just_pressed("self_destruct"):
-		save_game()
+		save_game(1) # Automatically saves to level one because this is just a test feature

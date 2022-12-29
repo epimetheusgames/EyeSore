@@ -25,6 +25,14 @@ func Open_Main_Menu(closed_window):
 func Open_Video_Menu(closed_window):
 	closed_window.queue_free()
 	add_child(VideoMenu.instance())
+	
+func Open_Other(closed_window, opened_window, remove_sounds):
+	closed_window.queue_free()
+	add_child(opened_window)
+	
+	if remove_sounds:
+		$BackgroundMusic.queue_free()
+		$ClickAudio.queue_free()
 
 func Play_Click_SFX():
 	$ClickAudio.play()
