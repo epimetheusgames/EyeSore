@@ -182,6 +182,7 @@ motion_scale = Vector2( 0.03, 0.03 )
 motion_mirroring = Vector2( 128, 128 )
 
 [node name="Sprite" type="Sprite" parent="Jungle_Background/Background"]
+position = Vector2( 10, 234 )
 z_as_relative = false
 texture = ExtResource( 6 )
 
@@ -190,6 +191,7 @@ motion_scale = Vector2( 0.03, 0.03 )
 motion_mirroring = Vector2( 128, 128 )
 
 [node name="Sprite" type="Sprite" parent="Jungle_Background/Ledges_And_Plants"]
+position = Vector2( 32, 174.333 )
 texture = ExtResource( 9 )
 
 [node name="Fog" type="ParallaxLayer" parent="Jungle_Background"]
@@ -201,6 +203,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="Jungle_Background/Fog"]
+position = Vector2( 15.6667, 199.333 )
 texture = ExtResource( 7 )
 
 [node name="Green_Fog" type="ParallaxLayer" parent="Jungle_Background"]
@@ -211,6 +214,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="Jungle_Background/Green_Fog"]
+position = Vector2( 22.6667, 132 )
 texture = ExtResource( 8 )
 
 [node name="Stars" type="ParallaxLayer" parent="Jungle_Background"]

@@ -7,7 +7,7 @@ const shockwave_bullet_file_path = preload("res://Player_Shockwave_Bullet.tscn")
 var player_health = clamp(36, 4, 36)
 
 var knockback_direction = 0
-export var shockwave_knockback_strength = Vector2(600, 400)
+export var shockwave_knockback_strength = Vector2(510, 460)
 var knockback_force = 0
 
 # the Vector2 for the player's velocity
@@ -211,7 +211,7 @@ func Shoot_Bullet(bullet_type):
 		player_shockwave_bullet.position = $Player_Gun_Base/Player_Bullet_Position.global_position
 
 func Apply_Health_Sprites(player_health):
-	get_node("Camera2D/ProgressBar").value = player_health
+	get_node("ProgressBar").value = player_health
 
 func Apply_Shockwave_Knockback(self_position, player_shockwave_bullet_node):
 	# this should be able to return a force vector that can be added to the player's velocity to propel them away from the shockwave
