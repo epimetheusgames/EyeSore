@@ -7,6 +7,6 @@ export var current_level_number = -1
 
 
 func set_player_spawnpoint_and_position(health, player_position, spawnpoint):
-	$Level/Player_Body.respawn_position = spawnpoint
-	$Level/Player_Body.position = player_position
-	$Level/Player_Body.player_health = health
+	$Save_Functionality/Player_Body.respawn_position = spawnpoint
+	$Save_Functionality/Player_Body.position = player_position
+	$Save_Functionality/Player_Body.player_health = health

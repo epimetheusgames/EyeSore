@@ -41,7 +41,7 @@ func _ready():
 	add_to_group("enemy1group")
 
 func _physics_process(delta):
-	var player = get_owner().get_node("Player_Body")
+	var player = get_parent().get_node("Player_Body")
 	var space_state = get_world_2d().direct_space_state
 	var self_position = position - $CollisionShape2D.shape.extents
 	var result = space_state.intersect_ray(position, player.position, [self])

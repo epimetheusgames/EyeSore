@@ -10,11 +10,11 @@ next_level = "end"
 previous_level = "start"
 current_level_number = 1
 
-[node name="Level" parent="." instance=ExtResource( 2 )]
-__meta__ = {
-"_editor_description_": "In this case the level is the world root node. "
-}
-
 [node name="Save_Functionality" type="Node2D" parent="."]
 script = ExtResource( 3 )
 load_saved_game = false
+
+[node name="Level" parent="Save_Functionality" instance=ExtResource( 2 )]
+__meta__ = {
+"_editor_description_": "In this case the level is the world root node. "
+}
