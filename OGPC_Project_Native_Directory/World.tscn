@@ -161,6 +161,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [node name="World_Root_Node" type="Node2D"]
 light_mask = 2
+position = Vector2( 38, 19 )
 script = ExtResource( 5 )
 load_saved_game = false
 
