@@ -1,9 +1,9 @@
 extends Area2D
 
 var grow = 0.01
-var grow_amount = 1.4
-var speedup_timer = 20
-var despawn_timer = 82
+var grow_amount = 2
+var speedup_timer = 11
+var despawn_timer = 42
 
 var used = false
 var player_hit = false
@@ -25,7 +25,7 @@ func _physics_process(delta):
 		speedup_timer -= 1
 	elif used == true:
 		player_hit = true
-		grow_amount = 5.5
+		grow_amount = 6.5
 		
 		
 		self.scale = Vector2(grow, grow)

@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 var velocity = Vector2(0, 0)
-var speed = 150
+var speed = 0.1
 var speed_scaling_amount = 20
 var has_been_fired = false
 var self_position
@@ -28,7 +28,7 @@ func _physics_process(_delta):
 	speed += speed_scaling_amount
 	
 	if has_been_fired == false:
-		velocity = Vector2(get_global_mouse_position() - player_body.position).normalized() * speed / speed * 5
+		velocity = Vector2(get_global_mouse_position() - player_body.position).normalized() * speed
 		
 		has_been_fired = true
 
