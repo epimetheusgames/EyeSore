@@ -2,7 +2,7 @@ extends Area2D
 
 var grow = 0.01
 var grow_amount = 1.4
-var speedup_timer = 38
+var speedup_timer = 20
 var despawn_timer = 82
 
 var used = false

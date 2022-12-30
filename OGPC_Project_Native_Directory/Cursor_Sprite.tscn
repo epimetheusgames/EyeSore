@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Cursor_Sprite.gd" type="Script" id=1]
+[ext_resource path="res://OGPC_Project_Cursor_Sprite.png" type="Texture" id=2]
+
+[node name="Cursor_Sprite" type="Sprite"]
+position = Vector2( 23.4444, -8.55556 )
+scale = Vector2( 0.888889, 0.888889 )
+z_index = 50
+texture = ExtResource( 2 )
+script = ExtResource( 1 )

@@ -162,6 +162,8 @@ func _process(delta):
 		
 		shockwave_bullet_cooldown_timer = 30
 	
+	$Player_Gun_Base.look_at(get_global_mouse_position())
+	
 	Apply_Health_Sprites(player_health)
 
 # if fastfall is false, increase the player's y velocity by the normal gravity strength, and if it is true, increase the player's y velocity by the fastfalling gravity strength
