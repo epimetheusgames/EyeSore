@@ -320,7 +320,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 } ]
 0/z_index = 0
 
-[node name="Level_Manager" type="Node2D"]
+[node name="Level_Manager2" type="Node2D"]
 script = ExtResource( 1 )
 next_level = "end"
 previous_level = "start"
