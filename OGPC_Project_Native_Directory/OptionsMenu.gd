@@ -27,6 +27,8 @@ func _process(delta):
 			get_parent().Open_Audio_Menu(self)
 		if selected == 1:
 			get_parent().Open_Video_Menu(self)
+		if selected == 2:
+			get_parent().Open_Controls_Menu(self)
 		if selected == 4:
 			get_parent().Open_Main_Menu(self)
 
