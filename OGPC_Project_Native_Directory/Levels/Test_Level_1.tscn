@@ -15,6 +15,3 @@ script = ExtResource( 3 )
 load_saved_game = false
 
 [node name="Level" parent="Save_Functionality" instance=ExtResource( 2 )]
-__meta__ = {
-"_editor_description_": "In this case the level is the world root node. "
-}

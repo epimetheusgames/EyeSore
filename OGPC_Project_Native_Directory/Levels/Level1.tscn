@@ -1,9 +1,8 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Levels/Level_Script.gd" type="Script" id=1]
 [ext_resource path="res://Save_Data.gd" type="Script" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://OGPC_Project_Grass_Tileset.png" type="Texture" id=4]
 [ext_resource path="res://GroundTileMap.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Enemy1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemy2.tscn" type="PackedScene" id=7]
@@ -70,7 +69,6 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="TileSet" id=21]
 0/name = "OGPC_Project_Tileset.png 0"
-0/texture = ExtResource( 4 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 64, 80 )

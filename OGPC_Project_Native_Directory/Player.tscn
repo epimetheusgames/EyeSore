@@ -242,7 +242,6 @@ frames = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0, -9 )
-current = true
 smoothing_enabled = true
 smoothing_speed = 14.8
 
