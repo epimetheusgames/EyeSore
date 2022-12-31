@@ -6,6 +6,7 @@ var selected = false
 func _input(event):
 	if event is InputEventKey and selected:
 		keybind = PoolByteArray([event.unicode]).get_string_from_utf8()
+		selected = false
 		
 func _ready():
 	connect("input_event", self, "_on_Area2D_input_event")
@@ -21,6 +22,5 @@ func _process(delta):
 		$OgpcMainMenuKeybindSelectorSelected.visible = false
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
-	print("hi")
 	if event.is_action_pressed("mouse_click"): # set this up in project settings
 		selected = not selected

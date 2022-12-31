@@ -24,6 +24,8 @@ func _physics_process(_delta):
 	speed += speed_scaling_amount
 	
 	if has_been_fired == false:
-		velocity = Vector2(get_global_mouse_position() - player_body.position).normalized() * speed / speed * 5
+		velocity = (get_parent().get_node("Player_Body").velocity / 50 # May need to dampen this value a little bit more if it seems too intense
+		 + Vector2(get_global_mouse_position()
+		 - player_body.position).normalized() * speed / speed * 5)
 		
 		has_been_fired = true
