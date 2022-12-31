@@ -91,7 +91,7 @@ func load_game(): # This function will likely be unused
 		enemy.point2.y = e2dat["end_position_y"]
 		add_child(enemy)
 
-func get_data(level):
+func get_data(level): # Fased out, I don't reccomend using this function, it is a force load, use get_game_data() instead
 	var data = {
 		"player": {
 			"health": $Player_Body.player_health,

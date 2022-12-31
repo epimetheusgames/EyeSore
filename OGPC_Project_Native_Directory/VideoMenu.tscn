@@ -38,23 +38,23 @@ offset = Vector2( 1640.27, 234.06 )
 environment = SubResource( 1 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 138.0
-margin_top = 8.0
-margin_right = 592.0
-margin_bottom = 66.0
+margin_left = 116.0
+margin_top = 22.0
+margin_right = 570.0
+margin_bottom = 80.0
 custom_fonts/font = SubResource( 2 )
-text = "Do the shockwave"
+text = "Video"
 align = 1
 
 [node name="Label2" type="Label" parent="."]
 modulate = Color( 4, 4, 4, 1 )
-margin_left = 153.0
-margin_top = 248.0
-margin_right = 498.0
-margin_bottom = 321.0
+margin_left = 159.0
+margin_top = 244.0
+margin_right = 504.0
+margin_bottom = 317.0
 custom_fonts/font = SubResource( 3 )
-text = "If you push this button
-you have to do it"
+text = "Back
+"
 align = 1
 
 [node name="Label3" type="Label" parent="."]
