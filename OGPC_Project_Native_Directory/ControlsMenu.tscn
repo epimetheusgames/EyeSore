@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Fonts/PTMono-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://MainMenuSprites/OGPC_Main_Menu_Background_Sprite_Blurred.png" type="Texture" id=2]
 [ext_resource path="res://ControlsMenu.gd" type="Script" id=3]
 [ext_resource path="res://KeybindSelector.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Save_Data.gd" type="Script" id=5]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -68,15 +69,15 @@ custom_fonts/font = SubResource( 4 )
 text = "Left"
 align = 1
 
-[node name="KeybindSelector" parent="." instance=ExtResource( 4 )]
+[node name="Left" parent="." instance=ExtResource( 4 )]
 position = Vector2( 243, 90 )
 keybind = "A"
 
-[node name="KeybindSelector2" parent="." instance=ExtResource( 4 )]
+[node name="Right" parent="." instance=ExtResource( 4 )]
 position = Vector2( 326, 90 )
 keybind = "D"
 
-[node name="KeybindSelector3" parent="." instance=ExtResource( 4 )]
+[node name="Jump" parent="." instance=ExtResource( 4 )]
 position = Vector2( 409, 90 )
 keybind = "SPACE"
 
@@ -112,11 +113,11 @@ custom_fonts/font = SubResource( 4 )
 text = "Shockwave"
 align = 1
 
-[node name="KeybindSelector4" parent="." instance=ExtResource( 4 )]
+[node name="Shockwave" parent="." instance=ExtResource( 4 )]
 position = Vector2( 289, 192 )
 keybind = "X"
 
-[node name="KeybindSelector5" parent="." instance=ExtResource( 4 )]
+[node name="Bullet" parent="." instance=ExtResource( 4 )]
 position = Vector2( 372, 192 )
 keybind = "D"
 
@@ -129,3 +130,6 @@ margin_bottom = 282.0
 custom_fonts/font = SubResource( 4 )
 text = "Bullet"
 align = 1
+
+[node name="SaveFunctionality" type="Node2D" parent="."]
+script = ExtResource( 5 )
