@@ -5,6 +5,7 @@ onready var pixelated_boss = preload("res://PixelatedBoss.tscn")
 onready var enemy1 = preload("res://Enemy1.tscn")
 onready var enemy2 = preload("res://Enemy2.tscn")
 onready var player = preload("res://Player.tscn")
+onready var data = get_file_data()
 export var load_saved_game = true
 
 # This is a temporary dictionary for saving and loading.
@@ -20,17 +21,27 @@ const default_data = {
 		"respawn_position_y": 0 
 	},
 	"level": 0,
+	"keybinds": {
+		"left": "A",
+		"right": "D",
+		"jump": "SPACE",
+		"shockwave": "S",
+		"bullet": "X"
+	},
+	"pixelated_boss": {},
+	"zombie_enemies": {},
+	"patrolling_enemies": {},
 }
 
 const levels = [
 	"res://Levels/Test_Level_1.tscn", 
 ]
 
-var game_loaded = false
-
+func save_keybinds(keybinds):
+	data["keybinds"] = keybinds 
+	
 func get_game_data():
 	var file = File.new()
-	var data
 	
 	if not file.file_exists(file_name):
 		data = default_data 
@@ -43,12 +54,12 @@ func get_game_data():
 		data["level"],
 		data["player"]["health"], 
 		Vector2(data["player"]["position_x"], data["player"]["position_y"]), 
-		Vector2(data["player"]["respawn_position_x"], data["player"]["respawn_position_y"])
+		Vector2(data["player"]["respawn_position_x"], data["player"]["respawn_position_y"]),
+		data["keybinds"],
 	]
-
-func load_game(): # This function will likely be unused
+	
+func get_file_data(): # Also don't use this one unless it's from inside this file
 	var file = File.new()
-	var data
 	
 	if not file.file_exists(file_name):
 		data = default_data
@@ -56,43 +67,11 @@ func load_game(): # This function will likely be unused
 	else:
 		file.open(file_name, file.READ)
 		data = parse_json(file.get_as_text())
-		
-	while get_node("Player_Body"):
-		remove_child(get_node("Player_Body"))
-		
-	player = player.instance()
-	player.player_health = data["player"]["health"]
-	player.position.x = data["player"]["position_x"]
-	player.position.y = data["player"]["position_y"]
-	player.respawn_position.x = data["player"]["respawn_position_x"]
-	player.respawn_position.y = data["player"]["respawn_position_y"]
-	add_child(player)
 	
-	if data["pixelated_boss"]:
-		var pb = pixelated_boss.instance()
-		pb.health = data["pixelated_boss"]["health"]
-		pb.position.x = data["pixelated_boss"]["position_x"]
-		pb.position.y = data["pixelated_boss"]["position_y"]
-		add_child(pb)
-	
-	for e1dat in data["zombie_enemies"]:
-		var enemy = enemy1.instance()
-		enemy.position.x = e1dat["position_x"]
-		enemy.position.y = e1dat["position_y"]
-		add_child(enemy)
-		
-	for e2dat in data["patrolling_enemies"]:
-		var enemy = enemy2.instance()
-		enemy.position.x = e2dat["position_x"]
-		enemy.position.y = e2dat["position_y"]
-		enemy.point1.x = e2dat["start_position_x"]
-		enemy.point1.y = e2dat["start_position_y"]
-		enemy.point2.x = e2dat["end_position_x"]
-		enemy.point2.y = e2dat["end_position_y"]
-		add_child(enemy)
+	return data
 
-func get_data(level): # Fased out, I don't reccomend using this function, it is a force load, use get_game_data() instead
-	var data = {
+func get_current_level_data(level):
+	var level_data = {
 		"player": {
 			"health": $Player_Body.player_health,
 			"position_x": $Player_Body.position.x,
@@ -104,6 +83,7 @@ func get_data(level): # Fased out, I don't reccomend using this function, it is 
 		"zombie_enemies": {},
 		"patrolling_enemies": {},
 		"level": level,
+		"keybinds": data["keybinds"]
 	}
 	
 	var pixelated_boss = get_node("PixelatedBoss")
@@ -111,7 +91,7 @@ func get_data(level): # Fased out, I don't reccomend using this function, it is 
 	var enemy2group = get_tree().get_nodes_in_group("enemy2group")
 	
 	if pixelated_boss:
-		data["pixelated_boss"] = {
+		level_data["pixelated_boss"] = {
 			"health": pixelated_boss.health,
 			"position_x": pixelated_boss.position.x,
 			"position_y": pixelated_boss.position.y 
@@ -119,14 +99,14 @@ func get_data(level): # Fased out, I don't reccomend using this function, it is 
 		
 	for node_ind in range(len(enemy1group)):
 		var node = enemy1group[node_ind]
-		data["zombie_enemies"]["individual_zombie_enemy" + str(node_ind)] = {
+		level_data["zombie_enemies"]["individual_zombie_enemy" + str(node_ind)] = {
 			"position_x": node.position.x,
 			"position_y": node.position.y
 		}
 		
 	for node_ind in range(len(enemy2group)):
 		var node = enemy2group[node_ind]
-		data["patrolling_enemies"]["individual_patrolling_enemy" + str(node_ind)] = {
+		level_data["patrolling_enemies"]["individual_patrolling_enemy" + str(node_ind)] = {
 			"position_x": node.position.x, 
 			"position_y": node.position.y,
 			"start_position_x": node.point1.x,
@@ -137,18 +117,21 @@ func get_data(level): # Fased out, I don't reccomend using this function, it is 
 	
 	return data
 	
-func save_game(level):
+func save_game():
 	var file = File.new()
-	var data = get_data(level)
 	file.open(file_name, File.WRITE)
 	file.store_line(to_json(data))
 	file.close()
 
+func _ready():
+	var timer = Timer.new()
+	timer.name = "Timer"
+	timer.autostart = true
+	timer.wait_time = 1
+	add_child(timer)
+
 func _process(delta):
-	if not game_loaded and load_saved_game:
-		game_loaded = true 
-		
-		load_game()
-		
-	if Input.is_action_just_pressed("self_destruct"):
-		save_game(1) # Automatically saves to level one because this is just a test feature
+	if $Timer.time_left <= 0 and get_parent().get_parent().name != "MainMenu":
+		$Timer.start()
+		data = get_current_level_data(data["level"])
+		save_game()
