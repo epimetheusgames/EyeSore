@@ -48,7 +48,7 @@ export var turnaround_speed = 12
 # the speed at which the player slows down
 export var friction_strength = 20
 # the upward force of the player's jump
-export var jump_force = 280
+export var jump_force = 290
 # the speed at which the player's y velocity starts decelerating after they let go of the jump button
 export var low_jump_deceleration_speed = 1.95
 # the player's maximum speed
