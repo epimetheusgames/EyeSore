@@ -34,7 +34,7 @@ const default_data = {
 }
 
 const levels = [
-	"res://Levels/Level1_Noah's_test_version.tscn", 
+	"res://Levels/Level1.tscn", 
 ]
 
 func save_keybinds(keybinds):
