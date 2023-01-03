@@ -129,6 +129,31 @@ func _ready():
 	timer.autostart = true
 	timer.wait_time = 1
 	add_child(timer)
+	
+func set_keybinds(keybinds): # Sets all keybinds to what is in data
+	delete_old_keys(keybinds)
+	set_specific_keybind("movement_left", keybinds["left"])
+	set_specific_keybind("movement_right", keybinds["right"])
+	set_specific_keybind("movement_jump", keybinds["jump"])
+	set_specific_keybind("Shoot_Normal_Bullet", keybinds["bullet"])
+	set_specific_keybind("Shoot_Shockwave_Bullet", keybinds["shockwave"])
+	
+func set_specific_keybind(action, keybind): # Sets a specific keybind
+	var key = InputEventKey.new()
+	key.scancode = int(keybind)
+	InputMap.action_add_event(action, key)
+	
+func delete_old_keys(keybinds):
+	delete_specific_keybind("movement_left", keybinds["left"])
+	delete_specific_keybind("movement_right", keybinds["right"])
+	delete_specific_keybind("movement_jump", keybinds["jump"])
+	delete_specific_keybind("Shoot_Normal_Bullet", keybinds["bullet"])
+	delete_specific_keybind("Shoot_Shockwave_Bullet", keybinds["shockwave"])
+
+func delete_specific_keybind(action, keybind):
+	var key = InputEventKey.new()
+	key.scancode = int(keybind)
+	InputMap.action_erase_event(action, key)
 
 func _process(delta):
 	if $Timer.time_left <= 0 and get_parent().get_parent().name != "MainMenu":
