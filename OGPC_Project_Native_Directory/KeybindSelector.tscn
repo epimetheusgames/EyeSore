@@ -35,7 +35,6 @@ align = 1
 valign = 1
 autowrap = true
 clip_text = true
-percent_visible = -1.0
 
 [node name="OgpcMainMenuKeybindSelectorSelected" type="Sprite" parent="."]
 position = Vector2( 33, 24 )

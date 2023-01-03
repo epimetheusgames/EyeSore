@@ -6,9 +6,8 @@ var selected = false
 func _input(event):
 	if event is InputEventKey and selected:
 		keybind = PoolByteArray([event.unicode]).get_string_from_utf8().capitalize()
+		keybind = OS.get_scancode_string(event.unicode)
 		selected = false
-		if event.unicode == 32:
-			keybind = "SPACE"
 	# Add edge cases for controllers
 		
 func _ready():
