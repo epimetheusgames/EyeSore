@@ -5,7 +5,7 @@ onready var pixelated_boss = preload("res://PixelatedBoss.tscn")
 onready var enemy1 = preload("res://Enemy1.tscn")
 onready var enemy2 = preload("res://Enemy2.tscn")
 onready var player = preload("res://Player.tscn")
-onready var data = get_file_data()
+var data = get_file_data()
 export var load_saved_game = true
 
 # This is a temporary dictionary for saving and loading.
@@ -131,29 +131,35 @@ func _ready():
 	add_child(timer)
 	
 func set_keybinds(keybinds): # Sets all keybinds to what is in data
-	delete_old_keys(keybinds)
 	set_specific_keybind("movement_left", keybinds["left"])
 	set_specific_keybind("movement_right", keybinds["right"])
 	set_specific_keybind("movement_jump", keybinds["jump"])
 	set_specific_keybind("Shoot_Normal_Bullet", keybinds["bullet"])
 	set_specific_keybind("Shoot_Shockwave_Bullet", keybinds["shockwave"])
+	var actions = InputMap.get_actions()
+	for action in actions:
+		var action_list = InputMap.get_action_list(action)
+		for key in action_list:
+			if key.is_class("InputEventKey"):
+				print(str(action) + ": " + str(OS.get_scancode_string(key.scancode)))
 	
 func set_specific_keybind(action, keybind): # Sets a specific keybind
+	if not InputMap.get_actions().has(action):
+		InputMap.add_action(action)
+	delete_specific_keybind(action)
 	var key = InputEventKey.new()
-	key.scancode = int(keybind)
+	key.set_scancode(keybind)
 	InputMap.action_add_event(action, key)
 	
 func delete_old_keys(keybinds):
-	delete_specific_keybind("movement_left", keybinds["left"])
-	delete_specific_keybind("movement_right", keybinds["right"])
-	delete_specific_keybind("movement_jump", keybinds["jump"])
-	delete_specific_keybind("Shoot_Normal_Bullet", keybinds["bullet"])
-	delete_specific_keybind("Shoot_Shockwave_Bullet", keybinds["shockwave"])
+	delete_specific_keybind("movement_left")
+	delete_specific_keybind("movement_right")
+	delete_specific_keybind("movement_jump")
+	delete_specific_keybind("Shoot_Normal_Bullet")
+	delete_specific_keybind("Shoot_Shockwave_Bullet")
 
-func delete_specific_keybind(action, keybind):
-	var key = InputEventKey.new()
-	key.scancode = int(keybind)
-	InputMap.action_erase_event(action, key)
+func delete_specific_keybind(action):
+	InputMap.action_erase_events(action)
 
 func _process(delta):
 	if $Timer.time_left <= 0 and get_parent().get_parent().name != "MainMenu":

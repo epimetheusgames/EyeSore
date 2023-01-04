@@ -71,15 +71,12 @@ align = 1
 
 [node name="Left" parent="." instance=ExtResource( 4 )]
 position = Vector2( 243, 90 )
-keybind = "A"
 
 [node name="Right" parent="." instance=ExtResource( 4 )]
 position = Vector2( 326, 90 )
-keybind = "D"
 
 [node name="Jump" parent="." instance=ExtResource( 4 )]
 position = Vector2( 409, 90 )
-keybind = "SPACE"
 
 [node name="Label4" type="Label" parent="."]
 modulate = Color( 2, 2, 2, 1 )
@@ -115,11 +112,9 @@ align = 1
 
 [node name="Shockwave" parent="." instance=ExtResource( 4 )]
 position = Vector2( 289, 192 )
-keybind = "X"
 
 [node name="Bullet" parent="." instance=ExtResource( 4 )]
 position = Vector2( 372, 192 )
-keybind = "D"
 
 [node name="Label7" type="Label" parent="."]
 modulate = Color( 2, 2, 2, 1 )
