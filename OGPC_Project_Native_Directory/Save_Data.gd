@@ -1,6 +1,7 @@
 extends Node2D
 
 var file_name = "user://save1.json"
+var keybind_file_name = "user://keybinds.json"
 onready var pixelated_boss = preload("res://PixelatedBoss.tscn")
 onready var enemy1 = preload("res://Enemy1.tscn")
 onready var enemy2 = preload("res://Enemy2.tscn")
@@ -23,16 +24,17 @@ const default_data = {
 		"respawn_position_y": 0 
 	},
 	"level": 0,
-	"keybinds": {
-		"left": "A",
-		"right": "D",
-		"jump": "SPACE",
-		"shockwave": "S",
-		"bullet": "X"
-	},
 	"pixelated_boss": {},
 	"zombie_enemies": {},
 	"patrolling_enemies": {},
+}
+
+const default_keybind_data = {
+	"bullet": 83,
+	"jump": 32,
+	"left": 65,
+	"right": 68,
+	"shockwave": 88
 }
 
 const levels = [
@@ -41,10 +43,21 @@ const levels = [
 ]
 
 func save_keybinds(keybinds):
-	data["keybinds"] = keybinds 
+	data["keybinds"] = keybinds
+	
+func set_keybind_data_to_data():
+	var file = File.new()
+	
+	if not file.file_exists(keybind_file_name):
+		data = default_keybind_data
+	
+	else:
+		file.open(keybind_file_name, file.READ)
+		data["keybinds"] = parse_json(file.get_as_text())
 	
 func get_game_data():
 	var file = File.new()
+	var keybind_data = default_keybind_data
 	
 	if not file.file_exists(file_name):
 		data = default_data 
@@ -53,12 +66,16 @@ func get_game_data():
 		file.open(file_name, file.READ)
 		data = parse_json(file.get_as_text())
 		
+	if file.file_exists(keybind_file_name):
+		file.open(keybind_file_name, file.READ)
+		keybind_data = parse_json(file.get_as_text())
+		
 	return [
 		data["level"],
 		data["player"]["health"], 
 		Vector2(data["player"]["position_x"], data["player"]["position_y"]), 
 		Vector2(data["player"]["respawn_position_x"], data["player"]["respawn_position_y"]),
-		data["keybinds"],
+		keybind_data
 	]
 	
 func get_file_data(): # Also don't use this one unless it's from inside this file
@@ -70,7 +87,16 @@ func get_file_data(): # Also don't use this one unless it's from inside this fil
 	else:
 		file.open(file_name, file.READ)
 		data = parse_json(file.get_as_text())
+		
+	if not file.file_exists(keybind_file_name):
+		data["keybinds"] = default_keybind_data
 	
+	else:
+		file.open(keybind_file_name, file.READ)
+		print(parse_json(file.get_as_text()))
+		data["keybinds"] = parse_json(file.get_as_text())
+	
+	print(data)
 	return data
 
 func get_current_level_data(level):
@@ -122,9 +148,16 @@ func get_current_level_data(level):
 	
 func save_game():
 	var file = File.new()
+	var keybinds = data["keybinds"]
+	data.erase("keybinds")
 	file.open(file_name, File.WRITE)
 	file.store_line(to_json(data))
 	file.close()
+	file.open(keybind_file_name, File.WRITE)
+	print(data)
+	file.store_line(to_json(keybinds))
+	file.close()
+	data["keybinds"] = keybinds
 
 func set_keybinds(keybinds): # Sets all keybinds to what is in data
 	set_specific_keybind("movement_left", keybinds["left"])
@@ -136,7 +169,6 @@ func set_keybinds(keybinds): # Sets all keybinds to what is in data
 func set_specific_keybind(action, keybind): # Sets a specific keybind
 	if not InputMap.get_actions().has(action):
 		InputMap.add_action(action)
-	delete_specific_keybind(action)
 	var key = InputEventKey.new()
 	key.set_scancode(keybind)
 	InputMap.action_add_event(action, key)
