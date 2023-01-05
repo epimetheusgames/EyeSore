@@ -31,7 +31,6 @@ func _process(delta):
 		$OgpcMainMenuKeybindSelectorSelected.visible = false
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
-	print(keybind, text_keybind)
 	if event.is_action_pressed("mouse_click"): # set this up in project settings
 		if get_tree().root.get_child(0) != self:
 			get_parent().clear_all_except(self)

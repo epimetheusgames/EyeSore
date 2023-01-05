@@ -5,8 +5,10 @@ onready var pixelated_boss = preload("res://PixelatedBoss.tscn")
 onready var enemy1 = preload("res://Enemy1.tscn")
 onready var enemy2 = preload("res://Enemy2.tscn")
 onready var player = preload("res://Player.tscn")
+export var game_save_max = 60
 var data = get_file_data()
 export var load_saved_game = true
+var game_save_time = game_save_max
 
 # This is a temporary dictionary for saving and loading.
 # When the game is finished, it will be a simple level
@@ -34,7 +36,8 @@ const default_data = {
 }
 
 const levels = [
-	"res://Levels/Level1.tscn", 
+	"res://Levels/Level1_Noah's_test_version.tscn", 
+	"res://Levels/Level1.tscn"
 ]
 
 func save_keybinds(keybinds):
@@ -115,7 +118,7 @@ func get_current_level_data(level):
 			"end_position_y": node.point2.y
 		}
 	
-	return data
+	return level_data
 	
 func save_game():
 	var file = File.new()
@@ -123,25 +126,12 @@ func save_game():
 	file.store_line(to_json(data))
 	file.close()
 
-func _ready():
-	var timer = Timer.new()
-	timer.name = "Timer"
-	timer.autostart = true
-	timer.wait_time = 1
-	add_child(timer)
-	
 func set_keybinds(keybinds): # Sets all keybinds to what is in data
 	set_specific_keybind("movement_left", keybinds["left"])
 	set_specific_keybind("movement_right", keybinds["right"])
 	set_specific_keybind("movement_jump", keybinds["jump"])
 	set_specific_keybind("Shoot_Normal_Bullet", keybinds["bullet"])
 	set_specific_keybind("Shoot_Shockwave_Bullet", keybinds["shockwave"])
-	var actions = InputMap.get_actions()
-	for action in actions:
-		var action_list = InputMap.get_action_list(action)
-		for key in action_list:
-			if key.is_class("InputEventKey"):
-				print(str(action) + ": " + str(OS.get_scancode_string(key.scancode)))
 	
 func set_specific_keybind(action, keybind): # Sets a specific keybind
 	if not InputMap.get_actions().has(action):
@@ -162,7 +152,9 @@ func delete_specific_keybind(action):
 	InputMap.action_erase_events(action)
 
 func _process(delta):
-	if $Timer.time_left <= 0 and get_parent().get_parent().name != "MainMenu":
-		$Timer.start()
+	game_save_time -= 1
+	if game_save_time <= 0 and get_parent().name.begins_with("Level"):
+		print('hi')
+		game_save_time = game_save_max
 		data = get_current_level_data(data["level"])
 		save_game()
