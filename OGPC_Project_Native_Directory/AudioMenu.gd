@@ -19,5 +19,12 @@ func _process(delta):
 		get_parent().Play_Click_SFX()
 		if selected == 0: # soon to be 4
 			get_parent().Open_Options_Menu(self)
+			
+	set_bus_volume(1, $Slider2.get_value()/100)
+	set_bus_volume(2, $Slider.get_value()/100)
 	
 	prev_selected = selected
+
+func set_bus_volume(bus_index, value):
+	AudioServer.set_bus_volume_db(bus_index, linear2db(value))
+	AudioServer.set_bus_mute(bus_index, value < 0.01)
