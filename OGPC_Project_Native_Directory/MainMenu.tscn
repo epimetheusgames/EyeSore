@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://TestMenuBg.mp3" type="AudioStream" id=1]
 [ext_resource path="res://MainMenuHandler.gd" type="Script" id=2]
 [ext_resource path="res://OGPC-UI-Click-SFX-2.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Death_SFX_Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Grass_Area_Music_Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Shooting_SFX_Player.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Shader" id=1]
 
@@ -20,3 +23,9 @@ mix_target = 1
 [node name="ClickAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = 2.622
+
+[node name="Grass_Area_Music_Player" parent="." instance=ExtResource( 5 )]
+
+[node name="OWIE_Player" parent="." instance=ExtResource( 4 )]
+
+[node name="Shooting_SFX_Player" parent="." instance=ExtResource( 6 )]

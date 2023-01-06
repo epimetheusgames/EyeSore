@@ -113,12 +113,12 @@ func _physics_process(delta):
 	# if the player is below a certain y level, aka below the map, reset the scene (this is a way to kill the player, there are better ways but they take more time)
 	if position.y > 10000:
 		# TODO: Reset enemy positions
-		$OWIE_Player.play()
+		get_node("res://Death_SFX_Player.tscn").play()
 		position = respawn_position
 		player_health -= 3
 		
 	if Input.is_action_just_pressed("self_destruct"):
-		$OWIE_Player.play()
+		get_node("/root/MainMenuRootNode/OWIE_Player").play()
 		
 		position = respawn_position
 	
@@ -198,7 +198,7 @@ func Shoot_Bullet(bullet_type):
 	if bullet_type == 0:
 		var player_normal_bullet = normal_bullet_file_path.instance()
 		
-		$Shooting_SFX_Player.play()
+		get_node("/root/MainMenuRootNode/Shooting_SFX_Player").play()
 		
 		get_parent().add_child(player_normal_bullet)
 		
@@ -206,7 +206,7 @@ func Shoot_Bullet(bullet_type):
 	elif bullet_type == 1:
 		var player_shockwave_bullet = shockwave_bullet_file_path.instance()
 		
-		$Shooting_SFX_Player.play()
+		get_node("/root/MainMenuRootNode/Shooting_SFX_Player").play()
 		
 		get_parent().add_child(player_shockwave_bullet)
 		

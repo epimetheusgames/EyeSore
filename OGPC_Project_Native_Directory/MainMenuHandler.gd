@@ -7,6 +7,8 @@ onready var VideoMenu = preload("res://VideoMenu.tscn")
 onready var ControlsMenu = preload("res://ControlsMenu.tscn")
 
 func _ready():
+	print($OWIE_Player.get_path())
+	
 	add_child(MenuOptions.instance())
 	$BackgroundMusic.playing = true
 	# Play Main Menu Audio

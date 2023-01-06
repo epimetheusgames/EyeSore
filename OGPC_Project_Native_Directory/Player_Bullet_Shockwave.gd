@@ -3,7 +3,7 @@ extends Area2D
 var grow = 0.01
 var grow_amount = 2
 var speedup_timer = 11
-var despawn_timer = 42
+var despawn_timer = 30
 
 var used = false
 var player_hit = false
