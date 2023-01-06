@@ -1,6 +1,7 @@
 extends Area2D
 
 export var text_keybind = ""
+onready var keybind_type = get_parent().get_node("SaveFunctionality").data["keybinds"][name.to_lower() + "-type"]
 onready var keybind = get_parent().get_node("SaveFunctionality").data["keybinds"][name.to_lower()]
 var selected = false
 var unselect_next_frame = false
@@ -9,6 +10,11 @@ func _input(event):
 	if event is InputEventKey and selected:
 		keybind = event.get_scancode()
 		text_keybind = OS.get_scancode_string(event.unicode)
+		unselect_next_frame = true
+	if event is InputEventJoypadButton and selected:
+		keybind_type = 1
+		keybind = event.button_index
+		text_keybind = ""
 		unselect_next_frame = true
 		
 func _ready():
