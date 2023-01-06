@@ -11,6 +11,7 @@ func _input(event):
 		keybind = event.get_scancode()
 		text_keybind = OS.get_scancode_string(event.unicode)
 		unselect_next_frame = true
+		keybind_type = 0
 	if event is InputEventJoypadButton and selected:
 		keybind_type = 1
 		keybind = event.button_index
