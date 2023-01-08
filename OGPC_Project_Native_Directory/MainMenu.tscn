@@ -19,13 +19,20 @@ script = ExtResource( 2 )
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
 mix_target = 1
+bus = "Music"
 
 [node name="ClickAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = 2.622
+bus = "SFX"
 
 [node name="Grass_Area_Music_Player" parent="." instance=ExtResource( 5 )]
+volume_db = -24.0
+autoplay = false
+bus = "Music"
 
 [node name="OWIE_Player" parent="." instance=ExtResource( 4 )]
+bus = "SFX"
 
 [node name="Shooting_SFX_Player" parent="." instance=ExtResource( 6 )]
+bus = "SFX"

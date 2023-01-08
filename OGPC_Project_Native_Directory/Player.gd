@@ -113,7 +113,7 @@ func _physics_process(delta):
 	# if the player is below a certain y level, aka below the map, reset the scene (this is a way to kill the player, there are better ways but they take more time)
 	if position.y > 10000:
 		# TODO: Reset enemy positions
-		get_node("res://Death_SFX_Player.tscn").play()
+		get_parent().get_parent().get_parent().Play_OWIE_Player()
 		position = respawn_position
 		player_health -= 3
 		

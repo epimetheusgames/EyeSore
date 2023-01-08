@@ -40,6 +40,15 @@ func Open_Other(closed_window, opened_window, remove_sounds):
 	if remove_sounds:
 		$BackgroundMusic.queue_free()
 		$ClickAudio.queue_free()
+		
+func Play_Grass_Area_Music():
+	$Grass_Area_Music_Player.play()
+	
+func Play_OWIE_Player():
+	$OWIE_Player.play()
+	
+func Play_Shooting_SFX_Player():
+	$Shooting_SFX_Player.play()
 
 func Play_Click_SFX():
 	$ClickAudio.play()
