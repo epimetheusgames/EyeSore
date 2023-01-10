@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Fonts/PTMono-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Save_Data.gd" type="Script" id=2]
 [ext_resource path="res://MainMenuSprites/OGPC_Main_Menu_Background_Sprite_Blurred.png" type="Texture" id=3]
 [ext_resource path="res://AudioMenu.gd" type="Script" id=4]
 [ext_resource path="res://Slider.tscn" type="PackedScene" id=5]
@@ -76,8 +77,11 @@ custom_fonts/font = SubResource( 4 )
 text = "Music"
 align = 1
 
-[node name="Slider" parent="." instance=ExtResource( 5 )]
+[node name="Music" parent="." instance=ExtResource( 5 )]
+position = Vector2( 245, 199 )
+
+[node name="SFX" parent="." instance=ExtResource( 5 )]
 position = Vector2( 246, 138 )
 
-[node name="Slider2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 245, 199 )
+[node name="SaveFunctionality" type="Node2D" parent="."]
+script = ExtResource( 2 )

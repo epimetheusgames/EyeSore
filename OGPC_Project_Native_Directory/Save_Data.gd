@@ -30,6 +30,8 @@ const default_data = {
 }
 
 const default_keybind_data = {
+	"sfx-audio": 1,
+	"music-audio": 1,
 	"bullet-type": 0,
 	"bullet": 83,
 	"jump-type": 0,
@@ -46,8 +48,12 @@ const levels = [
 	"res://Levels/Level1.tscn"
 ]
 
+func save_audio(music, sfx):
+	data["keybinds"] = get_game_data()[4]
+	data["keybinds"]["music-audio"] = music # Ya I know I'll rename the file to game-unspecific-data.json
+	data["keybinds"]["sfx-audio"] = sfx
+
 func save_keybinds(keybinds):
-	print(data["keybinds"])
 	data["keybinds"] = keybinds
 	
 func set_keybind_data_to_data():
@@ -80,7 +86,9 @@ func get_game_data():
 		data["player"]["health"], 
 		Vector2(data["player"]["position_x"], data["player"]["position_y"]), 
 		Vector2(data["player"]["respawn_position_x"], data["player"]["respawn_position_y"]),
-		keybind_data
+		keybind_data,
+		keybind_data["music-audio"],
+		keybind_data["sfx-audio"]
 	]
 	
 func get_file_data(): # Also don't use this one unless it's from inside this file
