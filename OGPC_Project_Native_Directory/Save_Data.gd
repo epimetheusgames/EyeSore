@@ -30,7 +30,7 @@ const default_data = {
 }
 
 const default_keybind_data = {
-	"bullet_type": 0,
+	"bullet-type": 0,
 	"bullet": 83,
 	"jump-type": 0,
 	"jump": 32,
