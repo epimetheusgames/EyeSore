@@ -24,9 +24,9 @@ const default_data = {
 		"respawn_position_y": 0 
 	},
 	"level": 0,
-	"pixelated_boss": {},
-	"zombie_enemies": {},
-	"patrolling_enemies": {},
+	"pixelated_boss": {"":null},
+	"zombie_enemies": {"":null},
+	"patrolling_enemies": {"":null},
 }
 
 const default_keybind_data = {
@@ -88,7 +88,10 @@ func get_game_data():
 		Vector2(data["player"]["respawn_position_x"], data["player"]["respawn_position_y"]),
 		keybind_data,
 		keybind_data["music-audio"],
-		keybind_data["sfx-audio"]
+		keybind_data["sfx-audio"],
+		data["zombie_enemies"],
+		data["patrolling_enemies"],
+		data["pixelated_boss"]
 	]
 	
 func get_file_data(): # Also don't use this one unless it's from inside this file
@@ -106,10 +109,8 @@ func get_file_data(): # Also don't use this one unless it's from inside this fil
 	
 	else:
 		file.open(keybind_file_name, file.READ)
-		print(parse_json(file.get_as_text()))
 		data["keybinds"] = parse_json(file.get_as_text())
 	
-	print(data)
 	return data
 
 func get_current_level_data(level):

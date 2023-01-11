@@ -25,6 +25,7 @@ func _ready():
 	$AnimatedSprite.animation = "idle"
 	one_health_unit_in_image_scale = $Healthbar_Health.scale.x / health
 	health_decreased_per_animation_frame = 0.1
+	add_to_group("pixelated_boss")
 
 func _physics_process(delta):
 	Apply_Gravity()
