@@ -18,11 +18,12 @@ func convert2list(dict):
 	return Array(dict.values())
 	
 func loading_edge_case_handler(node, list, item): # Handle edge cases that may happen while loading the game
-	if node >= len(list): # Check if the index of the node is greater than the index
+	if node >= len(list) - 1: # Check if the index of the node is greater than the index
 		# of the ammount of saved positions in the passed in data so that we don't get an error.
 		if len(list) == 0:
 			item.queue_free()
 			return 2
+		print(list[0])
 		if list[0] != null: # If this is null than it means that the game has not been saved.
 			item.queue_free() # If it is not null, than this is an unwanted item, because the game 
 			# Was saved but this item was not saved. Ideally this won't happen, but this is here
