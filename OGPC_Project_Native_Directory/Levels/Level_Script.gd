@@ -70,8 +70,6 @@ func set_player_spawnpoint_and_position_reality(health, player_position, spawnpo
 		item.position.y = enemy1s_list[enemy1_node]["position_y"] # saved data.
 	
 	for enemy2_node in range(len(enemy2_nodes)):
-		if len(enemy2s_list) == 0:
-			break
 			
 		var item = enemy2_nodes[enemy2_node]
 		var status = loading_edge_case_handler(enemy2_node, enemy2s_list, item)

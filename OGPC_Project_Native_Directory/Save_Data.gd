@@ -54,7 +54,11 @@ func save_audio(music, sfx):
 	data["keybinds"]["sfx-audio"] = sfx
 
 func save_keybinds(keybinds):
+	var music = data["keybinds"]["music-audio"]
+	var sfx = data["keybinds"]["sfx-audio"]
 	data["keybinds"] = keybinds
+	data["keybinds"]["music-audio"] = music
+	data["keybinds"]["sfx-audio"] = sfx
 	
 func set_keybind_data_to_data():
 	var file = File.new()
