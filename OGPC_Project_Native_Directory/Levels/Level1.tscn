@@ -9,6 +9,7 @@
 [ext_resource path="res://Enemy2.tscn" type="PackedScene" id=7]
 
 [node name="Level_Manager" type="Node2D"]
+pause_mode = 1
 script = ExtResource( 1 )
 next_level = "end"
 previous_level = "start"

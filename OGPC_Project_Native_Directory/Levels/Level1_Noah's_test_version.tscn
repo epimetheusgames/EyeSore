@@ -7,6 +7,7 @@
 [ext_resource path="res://Cursor_Sprite.tscn" type="PackedScene" id=5]
 
 [node name="Level_Manager2" type="Node2D"]
+pause_mode = 1
 script = ExtResource( 1 )
 next_level = "end"
 previous_level = "start"

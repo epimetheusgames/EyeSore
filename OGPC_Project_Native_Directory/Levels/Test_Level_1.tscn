@@ -5,6 +5,7 @@
 [ext_resource path="res://Save_Data.gd" type="Script" id=3]
 
 [node name="Level_Manager" type="Node2D"]
+pause_mode = 1
 script = ExtResource( 1 )
 next_level = "end"
 previous_level = "start"

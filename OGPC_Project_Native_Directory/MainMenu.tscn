@@ -13,6 +13,7 @@
 shader = SubResource( 1 )
 
 [node name="MainMenuRootNode" type="Node2D"]
+pause_mode = 2
 material = SubResource( 2 )
 script = ExtResource( 2 )
 
