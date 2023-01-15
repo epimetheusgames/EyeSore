@@ -27,14 +27,20 @@ glow_intensity = 0.1
 glow_blend_mode = 0
 glow_bicubic_upscale = true
 glow_high_quality = true
-adjustment_enabled = true
 adjustment_saturation = 0.01
 
 [node name="PauseMenu" type="Node2D"]
 script = ExtResource( 3 )
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -343.0
+margin_top = -197.0
+margin_right = 340.0
+margin_bottom = 175.0
+color = Color( 0, 0, 0, 0.376471 )
+
 [node name="Label" type="Label" parent="."]
-modulate = Color( 2.5, 1, 1, 1 )
+modulate = Color( 2.5, 2.5, 2.5, 1 )
 margin_left = -212.0
 margin_top = -37.0
 margin_right = 220.0
