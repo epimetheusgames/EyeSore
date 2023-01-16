@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Fonts/PTMono-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://OptionsMenu.gd" type="Script" id=2]
@@ -9,8 +9,11 @@
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
 
+[sub_resource type="ProceduralSky" id=10]
+
 [sub_resource type="Environment" id=3]
-background_mode = 4
+background_mode = 2
+background_sky = SubResource( 10 )
 glow_enabled = true
 glow_intensity = 0.1
 glow_blend_mode = 0
