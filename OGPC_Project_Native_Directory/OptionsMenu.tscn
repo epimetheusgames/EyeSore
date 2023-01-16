@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Fonts/PTMono-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://OptionsMenu.gd" type="Script" id=2]
@@ -8,18 +8,6 @@
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
-
-[sub_resource type="ProceduralSky" id=10]
-
-[sub_resource type="Environment" id=3]
-background_mode = 2
-background_sky = SubResource( 10 )
-glow_enabled = true
-glow_intensity = 0.1
-glow_blend_mode = 0
-glow_hdr_luminance_cap = 16.83
-glow_bicubic_upscale = true
-glow_high_quality = true
 
 [sub_resource type="DynamicFont" id=9]
 size = 250
@@ -45,6 +33,21 @@ font_data = ExtResource( 1 )
 size = 180
 font_data = ExtResource( 1 )
 
+[sub_resource type="Environment" id=10]
+background_mode = 4
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/2 = true
+glow_levels/4 = true
+glow_levels/6 = true
+glow_levels/7 = true
+glow_intensity = 0.1
+glow_blend_mode = 0
+glow_bicubic_upscale = true
+glow_high_quality = true
+adjustment_enabled = true
+adjustment_saturation = 0.01
+
 [node name="OptionsMenu" type="Node2D"]
 material = SubResource( 2 )
 script = ExtResource( 2 )
@@ -55,9 +58,6 @@ scale = Vector2( 2.09063, 1.68333 )
 texture = ExtResource( 3 )
 offset = Vector2( 1640.27, 234.06 )
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 3 )
-
 [node name="Title" type="Label" parent="."]
 margin_left = 255.0
 margin_top = -430.0
@@ -67,7 +67,7 @@ custom_fonts/font = SubResource( 9 )
 text = "Settings"
 
 [node name="Label" type="Label" parent="."]
-modulate = Color( 2, 2, 2, 1 )
+modulate = Color( 2.00392, 2, 2, 1 )
 margin_left = 96.0
 margin_top = -63.0
 margin_right = 1496.0
@@ -118,3 +118,6 @@ align = 1
 position = Vector2( 649, 336 )
 current = true
 zoom = Vector2( 5, 5 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 10 )
