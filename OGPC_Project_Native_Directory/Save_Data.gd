@@ -24,13 +24,15 @@ const default_data = {
 		"respawn_position_y": 0 
 	},
 	"level": 0,
-	"pixelated_boss": {},
-	"zombie_enemies": {},
-	"patrolling_enemies": {},
+	"pixelated_boss": {"":null},
+	"zombie_enemies": {"":null},
+	"patrolling_enemies": {"":null},
 }
 
 const default_keybind_data = {
-	"bullet_type": 0,
+	"sfx-audio": 1,
+	"music-audio": 1,
+	"bullet-type": 0,
 	"bullet": 83,
 	"jump-type": 0,
 	"jump": 32,
@@ -43,12 +45,20 @@ const default_keybind_data = {
 }
 
 const levels = [
-	"res://Levels/Level1.tscn"
+	"res://Levels/Level2.tscn"
 ]
 
+func save_audio(music, sfx):
+	data["keybinds"] = get_game_data()[4]
+	data["keybinds"]["music-audio"] = music # Ya I know I'll rename the file to game-unspecific-data.json
+	data["keybinds"]["sfx-audio"] = sfx
+
 func save_keybinds(keybinds):
-	print(data["keybinds"])
+	var music = data["keybinds"]["music-audio"]
+	var sfx = data["keybinds"]["sfx-audio"]
 	data["keybinds"] = keybinds
+	data["keybinds"]["music-audio"] = music
+	data["keybinds"]["sfx-audio"] = sfx
 	
 func set_keybind_data_to_data():
 	var file = File.new()
@@ -80,7 +90,12 @@ func get_game_data():
 		data["player"]["health"], 
 		Vector2(data["player"]["position_x"], data["player"]["position_y"]), 
 		Vector2(data["player"]["respawn_position_x"], data["player"]["respawn_position_y"]),
-		keybind_data
+		keybind_data,
+		keybind_data["music-audio"],
+		keybind_data["sfx-audio"],
+		data["zombie_enemies"],
+		data["patrolling_enemies"],
+		data["pixelated_boss"]
 	]
 	
 func get_file_data(): # Also don't use this one unless it's from inside this file
@@ -98,10 +113,8 @@ func get_file_data(): # Also don't use this one unless it's from inside this fil
 	
 	else:
 		file.open(keybind_file_name, file.READ)
-		print(parse_json(file.get_as_text()))
 		data["keybinds"] = parse_json(file.get_as_text())
 	
-	print(data)
 	return data
 
 func get_current_level_data(level):

@@ -38,9 +38,9 @@ func _process(delta):
 			var data = $Load_Functionality.get_game_data()
 			var level_path = $Load_Functionality.levels[data[0]]
 			var level = load(level_path).instance()
-			level.set_player_spawnpoint_and_position(data[1], data[2], data[3])
+			level.set_player_spawnpoint_and_position(data[1], data[2], data[3], data[7], data[8], data[9])
 			get_parent().Play_Grass_Area_Music()
-			$Load_Functionality.set_keybinds(data[4]) # Change this when making save-unspecific keybinds
+			$Load_Functionality.set_keybinds(data[4]) 
 			get_parent().Open_Other(self, level, true)
 		if selected == 2:
 			get_parent().Open_Options_Menu(self)

@@ -2,6 +2,7 @@ extends Node2D
 
 var selected = 0
 var prev_selected = 0
+var opened_ingame = false
 onready var options = [$Label, $Label2, $Label3, $Label4, $Label5]
 
 func _process(delta):
