@@ -68,6 +68,9 @@ func Close_Pause_Menu_To_Main(closed_window):
 	$BackgroundMusic.play()
 	get_tree().paused = false
 	add_child(MenuOptions.instance())
+	
+func Set_Screen_Brightness(brightness):
+	$CanvasLayer/ColorRect.color = Color(0, 0, 0, brightness)
 		
 func Play_Grass_Area_Music():
 	$Grass_Area_Music_Player.play()

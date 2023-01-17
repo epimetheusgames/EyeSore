@@ -29,7 +29,7 @@ font_data = ExtResource( 1 )
 script = ExtResource( 4 )
 
 [node name="OgpcMainMenuBackgroundSpriteBlurred" type="Sprite" parent="."]
-position = Vector2( -263.598, 92.8948 )
+position = Vector2( -265, 100 )
 scale = Vector2( 0.3625, 0.365741 )
 texture = ExtResource( 2 )
 offset = Vector2( 1640.27, 234.06 )
@@ -48,10 +48,10 @@ align = 1
 
 [node name="Label2" type="Label" parent="."]
 modulate = Color( 4, 4, 4, 1 )
-margin_left = 159.0
-margin_top = 244.0
-margin_right = 504.0
-margin_bottom = 317.0
+margin_left = 167.0
+margin_top = 232.0
+margin_right = 512.0
+margin_bottom = 305.0
 custom_fonts/font = SubResource( 3 )
 text = "Back
 "
@@ -74,11 +74,8 @@ margin_top = 175.895
 margin_right = 440.402
 margin_bottom = 194.895
 custom_fonts/font = SubResource( 4 )
-text = "Resolution"
+text = "Other Slider"
 align = 1
 
 [node name="Slider" parent="." instance=ExtResource( 3 )]
 position = Vector2( 249.402, 138.895 )
-
-[node name="Slider2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 248.402, 199.895 )

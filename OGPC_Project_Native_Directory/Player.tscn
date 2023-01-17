@@ -178,6 +178,61 @@ flags = 1
 atlas = ExtResource( 7 )
 region = Rect2( 192, 0, 16, 16 )
 
+[sub_resource type="AtlasTexture" id=56]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=57]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=58]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=59]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=60]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=61]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 96, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=62]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 112, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=63]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 128, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=64]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 144, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=65]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 160, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=66]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 176, 0, 16, 16 )
+
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ SubResource( 86 ) ],
@@ -214,6 +269,14 @@ animations = [ {
 "loop": true,
 "name": "Walking_Left",
 "speed": 14.0
+<<<<<<< HEAD
+=======
+}, {
+"frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ) ],
+"loop": true,
+"name": "Walking_Right",
+"speed": 14.0
+>>>>>>> 062e3be82ae311a8b8fc0c4cb24524c48bcbecb5
 } ]
 
 [node name="Player_Body" type="KinematicBody2D"]

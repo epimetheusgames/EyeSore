@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://TestMenuBg.mp3" type="AudioStream" id=1]
 [ext_resource path="res://MainMenuHandler.gd" type="Script" id=2]
@@ -11,6 +11,8 @@
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
+
+[sub_resource type="ShaderMaterial" id=4]
 
 [node name="MainMenuRootNode" type="Node2D"]
 pause_mode = 2
@@ -37,3 +39,15 @@ bus = "SFX"
 
 [node name="Shooting_SFX_Player" parent="." instance=ExtResource( 6 )]
 bus = "SFX"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 9
+follow_viewport_enable = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource( 4 )
+margin_left = -3058.0
+margin_top = -1819.0
+margin_right = 3689.0
+margin_bottom = 2313.0
+color = Color( 0, 0, 0, 0 )

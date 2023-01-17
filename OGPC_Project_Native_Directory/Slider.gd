@@ -2,7 +2,7 @@ extends Node2D
 
 
 func get_value():
-	return $HSlider.value
+	return $CanvasLayer/HSlider.value
 
 func set_value(value):
-	$HSlider.value = value
+	$CanvasLayer/HSlider.value = value
