@@ -269,14 +269,11 @@ animations = [ {
 "loop": true,
 "name": "Walking_Left",
 "speed": 14.0
-<<<<<<< HEAD
-=======
 }, {
 "frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ) ],
 "loop": true,
 "name": "Walking_Right",
 "speed": 14.0
->>>>>>> 062e3be82ae311a8b8fc0c4cb24524c48bcbecb5
 } ]
 
 [node name="Player_Body" type="KinematicBody2D"]
