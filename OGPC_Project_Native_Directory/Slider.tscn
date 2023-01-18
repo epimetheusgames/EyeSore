@@ -19,6 +19,7 @@ region_rect = Rect2( 0, 0, 128, 8 )
 [sub_resource type="StyleBoxTexture" id=3]
 
 [node name="Slider" type="Node2D"]
+z_index = 100
 script = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="."]
@@ -41,11 +42,7 @@ rect_pivot_offset = Vector2( -179, -41 )
 custom_fonts/font = SubResource( 4 )
 text = "100%"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 10
-follow_viewport_enable = true
-
-[node name="HSlider" type="HSlider" parent="CanvasLayer"]
+[node name="HSlider" type="HSlider" parent="."]
 margin_left = 19.0
 margin_top = -1.0
 margin_right = 147.0

@@ -1,8 +1,12 @@
 extends Node2D
 
 
+func _ready():
+	$HSlider.value = 0
+
 func get_value():
-	return $CanvasLayer/HSlider.value
+	return $HSlider.value
 
 func set_value(value):
-	$CanvasLayer/HSlider.value = value
+	$HSlider.value = value
+

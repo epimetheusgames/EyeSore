@@ -40,11 +40,10 @@ bus = "SFX"
 [node name="Shooting_SFX_Player" parent="." instance=ExtResource( 6 )]
 bus = "SFX"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 9
-follow_viewport_enable = true
+[node name="Node2D" type="Node2D" parent="."]
+z_index = 10
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
 material = SubResource( 4 )
 margin_left = -3058.0
 margin_top = -1819.0

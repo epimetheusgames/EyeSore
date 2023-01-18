@@ -64,7 +64,7 @@ margin_top = 114.895
 margin_right = 441.402
 margin_bottom = 133.895
 custom_fonts/font = SubResource( 4 )
-text = "Brightness"
+text = "Darkness"
 align = 1
 
 [node name="Label4" type="Label" parent="."]
