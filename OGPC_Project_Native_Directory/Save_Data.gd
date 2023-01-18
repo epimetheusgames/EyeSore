@@ -30,6 +30,7 @@ const default_data = {
 }
 
 const default_keybind_data = {
+	"darkness": 0,
 	"sfx-audio": 1,
 	"music-audio": 1,
 	"bullet-type": 0,
@@ -52,6 +53,10 @@ func save_audio(music, sfx):
 	data["keybinds"] = get_game_data()[4]
 	data["keybinds"]["music-audio"] = music # Ya I know I'll rename the file to game-unspecific-data.json
 	data["keybinds"]["sfx-audio"] = sfx
+	
+func save_video(darkness):
+	data["keybinds"] = get_game_data()[4]
+	data["keybinds"]["darkness"] = darkness
 
 func save_keybinds(keybinds):
 	var music = data["keybinds"]["music-audio"]

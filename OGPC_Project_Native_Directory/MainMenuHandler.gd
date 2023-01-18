@@ -63,6 +63,7 @@ func Close_Pause_Menu(closed_window):
 	get_tree().paused = false
 	
 func Close_Pause_Menu_To_Main(closed_window):
+	get_node("Level_Manager").queue_free()
 	closed_window.queue_free()
 	game_paused = false
 	$BackgroundMusic.play()
@@ -70,7 +71,7 @@ func Close_Pause_Menu_To_Main(closed_window):
 	add_child(MenuOptions.instance())
 	
 func Set_Screen_Brightness(brightness):
-	$CanvasLayer/ColorRect.color = Color(0, 0, 0, brightness)
+	$Node2D/ColorRect.color = Color(0, 0, 0, brightness)
 		
 func Play_Grass_Area_Music():
 	$Grass_Area_Music_Player.play()
