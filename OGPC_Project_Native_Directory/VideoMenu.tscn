@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Fonts/PTMono-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://MainMenuSprites/OGPC_Main_Menu_Background_Sprite_Blurred.png" type="Texture" id=2]
 [ext_resource path="res://Slider.tscn" type="PackedScene" id=3]
 [ext_resource path="res://VideoMenu.gd" type="Script" id=4]
+[ext_resource path="res://Save_Data.gd" type="Script" id=5]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -79,3 +80,8 @@ align = 1
 
 [node name="Slider" parent="." instance=ExtResource( 3 )]
 position = Vector2( 249.402, 138.895 )
+
+[node name="Save_Functionality" type="Node2D" parent="."]
+position = Vector2( -7, 0 )
+script = ExtResource( 5 )
+load_saved_game = false
