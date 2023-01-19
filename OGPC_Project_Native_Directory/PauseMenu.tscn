@@ -30,6 +30,7 @@ glow_high_quality = true
 adjustment_saturation = 0.01
 
 [node name="PauseMenu" type="Node2D"]
+z_index = 10
 script = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="."]

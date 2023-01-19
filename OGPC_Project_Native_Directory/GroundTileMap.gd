@@ -5,7 +5,6 @@ const GROUND = 0
 const SPIKES = 1
 
 var binds = {
-	GROUND : [SPIKES],
 	SPIKES : [GROUND]
 }
 
