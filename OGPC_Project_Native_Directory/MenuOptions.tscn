@@ -84,3 +84,25 @@ load_saved_game = false
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 5, 5 )
+
+[node name="OptionsButton" type="TextureButton" parent="."]
+margin_left = -316.0
+margin_top = -18.0
+margin_right = 472.0
+margin_bottom = 166.0
+
+[node name="PlayButton" type="TextureButton" parent="."]
+margin_left = -152.0
+margin_top = -263.0
+margin_right = 292.0
+margin_bottom = -52.0
+
+[node name="QuitButton" type="TextureButton" parent="."]
+margin_left = -162.0
+margin_top = 190.0
+margin_right = 304.0
+margin_bottom = 380.0
+
+[connection signal="button_up" from="OptionsButton" to="." method="_on_OptionsButton_button_up"]
+[connection signal="button_up" from="PlayButton" to="." method="_on_PlayButton_button_up"]
+[connection signal="button_up" from="QuitButton" to="." method="_on_QuitButton_button_up"]

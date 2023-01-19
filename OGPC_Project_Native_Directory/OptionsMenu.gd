@@ -23,13 +23,36 @@ func _process(delta):
 		selected -= 1
 		
 	if Input.is_action_just_pressed("ui_accept"):
-		get_parent().Play_Click_SFX()
-		if selected == 0:
-			get_parent().Open_Audio_Menu(self)
-		if selected == 1:
-			get_parent().Open_Video_Menu(self)
-		if selected == 2:
-			get_parent().Open_Controls_Menu(self)
-		if selected == 4:
-			get_parent().Open_Main_Menu(self)
+		button_pressed()
 
+func button_pressed():
+	get_parent().Play_Click_SFX()
+	if selected == 0:
+		get_parent().Open_Audio_Menu(self)
+	if selected == 1:
+		get_parent().Open_Video_Menu(self)
+	if selected == 2:
+		get_parent().Open_Controls_Menu(self)
+	if selected == 4:
+		get_parent().Open_Main_Menu(self)
+
+func _on_BackButton_button_up():
+	selected = 4
+	button_pressed()
+
+func _on_AccesibilityButton_button_up():
+	#selected = 4
+	#button_pressed()
+	pass # For now because accesibility is not implemented
+
+func _on_ControlsButton_button_up():
+	selected = 2
+	button_pressed()
+
+func _on_VideoButton_button_up():
+	selected = 1
+	button_pressed()
+
+func _on_AudioButton_button_up():
+	selected = 0
+	button_pressed()
