@@ -18,10 +18,10 @@ var game_save_time = game_save_max
 const default_data = {
 	"player": {
 		"health": 36.0,
-		"position_x": 0, # Add player starting position here 
+		"position_x": 0, # Add player starting position here
 		"position_y": 0,
 		"respawn_position_x": 0, # Add respawn here too
-		"respawn_position_y": 0 
+		"respawn_position_y": 0
 	},
 	"level": 0,
 	"pixelated_boss": {"":null},
@@ -80,7 +80,7 @@ func get_game_data():
 	var keybind_data = default_keybind_data
 	
 	if not file.file_exists(file_name):
-		data = default_data 
+		data = default_data
 		
 	else:
 		file.open(file_name, file.READ)
@@ -92,8 +92,8 @@ func get_game_data():
 		
 	return [
 		data["level"],
-		data["player"]["health"], 
-		Vector2(data["player"]["position_x"], data["player"]["position_y"]), 
+		data["player"]["health"],
+		Vector2(data["player"]["position_x"], data["player"]["position_y"]),
 		Vector2(data["player"]["respawn_position_x"], data["player"]["respawn_position_y"]),
 		keybind_data,
 		keybind_data["music-audio"],
@@ -146,7 +146,7 @@ func get_current_level_data(level):
 		level_data["pixelated_boss"] = {
 			"health": pixelated_boss.health,
 			"position_x": pixelated_boss.position.x,
-			"position_y": pixelated_boss.position.y 
+			"position_y": pixelated_boss.position.y
 		}
 		
 	for node_ind in range(len(enemy1group)):
@@ -159,7 +159,7 @@ func get_current_level_data(level):
 	for node_ind in range(len(enemy2group)):
 		var node = enemy2group[node_ind]
 		level_data["patrolling_enemies"]["individual_patrolling_enemy" + str(node_ind)] = {
-			"position_x": node.position.x, 
+			"position_x": node.position.x,
 			"position_y": node.position.y,
 			"start_position_x": node.point1.x,
 			"start_position_y": node.point1.y,

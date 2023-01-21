@@ -33,12 +33,28 @@ func _process(delta):
 		$Label3.modulate = Color(2.75, 2.75, 2.75, 1)
 	
 	if Input.is_action_just_pressed("ui_accept"):
-		get_parent().Play_Click_SFX()
-		if selected == 1:
-			get_parent().Close_Pause_Menu(self)
-		if selected == 2:
-			get_parent().Open_Options_Menu(self)
-		if selected == 3:
-			get_parent().Close_Pause_Menu_To_Main(self)
+		option_selected()
 	
 	prev_selected = selected
+
+
+func option_selected():
+	get_parent().Play_Click_SFX()
+	if selected == 1:
+		get_parent().Close_Pause_Menu(self)
+	if selected == 2:
+		get_parent().Open_Options_Menu(self)
+	if selected == 3:
+		get_parent().Close_Pause_Menu_To_Main(self)
+
+func _on_ResumeButton_button_up():
+	selected = 1
+	option_selected()
+
+func _on_OptionsButton_button_up():
+	selected = 2
+	option_selected()
+
+func _on_ExitButton_button_up():
+	selected = 3
+	option_selected()

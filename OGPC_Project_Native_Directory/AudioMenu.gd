@@ -23,12 +23,7 @@ func _process(delta):
 		get_parent().Play_Click_SFX()
 		
 	if Input.is_action_just_pressed("ui_accept"):
-		get_parent().Play_Click_SFX()
-		if selected == 0:
-			$SaveFunctionality.save_audio($Music.get_value(), $SFX.get_value())
-			print($SaveFunctionality.data["keybinds"]["music-audio"])
-			$SaveFunctionality.save_game()
-			get_parent().Open_Options_Menu(self)
+		exit_menu()
 			
 	set_bus_volume(1, $Music.get_value()/100)
 	set_bus_volume(2, $SFX.get_value()/100)
@@ -38,3 +33,16 @@ func _process(delta):
 func set_bus_volume(bus_index, value):
 	AudioServer.set_bus_volume_db(bus_index, linear2db(value))
 	AudioServer.set_bus_mute(bus_index, value < 0.01)
+
+
+func exit_menu():
+	get_parent().Play_Click_SFX()
+	if selected == 0:
+		$SaveFunctionality.save_audio($Music.get_value(), $SFX.get_value())
+		print($SaveFunctionality.data["keybinds"]["music-audio"])
+		$SaveFunctionality.save_game()
+		get_parent().Open_Options_Menu(self)
+
+
+func _on_TextureButton_button_up():
+	exit_menu()

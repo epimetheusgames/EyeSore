@@ -85,3 +85,11 @@ position = Vector2( 246, 138 )
 
 [node name="SaveFunctionality" type="Node2D" parent="."]
 script = ExtResource( 2 )
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 283.0
+margin_top = 244.0
+margin_right = 379.0
+margin_bottom = 296.0
+
+[connection signal="button_up" from="TextureButton" to="." method="_on_TextureButton_button_up"]

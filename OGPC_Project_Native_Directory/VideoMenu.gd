@@ -11,3 +11,8 @@ func _process(delta):
 		get_parent().Open_Options_Menu(self)
 	
 	get_parent().Set_Screen_Brightness($Slider.get_value()/100)
+
+
+func _on_TextureButton_button_up():
+	$Save_Functionality.save_video($Slider.get_value()/100)
+	get_parent().Open_Options_Menu(self)

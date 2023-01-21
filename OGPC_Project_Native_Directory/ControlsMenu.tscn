@@ -128,3 +128,11 @@ align = 1
 
 [node name="SaveFunctionality" type="Node2D" parent="."]
 script = ExtResource( 5 )
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 307.0
+margin_top = 295.0
+margin_right = 402.0
+margin_bottom = 346.0
+
+[connection signal="button_up" from="TextureButton" to="." method="_on_TextureButton_button_up"]

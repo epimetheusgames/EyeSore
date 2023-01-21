@@ -94,3 +94,25 @@ current = true
 position = Vector2( -7, 0 )
 script = ExtResource( 1 )
 load_saved_game = false
+
+[node name="ResumeButton" type="TextureButton" parent="."]
+margin_left = -112.0
+margin_top = -42.0
+margin_right = 121.0
+margin_bottom = 21.0
+
+[node name="OptionsButton" type="TextureButton" parent="."]
+margin_left = -110.0
+margin_top = 21.0
+margin_right = 111.0
+margin_bottom = 86.0
+
+[node name="ExitButton" type="TextureButton" parent="."]
+margin_left = -167.0
+margin_top = 86.0
+margin_right = 165.0
+margin_bottom = 137.0
+
+[connection signal="button_up" from="ResumeButton" to="." method="_on_ResumeButton_button_up"]
+[connection signal="button_up" from="OptionsButton" to="." method="_on_OptionsButton_button_up"]
+[connection signal="button_up" from="ExitButton" to="." method="_on_ExitButton_button_up"]

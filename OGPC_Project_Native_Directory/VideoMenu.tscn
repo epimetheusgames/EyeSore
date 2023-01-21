@@ -85,3 +85,11 @@ position = Vector2( 249.402, 138.895 )
 position = Vector2( -7, 0 )
 script = ExtResource( 5 )
 load_saved_game = false
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 295.0
+margin_top = 224.0
+margin_right = 382.0
+margin_bottom = 275.0
+
+[connection signal="button_up" from="TextureButton" to="." method="_on_TextureButton_button_up"]

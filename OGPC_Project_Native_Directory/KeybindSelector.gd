@@ -19,8 +19,6 @@ func _input(event):
 		unselect_next_frame = true
 		
 func _ready():
-	print(keybind, text_keybind)
-	connect("input_event", self, "_on_Area2D_input_event")
 	text_keybind = OS.get_scancode_string(keybind)
 		
 func _process(delta):
@@ -37,8 +35,7 @@ func _process(delta):
 		$OgpcMainMenuKeybindSelector.visible = true
 		$OgpcMainMenuKeybindSelectorSelected.visible = false
 
-func _on_Area2D_input_event(viewport, event, shape_idx):
-	if event.is_action_pressed("mouse_click"): # set this up in project settings
-		if get_tree().root.get_child(0) != self:
-			get_parent().clear_all_except(self)
-		selected = not selected
+func _on_TextureButton_button_up():
+	if get_tree().root.get_child(0) != self:
+		get_parent().clear_all_except(self)
+	selected = not selected
