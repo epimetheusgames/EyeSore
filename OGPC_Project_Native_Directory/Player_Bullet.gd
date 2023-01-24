@@ -2,12 +2,17 @@ extends KinematicBody2D
 
 
 var velocity = Vector2(0, 0)
-var speed = 5
+var speed = 8
 var speed_scaling_amount = 2
 var has_been_fired = false
-var gravity = 0.07
+var gravity = 0.3
+var self_position = self.position
 
 onready var player_body = get_parent().get_node("Player_Body")
+const tile_change_liquid_spawner_file_path = preload("res://TileChangeLiquidSpawner.tscn")
+
+func _process(delta):
+	self_position = self.position
 
 func _physics_process(_delta):
 	var enemies = get_tree().get_nodes_in_group("enemies")
@@ -16,6 +21,8 @@ func _physics_process(_delta):
 	velocity.y += gravity
 	
 	if bullet_collision_info != null:
+		Spawn_Tile_Change_Liquid_Spawner(self_position, tile_change_liquid_spawner_file_path)
+		
 		self.queue_free()
 		if bullet_collision_info.collider.name == "PixelatedBoss":
 			bullet_collision_info.collider.on_Knockback_event()
@@ -32,3 +39,8 @@ func _physics_process(_delta):
 		 - player_body.position).normalized() * speed)
 		
 		has_been_fired = true
+	
+func Spawn_Tile_Change_Liquid_Spawner(self_position, tile_change_liquid_spawner_file_path):
+	var tile_change_liquid_spawner = tile_change_liquid_spawner_file_path.instance()
+	get_node("/root/MainMenuRootNode").add_child(tile_change_liquid_spawner)
+	tile_change_liquid_spawner.position = self_position

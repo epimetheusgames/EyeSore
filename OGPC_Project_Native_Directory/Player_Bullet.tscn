@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://OGPC_Project_Player_Bullet_Normal-Pixilart.png" type="Texture" id=1]
+[ext_resource path="res://OGPC_Tileset_Switch_Fluid_Bullet.png" type="Texture" id=1]
 [ext_resource path="res://Player_Bullet.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 5.0
+radius = 1.0
 
 [node name="Player_Bullet_Body" type="KinematicBody2D"]
 show_behind_parent = true

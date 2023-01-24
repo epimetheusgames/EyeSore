@@ -7,7 +7,7 @@ export var particle_radius = 1
 export var particle_texture:Texture
 export var particle_script:Resource
 
-var particles_needed = 1000
+var particles_needed = 50
 var water_particles = []
 
 func _process(delta):
