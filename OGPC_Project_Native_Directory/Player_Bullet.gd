@@ -15,6 +15,10 @@ func _process(delta):
 	self_position = self.position
 
 func _physics_process(_delta):
+	for i in 9:
+		get_node("Skeleton2D/Bone2D" + (i + 1) as String).global_position = get_node("RigidBody2D" + (i + 1) as String).global_position
+		if i != 0:
+			get_node("Skeleton2D/Bone2D" + (i + 1) as String).look_at(get_node("RigidBody2D1").global_position)
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	var bullet_collision_info = move_and_collide(velocity)
 	
@@ -23,7 +27,7 @@ func _physics_process(_delta):
 	if bullet_collision_info != null:
 		Spawn_Tile_Change_Liquid_Spawner(self_position, tile_change_liquid_spawner_file_path)
 		
-		self.queue_free()
+		#self.queue_free()
 		if bullet_collision_info.collider.name == "PixelatedBoss":
 			bullet_collision_info.collider.on_Knockback_event()
 		if bullet_collision_info.collider.name.begins_with("Enemy1Body"):
@@ -42,5 +46,4 @@ func _physics_process(_delta):
 	
 func Spawn_Tile_Change_Liquid_Spawner(self_position, tile_change_liquid_spawner_file_path):
 	var tile_change_liquid_spawner = tile_change_liquid_spawner_file_path.instance()
-	get_node("/root/MainMenuRootNode").add_child(tile_change_liquid_spawner)
 	tile_change_liquid_spawner.position = self_position
