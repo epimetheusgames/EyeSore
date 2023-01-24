@@ -7,7 +7,7 @@ export var particle_radius = 1
 export var particle_texture:Texture
 export var particle_script:Resource
 
-var particles_needed = 50
+var particles_needed = 500
 var water_particles = []
 
 func _process(delta):
@@ -34,6 +34,7 @@ func create_rigidbody_instance():
 	particle_texture.texture = particle_texture_itex
 	
 	particle.name = "Water_Particle"
+	particle.position += Vector2(rand_range(-5, 5), rand_range(-5, 5))
 	particle.apply_central_impulse(Vector2(rand_range(-100, 100), rand_range(-100, 0)))
 	particle.add_child(particle_hitbox)
 	particle.add_child(particle_texture)
