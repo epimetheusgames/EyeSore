@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://TileChangeLiquidSpawnerScript.gd" type="Script" id=1]
+[ext_resource path="res://water_particle.png" type="Texture" id=2]
+[ext_resource path="res://WaterParticleScript.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 0, 0 )
+
+[node name="TileChangeLiquidSpawner" type="Area2D"]
+script = ExtResource( 1 )
+particle_texture = ExtResource( 2 )
+particle_script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
