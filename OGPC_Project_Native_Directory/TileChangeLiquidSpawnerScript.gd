@@ -1,19 +1,21 @@
 extends Area2D
 
 
-export var amm_particles = 0
-export var particle_spawn_time = 1
+export var amm_particles = 500
+export var particle_spawn_per_frame = 10
 export var particle_radius = 1
 export var particle_texture:Texture
 export var particle_script:Resource
+export var spray = true
+export var dissapear = true
+export var particle_size = 0.5
 
-var particles_needed = 500
 var water_particles = []
 
 func _process(delta):
-	if particles_needed != 0:
-		for i in range(10):
-			particles_needed -= 1
+	if amm_particles != 0:
+		for i in range(particle_spawn_per_frame):
+			amm_particles -= 1
 			create_rigidbody_instance()
 		
 func create_rigidbody_instance():
@@ -26,18 +28,25 @@ func create_rigidbody_instance():
 	
 	particle.position = position
 	
-	particle_collision_shape.radius = 0.5
+	particle_collision_shape.radius = particle_size
 	particle_hitbox.shape = particle_collision_shape
 	
 	particle_texture_image.load("res://water_particle.png") # Change this to some real liquid
 	particle_texture_itex.create_from_image(particle_texture_image)
 	particle_texture.texture = particle_texture_itex
+	particle_texture.centered = true
+	particle_texture.scale = Vector2(particle_size, particle_size)
 	
 	particle.name = "Water_Particle"
 	particle.position += Vector2(rand_range(-5, 5), rand_range(-5, 5))
-	particle.apply_central_impulse(Vector2(rand_range(-100, 100), rand_range(-100, 0)))
+	
+	if spray:
+		particle.apply_central_impulse(Vector2(rand_range(-100, 100), rand_range(-100, 0)))
+		
 	particle.add_child(particle_hitbox)
 	particle.add_child(particle_texture)
-	particle.set_script(particle_script)
+	
+	if dissapear:
+		particle.set_script(particle_script)
 	
 	get_parent().add_child(particle)

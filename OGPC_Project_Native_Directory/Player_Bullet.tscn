@@ -14,6 +14,7 @@ collision_mask = 5
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Polygon2D" parent="."]
+scale = Vector2( 5, 5 )
 texture = ExtResource( 1 )
 skeleton = NodePath("../Skeleton2D")
 polygon = PoolVector2Array( 2, -3, 3, -3, 3, -2, 4, -2, 4, 2, 3, 2, 3, 3, 2, 3, 2, 4, -2, 4, -2, 3, -3, 3, -3, 2, -4, 2, -4, -2, -3, -2, -3, -3, -2, -3, -2, -4, 2, -4, 0.0919991, -0.1875 )
@@ -23,19 +24,21 @@ bones = [ "Bone2D1", PoolRealArray( 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 internal_vertex_count = 1
 
 [node name="RigidBody2D1" type="RigidBody2D" parent="."]
+scale = Vector2( 5, 5 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="SoftBodyCollider_0" type="CollisionShape2D" parent="RigidBody2D1"]
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 5, 5 )
 shape = SubResource( 1 )
 
 [node name="RigidBody2D2" type="RigidBody2D" parent="."]
+scale = Vector2( 5, 5 )
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="RigidBody2D2"]
 rotation = -3.14159
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("../../RigidBody2D1")
 node_b = NodePath("..")
 length = 30.0
@@ -45,7 +48,7 @@ damping = 1.5
 [node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="RigidBody2D2"]
 position = Vector2( 0, -3 )
 rotation = 1.26536
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("..")
 node_b = NodePath("../../RigidBody2D9")
 length = 25.0
@@ -55,7 +58,7 @@ damping = 1.5
 [node name="DampedSpringJoint2D3" type="DampedSpringJoint2D" parent="RigidBody2D2"]
 position = Vector2( 0, -3 )
 rotation = -1.26536
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("..")
 node_b = NodePath("../../RigidBody2D8")
 length = 25.0
@@ -64,18 +67,21 @@ damping = 1.5
 
 [node name="SoftBodyCollider_1" type="CollisionShape2D" parent="RigidBody2D2"]
 position = Vector2( 0, -3 )
+scale = Vector2( 5, 5 )
 shape = SubResource( 1 )
 
 [node name="RigidBody2D3" type="RigidBody2D" parent="."]
+scale = Vector2( 5, 5 )
 
 [node name="SoftBodyCollider_2" type="CollisionShape2D" parent="RigidBody2D3"]
 position = Vector2( -3, 0 )
+scale = Vector2( 5, 5 )
 shape = SubResource( 1 )
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="RigidBody2D3"]
 position = Vector2( -3, 0 )
 rotation = -1.5708
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("../../RigidBody2D1")
 node_b = NodePath("..")
 stiffness = 35.0
@@ -84,7 +90,7 @@ damping = 1.5
 [node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="RigidBody2D3"]
 position = Vector2( -3, 0 )
 rotation = -2.86059
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("..")
 node_b = NodePath("../../RigidBody2D9")
 length = 26.0
@@ -94,7 +100,7 @@ damping = 1.5
 [node name="DampedSpringJoint2D3" type="DampedSpringJoint2D" parent="RigidBody2D3"]
 position = Vector2( -3, 0 )
 rotation = -0.287979
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("..")
 node_b = NodePath("../../RigidBody2D6")
 length = 25.0
@@ -102,15 +108,17 @@ stiffness = 35.0
 damping = 1.5
 
 [node name="RigidBody2D4" type="RigidBody2D" parent="."]
+scale = Vector2( 5, 5 )
 
 [node name="SoftBodyCollider_3" type="CollisionShape2D" parent="RigidBody2D4"]
 position = Vector2( 3, 0 )
+scale = Vector2( 5, 5 )
 shape = SubResource( 1 )
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="RigidBody2D4"]
 position = Vector2( 3, 0 )
 rotation = 1.5708
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("../../RigidBody2D1")
 node_b = NodePath("..")
 length = 31.0
@@ -120,7 +128,7 @@ damping = 1.5
 [node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="RigidBody2D4"]
 position = Vector2( 3, 0 )
 rotation = 0.303687
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("..")
 node_b = NodePath("../../RigidBody2D7")
 length = 25.0
@@ -130,7 +138,7 @@ damping = 1.5
 [node name="DampedSpringJoint2D3" type="DampedSpringJoint2D" parent="RigidBody2D4"]
 position = Vector2( 3, 0 )
 rotation = -3.43306
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("..")
 node_b = NodePath("../../RigidBody2D8")
 length = 25.0
@@ -138,15 +146,17 @@ stiffness = 35.0
 damping = 1.5
 
 [node name="RigidBody2D5" type="RigidBody2D" parent="."]
+scale = Vector2( 5, 5 )
 
 [node name="SoftBodyCollider_4" type="CollisionShape2D" parent="RigidBody2D5"]
 position = Vector2( 0, 3 )
+scale = Vector2( 5, 5 )
 shape = SubResource( 1 )
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="RigidBody2D5"]
 position = Vector2( 0, 3 )
 rotation = 3.14159
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("../../RigidBody2D1")
 node_b = NodePath("..")
 length = 31.0
@@ -156,7 +166,7 @@ damping = 1.5
 [node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="RigidBody2D5"]
 position = Vector2( 0, 3 )
 rotation = 1.88321
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("..")
 node_b = NodePath("../../RigidBody2D6")
 length = 25.0
@@ -166,7 +176,7 @@ damping = 1.5
 [node name="DampedSpringJoint2D3" type="DampedSpringJoint2D" parent="RigidBody2D5"]
 position = Vector2( 0, 3 )
 rotation = 4.41394
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("..")
 node_b = NodePath("../../RigidBody2D7")
 length = 25.0
@@ -174,15 +184,17 @@ stiffness = 35.0
 damping = 1.5
 
 [node name="RigidBody2D6" type="RigidBody2D" parent="."]
+scale = Vector2( 5, 5 )
 
 [node name="SoftBodyCollider_5" type="CollisionShape2D" parent="RigidBody2D6"]
 position = Vector2( -2.32775, 2.26923 )
+scale = Vector2( 5, 5 )
 shape = SubResource( 1 )
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="RigidBody2D6"]
 position = Vector2( -2.32, 2.26 )
 rotation = -2.34398
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("../../RigidBody2D1")
 node_b = NodePath("..")
 length = 33.0
@@ -192,7 +204,7 @@ damping = 1.5
 [node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="RigidBody2D6"]
 position = Vector2( -2.32, 2.26 )
 rotation = -1.26013
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("..")
 node_b = NodePath("../../RigidBody2D5")
 length = 26.0
@@ -202,7 +214,7 @@ damping = 1.5
 [node name="DampedSpringJoint2D3" type="DampedSpringJoint2D" parent="RigidBody2D6"]
 position = Vector2( -2.32, 2.26 )
 rotation = 2.86409
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("..")
 node_b = NodePath("../../RigidBody2D3")
 length = 25.0
@@ -210,15 +222,17 @@ stiffness = 35.0
 damping = 1.5
 
 [node name="RigidBody2D7" type="RigidBody2D" parent="."]
+scale = Vector2( 5, 5 )
 
 [node name="SoftBodyCollider_6" type="CollisionShape2D" parent="RigidBody2D7"]
 position = Vector2( 2.28422, 2.29264 )
+scale = Vector2( 5, 5 )
 shape = SubResource( 1 )
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="RigidBody2D7"]
 position = Vector2( 2.3, 2.29 )
 rotation = 2.3719
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("../../RigidBody2D1")
 node_b = NodePath("..")
 length = 34.0
@@ -228,7 +242,7 @@ damping = 1.5
 [node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="RigidBody2D7"]
 position = Vector2( 2.3, 2.29 )
 rotation = 3.44703
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("..")
 node_b = NodePath("../../RigidBody2D4")
 length = 26.0
@@ -238,7 +252,7 @@ damping = 1.5
 [node name="DampedSpringJoint2D3" type="DampedSpringJoint2D" parent="RigidBody2D7"]
 position = Vector2( 2.3, 2.29 )
 rotation = 1.27758
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("..")
 node_b = NodePath("../../RigidBody2D5")
 length = 26.0
@@ -246,15 +260,17 @@ stiffness = 35.0
 damping = 1.5
 
 [node name="RigidBody2D8" type="RigidBody2D" parent="."]
+scale = Vector2( 5, 5 )
 
 [node name="SoftBodyCollider_7" type="CollisionShape2D" parent="RigidBody2D8"]
 position = Vector2( 2.30763, -2.28422 )
+scale = Vector2( 5, 5 )
 shape = SubResource( 1 )
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="RigidBody2D8"]
 position = Vector2( 2.3, -2.3 )
 rotation = 0.785398
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("../../RigidBody2D1")
 node_b = NodePath("..")
 length = 34.0
@@ -264,7 +280,7 @@ damping = 1.5
 [node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="RigidBody2D8"]
 position = Vector2( 2.3, -2.3 )
 rotation = 1.8675
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("..")
 node_b = NodePath("../../RigidBody2D2")
 length = 25.0
@@ -274,7 +290,7 @@ damping = 1.5
 [node name="DampedSpringJoint2D3" type="DampedSpringJoint2D" parent="RigidBody2D8"]
 position = Vector2( 2.3, -2.3 )
 rotation = -0.296706
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("..")
 node_b = NodePath("../../RigidBody2D4")
 length = 25.0
@@ -282,15 +298,17 @@ stiffness = 35.0
 damping = 1.5
 
 [node name="RigidBody2D9" type="RigidBody2D" parent="."]
+scale = Vector2( 5, 5 )
 
 [node name="SoftBodyCollider_8" type="CollisionShape2D" parent="RigidBody2D9"]
 position = Vector2( -2.32775, -2.26081 )
+scale = Vector2( 5, 5 )
 shape = SubResource( 1 )
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="RigidBody2D9"]
 position = Vector2( -2.32, -2.27 )
 rotation = -0.776672
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("../../RigidBody2D1")
 node_b = NodePath("..")
 length = 34.0
@@ -300,7 +318,7 @@ damping = 1.5
 [node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="RigidBody2D9"]
 position = Vector2( -2.32, -2.27 )
 rotation = -1.87797
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("..")
 node_b = NodePath("../../RigidBody2D2")
 length = 25.0
@@ -310,7 +328,7 @@ damping = 1.5
 [node name="DampedSpringJoint2D3" type="DampedSpringJoint2D" parent="RigidBody2D9"]
 position = Vector2( -2.32, -2.27 )
 rotation = 0.286234
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 5, 5 )
 node_a = NodePath("..")
 node_b = NodePath("../../RigidBody2D3")
 length = 25.0
@@ -318,57 +336,67 @@ stiffness = 35.0
 damping = 1.5
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
+scale = Vector2( 5, 5 )
 
 [node name="Bone2D1" type="Bone2D" parent="Skeleton2D"]
 position = Vector2( 3.00457, -0.00827706 )
 rotation = 3.13446
+scale = Vector2( 5, 5 )
 rest = Transform2D( -0.999975, 0.00712785, -0.00712785, -0.999975, 3.00457, -0.00827706 )
 default_length = 2.0
 
 [node name="Bone2D2" type="Bone2D" parent="Skeleton2D"]
 position = Vector2( 2.31758, -2.30102 )
 rotation = 2.36845
+scale = Vector2( 5, 5 )
 rest = Transform2D( -0.71572, 0.698387, -0.698387, -0.71572, 2.31758, -2.30102 )
 default_length = 2.0
 
 [node name="Bone2D3" type="Bone2D" parent="Skeleton2D"]
 position = Vector2( -2.97974, -0.0082767 )
 rotation = 0.00535291
+scale = Vector2( 5, 5 )
 rest = Transform2D( 0.999986, 0.00535289, -0.00535289, 0.999986, -2.97974, -0.0082767 )
 default_length = 2.0
 
 [node name="Bone2D4" type="Bone2D" parent="Skeleton2D"]
 position = Vector2( -0.00827694, -2.99629 )
 rotation = 1.56353
+scale = Vector2( 5, 5 )
 rest = Transform2D( 0.00727035, 0.999974, -0.999974, 0.00727035, -0.00827694, -2.99629 )
 default_length = 2.0
 
 [node name="Bone2D5" type="Bone2D" parent="Skeleton2D"]
 position = Vector2( -2.33413, -2.27619 )
 rotation = 0.767706
+scale = Vector2( 5, 5 )
 rest = Transform2D( 0.719506, 0.694486, -0.694486, 0.719506, -2.33413, -2.27619 )
 default_length = 2.0
 
 [node name="Bone2D6" type="Bone2D" parent="Skeleton2D"]
 position = Vector2( -2.3093, 2.25964 )
 rotation = -0.786372
+scale = Vector2( 5, 5 )
 rest = Transform2D( 0.706418, -0.707795, 0.707795, 0.706418, -2.3093, 2.25964 )
 default_length = 2.0
 
 [node name="Bone2D7" type="Bone2D" parent="Skeleton2D"]
 position = Vector2( 0.00827718, 2.99629 )
 rotation = -1.56726
+scale = Vector2( 5, 5 )
 rest = Transform2D( 0.00353987, -0.999994, 0.999994, 0.00353987, 0.00827718, 2.99629 )
 default_length = 2.0
 
 [node name="Bone2D8" type="Bone2D" parent="Skeleton2D"]
 position = Vector2( 2.31758, 2.25964 )
 rotation = -2.36068
+scale = Vector2( 5, 5 )
 rest = Transform2D( -0.71027, -0.70393, 0.70393, -0.71027, 2.31758, 2.25964 )
 default_length = 2.0
 
 [node name="Bone2D9" type="Bone2D" parent="Skeleton2D"]
-position = Vector2( -0.000632763, -0.00827706 )
+position = Vector2( -5.82077e-11, 0 )
 rotation = -0.00497133
+scale = Vector2( 5, 5 )
 rest = Transform2D( 0.999988, -0.00497131, 0.00497131, 0.999988, -0.000632763, -0.00827706 )
 default_length = 2.0
