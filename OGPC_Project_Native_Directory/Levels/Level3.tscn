@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Levels/Level_Script.gd" type="Script" id=1]
 [ext_resource path="res://Save_Data.gd" type="Script" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://TileChangeLiquidSpawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://GroundTileMap.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Checkpoint.tscn" type="PackedScene" id=6]
 
 [node name="Level_Manager" type="Node2D"]
 pause_mode = 1
@@ -23,10 +24,13 @@ tile_data = PoolIntArray( -10354836, 0, 65537, -10354835, 0, 65538, -10354834, 0
 
 [node name="Player_Body" parent="Save_Functionality" instance=ExtResource( 3 )]
 
-[node name="TileChangeLiquidSpawner" parent="." instance=ExtResource( 4 )]
+[node name="TileChangeLiquidSpawner" parent="Save_Functionality" instance=ExtResource( 4 )]
 position = Vector2( 207, -730 )
 amm_particles = 1000
 particle_spawn_per_frame = 100
 spray = false
 dissapear = false
 particle_size = 5.0
+
+[node name="Checkpoint" parent="Save_Functionality" instance=ExtResource( 6 )]
+position = Vector2( 16, 15 )

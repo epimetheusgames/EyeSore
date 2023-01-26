@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.0
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
+[node name="Player_Shockwave_Bullet" type="KinematicBody2D"]
 show_behind_parent = true
 collision_layer = 2
 script = ExtResource( 2 )

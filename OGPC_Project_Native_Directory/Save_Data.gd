@@ -52,7 +52,11 @@ const levels = [
 func save_audio(music, sfx):
 	data["keybinds"] = get_game_data()[4]
 	data["keybinds"]["music-audio"] = music # Ya I know I'll rename the file to game-unspecific-data.json
-	data["keybinds"]["sfx-audio"] = sfx
+	data["keybinds"]["sfx-audio"] = sfx\
+	
+func save_checkpoint(checkpoint_position):
+	data["player"]["respawn_position_x"] = checkpoint_position.x
+	data["player"]["respawn_position_y"] = checkpoint_position.y
 	
 func save_video(darkness):
 	data["keybinds"] = get_game_data()[4]
