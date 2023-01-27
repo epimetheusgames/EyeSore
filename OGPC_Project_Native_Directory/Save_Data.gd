@@ -55,6 +55,7 @@ func save_audio(music, sfx):
 	data["keybinds"]["sfx-audio"] = sfx\
 	
 func save_checkpoint(checkpoint_position):
+	get_node("Player_Body").respawn_position = checkpoint_position
 	data["player"]["respawn_position_x"] = checkpoint_position.x
 	data["player"]["respawn_position_y"] = checkpoint_position.y
 	

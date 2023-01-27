@@ -25,6 +25,7 @@ extents = Vector2( 15.5, 15.5 )
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+z_index = -1
 frames = SubResource( 1 )
 animation = "Deactivated"
 
