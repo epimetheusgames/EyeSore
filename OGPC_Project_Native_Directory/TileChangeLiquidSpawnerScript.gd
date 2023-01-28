@@ -1,8 +1,8 @@
 extends Area2D
 
 
-export var amm_particles = 500
-export var particle_spawn_per_frame = 10
+export var amm_particles = 50
+export var particle_spawn_per_frame = 1
 export var particle_radius = 1
 export var particle_texture:Texture
 export var particle_script:Resource
