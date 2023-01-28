@@ -13,11 +13,13 @@ export var particle_size = 0.5
 var water_particles = []
 
 func _process(delta):
-	if amm_particles != 0:
+	if amm_particles >= 0:
 		for i in range(particle_spawn_per_frame):
 			amm_particles -= 1
 			create_rigidbody_instance()
-		
+	else:
+		self.queue_free()
+
 func create_rigidbody_instance():
 	var particle = RigidBody2D.new()
 	var particle_hitbox = CollisionShape2D.new()
