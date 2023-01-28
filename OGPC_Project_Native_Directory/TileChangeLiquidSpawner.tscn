@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://TileChangeLiquidSpawnerScript.gd" type="Script" id=1]
 [ext_resource path="res://water_particle.png" type="Texture" id=2]
 [ext_resource path="res://WaterParticleScript.gd" type="Script" id=3]
+[ext_resource path="res://OGPC_Tileset_Switch_Fluid_Bullet.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 0, 0 )
@@ -14,3 +15,6 @@ particle_script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 4 )
