@@ -44,5 +44,5 @@ func _physics_process(_delta):
 	
 func Spawn_Tile_Change_Liquid_Spawner(self_position, tile_change_liquid_spawner_file_path):
 	var tile_change_liquid_spawner = tile_change_liquid_spawner_file_path.instance()
-	tile_change_liquid_spawner.position = self_position
-	print(tile_change_liquid_spawner.position)
+	tile_change_liquid_spawner.position = position
+	get_parent().add_child(tile_change_liquid_spawner)

@@ -30,6 +30,8 @@ func loading_edge_case_handler(node, list, item): # Handle edge cases that may h
 			# For an edge case.
 			return 2
 		else:
+			$Save_Functionality/Player_Body.position = player_position
+			$Save_Functionality/Player_Body.player_health = health
 			return 1 # Break out of the loop if it's not an unwanted item because those are already
 			# loaded in. At least that keyword should be triggered outside this function
 	return 0
@@ -44,8 +46,6 @@ func set_player_spawnpoint_and_position(healthp, player_positionp, spawnpointp, 
 
 func set_player_spawnpoint_and_position_reality(health, player_position, spawnpoint, enemy1s, enemy2s, pixelated_bosses, tree):
 	$Save_Functionality/Player_Body.respawn_position = spawnpoint
-	$Save_Functionality/Player_Body.position = player_position
-	$Save_Functionality/Player_Body.player_health = health
 	var enemy1_nodes = tree.get_nodes_in_group("enemy1group")
 	var enemy2_nodes = tree.get_nodes_in_group("enemy2group")
 	var pixelated_boss = tree.get_nodes_in_group("pixelated_boss")
