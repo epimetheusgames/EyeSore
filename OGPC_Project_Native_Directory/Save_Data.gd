@@ -52,7 +52,7 @@ const levels = [
 func save_audio(music, sfx):
 	data["keybinds"] = get_game_data()[4]
 	data["keybinds"]["music-audio"] = music # Ya I know I'll rename the file to game-unspecific-data.json
-	data["keybinds"]["sfx-audio"] = sfx\
+	data["keybinds"]["sfx-audio"] = sfx
 	
 func save_checkpoint(checkpoint_position):
 	get_node("Player_Body").respawn_position = checkpoint_position
@@ -218,6 +218,7 @@ func delete_specific_keybind(action):
 func _process(delta):
 	game_save_time -= 1
 	if game_save_time <= 0 and get_parent().name.begins_with("Level"):
+		print('hi')
 		game_save_time = game_save_max
 		data = get_current_level_data(data["level"])
 		save_game()

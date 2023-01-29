@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Levels/Level_Script.gd" type="Script" id=1]
 [ext_resource path="res://Save_Data.gd" type="Script" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Checkpoint.tscn" type="PackedScene" id=4]
 [ext_resource path="res://GroundTileMap.tscn" type="PackedScene" id=5]
+[ext_resource path="res://00002-282759543-outer space wi.png" type="Texture" id=6]
 [ext_resource path="res://OGPC_Project_WIP_Background_Lights.png" type="Texture" id=7]
 
 [node name="Level_Manager" type="Node2D"]
@@ -28,31 +29,29 @@ tile_data = PoolIntArray( -5505138, 0, 65537, -5505137, 0, 65538, -5505136, 0, 6
 position = Vector2( -2329, -277 )
 
 [node name="Checkpoint" parent="Save_Functionality" instance=ExtResource( 4 )]
-position = Vector2( -426, 43 )
+position = Vector2( -425, 45 )
 
 [node name="Checkpoint2" parent="Save_Functionality" instance=ExtResource( 4 )]
 position = Vector2( -1334, -53 )
 
 [node name="Checkpoint3" parent="Save_Functionality" instance=ExtResource( 4 )]
-position = Vector2( -1769, -132 )
+position = Vector2( -2112, -4 )
 
 [node name="Checkpoint4" parent="Save_Functionality" instance=ExtResource( 4 )]
 position = Vector2( -1432, -101 )
 
-[node name="Jungle_Background" type="ParallaxBackground" parent="Save_Functionality"]
-scale = Vector2( 3, 3 )
-transform = Transform2D( 3, 0, 0, 3, 0, 0 )
+[node name="Background" type="ParallaxBackground" parent="Save_Functionality"]
 
-[node name="Stars" type="ParallaxLayer" parent="Save_Functionality/Jungle_Background"]
+[node name="Save_Functionality@Jungle_Background@Stars" type="ParallaxLayer" parent="Save_Functionality/Background"]
+scale = Vector2( 2, 2 )
 z_index = 5
 motion_scale = Vector2( 0.1, 0.1 )
-motion_mirroring = Vector2( 128, 128 )
+motion_mirroring = Vector2( 512, 512 )
 
-[node name="Sprite" type="Sprite" parent="Save_Functionality/Jungle_Background/Stars"]
+[node name="Save_Functionality@Jungle_Background@Stars@Sprite" type="Sprite" parent="Save_Functionality/Background/Save_Functionality@Jungle_Background@Stars"]
 position = Vector2( -158, 59.3333 )
-scale = Vector2( 1.30859, 0.884115 )
 z_index = -1
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 512, 512 )
@@ -60,13 +59,14 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Stars2" type="ParallaxLayer" parent="Save_Functionality/Jungle_Background"]
+[node name="Save_Functionality@Jungle_Background@Stars2" type="ParallaxLayer" parent="Save_Functionality/Background"]
 position = Vector2( -87, -145.333 )
 z_index = -1
 motion_scale = Vector2( 0.08, 0.08 )
 motion_mirroring = Vector2( 128, 128 )
 
-[node name="Sprite" type="Sprite" parent="Save_Functionality/Jungle_Background/Stars2"]
+[node name="Save_Functionality@Jungle_Background@Stars2@Sprite" type="Sprite" parent="Save_Functionality/Background/Save_Functionality@Jungle_Background@Stars2"]
+position = Vector2( 87, 145.333 )
 z_index = -1
 texture = ExtResource( 7 )
 centered = false
@@ -76,13 +76,14 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Stars3" type="ParallaxLayer" parent="Save_Functionality/Jungle_Background"]
+[node name="Save_Functionality@Jungle_Background@Stars3" type="ParallaxLayer" parent="Save_Functionality/Background"]
 position = Vector2( -301.667, 47.6667 )
 z_index = -2
 motion_scale = Vector2( 0.06, 0.06 )
 motion_mirroring = Vector2( 128, 128 )
 
-[node name="Sprite" type="Sprite" parent="Save_Functionality/Jungle_Background/Stars3"]
+[node name="Save_Functionality@Jungle_Background@Stars3@Sprite" type="Sprite" parent="Save_Functionality/Background/Save_Functionality@Jungle_Background@Stars3"]
+position = Vector2( 301.667, -47.6667 )
 texture = ExtResource( 7 )
 centered = false
 region_enabled = true

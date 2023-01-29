@@ -46,6 +46,8 @@ func set_player_spawnpoint_and_position(healthp, player_positionp, spawnpointp, 
 
 func set_player_spawnpoint_and_position_reality(health, player_position, spawnpoint, enemy1s, enemy2s, pixelated_bosses, tree):
 	$Save_Functionality/Player_Body.respawn_position = spawnpoint
+	$Save_Functionality/Player_Body.position = player_position
+	
 	var enemy1_nodes = tree.get_nodes_in_group("enemy1group")
 	var enemy2_nodes = tree.get_nodes_in_group("enemy2group")
 	var pixelated_boss = tree.get_nodes_in_group("pixelated_boss")
