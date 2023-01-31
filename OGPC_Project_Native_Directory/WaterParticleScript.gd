@@ -7,4 +7,5 @@ func _ready():
 func _process(delta):
 	for body in get_colliding_bodies():
 		if not "Water_Particle" in body.name and body.name != "Player_Body":
+			body.queue_free()
 			queue_free()
