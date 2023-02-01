@@ -66,9 +66,11 @@ func save_video(darkness):
 func save_keybinds(keybinds):
 	var music = data["keybinds"]["music-audio"]
 	var sfx = data["keybinds"]["sfx-audio"]
+	var darkness = data["keybinds"]["darkness"]
 	data["keybinds"] = keybinds
 	data["keybinds"]["music-audio"] = music
 	data["keybinds"]["sfx-audio"] = sfx
+	data["keybinds"]["darkness"] = darkness
 	
 func set_keybind_data_to_data():
 	var file = File.new()
