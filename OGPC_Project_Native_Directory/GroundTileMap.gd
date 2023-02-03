@@ -2,11 +2,9 @@ tool
 extends TileSet
 
 const GROUND = 0
-const SPIKES = 1
 const DARK = 4
 
 var binds = {
-	SPIKES : [GROUND, DARK],
 	GROUND : [DARK],
 	DARK : [GROUND]
 }
