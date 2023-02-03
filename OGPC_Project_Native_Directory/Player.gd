@@ -35,6 +35,8 @@ export var bullet_type = 0
 
 var shockwave_bullet_cooldown_timer = 0
 
+var last_grounded_pos = Vector2(0, 0)
+
 signal boss_hit
 
 #the strength of the player's gravity while not fastfalling
@@ -144,6 +146,9 @@ func _physics_process(delta):
 	else:
 		$AnimatedSprite.stop()
 	
+	if is_on_floor():
+		last_grounded_pos = self.position
+	
 	ground_buffer -= 1
 	
 	shockwave_bullet_cooldown_timer -= 1
@@ -225,3 +230,7 @@ func Apply_Shockwave_Knockback(self_position, player_shockwave_bullet_node):
 func Shockwave_Hit_Player(player_shockwave_bullet_node_self):
 	var player_shockwave_bullet_node = player_shockwave_bullet_node_self
 	Apply_Shockwave_Knockback(self_position, player_shockwave_bullet_node)
+
+func _on_Area2D_body_entered(body):
+	if "spikes" in body.name.to_lower():
+		self.position = last_grounded_pos
