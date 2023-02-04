@@ -243,18 +243,6 @@ func Shockwave_Hit_Player(player_shockwave_bullet_node_self):
 	var player_shockwave_bullet_node = player_shockwave_bullet_node_self
 	Apply_Shockwave_Knockback(self_position, player_shockwave_bullet_node)
 
-func Tile_Is_Spike(pos, tile_map):
-	var tile_pos = tile_map.world_to_map(pos)
-	var tile_val = tile_map.get_cellv(tile_pos)
-	
-	if tile_val >= 12 and tile_val <= 15:
-		position = last_grounded_pos
-
 func _on_Area2D_body_entered(body):
-	if "TileMap" in body.name:
-		# get the TileMap Node
-		var tile_map = body
-		var mask = tile_map.get_collision_mask()
-		
-		if mask > 0:		
-			Tile_Is_Spike(position, tile_map)
+	if "Spikes" in body.name:
+		position = last_grounded_pos
