@@ -253,6 +253,7 @@ func _on_Area2D_body_entered(body):
 		self.hide()
 		var death_particles = death_particles_file_path.instance()
 		death_particles.position = self.position
+		get_parent().add_child(death_particles)
 		
 
 func _on_Death_Animation_Timer_timeout():

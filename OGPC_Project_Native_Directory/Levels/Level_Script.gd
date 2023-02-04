@@ -23,7 +23,6 @@ func loading_edge_case_handler(node, list, item): # Handle edge cases that may h
 		if len(list) == 0:
 			item.queue_free()
 			return 2
-		print(list[0])
 		if list[0] != null: # If this is null than it means that the game has not been saved.
 			item.queue_free() # If it is not null, than this is an unwanted item, because the game 
 			# Was saved but this item was not saved. Ideally this won't happen, but this is here
