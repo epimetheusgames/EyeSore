@@ -5,6 +5,10 @@ func _on_Area2D_area_entered(area):
 	# if the player touches the checkpoint, save.
 	if area.name == "Player_Body":
 		save_checkpoint()
+
+func _on_Area2D_body_entered(body):
+	if body.name == "Player_Body":
+		save_checkpoint()
 		
 func save_checkpoint():
 	# Actually write to the file using Save Functionality node.
