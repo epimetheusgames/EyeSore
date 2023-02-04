@@ -1,4 +1,4 @@
-tool
+tool # oh I think that means it only runs in the editor great.
 extends TileSet
 
 const GROUND = 0
