@@ -4,12 +4,12 @@ var selected = 0
 var prev_selected = 0
 onready var options = [$Label2]
 
+# Code for the audio menu, probably go and clean this up later.
 
 func _ready():
 	var data = $SaveFunctionality.get_game_data()
 	$Music.set_value(data[5])
 	$SFX.set_value(data[6])
-	print('hi')
 
 func _process(delta):
 	for option in range(len(options)):

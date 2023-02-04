@@ -1,6 +1,9 @@
 extends Node2D
 
 
+# Script responsible for managing the video menu (brightness, etc.)
+
+
 func _ready():
 	$Slider.set_value($Save_Functionality.get_game_data()[4]["darkness"]*100)
 
