@@ -27,7 +27,7 @@ func _on_RigidBody2d_body_entered(body):
 		var mask = tile_map.get_collision_mask()
 		
 		if mask > 0:
-			tile_pos = tile_map.world_to_map(body.position)
+			tile_pos = tile_map.world_to_map(self.position)
 			tile_map.set_cell(tile_pos.x, tile_pos.y, -1)
 			tile_map.update_bitmask_area(tile_pos)
 			self.queue_free()
