@@ -11,8 +11,8 @@
 pause_mode = 1
 script = ExtResource( 1 )
 next_level = "end"
-previous_level = "start"
-current_level_number = 0
+previous_level = "0"
+current_level_number = 1
 
 [node name="Save_Functionality" type="Node2D" parent="."]
 script = ExtResource( 2 )

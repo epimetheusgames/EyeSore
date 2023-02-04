@@ -46,6 +46,7 @@ const default_keybind_data = {
 }
 
 const levels = [
+	"res://Levels/Level1.tscn",
 	"res://Levels/Level2.tscn"
 ]
 
