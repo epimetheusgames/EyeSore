@@ -3,8 +3,11 @@ extends KinematicBody2D
 
 const normal_bullet_file_path = preload("res://Player_Bullet.tscn")
 const shockwave_bullet_file_path = preload("res://Player_Shockwave_Bullet.tscn")
+const death_particles_file_path = preload("res://Player_Death_Animation_Particles.tscn")
 
 var player_health = clamp(36, 4, 36)
+
+var death_particles
 
 var knockback_direction = 0
 export var shockwave_knockback_strength = Vector2(480, 475)
@@ -245,4 +248,14 @@ func Shockwave_Hit_Player(player_shockwave_bullet_node_self):
 
 func _on_Area2D_body_entered(body):
 	if "Spikes" in body.name:
-		position = last_grounded_pos
+		$Death_Animation_Timer.start(0.5)
+		get_node("/root/MainMenuRootNode/OWIE_Player").play()
+		self.hide()
+		var death_particles = death_particles_file_path.instance()
+		death_particles.position = self.position
+		
+
+func _on_Death_Animation_Timer_timeout():
+	self.show()
+	position = last_grounded_pos
+	$Death_Animation_Timer.stop()

@@ -224,5 +224,3 @@ func _process(delta):
 		game_save_time = game_save_max
 		data = get_current_level_data(data["level"])
 		save_game()
-
-# This code is officially commented lol.

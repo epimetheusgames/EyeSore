@@ -65,6 +65,21 @@ flags = 1
 atlas = ExtResource( 6 )
 region = Rect2( 176, 0, 16, 16 )
 
+[sub_resource type="AtlasTexture" id=78]
+flags = 1
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=79]
+flags = 1
+atlas = ExtResource( 11 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=80]
+flags = 1
+atlas = ExtResource( 11 )
+region = Rect2( 32, 0, 16, 16 )
+
 [sub_resource type="AtlasTexture" id=86]
 flags = 1
 atlas = ExtResource( 6 )
@@ -84,21 +99,6 @@ region = Rect2( 64, 0, 16, 16 )
 flags = 1
 atlas = ExtResource( 12 )
 region = Rect2( 80, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=87]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=88]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 16, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=89]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 32, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=67]
 flags = 1
@@ -155,19 +155,19 @@ flags = 1
 atlas = ExtResource( 7 )
 region = Rect2( 192, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=78]
+[sub_resource type="AtlasTexture" id=87]
 flags = 1
-atlas = ExtResource( 11 )
+atlas = ExtResource( 12 )
 region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=79]
+[sub_resource type="AtlasTexture" id=88]
 flags = 1
-atlas = ExtResource( 11 )
+atlas = ExtResource( 12 )
 region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=80]
+[sub_resource type="AtlasTexture" id=89]
 flags = 1
-atlas = ExtResource( 11 )
+atlas = ExtResource( 12 )
 region = Rect2( 32, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=85]
@@ -182,6 +182,11 @@ animations = [ {
 "name": "Walking_Right",
 "speed": 20.0
 }, {
+"frames": [ SubResource( 78 ), SubResource( 79 ), SubResource( 80 ) ],
+"loop": false,
+"name": "Jumping_Center",
+"speed": 15.0
+}, {
 "frames": [ SubResource( 86 ) ],
 "loop": true,
 "name": "Idle_Left",
@@ -192,19 +197,14 @@ animations = [ {
 "name": "Jumping_Right",
 "speed": 15.0
 }, {
-"frames": [ SubResource( 87 ), SubResource( 88 ), SubResource( 89 ) ],
-"loop": false,
-"name": "Jumping_Left",
-"speed": 15.0
-}, {
 "frames": [ SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ), SubResource( 77 ) ],
 "loop": true,
 "name": "Walking_Left",
 "speed": 20.0
 }, {
-"frames": [ SubResource( 78 ), SubResource( 79 ), SubResource( 80 ) ],
+"frames": [ SubResource( 87 ), SubResource( 88 ), SubResource( 89 ) ],
 "loop": false,
-"name": "Jumping_Center",
+"name": "Jumping_Left",
 "speed": 15.0
 }, {
 "frames": [ SubResource( 85 ) ],
@@ -214,8 +214,8 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=93]
-radius = 9.0
-height = 14.0
+radius = 7.0
+height = 6.0
 
 [node name="Player_Body" type="KinematicBody2D"]
 collision_layer = 2
@@ -267,4 +267,7 @@ texture_progress = ExtResource( 9 )
 position = Vector2( 0, -8 )
 shape = SubResource( 93 )
 
+[node name="Death_Animation_Timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="Death_Animation_Timer" to="." method="_on_Death_Animation_Timer_timeout"]
