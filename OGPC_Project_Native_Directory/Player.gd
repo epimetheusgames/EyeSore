@@ -36,6 +36,9 @@ export var bullet_type = 0
 var shockwave_bullet_cooldown_timer = 0
 
 var last_grounded_pos = Vector2(0, 0)
+# Time that you have to be on the ground before your ground pos is resetted
+export var ground_reset_countdown = 60
+var max_ground_reset_time = ground_reset_countdown
 
 signal boss_hit
 
@@ -146,8 +149,17 @@ func _physics_process(delta):
 	else:
 		$AnimatedSprite.stop()
 	
-	if is_on_floor():
+	if is_on_floor() and ground_reset_countdown <= 0:
 		last_grounded_pos = self.position
+	elif is_on_floor():
+		# Count down ground reset countdown
+		ground_reset_countdown -= 1
+		
+	# Just so it doesn't reset right if they touch the ground somewhere dangerous
+	# if the countdown has been at a low number because it didn't reset after they
+	# jumped off the previous platform.
+	if not is_on_floor():
+		ground_reset_countdown = max_ground_reset_time
 	
 	ground_buffer -= 1
 	
@@ -231,6 +243,18 @@ func Shockwave_Hit_Player(player_shockwave_bullet_node_self):
 	var player_shockwave_bullet_node = player_shockwave_bullet_node_self
 	Apply_Shockwave_Knockback(self_position, player_shockwave_bullet_node)
 
+func Tile_Is_Spike(pos, tile_map):
+	var tile_pos = tile_map.world_to_map(pos)
+	var tile_val = tile_map.get_cellv(tile_pos)
+	
+	if tile_val >= 12 and tile_val <= 15:
+		position = last_grounded_pos
+
 func _on_Area2D_body_entered(body):
-	if "spikes" in body.name.to_lower():
-		self.position = last_grounded_pos
+	if "TileMap" in body.name:
+		# get the TileMap Node
+		var tile_map = body
+		var mask = tile_map.get_collision_mask()
+		
+		if mask > 0:		
+			Tile_Is_Spike(position, tile_map)
