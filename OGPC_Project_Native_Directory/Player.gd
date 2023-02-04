@@ -247,16 +247,15 @@ func Shockwave_Hit_Player(player_shockwave_bullet_node_self):
 	Apply_Shockwave_Knockback(self_position, player_shockwave_bullet_node)
 
 func _on_Area2D_body_entered(body):
-	if "Spikes" in body.name:
+	if "Spikes" in body.name and $Death_Animation_Timer.time_left == 0:
 		$Death_Animation_Timer.start(0.5)
 		get_node("/root/MainMenuRootNode/OWIE_Player").play()
-		self.hide()
 		var death_particles = death_particles_file_path.instance()
-		death_particles.position = self.position
+		death_particles.position = position
+		position = respawn_position
 		get_parent().add_child(death_particles)
 		
 
 func _on_Death_Animation_Timer_timeout():
 	self.show()
-	position = last_grounded_pos
 	$Death_Animation_Timer.stop()
