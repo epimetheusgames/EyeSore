@@ -214,11 +214,12 @@ animations = [ {
 
 [sub_resource type="CapsuleShape2D" id=93]
 radius = 9.0
-height = 14.0
+height = 2.0
 
 [node name="Player_Body" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 3 )
+ground_reset_countdown = 1
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( 0, -7.9 )

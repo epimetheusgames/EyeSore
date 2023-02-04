@@ -15,40 +15,40 @@ points = PoolVector2Array( 12.0979, 16, 0, 16, 0, 12.8799, 12.0979, 12.8799 )
 points = PoolVector2Array( 11.7998, 15.796, 4.73394, 15.796, 4.73394, 12.9921, 11.7998, 12.9921 )
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
-points = PoolVector2Array( 3.05158, 16, 0.135513, 16, 0, 5.06738, 2.93943, 5.06738 )
+points = PoolVector2Array( 3.05158, 16, 0.135513, 16, 0, 7.10863, 3.11888, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=6]
 points = PoolVector2Array( 0, 0, 3.05158, 0, 3.05158, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=7]
-points = PoolVector2Array( 0, 0, 2.93943, 0, 2.93943, 11.9857, 0, 11.9857 )
+points = PoolVector2Array( 0, 0, 2.93943, 0, 2.98428, 0, 0, 8.21725 )
 
 [sub_resource type="ConvexPolygonShape2D" id=8]
-points = PoolVector2Array( 3.10767, 11.9804, 0, 11.887, 0.0233536, 4.95825, 3.05158, 4.95825 )
+points = PoolVector2Array( 2.98428, 8.63699, 0, 9.98286, 0, 6.48358, 2.8497, 8.09863 )
 
 [sub_resource type="ConvexPolygonShape2D" id=9]
-points = PoolVector2Array( 16, 3.04856, 4.05797, 3.16072, 3.94581, 0, 16, 0 )
+points = PoolVector2Array( 16, 0, 16, 2.66723, 8.72368, 0, 16, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=10]
 points = PoolVector2Array( 15.985, 2.82425, 0, 2.93641, 0.0587234, 0, 16, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=11]
-points = PoolVector2Array( 11.9857, 2.59993, 0, 2.82425, 0, 0, 11.9857, 0 )
+points = PoolVector2Array( 9.83231, 0, 0, 2.82425, 0, 0, 9.9669, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=12]
 points = PoolVector2Array( 11.9473, 2.9748, 3.87205, 2.9748, 3.87205, 0.170883, 11.9473, 0.170883 )
 
 [sub_resource type="ConvexPolygonShape2D" id=13]
-points = PoolVector2Array( 12.5435, 4.05797, 15.9082, 4.05797, 15.796, 16, 12.7678, 16 )
+points = PoolVector2Array( 12.7454, 16, 16, 6.83946, 15.796, 16, 12.7678, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=14]
 points = PoolVector2Array( 16, 16, 12.6556, 15.985, 12.6556, 0, 16, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=15]
-points = PoolVector2Array( 16, 11.8736, 12.6556, 11.8736, 12.6556, 0, 16, 0 )
+points = PoolVector2Array( 16, 8.48643, 12.3416, 0, 12.6556, 0, 16, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=16]
-points = PoolVector2Array( 12.9921, 3.83669, 16, 3.94884, 15.796, 11.912, 12.9921, 11.912 )
+points = PoolVector2Array( 13.9567, 7.42569, 16, 7.02193, 16, 10.252, 13.5529, 8.36781 )
 
 [resource]
 0/name = "OGPC_Project_Spikes_Tileset-export.png 0"

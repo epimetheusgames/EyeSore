@@ -152,7 +152,8 @@ func _physics_process(delta):
 	else:
 		$AnimatedSprite.stop()
 	
-	if is_on_floor() and ground_reset_countdown <= 0:
+	if is_on_floor() and ground_reset_countdown <= 0 and not $Death_Animation_Timer.time_left > 0:
+		ground_reset_countdown = max_ground_reset_time
 		last_grounded_pos = self.position
 	elif is_on_floor():
 		# Count down ground reset countdown
@@ -248,14 +249,15 @@ func Shockwave_Hit_Player(player_shockwave_bullet_node_self):
 
 func _on_Area2D_body_entered(body):
 	if "Spikes" in body.name and $Death_Animation_Timer.time_left == 0:
-		$Death_Animation_Timer.start(0.5)
+		$Death_Animation_Timer.start(1)
 		get_node("/root/MainMenuRootNode/OWIE_Player").play()
 		var death_particles = death_particles_file_path.instance()
+		self.hide()
 		death_particles.position = position
-		position = respawn_position
 		get_parent().add_child(death_particles)
 		
 
 func _on_Death_Animation_Timer_timeout():
 	self.show()
+	position = last_grounded_pos
 	$Death_Animation_Timer.stop()
