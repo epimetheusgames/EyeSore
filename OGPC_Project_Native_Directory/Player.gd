@@ -9,6 +9,8 @@ var player_health = clamp(36, 4, 36)
 
 var death_particles
 
+var camera_pos
+
 var knockback_direction = 0
 export var shockwave_knockback_strength = Vector2(480, 475)
 var knockback_force = 0
@@ -80,7 +82,7 @@ func _physics_process(delta):
 		player_direction = "left"
 	
 	#if no input is currently being registered, apply friction to slow down the player, and if an input is currently being registered, apply the acceleration for the input
-	if input.x == 0:
+	if input.x == 0 or $Death_Animation_Timer.time_left > 0:
 		Apply_Friction()
 	else:
 		Apply_Acceleration(input.x)
@@ -90,10 +92,12 @@ func _physics_process(delta):
 		ground_buffer = 10
 	
 	# if the player is pressing jump and the player is on the ground, jump, and if the player releases the jump button before the apex of the jump, start decelerating the player's y speed by the low_jump_deceleration_speed variable
-	if Input.is_action_just_pressed("movement_jump") and ground_buffer > 0:
-		velocity.y -= jump_force
-	elif Input.is_action_just_released("movement_jump") and velocity.y < low_jump_deceleration_speed / 5:
-		velocity.y /= low_jump_deceleration_speed
+	
+	if $Death_Animation_Timer.time_left >= 0:
+		if Input.is_action_just_pressed("movement_jump") and ground_buffer > 0:
+			velocity.y -= jump_force
+		elif Input.is_action_just_released("movement_jump") and velocity.y < low_jump_deceleration_speed / 5:
+			velocity.y /= low_jump_deceleration_speed
 	
 	# if the player is pressing the down button, set the bool fastfall to true, and if not, set it to false
 	if Input.is_action_pressed("movement_down"):
@@ -110,13 +114,15 @@ func _physics_process(delta):
 	elif velocity.x < 0:
 		current_speed = velocity.x * -1
 	
-	# if the bool fastfall is true, if the player's y velocity is less than the max fall speed * 1.5 apply gravity, this is because if the player is fastfalling we need to increase the max fall speed to allow that. if the player is not fastfalling, we do the same thing but with just the normal max fall speed
-	if fastfall == true:
-		if velocity.y < max_fall_speed * 1.5:
-			Apply_Gravity()
-	else:
-		if velocity.y < max_fall_speed:
-			Apply_Gravity()
+	# don't apply gravity if the player is dead, that way the camera stays in place
+	if $Death_Animation_Timer.time_left <= 0:
+		# if the bool fastfall is true, if the player's y velocity is less than the max fall speed * 1.5 apply gravity, this is because if the player is fastfalling we need to increase the max fall speed to allow that. if the player is not fastfalling, we do the same thing but with just the normal max fall speed
+		if fastfall == true:
+			if velocity.y < max_fall_speed * 1.5:
+				Apply_Gravity()
+		else:
+			if velocity.y < max_fall_speed:
+				Apply_Gravity()
 	
 	# if the player is below a certain y level, aka below the map, reset the scene (this is a way to kill the player, there are better ways but they take more time)
 	if position.y > 10000:
@@ -248,14 +254,17 @@ func Shockwave_Hit_Player(player_shockwave_bullet_node_self):
 	Apply_Shockwave_Knockback(self_position, player_shockwave_bullet_node)
 
 func _on_Area2D_body_entered(body):
+	# check if body is spikes and the player is not already dead
 	if "Spikes" in body.name and $Death_Animation_Timer.time_left == 0:
+		# start the timer for respawn to allow the death animation to play
 		$Death_Animation_Timer.start(1)
+		# play the death sfx and hide the player to replace it with the death particles
 		get_node("/root/MainMenuRootNode/OWIE_Player").play()
-		var death_particles = death_particles_file_path.instance()
 		self.hide()
+		# spawn the player's death particles (just four quadrants of the player that split away from each other when spawned)
+		var death_particles = death_particles_file_path.instance()
 		death_particles.position = position
 		get_parent().add_child(death_particles)
-		
 
 func _on_Death_Animation_Timer_timeout():
 	self.show()
