@@ -5,7 +5,8 @@ var animating = false
 
 
 func play_anim():
+	visible = true
 	$Death_Vignette_Player.play("Death_Vignette")
 
 func stop_anim():
-	$Death_Vignette_Player.play("Not_Dead")
+	visible = false
