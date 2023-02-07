@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Alt_Distant_Roar.wav-3607bcd622ffa2d77275353ea2c54d59.sample"
+
+[deps]
+
+source_file="res://SFX/Alt_Distant_Roar.wav"
+dest_files=[ "res://.import/Alt_Distant_Roar.wav-3607bcd622ffa2d77275353ea2c54d59.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
