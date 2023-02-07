@@ -272,13 +272,14 @@ func _on_Area2D_body_entered(body):
 		$Death_Animation_Timer.start(1)
 		# play the death sfx and hide the player to replace it with the death particles
 		get_node("/root/MainMenuRootNode/Player_Hurt_Player").play()
-		self.hide()
 		# spawn the player's death particles (just four quadrants of the player that split away from each other when spawned)
 		var death_particles = death_particles_file_path.instance()
+		$Death_Anim_Transition.play_anim()
 		death_particles.position = position
 		get_parent().add_child(death_particles)
 
 func _on_Death_Animation_Timer_timeout():
 	self.show()
 	position = last_grounded_pos
+	$Death_Anim_Transition.stop_anim()
 	$Death_Animation_Timer.stop()
