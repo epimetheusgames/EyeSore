@@ -28,9 +28,6 @@ tile_data = PoolIntArray( -786387, 3, 196608, -655316, 3, 0, -589780, 3, 65536, 
 
 [node name="Player_Body" parent="Save_Functionality" instance=ExtResource( 3 )]
 
-[node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="0"]
-visible = false
-
 [node name="Checkpoint" parent="Save_Functionality" instance=ExtResource( 6 )]
 position = Vector2( -1, 0 )
 

@@ -6,10 +6,10 @@ var has_played_Death_Vignette = false
 
 
 func _physics_process(delta):
-	if Death_Anim_Timer.time_left >= 0:
+	if Death_Anim_Timer.time_left <= 0:
 		has_played_Death_Vignette = false
 	if Death_Anim_Timer.time_left > 0 and Death_Anim_Timer.time_left < 0.9 and has_played_Death_Vignette == false:
 		$Death_Vignette_Player.play("Death_Vignette")
-		has_played_Death_Vignette = false
+		has_played_Death_Vignette = true
 	elif $Death_Vignette_Player.is_playing() == false:
 		$Death_Vignette_Player.stop(true)
