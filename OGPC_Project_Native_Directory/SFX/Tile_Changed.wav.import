@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Tile_Changed.wav-6be3f8548aebea06baab689e706e7da0.sample"
+
+[deps]
+
+source_file="res://SFX/Tile_Changed.wav"
+dest_files=[ "res://.import/Tile_Changed.wav-6be3f8548aebea06baab689e706e7da0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

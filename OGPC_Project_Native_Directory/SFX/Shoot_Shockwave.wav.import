@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Shoot_Shockwave.wav-dc83f45ce1e1cc52d4620cfcf854368d.sample"
+
+[deps]
+
+source_file="res://SFX/Shoot_Shockwave.wav"
+dest_files=[ "res://.import/Shoot_Shockwave.wav-dc83f45ce1e1cc52d4620cfcf854368d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
