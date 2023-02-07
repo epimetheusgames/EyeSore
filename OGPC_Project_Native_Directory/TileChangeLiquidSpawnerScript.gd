@@ -5,7 +5,7 @@ extends Area2D
 # confused like I do everyday.
 
 # Ammount of particles that it spawns
-export var amm_particles = 50
+export var amm_particles = 10
 # How many particles spawn every frame (60 frames per second)
 export var particle_spawn_per_frame = 1
 # The radius of the particle (For big water if that's needed.)

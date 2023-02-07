@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Death_Anim_Transition_Darkness.gd" type="Script" id=1]
 [ext_resource path="res://ProgressBar.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Player_Death_Anim_Transition_Sprite.png" type="Texture" id=4]
 [ext_resource path="res://OGPC_Game_Project_Gun_Position_Indicator.png" type="Texture" id=5]
 [ext_resource path="res://Pixilart Sprite Sheet.png" type="Texture" id=6]
+[ext_resource path="res://Player_Walking_Particles_Left.tres" type="Material" id=7]
 [ext_resource path="res://OGPC_Project_Player_Health_Bar_Improved_Empty.png" type="Texture" id=8]
 [ext_resource path="res://OGPC_Project_Player_Health_Bar_Improved_Full.png" type="Texture" id=9]
 [ext_resource path="res://OGPC_2022_Player_2_Jumping_Spritesheet.png" type="Texture" id=11]
@@ -326,6 +327,11 @@ texture = ExtResource( 4 )
 [node name="Death_Vignette_Player" type="AnimationPlayer" parent="Death_Anim_Transition"]
 anims/Death_Vignette = SubResource( 106 )
 anims/RESET = SubResource( 107 )
+
+[node name="Walking_Particles_Left" type="Particles2D" parent="."]
+emitting = false
+lifetime = 1.5
+process_material = ExtResource( 7 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="Death_Animation_Timer" to="." method="_on_Death_Animation_Timer_timeout"]

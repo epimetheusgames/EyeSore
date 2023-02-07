@@ -19,6 +19,9 @@ func _physics_process(_delta):
 	var bullet_collision_info = move_and_collide(velocity)
 	
 	if bullet_collision_info != null:
+		# play the SFX for the shockwave explosion
+		get_node("/root/MainMenuRootNode/Shockwave_Explosion_SFX_Player").play()
+		# spawn the shockwave
 		Spawn_Shockwave()
 		self_position = Vector2(self.position.x, self.position.y)
 		self.queue_free()

@@ -11,6 +11,8 @@ var death_particles
 
 var camera_pos
 
+var land_sfx_cooldown = false
+
 var knockback_direction = 0
 export var shockwave_knockback_strength = Vector2(480, 475)
 var knockback_force = 0
@@ -95,6 +97,9 @@ func _physics_process(delta):
 	
 	if $Death_Animation_Timer.time_left >= 0:
 		if Input.is_action_just_pressed("movement_jump") and ground_buffer > 0:
+			# play jump SFX
+			get_node("/root/MainMenuRootNode/Jump_SFX_Player").play()
+			# apply upwards velocity to jump
 			velocity.y -= jump_force
 		elif Input.is_action_just_released("movement_jump") and velocity.y < low_jump_deceleration_speed / 5:
 			velocity.y /= low_jump_deceleration_speed
@@ -132,7 +137,7 @@ func _physics_process(delta):
 		player_health -= 3
 		
 	if Input.is_action_just_pressed("self_destruct"):
-		get_node("/root/MainMenuRootNode/OWIE_Player").play()
+		get_node("/root/MainMenuRootNode/Player_Hurt_Player").play()
 		
 		position = respawn_position
 	
@@ -162,9 +167,15 @@ func _physics_process(delta):
 		ground_reset_countdown = max_ground_reset_time
 		last_grounded_pos = self.position
 	elif is_on_floor():
+		# this piece of somewhat random code is meant to be run once every time the player touches the ground, and it plays the SFX for landing on the ground
+		if land_sfx_cooldown == false:
+			get_node("/root/MainMenuRootNode/Land_SFX_Player").play()
+			land_sfx_cooldown = true
 		# Count down ground reset countdown
 		ground_reset_countdown -= 1
-		
+	elif not is_on_floor():
+		land_sfx_cooldown = false
+	
 	# Just so it doesn't reset right if they touch the ground somewhere dangerous
 	# if the countdown has been at a low number because it didn't reset after they
 	# jumped off the previous platform.
@@ -214,6 +225,7 @@ func Apply_Acceleration(x_input):
 	else:
 		velocity.x = move_toward(velocity.x, x_input * max_speed, turnaround_speed)
 
+
 #move the player's x velocity towards 0 by the friction_strength variable every time it is called
 func Apply_Friction():
 	velocity.x = move_toward(velocity.x, 0, friction_strength)
@@ -233,7 +245,7 @@ func Shoot_Bullet(bullet_type):
 	elif bullet_type == 1:
 		var player_shockwave_bullet = shockwave_bullet_file_path.instance()
 		
-		get_node("/root/MainMenuRootNode/Shooting_SFX_Player").play()
+		get_node("/root/MainMenuRootNode/Shockwave_Shooting_SFX_Player").play()
 		
 		get_parent().add_child(player_shockwave_bullet)
 		
@@ -259,7 +271,7 @@ func _on_Area2D_body_entered(body):
 		# start the timer for respawn to allow the death animation to play
 		$Death_Animation_Timer.start(1)
 		# play the death sfx and hide the player to replace it with the death particles
-		get_node("/root/MainMenuRootNode/OWIE_Player").play()
+		get_node("/root/MainMenuRootNode/Player_Hurt_Player").play()
 		self.hide()
 		# spawn the player's death particles (just four quadrants of the player that split away from each other when spawned)
 		var death_particles = death_particles_file_path.instance()
