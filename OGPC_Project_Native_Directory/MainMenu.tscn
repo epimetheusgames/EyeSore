@@ -70,7 +70,6 @@ bus = "SFX"
 
 [node name="Shockwave_Explosion_SFX_Player" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
-volume_db = -2.0
 bus = "SFX"
 
 [node name="Shockwave_Boost_SFX_Player" type="AudioStreamPlayer" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Death_Anim_Transition_Darkness.gd" type="Script" id=1]
 [ext_resource path="res://ProgressBar.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://Player_Death_Anim_Transition_Sprite.png" type="Texture" id=4]
 [ext_resource path="res://OGPC_Game_Project_Gun_Position_Indicator.png" type="Texture" id=5]
 [ext_resource path="res://Pixilart Sprite Sheet.png" type="Texture" id=6]
-[ext_resource path="res://OGPC_Player_Bullet_Shockwave_Shader_Outline.png" type="Texture" id=7]
 [ext_resource path="res://OGPC_Project_Player_Health_Bar_Improved_Empty.png" type="Texture" id=8]
 [ext_resource path="res://OGPC_Project_Player_Health_Bar_Improved_Full.png" type="Texture" id=9]
 [ext_resource path="res://OGPC_2022_Player_2_Jumping_Spritesheet.png" type="Texture" id=11]
@@ -221,7 +220,7 @@ height = 2.0
 
 [sub_resource type="Animation" id=106]
 resource_name = "Death_Vignette"
-length = 0.5
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:scale")
 tracks/0/interp = 1
@@ -229,10 +228,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 100, 100 ), Vector2( 0.7, 0.7 ) ]
+"values": [ Vector2( 30, 30 ), Vector2( 0.7, 0.7 ) ]
 }
 
 [sub_resource type="Animation" id=108]
@@ -264,37 +263,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [ ExtResource( 4 ) ]
 }
-
-[sub_resource type="Gradient" id=109]
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
-
-[sub_resource type="GradientTexture" id=110]
-gradient = SubResource( 109 )
-
-[sub_resource type="Curve" id=113]
-max_value = 2.0
-_data = [ Vector2( 0, 0.861364 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.479545 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=114]
-curve = SubResource( 113 )
-
-[sub_resource type="ParticlesMaterial" id=115]
-lifetime_randomness = 0.24
-emission_shape = 1
-emission_sphere_radius = 5.57
-flag_disable_z = true
-direction = Vector3( 0, 0, 0 )
-spread = 30.71
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 23.81
-initial_velocity_random = 0.45
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale = 0.3
-scale_curve = SubResource( 114 )
-color_ramp = SubResource( 110 )
-hue_variation = 1.0
-hue_variation_random = 0.02
 
 [node name="Player_Body" type="KinematicBody2D"]
 collision_layer = 2
@@ -362,18 +330,6 @@ position = Vector2( 0, -8 )
 scale = Vector2( 3, 3 )
 z_index = 5
 texture = ExtResource( 4 )
-
-[node name="Shockwave_Boost_Particles" type="Particles2D" parent="."]
-position = Vector2( 0, -3 )
-z_index = -1
-emitting = false
-amount = 110
-lifetime = 0.5
-one_shot = true
-explosiveness = 0.32
-local_coords = false
-process_material = SubResource( 115 )
-texture = ExtResource( 7 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="Death_Animation_Timer" to="." method="_on_Death_Animation_Timer_timeout"]
