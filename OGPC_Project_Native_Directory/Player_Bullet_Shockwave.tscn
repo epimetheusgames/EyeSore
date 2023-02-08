@@ -38,8 +38,9 @@ environment = SubResource( 2 )
 
 [node name="Explosion_Particles" type="Particles2D" parent="."]
 material = SubResource( 3 )
+z_index = 5
 emitting = false
-amount = 80
+amount = 100
 lifetime = 0.8
 one_shot = true
 speed_scale = 2.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://TestMenuBg.mp3" type="AudioStream" id=1]
 [ext_resource path="res://MainMenuHandler.gd" type="Script" id=2]
@@ -8,9 +8,11 @@
 [ext_resource path="res://Shooting_SFX_Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://SFX/Land.wav" type="AudioStream" id=7]
 [ext_resource path="res://SFX/Enemy_Damaged.wav" type="AudioStream" id=8]
+[ext_resource path="res://SFX/Jump.wav" type="AudioStream" id=9]
 [ext_resource path="res://SFX/Shoot_Normal.wav" type="AudioStream" id=10]
 [ext_resource path="res://SFX/Shoot_Shockwave.wav" type="AudioStream" id=11]
 [ext_resource path="res://SFX/Hurt.wav" type="AudioStream" id=13]
+[ext_resource path="res://SFX/Shockwave_Knockback.wav" type="AudioStream" id=14]
 [ext_resource path="res://SFX/Shockwave_Explode.wav" type="AudioStream" id=15]
 [ext_resource path="res://SFX/Tile_Changed.wav" type="AudioStream" id=16]
 
@@ -46,9 +48,12 @@ bus = "SFX"
 
 [node name="Land_SFX_Player" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+volume_db = 5.0
 bus = "SFX"
 
 [node name="Jump_SFX_Player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = 1.03
 bus = "SFX"
 
 [node name="Player_Hurt_Player" type="AudioStreamPlayer" parent="."]
@@ -68,7 +73,8 @@ stream = ExtResource( 15 )
 bus = "SFX"
 
 [node name="Shockwave_Boost_SFX_Player" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 15 )
+stream = ExtResource( 14 )
+volume_db = 5.0
 bus = "SFX"
 
 [node name="Tile_Converted_SFX_Player" type="AudioStreamPlayer" parent="."]
