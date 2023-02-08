@@ -32,6 +32,9 @@ tile_data = PoolIntArray( 65551, 3, 0, 65553, 1, 0, 131087, 3, 65536, 131089, 1,
 [node name="Player_Body" parent="Save_Functionality" instance=ExtResource( 3 )]
 position = Vector2( -5, 4 )
 
+[node name="Camera2D" parent="Save_Functionality/Player_Body" index="2"]
+current = false
+
 [node name="Death_Vignette_Player" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="0"]
 anims/Not_Dead = SubResource( 108 )
 
