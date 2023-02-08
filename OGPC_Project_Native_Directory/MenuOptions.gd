@@ -13,6 +13,9 @@ func _process(delta):
 			
 	if prev_selected != selected:
 		get_parent().Play_Click_SFX()
+	
+	if $OptionsButton.texture_hover:
+		print('hi')
 			
 	if selected == 1:
 		#$Label.text = "- Play -"
