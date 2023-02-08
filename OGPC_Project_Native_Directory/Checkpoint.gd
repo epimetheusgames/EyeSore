@@ -13,6 +13,7 @@ func _on_Area2D_body_entered(body):
 func save_checkpoint():
 	# Actually write to the file using Save Functionality node.
 	get_parent().save_checkpoint(position)
+	get_parent().data = get_parent().get_current_level_data(get_parent().data["level"])
 	get_parent().save_game()
 	
 	# Using the animation as a boolian I know so great right?

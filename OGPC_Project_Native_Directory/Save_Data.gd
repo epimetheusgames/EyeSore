@@ -216,11 +216,3 @@ func delete_old_keys(keybinds):
 
 func delete_specific_keybind(action):
 	InputMap.action_erase_events(action)
-
-func _process(delta):
-	game_save_time -= 1
-	if game_save_time <= 0 and get_parent().name.begins_with("Level"):
-		print('hi')
-		game_save_time = game_save_max
-		data = get_current_level_data(data["level"])
-		save_game()
