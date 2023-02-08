@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Levels/Level_Script.gd" type="Script" id=1]
 [ext_resource path="res://Save_Data.gd" type="Script" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://Spikes_TileSet.tres" type="TileSet" id=4]
 [ext_resource path="res://GroundTileMap.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Checkpoint.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Animation" id=108]
+resource_name = "Not_Dead"
 
 [node name="Level_Manager" type="Node2D"]
 pause_mode = 1
@@ -28,6 +31,9 @@ tile_data = PoolIntArray( 65551, 3, 0, 65553, 1, 0, 131087, 3, 65536, 131089, 1,
 
 [node name="Player_Body" parent="Save_Functionality" instance=ExtResource( 3 )]
 position = Vector2( -5, 4 )
+
+[node name="Death_Vignette_Player" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="0"]
+anims/Not_Dead = SubResource( 108 )
 
 [node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="1"]
 visible = false
