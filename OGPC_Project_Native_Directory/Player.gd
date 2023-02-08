@@ -287,4 +287,5 @@ func _on_Area2D_body_entered(body):
 func _on_Death_Animation_Timer_timeout():
 	$AnimatedSprite.show()
 	position = last_grounded_pos
+	$Death_Animation_Timer.stop()
 	$Death_Anim_Transition.stop_anim()
