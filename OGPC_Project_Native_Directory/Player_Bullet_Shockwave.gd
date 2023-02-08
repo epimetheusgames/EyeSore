@@ -1,7 +1,7 @@
 extends Area2D
 
 var grow = 0.001
-var grow_amount = 0.9
+var grow_amount = 1.1
 var speedup_timer = 18
 var player_use_timer = 20
 var despawn_timer = 40
@@ -23,7 +23,7 @@ func _physics_process(delta):
 		self.scale += Vector2(6, 6)
 		$Sprite.modulate = Color(1, 1, 1, 1)
 	
-	if player_use_timer <= 0:
+	if player_use_timer <= 0 or player_hit == true:
 		used = true
 	else:
 		used = false
@@ -35,7 +35,7 @@ func _physics_process(delta):
 		player_use_timer -= 1
 	elif used == true:
 		player_hit = true
-		grow_amount = 4.9
+		grow_amount = 4.8
 		self.scale = Vector2(grow, grow)
 		grow += grow_amount
 	

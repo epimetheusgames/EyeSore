@@ -3,7 +3,7 @@
 [resource]
 background_mode = 4
 glow_enabled = true
-glow_intensity = 1.4
+glow_intensity = 0.63
 glow_bloom = 0.01
 glow_blend_mode = 0
 glow_bicubic_upscale = true

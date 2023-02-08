@@ -14,7 +14,7 @@ var camera_pos
 var land_sfx_cooldown = false
 
 var knockback_direction = 0
-export var shockwave_knockback_strength = Vector2(480, 380)
+export var shockwave_knockback_strength = Vector2(480, 410)
 var knockback_force = 0
 
 # the Vector2 for the player's velocity
@@ -99,7 +99,7 @@ func _physics_process(delta):
 	
 	# if the player is pressing jump and the player is on the ground, jump, and if the player releases the jump button before the apex of the jump, start decelerating the player's y speed by the low_jump_deceleration_speed variable
 	
-	if $Death_Animation_Timer.time_left >= 0:
+	if $Death_Animation_Timer.time_left == 0:
 		if Input.is_action_just_pressed("movement_jump") and ground_buffer > 0:
 			# play jump SFX
 			get_node("/root/MainMenuRootNode/Jump_SFX_Player").play()
@@ -124,7 +124,7 @@ func _physics_process(delta):
 		current_speed = velocity.x * -1
 	
 	# don't apply gravity if the player is dead, that way the camera stays in place
-	if $Death_Animation_Timer.time_left <= 0:
+	if $Death_Animation_Timer.time_left == 0:
 		# if the bool fastfall is true, if the player's y velocity is less than the max fall speed * 1.5 apply gravity, this is because if the player is fastfalling we need to increase the max fall speed to allow that. if the player is not fastfalling, we do the same thing but with just the normal max fall speed
 		if fastfall == true:
 			if velocity.y < max_fall_speed * 1.5:
@@ -272,7 +272,7 @@ func Shockwave_Hit_Player(player_shockwave_bullet_node_self):
 
 func _on_Area2D_body_entered(body):
 	# check if body is spikes and the player is not already dead
-	if "Spikes" in body.name and $Death_Animation_Timer.time_left == 0:
+	if "Spikes" in body.name and $Death_Animation_Timer.time_left <= 0:
 		# start the timer for respawn to allow the death animation to play
 		$Death_Animation_Timer.start(1)
 		# play the death sfx and hide the player to replace it with the death particles

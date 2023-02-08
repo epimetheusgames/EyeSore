@@ -37,6 +37,7 @@ lifetime = 0.8
 one_shot = true
 speed_scale = 2.0
 explosiveness = 0.94
+local_coords = false
 process_material = ExtResource( 3 )
 texture = ExtResource( 4 )
 
