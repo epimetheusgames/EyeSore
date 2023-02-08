@@ -14,7 +14,7 @@ var camera_pos
 var land_sfx_cooldown = false
 
 var knockback_direction = 0
-export var shockwave_knockback_strength = Vector2(480, 475)
+export var shockwave_knockback_strength = Vector2(480, 380)
 var knockback_force = 0
 
 # the Vector2 for the player's velocity
@@ -72,6 +72,10 @@ export var fast_turnaround_threshold = 180
 # the buffer for leaving the ground and still jumping
 export var ground_buffer = 6
 
+
+func _ready():
+	self.show()
+	$Death_Anim_Transition.stop_anim()
 
 # anything that needs to be in a consistent update cycle goes here
 func _physics_process(delta):
@@ -198,7 +202,7 @@ func _process(delta):
 		bullet_type = 1
 		Shoot_Bullet(bullet_type)
 		
-		shockwave_bullet_cooldown_timer = 30
+		shockwave_bullet_cooldown_timer = 45
 	
 	$Player_Gun_Base.look_at(get_global_mouse_position())
 	
@@ -263,6 +267,7 @@ func Apply_Shockwave_Knockback(self_position, player_shockwave_bullet_node):
 
 func Shockwave_Hit_Player(player_shockwave_bullet_node_self):
 	var player_shockwave_bullet_node = player_shockwave_bullet_node_self
+	$Shockwave_Boost_Particles.emitting = true
 	Apply_Shockwave_Knockback(self_position, player_shockwave_bullet_node)
 
 func _on_Area2D_body_entered(body):
@@ -275,11 +280,11 @@ func _on_Area2D_body_entered(body):
 		# spawn the player's death particles (just four quadrants of the player that split away from each other when spawned)
 		var death_particles = death_particles_file_path.instance()
 		$Death_Anim_Transition.play_anim()
-		death_particles.position = position
+		$AnimatedSprite.hide()
+		death_particles.position = self.position
 		get_parent().add_child(death_particles)
 
 func _on_Death_Animation_Timer_timeout():
-	self.show()
+	$AnimatedSprite.show()
 	position = last_grounded_pos
 	$Death_Anim_Transition.stop_anim()
-	$Death_Animation_Timer.stop()

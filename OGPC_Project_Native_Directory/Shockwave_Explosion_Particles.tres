@@ -4,33 +4,37 @@
 
 [sub_resource type="Curve" id=1]
 max_value = 100.0
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.993243, 46.3636 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 22.9545 ), 0.0, 0.0, 0, 0, Vector2( 0.993243, 7.5 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=2]
 curve = SubResource( 1 )
 
 [sub_resource type="Curve" id=3]
-max_value = 2.0
-_data = [ Vector2( 0.00675675, 0.640909 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0409091 ), 0.0, 0.0, 0, 0 ]
+max_value = 10.0
+_data = [ Vector2( 0, 2.76136 ), 0.0, 0.0, 0, 0, Vector2( 0.986486, 1.30682 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=4]
 curve = SubResource( 3 )
 
 [resource]
+lifetime_randomness = 0.02
 trail_divisor = 2
 emission_shape = 1
 emission_sphere_radius = 1.0
 flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 15.0
-angular_velocity = 50.0
+initial_velocity = 195.0
+initial_velocity_random = 0.42
+angular_velocity_random = 0.2
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-damping = 120.0
+damping = 600.0
 damping_random = 0.18
 damping_curve = SubResource( 2 )
+scale = 5.0
 scale_curve = SubResource( 4 )
 color_ramp = ExtResource( 1 )
-hue_variation = 0.01
+hue_variation = 0.02
 hue_variation_random = 0.2

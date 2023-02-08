@@ -4,19 +4,10 @@
 [ext_resource path="res://Player_Bullet_Shockwave.gd" type="Script" id=2]
 [ext_resource path="res://Shockwave_Explosion_Particles.tres" type="Material" id=3]
 [ext_resource path="res://OGPC_Shockwave_Explosion_Particle.png" type="Texture" id=4]
+[ext_resource path="res://Shockwave_Glow.tres" type="Environment" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
-
-[sub_resource type="Environment" id=2]
-background_mode = 4
-glow_enabled = true
-glow_intensity = 1.4
-glow_bloom = 0.01
-glow_blend_mode = 0
-glow_bicubic_upscale = true
-glow_high_quality = true
-adjustment_enabled = true
 
 [sub_resource type="CanvasItemMaterial" id=3]
 blend_mode = 1
@@ -30,22 +21,25 @@ script = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 5.78, 6.39, 12.72, 0.5 )
 self_modulate = Color( 1, 1, 1.74118, 0.945098 )
 texture = ExtResource( 1 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
+environment = ExtResource( 5 )
 
 [node name="Explosion_Particles" type="Particles2D" parent="."]
 material = SubResource( 3 )
-z_index = 5
+scale = Vector2( 0.1, 0.1 )
 emitting = false
-amount = 100
+amount = 60
 lifetime = 0.8
 one_shot = true
 speed_scale = 2.0
 explosiveness = 0.94
 process_material = ExtResource( 3 )
 texture = ExtResource( 4 )
+
+[node name="Pulse_Timer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_Player_Bullet_Shockwave_body_entered"]
