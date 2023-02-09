@@ -46,7 +46,7 @@ const default_keybind_data = {
 }
 
 const levels = [
-	"res://Levels/Level2.tscn"
+	"res://Levels/Level1.tscn"
 ]
 
 func save_audio(music, sfx):
