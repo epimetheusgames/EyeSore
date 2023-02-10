@@ -4,6 +4,7 @@ extends Node2D
 export var next_level = ""
 export var previous_level = ""
 export var current_level_number = -1
+export var is_wire_ui = false
 
 var health
 var player_position
@@ -13,6 +14,8 @@ var enemy2s
 var pixelated_bosses
 
 var loaded = false
+
+onready var wire_scene = preload("res://Wire.tscn")
 
 func convert2list(dict):
 	return Array(dict.values())
@@ -91,7 +94,12 @@ func set_player_spawnpoint_and_position_reality(health, player_position, spawnpo
 func _process(delta):
 	if Input.is_action_just_pressed("ui_pause"):
 		get_parent().Open_Pause_Menu()
-	
+		
+	if is_wire_ui and Input.is_action_just_pressed("mouse_click"):
+		var wire = wire_scene.instance()
+		wire.set_pos(get_viewport().get_mouse_position())
+		#get_node("Save_Functionality").add_child(wire) Let's do this later ... without screenspace/worldspace problems.
+		
 	if not loaded:
 		loaded = true 
 		set_player_spawnpoint_and_position_reality(health, player_position, spawnpoint, enemy1s, enemy2s, pixelated_bosses, get_tree())

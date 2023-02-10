@@ -29,3 +29,9 @@ func _on_Side2_button_down():
 
 func _on_Side2_button_up():
 	side2_pressed = false
+
+func set_pos(pos):
+	$Line2D.points[0] = pos 
+	$Line2D.points[1] = pos
+	$Side1.rect_position = pos - $Side1.rect_size / 2
+	$Side2.rect_position = pos - $Side2.rect_size / 2
