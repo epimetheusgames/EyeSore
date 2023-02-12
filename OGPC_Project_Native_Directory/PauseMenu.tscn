@@ -83,12 +83,6 @@ align = 1
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 4 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( -321, -191 )
-z_index = -6
-offset = Vector2( 320, 180 )
-current = true
-
 [node name="Load_Functionality" type="Node2D" parent="."]
 position = Vector2( -7, 0 )
 script = ExtResource( 1 )

@@ -95,7 +95,13 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_pause"):
 		get_parent().Open_Pause_Menu()
 		
-	if is_wire_ui and Input.is_action_just_pressed("mouse_click"):
+	var any_wires_selected = false 
+	
+	for wire in get_tree().get_nodes_in_group("wires"):
+		if wire.is_selected():
+			any_wires_selected = true 
+		
+	if is_wire_ui and Input.is_action_just_pressed("mouse_click") and not any_wires_selected:
 		var wire = wire_scene.instance()
 		wire.set_pos(get_local_mouse_position())
 		wire._on_Side1_button_down()
