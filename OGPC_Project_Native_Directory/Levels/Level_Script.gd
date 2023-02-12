@@ -97,8 +97,9 @@ func _process(delta):
 		
 	if is_wire_ui and Input.is_action_just_pressed("mouse_click"):
 		var wire = wire_scene.instance()
-		wire.set_pos(get_viewport().get_mouse_position())
-		#get_node("Save_Functionality").add_child(wire) Let's do this later ... without screenspace/worldspace problems.
+		wire.set_pos(get_local_mouse_position())
+		wire._on_Side1_button_down()
+		get_node("Save_Functionality").add_child(wire)
 		
 	if not loaded:
 		loaded = true 

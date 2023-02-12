@@ -9,14 +9,18 @@ func is_mouse_pressed():
 	return false 
 	
 func move_button_and_line_to_mouse(button, side_num):
-	$Line2D.points[side_num] = get_viewport().get_mouse_position()
-	button.rect_position = get_viewport().get_mouse_position() - button.rect_size / 2
+	$Line2D.points[side_num] = get_local_mouse_position()
+	button.rect_position = get_local_mouse_position() - button.rect_size / 2
 
 func _process(delta):
 	if side1_pressed:
 		move_button_and_line_to_mouse($Side1, 0)
 	elif side2_pressed:
 		move_button_and_line_to_mouse($Side2, 1)
+		
+	if not is_mouse_pressed():
+		side1_pressed = false
+		side2_pressed = false
 
 func _on_Side1_button_down():
 	side1_pressed = true
