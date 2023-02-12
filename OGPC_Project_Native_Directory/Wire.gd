@@ -17,6 +17,10 @@ func _process(delta):
 		move_button_and_line_to_mouse($Side1, 0)
 	elif side2_pressed:
 		move_button_and_line_to_mouse($Side2, 1)
+		
+	if not is_mouse_pressed():
+		side1_pressed = false
+		side2_pressed = false
 
 func _on_Side1_button_down():
 	side1_pressed = true
