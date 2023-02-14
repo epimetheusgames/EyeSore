@@ -15,6 +15,8 @@ margin_left = -24.0
 margin_top = -24.0
 margin_right = 24.0
 margin_bottom = 24.0
+focus_mode = 1
+enabled_focus_mode = 1
 
 [node name="Side2" type="TextureButton" parent="."]
 margin_left = -24.0
