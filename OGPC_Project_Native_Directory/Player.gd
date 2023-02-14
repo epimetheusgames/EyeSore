@@ -273,6 +273,8 @@ func Shockwave_Hit_Player(player_shockwave_bullet_node_self):
 func _on_Area2D_body_entered(body):
 	# check if body is spikes and the player is not already dead
 	if "Spikes" in body.name and $Death_Animation_Timer.time_left <= 0:
+		var coords = get_spike_coords(body)
+		manage_wires(coords, body, get_parent().get_node("TileMap"))
 		# start the timer for respawn to allow the death animation to play
 		$Death_Animation_Timer.start(1)
 		# play the death sfx and hide the player to replace it with the death particles
@@ -289,3 +291,27 @@ func _on_Death_Animation_Timer_timeout():
 	position = last_grounded_pos
 	$Death_Animation_Timer.stop()
 	$Death_Anim_Transition.stop_anim()
+	
+func get_spike_coords(spike_tileset):
+	var tile_coords = spike_tileset.world_to_map(position)
+	var offsets = [[0, -1], [0, 1], [1, 0], [-1, 0], [-1, -1], [1, 1], [0, 0]]
+	
+	for offset in offsets:
+		var offset_coords = [tile_coords.x + offset[0], tile_coords.y + offset[1]]
+		if is_tile_at(offset_coords, spike_tileset):
+			return Vector2(offset_coords[0], offset_coords[1])
+			
+	
+func is_tile_at(pos, tileset):
+	if tileset.get_cell(pos[0], pos[1]) != -1:
+		return true
+	return false 
+	
+func manage_wires(death_pos_on_tileset, tileset, grass_tileset):
+	var wires = get_tree().get_nodes_in_group("wires")
+	print(death_pos_on_tileset)
+	
+	for wire in wires:
+		if wire.get_tileset_coords(1, tileset) == death_pos_on_tileset:
+			wire.delete_tile_at(0, tileset, false)
+			wire.delete_tile_at(0, grass_tileset, true)
