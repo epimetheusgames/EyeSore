@@ -238,15 +238,15 @@ func Shoot_Bullet(bullet_type):
 	
 	$Player_Gun_Base.rotation_degrees = int(shoot_direction)
 	
-	if bullet_type == 0:
-		var player_normal_bullet = normal_bullet_file_path.instance()
-		
-		get_node("/root/MainMenuRootNode/Shooting_SFX_Player").play()
-		
-		get_parent().add_child(player_normal_bullet)
-		
-		player_normal_bullet.position = $Player_Gun_Base/Player_Bullet_Position.global_position
-	elif bullet_type == 1:
+	#if bullet_type == 0:
+	#	var player_normal_bullet = normal_bullet_file_path.instance()
+	#	
+	#	get_node("/root/MainMenuRootNode/Shooting_SFX_Player").play()
+	#	
+	#	get_parent().add_child(player_normal_bullet)
+	#	
+	#	player_normal_bullet.position = $Player_Gun_Base/Player_Bullet_Position.global_position
+	if bullet_type == 1:
 		var player_shockwave_bullet = shockwave_bullet_file_path.instance()
 		
 		get_node("/root/MainMenuRootNode/Shockwave_Shooting_SFX_Player").play()

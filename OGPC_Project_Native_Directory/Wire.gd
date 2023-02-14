@@ -3,6 +3,9 @@ extends Node2D
 var side1_pressed = false
 var side2_pressed = false
 
+func _ready():
+	add_to_group("wires")
+
 func is_mouse_pressed():
 	if Input.is_action_pressed("mouse_click"):
 		return true 
@@ -33,6 +36,11 @@ func _on_Side2_button_down():
 
 func _on_Side2_button_up():
 	side2_pressed = false
+	
+func is_selected():
+	if side1_pressed or side2_pressed:
+		return true 
+	return false
 
 func set_pos(pos):
 	$Line2D.points[0] = pos 
