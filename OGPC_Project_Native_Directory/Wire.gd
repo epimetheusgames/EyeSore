@@ -41,6 +41,19 @@ func is_selected():
 	if side1_pressed or side2_pressed:
 		return true 
 	return false
+	
+func get_tileset_coords(point_ind, tileset):
+	return tileset.world_to_map($Line2D.points[point_ind])
+	
+func delete_tile_at(point_ind, tileset, is_grass):
+	var pos = get_tileset_coords(point_ind, tileset)
+	
+	if tileset.get_cell(pos.x, pos.y) == -1 and is_grass:
+		tileset.set_cell(pos.x, pos.y, 0)
+	else:
+		tileset.set_cell(pos.x, pos.y, -1)
+		
+	tileset.update_bitmask_region()
 
 func set_pos(pos):
 	$Line2D.points[0] = pos 
