@@ -39,7 +39,7 @@ func _process(delta):
 		$Side1Icon.set_position($Line2D.points[0] - $Side1Icon.rect_size / 2)
 		$Side2Icon.set_position($Line2D.points[1] - $Side2Icon.rect_size / 2)
 		
-	if wire_ui:
+	if wire_ui and moveable:
 		$Side1Icon.visible = true 
 		$Side2Icon.visible = true
 	else:
@@ -89,13 +89,18 @@ func get_touching_checkpoint(point_ind):
 			
 	return false
 	
-func delete_tile_at(point_ind, tileset, is_grass):
+func delete_tile_at(point_ind, tileset, is_grass, spike_coords, spike_coord_types):
 	var pos = get_tileset_coords(point_ind, tileset)
 	
-	if tileset.get_cell(pos.x, pos.y) == -1 and is_grass:
+	if tileset.get_cell(pos.x, pos.y) == -1 and is_grass and not pos in get_parent().get_parent().deleted_spikes:
 		tileset.set_cell(pos.x, pos.y, 0)
+	elif tileset.get_cell(pos.x, pos.y) == -1 and not is_grass and pos in get_parent().get_parent().deleted_spikes:
+		var ind = spike_coords.find(pos, 0)
+		tileset.set_cell(pos.x, pos.y, spike_coord_types[ind])
 	else:
+		var type = tileset.get_cell(pos.x, pos.y)
 		tileset.set_cell(pos.x, pos.y, -1)
+		return [true, type, Vector2(pos.x, pos.y)]
 		
 	tileset.update_bitmask_region()
 

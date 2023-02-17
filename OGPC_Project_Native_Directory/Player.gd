@@ -327,12 +327,16 @@ func manage_wires(death_pos_on_tileset, tileset, grass_tileset):
 	var wires = get_tree().get_nodes_in_group("wires")
 	
 	for wire in wires:
-		print(wire.get_tileset_coords(1, tileset), death_pos_on_tileset)
 		if wire.get_tileset_coords(1, tileset) == death_pos_on_tileset:
 			var touching_checkpoint = wire.get_touching_checkpoint(0)
 			
 			if touching_checkpoint:
 				touching_checkpoint.save_checkpoint()
 			
-			wire.delete_tile_at(0, tileset, false)
-			wire.delete_tile_at(0, grass_tileset, true)
+			var spike_info = wire.delete_tile_at(0, tileset, false, get_parent().get_parent().deleted_spikes, get_parent().get_parent().deleted_spike_types)
+			
+			if spike_info:
+				get_parent().get_parent().deleted_spikes.append(spike_info[2])
+				get_parent().get_parent().deleted_spike_types.append(spike_info[1])
+			else:
+				wire.delete_tile_at(0, grass_tileset, true, get_parent().get_parent().deleted_spikes, get_parent().get_parent().deleted_spike_types)

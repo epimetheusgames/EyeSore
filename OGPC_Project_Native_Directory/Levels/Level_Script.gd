@@ -14,6 +14,8 @@ var enemy2s
 var pixelated_bosses
 
 var loaded = false
+var deleted_spikes = []
+var deleted_spike_types = []
 
 onready var wire_scene = preload("res://Wire.tscn")
 

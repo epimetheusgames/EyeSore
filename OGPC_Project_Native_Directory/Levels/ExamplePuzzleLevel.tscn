@@ -32,6 +32,7 @@ tile_set = ExtResource( 4 )
 tile_data = PoolIntArray( 131076, 0, 3, 131084, 0, 3, 262153, 2, 65537 )
 
 [node name="Player_Body" parent="Save_Functionality" instance=ExtResource( 1 )]
+visible = false
 position = Vector2( -128, 4 )
 
 [node name="Checkpoint" parent="Save_Functionality" instance=ExtResource( 5 )]
