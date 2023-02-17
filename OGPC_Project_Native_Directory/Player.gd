@@ -5,6 +5,8 @@ const normal_bullet_file_path = preload("res://Player_Bullet.tscn")
 const shockwave_bullet_file_path = preload("res://Player_Shockwave_Bullet.tscn")
 const death_particles_file_path = preload("res://Player_Death_Animation_Particles.tscn")
 
+var paused = false
+
 var player_health = clamp(36, 4, 36)
 
 var death_particles
@@ -79,6 +81,9 @@ func _ready():
 
 # anything that needs to be in a consistent update cycle goes here
 func _physics_process(delta):
+	if paused:
+		return
+	
 	# get a float between -1 and 1 of the amount that the player is trying to move in each direction, this is especially nice for controllers becauyse the joysticks can sense a value of how far they are being pushed instead of a keyboard which is just pressed or not pressed, so this allows controller players to move a smaller amount when they move their joystick less, negativenumbers are left, positive are right
 	input.x = Input.get_action_strength("movement_right") - Input.get_action_strength("movement_left")
 	
@@ -193,6 +198,9 @@ func _physics_process(delta):
 
 #anything that doesn't need to be in a consistent update cycle goes here
 func _process(delta):
+	if paused:
+		return
+	
 	self_position = self.position
 	
 	if Input.is_action_just_pressed("Shoot_Normal_Bullet"):
@@ -285,10 +293,13 @@ func _on_Area2D_body_entered(body):
 		$AnimatedSprite.hide()
 		death_particles.position = self.position
 		get_parent().add_child(death_particles)
+		
+func force_death():
+	position = respawn_position
 
 func _on_Death_Animation_Timer_timeout():
 	$AnimatedSprite.show()
-	position = last_grounded_pos
+	position = respawn_position
 	$Death_Animation_Timer.stop()
 	$Death_Anim_Transition.stop_anim()
 	
@@ -301,6 +312,11 @@ func get_spike_coords(spike_tileset):
 		if is_tile_at(offset_coords, spike_tileset):
 			return Vector2(offset_coords[0], offset_coords[1])
 			
+func pause():
+	paused = true 
+	
+func unpause():
+	paused = false
 	
 func is_tile_at(pos, tileset):
 	if tileset.get_cell(pos[0], pos[1]) != -1:
@@ -309,9 +325,14 @@ func is_tile_at(pos, tileset):
 	
 func manage_wires(death_pos_on_tileset, tileset, grass_tileset):
 	var wires = get_tree().get_nodes_in_group("wires")
-	print(death_pos_on_tileset)
 	
 	for wire in wires:
+		print(wire.get_tileset_coords(1, tileset), death_pos_on_tileset)
 		if wire.get_tileset_coords(1, tileset) == death_pos_on_tileset:
+			var touching_checkpoint = wire.get_touching_checkpoint(0)
+			
+			if touching_checkpoint:
+				touching_checkpoint.save_checkpoint()
+			
 			wire.delete_tile_at(0, tileset, false)
 			wire.delete_tile_at(0, grass_tileset, true)

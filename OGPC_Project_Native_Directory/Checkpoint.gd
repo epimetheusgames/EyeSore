@@ -1,5 +1,7 @@
 extends Node2D
 
+func _ready():
+	add_to_group("checkpoints")
 
 func _on_Area2D_area_entered(area):
 	# if the player touches the checkpoint, save.
@@ -23,3 +25,9 @@ func save_checkpoint():
 	
 	# Activate that boolian/animation more efficient I guess? Not really lol.
 	$AnimatedSprite.animation = "Activated"
+
+func is_point_inside(point):
+	var rect = Rect2(to_global($ReferenceRect.rect_position), $ReferenceRect.rect_size)
+	
+	print(rect.has_point(point))
+	return rect.has_point(point)
