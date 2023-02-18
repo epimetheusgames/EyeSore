@@ -92,16 +92,19 @@ func get_touching_checkpoint(point_ind):
 func delete_tile_at(point_ind, tileset, is_grass, spike_coords, spike_coord_types):
 	var pos = get_tileset_coords(point_ind, tileset)
 	
+	print(pos in get_parent().get_parent().deleted_spikes)
+	
 	if tileset.get_cell(pos.x, pos.y) == -1 and is_grass and not pos in get_parent().get_parent().deleted_spikes:
 		tileset.set_cell(pos.x, pos.y, 0)
 	elif tileset.get_cell(pos.x, pos.y) == -1 and not is_grass and pos in get_parent().get_parent().deleted_spikes:
 		var ind = spike_coords.find(pos, 0)
 		tileset.set_cell(pos.x, pos.y, spike_coord_types[ind])
-	else:
+	elif tileset.get_cell(pos.x, pos.y) != -1:
 		var type = tileset.get_cell(pos.x, pos.y)
 		tileset.set_cell(pos.x, pos.y, -1)
-		return [true, type, Vector2(pos.x, pos.y)]
-		
+		if not is_grass:
+			return [true, type, Vector2(pos.x, pos.y)]
+	
 	tileset.update_bitmask_region()
 
 func set_pos(pos):
