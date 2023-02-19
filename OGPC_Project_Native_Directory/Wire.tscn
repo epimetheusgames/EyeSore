@@ -23,6 +23,7 @@ margin_left = -24.0
 margin_top = -24.0
 margin_right = 24.0
 margin_bottom = 24.0
+focus_mode = 1
 
 [connection signal="button_down" from="Side1" to="." method="_on_Side1_button_down"]
 [connection signal="button_up" from="Side1" to="." method="_on_Side1_button_up"]
