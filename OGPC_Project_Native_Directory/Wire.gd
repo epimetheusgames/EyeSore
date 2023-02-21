@@ -8,8 +8,12 @@ export var moveable_color = Color(0, 0, 0, 0)
 export var unmoveable_color = Color(0, 0, 0, 0)
 
 var wire_ui = false
+var tileset = null
 
 func _ready():
+	if moveable:
+		side1_pressed = true
+	
 	add_to_group("wires")
 	
 	move_button_to_line($Side1, 0)
@@ -35,6 +39,9 @@ func move_button_to_line(button, side_num):
 	button.rect_position = $Line2D.points[side_num] - button.rect_size / 2
 
 func _process(delta):
+	$Line2D.points[0] = tileset.map_to_world(tileset.world_to_map($Line2D.points[0])) + tileset.cell_size / 2
+	$Line2D.points[1] = tileset.map_to_world(tileset.world_to_map($Line2D.points[1])) + tileset.cell_size / 2
+	
 	if moveable:
 		$Side1Icon.set_position($Line2D.points[0] - $Side1Icon.rect_size / 2)
 		$Side2Icon.set_position($Line2D.points[1] - $Side2Icon.rect_size / 2)
@@ -51,10 +58,6 @@ func _process(delta):
 		move_button_and_line_to_mouse($Side1, 0)
 	elif side2_pressed:
 		move_button_and_line_to_mouse($Side2, 1)
-		
-	if not is_mouse_pressed():
-		side1_pressed = false
-		side2_pressed = false
 
 func _on_Side1_button_down():
 	if moveable and wire_ui:
@@ -91,8 +94,6 @@ func get_touching_checkpoint(point_ind):
 	
 func delete_tile_at(point_ind, tileset, is_grass, spike_coords, spike_coord_types):
 	var pos = get_tileset_coords(point_ind, tileset)
-	
-	print(pos in get_parent().get_parent().deleted_spikes)
 	
 	if tileset.get_cell(pos.x, pos.y) == -1 and is_grass and not pos in get_parent().get_parent().deleted_spikes:
 		tileset.set_cell(pos.x, pos.y, 0)

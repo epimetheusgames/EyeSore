@@ -29,5 +29,4 @@ func save_checkpoint():
 func is_point_inside(point):
 	var rect = Rect2(to_global($ReferenceRect.rect_position), $ReferenceRect.rect_size)
 	
-	print(rect.has_point(point))
 	return rect.has_point(point)

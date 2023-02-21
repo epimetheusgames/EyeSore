@@ -100,10 +100,13 @@ func _process(delta):
 	var any_wires_selected = false 
 	
 	for wire in get_tree().get_nodes_in_group("wires"):
+		wire.tileset = $Save_Functionality/TileMap
 		if wire.is_selected():
 			any_wires_selected = true 
+
+	var mouse_on_map = $Save_Functionality/Connections_TileMap.world_to_map(get_local_mouse_position())
 		
-	if is_wire_ui and Input.is_action_just_pressed("mouse_click") and not any_wires_selected:
+	if is_wire_ui and Input.is_action_just_pressed("mouse_click") and not any_wires_selected and not $Save_Functionality/Connections_TileMap.get_cell(mouse_on_map.x, mouse_on_map.y) == -1:
 		var wire = wire_scene.instance()
 		wire.set_pos(get_local_mouse_position())
 		wire._on_Side1_button_down()
@@ -117,6 +120,7 @@ func _process(delta):
 	
 	if is_wire_ui:
 		wire_ui_box.visible = true
+		$Save_Functionality/Connections_TileMap.visible = true
 		player.force_death()
 		player.pause()
 		
@@ -125,6 +129,7 @@ func _process(delta):
 	else:
 		player.unpause()
 		wire_ui_box.visible = false
+		$Save_Functionality/Connections_TileMap.visible = false
 		
 		for wire in get_tree().get_nodes_in_group("wires"):
 			wire.wire_ui = false
