@@ -92,6 +92,13 @@ func set_player_spawnpoint_and_position_reality(health, player_position, spawnpo
 		item.point1.y = enemy2s_list[enemy2_node]["start_position_y"]
 		item.point2.x = enemy2s_list[enemy2_node]["end_position_x"]
 		item.point2.y = enemy2s_list[enemy2_node]["end_position_y"]
+
+func is_point_on_connections(point):
+	var mouse_on_map = $Save_Functionality/Connections_TileMap.world_to_map(point)
+	
+	if not $Save_Functionality/Connections_TileMap.get_cell(mouse_on_map.x, mouse_on_map.y) == -1:
+		return true
+	return false
 		
 func _process(delta):
 	if Input.is_action_just_pressed("ui_pause"):
@@ -104,9 +111,7 @@ func _process(delta):
 		if wire.is_selected():
 			any_wires_selected = true 
 
-	var mouse_on_map = $Save_Functionality/Connections_TileMap.world_to_map(get_local_mouse_position())
-		
-	if is_wire_ui and Input.is_action_just_pressed("mouse_click") and not any_wires_selected and not $Save_Functionality/Connections_TileMap.get_cell(mouse_on_map.x, mouse_on_map.y) == -1:
+	if is_wire_ui and Input.is_action_just_pressed("mouse_click") and not any_wires_selected and is_point_on_connections(get_local_mouse_position()):
 		var wire = wire_scene.instance()
 		wire.set_pos(get_local_mouse_position())
 		wire._on_Side1_button_down()
