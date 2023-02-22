@@ -53,10 +53,10 @@ func Open_Pause_Menu():
 	get_tree().paused = true
 	$Grass_Area_Music_Player.stop()
 	add_child(PauseMenu.instance())
-	$PauseMenu.position = get_node(level_name).get_node("Save_Functionality").get_node("Player_Body").position
+	$PauseMenu.position = get_node(level_name).get_node("Save_Functionality").get_node("Camera2D").position
 	
 func Close_Pause_Menu(closed_window):
-	closed_window.queue_free()
+	closed_window.queue_free() 
 	game_paused = false
 	$Grass_Area_Music_Player.play()
 	var camera = get_node("Level_Manager").get_node("Save_Functionality").get_node_or_null("Camera2D")

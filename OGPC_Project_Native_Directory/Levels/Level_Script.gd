@@ -14,6 +14,8 @@ var enemy2s
 var pixelated_bosses
 
 var loaded = false
+var deleted_spikes = []
+var deleted_spike_types = []
 
 onready var wire_scene = preload("res://Wire.tscn")
 
@@ -106,6 +108,26 @@ func _process(delta):
 		wire.set_pos(get_local_mouse_position())
 		wire._on_Side1_button_down()
 		get_node("Save_Functionality").add_child(wire)
+		
+	if Input.is_action_just_pressed("switch_wire_ui"):
+		is_wire_ui = not is_wire_ui
+	
+	var wire_ui_box = get_node("Save_Functionality").get_node("WireUIBox")
+	var player = get_node("Save_Functionality").get_node("Player_Body")
+	
+	if is_wire_ui:
+		wire_ui_box.visible = true
+		player.force_death()
+		player.pause()
+		
+		for wire in get_tree().get_nodes_in_group("wires"):
+			wire.wire_ui = true
+	else:
+		player.unpause()
+		wire_ui_box.visible = false
+		
+		for wire in get_tree().get_nodes_in_group("wires"):
+			wire.wire_ui = false
 		
 	if not loaded:
 		loaded = true 
