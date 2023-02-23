@@ -6,6 +6,7 @@ var side2_pressed = false
 export var moveable = true
 export var moveable_color = Color(0, 0, 0, 0)
 export var unmoveable_color = Color(0, 0, 0, 0)
+export var can_connect_with_immoveable = true
 
 var wire_ui = false
 var tileset = null
@@ -65,7 +66,7 @@ func _on_Side1_button_down():
 
 func _on_Side1_button_up():
 	if moveable and wire_ui:
-		if get_parent().get_parent().is_point_on_connections($Line2D.points[0]):
+		if get_parent().get_parent().is_point_on_connections($Line2D.points[0]) and not get_parent().get_parent().is_another_already_there(0, self):
 			side1_pressed = false
 		else:
 			queue_free()
@@ -76,7 +77,10 @@ func _on_Side2_button_down():
 
 func _on_Side2_button_up():
 	if moveable and wire_ui:
-		side2_pressed = false
+		if get_parent().get_parent().is_point_on_connections($Line2D.points[0]) and not get_parent().get_parent().is_another_already_there(1, self):
+			side2_pressed = false
+		else:
+			queue_free()
 	
 func is_selected():
 	if side1_pressed or side2_pressed:

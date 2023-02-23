@@ -295,7 +295,7 @@ func _on_Area2D_body_entered(body):
 		get_parent().add_child(death_particles)
 		
 func force_death():
-	position = respawn_position
+	position = Vector2.ZERO
 
 func _on_Death_Animation_Timer_timeout():
 	$AnimatedSprite.show()
