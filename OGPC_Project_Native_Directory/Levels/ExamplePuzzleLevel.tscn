@@ -65,6 +65,9 @@ tile_data = PoolIntArray( 262140, 0, 0, 262141, 0, 1, 262142, 0, 1, 262143, 0, 1
 [node name="Player_Body" parent="Save_Functionality" instance=ExtResource( 1 )]
 position = Vector2( -128, 4 )
 
+[node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="1"]
+visible = false
+
 [node name="Checkpoint" parent="Save_Functionality" instance=ExtResource( 5 )]
 position = Vector2( 152, 144 )
 
@@ -94,6 +97,7 @@ points = PoolVector2Array( 153, 143, 151, 66 )
 position = Vector2( 100, 80 )
 scale = Vector2( 2.34375, 1.40625 )
 
+[editable path="Save_Functionality/Player_Body"]
 [editable path="Save_Functionality/Wire"]
 [editable path="Save_Functionality/Wire2"]
 [editable path="Save_Functionality/WireUIBox"]
