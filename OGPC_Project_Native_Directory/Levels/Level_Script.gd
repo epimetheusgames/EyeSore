@@ -44,9 +44,8 @@ func set_player_spawnpoint_and_position(healthp, player_positionp, spawnpointp, 
 	# This function is responsible for setting all of that stuff that the player would
 	# Explode if they didn't have. I know right remove one line of code and you could 
 	# Reset your health just by clicking exit to menu. Lol that I didn't let that happen.
+	# I sound very stuckup don't I
 	health = healthp
-	player_position = player_positionp 
-	spawnpoint = spawnpointp
 	enemy1s = enemy1sp 
 	enemy2s = enemy2sp 
 	pixelated_bosses = pixelated_bossesp
@@ -54,8 +53,11 @@ func set_player_spawnpoint_and_position(healthp, player_positionp, spawnpointp, 
 func set_player_spawnpoint_and_position_reality(health, player_position, spawnpoint, enemy1s, enemy2s, pixelated_bosses, tree):
 	# The function above, but all those crazy exploits are fixed but I wanted to keep
 	# that for reference. and other functions break without it so I'll just keep it.
-	$Save_Functionality/Player_Body.respawn_position = spawnpoint
-	$Save_Functionality/Player_Body.position = player_position
+	
+	# BTW The player's position isn't actually set here (lol), it used to but it doesn't
+	# Now it's set in the _ready function in Save_Functionality so that custom spawnpoints
+	# Could be a thing, but I didn't want to change the name and it's still somewhat
+	# (WELL ...) relevant.
 	
 	var enemy1_nodes = tree.get_nodes_in_group("enemy1group")
 	var enemy2_nodes = tree.get_nodes_in_group("enemy2group")
@@ -92,6 +94,8 @@ func set_player_spawnpoint_and_position_reality(health, player_position, spawnpo
 		item.point1.y = enemy2s_list[enemy2_node]["start_position_y"]
 		item.point2.x = enemy2s_list[enemy2_node]["end_position_x"]
 		item.point2.y = enemy2s_list[enemy2_node]["end_position_y"]
+	
+	print($Save_Functionality/Player_Body.position)
 
 func is_point_on_connections(point):
 	var mouse_on_map = $Save_Functionality/Connections_TileMap.world_to_map(point)
@@ -156,5 +160,6 @@ func _process(delta):
 			wire.wire_ui = false
 		
 	if not loaded:
+		print(player.position)
 		loaded = true 
 		set_player_spawnpoint_and_position_reality(health, player_position, spawnpoint, enemy1s, enemy2s, pixelated_bosses, get_tree())
