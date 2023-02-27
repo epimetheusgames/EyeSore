@@ -11,10 +11,29 @@ onready var AccessibilityMenu = preload("res://AccessibilityMenu.tscn")
 var game_paused = false
 var level_name = ""
 
+const levels = [
+	preload("res://Levels/ExamplePuzzleLevel.tscn"),
+	preload("res://Levels/Noah'sPuzzleLevel.tscn"),
+]
+
+const level_names = [
+	"res://Levels/ExamplePuzzleLevel.tscn",
+	"res://Levels/Noah'sPuzzleLevel.tscn",
+]
+
 func _ready():
 	add_child(MenuOptions.instance())
+	
 	$BackgroundMusic.playing = true
 	# Play Main Menu Audio
+	
+func Next_Level(level, data):
+	var level_obj = levels[level].instance()
+	level_name = level_obj.name
+	level_obj.set_player_spawnpoint_and_position(data[1], data[2], data[3], data[7], data[8], data[9])
+	Play_Grass_Area_Music()
+	get_node("Level_Manager").queue_free()
+	add_child(levels[level].instance())
 	
 func Open_Options_Menu(closed_window):
 	closed_window.queue_free()

@@ -45,11 +45,16 @@ const default_keybind_data = {
 	"shockwave": 88
 }
 
-const levels = [
-	"res://Levels/Noah'sPuzzleLevel.tscn"
-]
+func next_level():
+	if get_parent().next_level == "end":
+		print("You finished, credits!")
+	else:
+		data["level"] += 1
+		save_game()
+		get_parent().get_parent().Next_Level(data["level"], get_game_data())
 
 func _ready():
+	
 	# Yes this is where the player's respawn pos is set.
 	var spawn_pos = get_node("PlayerSpawnPos")
 	

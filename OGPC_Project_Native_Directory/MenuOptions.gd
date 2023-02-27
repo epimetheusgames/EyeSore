@@ -13,9 +13,6 @@ func _process(delta):
 			
 	if prev_selected != selected:
 		get_parent().Play_Click_SFX()
-	
-	if $OptionsButton.texture_hover:
-		print('hi')
 			
 	if selected == 1:
 		#$Label.text = "- Play -"
@@ -44,7 +41,7 @@ func _process(delta):
 func buttons_pressed():
 	if selected == 1:
 		var data = $Load_Functionality.get_game_data()
-		var level_path = $Load_Functionality.levels[data[0]]
+		var level_path = get_parent().level_names[$Load_Functionality.data["level"]]
 		var level = load(level_path).instance()
 		level.set_player_spawnpoint_and_position(data[1], data[2], data[3], data[7], data[8], data[9])
 		get_parent().Play_Grass_Area_Music()

@@ -59,43 +59,45 @@ func set_player_spawnpoint_and_position_reality(health, player_position, spawnpo
 	# Could be a thing, but I didn't want to change the name and it's still somewhat
 	# (WELL ...) relevant.
 	
+	# Actually, pretty much this entire function is obsolete now because since our levels
+	# are probably going to be much shorter now, in puzzle form, we don't need to save 
+	# the exact position of everything, but I'm too lazy to take it out altogether.
+	
 	var enemy1_nodes = tree.get_nodes_in_group("enemy1group")
 	var enemy2_nodes = tree.get_nodes_in_group("enemy2group")
 	var pixelated_boss = tree.get_nodes_in_group("pixelated_boss")
 	if len(pixelated_boss) > 0:
 		pixelated_boss = pixelated_boss[0]
-	var enemy1s_list = convert2list(enemy1s)
-	var enemy2s_list = convert2list(enemy2s)
+	#var enemy1s_list = convert2list(enemy1s)
+	#var enemy2s_list = convert2list(enemy2s)
 	
-	for enemy1_node in range(len(enemy1_nodes)):
-		var item = enemy1_nodes[enemy1_node]
-		var status = loading_edge_case_handler(enemy1_node, enemy1s_list, item)
-		
-		if status == 2:
-			continue 
-		elif status == 1:
-			break
-		
-		item.position.x = enemy1s_list[enemy1_node]["position_x"] # Set the node's x and y position to the 
-		item.position.y = enemy1s_list[enemy1_node]["position_y"] # saved data.
-	
-	for enemy2_node in range(len(enemy2_nodes)):
-		var item = enemy2_nodes[enemy2_node]
-		var status = loading_edge_case_handler(enemy2_node, enemy2s_list, item)
-		
-		if status == 2:
-			continue 
-		elif status == 1:
-			break
-		
-		item.position.x = enemy2s_list[enemy2_node]["position_x"]
-		item.position.y = enemy2s_list[enemy2_node]["position_y"] 
-		item.point1.x = enemy2s_list[enemy2_node]["start_position_x"]
-		item.point1.y = enemy2s_list[enemy2_node]["start_position_y"]
-		item.point2.x = enemy2s_list[enemy2_node]["end_position_x"]
-		item.point2.y = enemy2s_list[enemy2_node]["end_position_y"]
-	
-	print($Save_Functionality/Player_Body.position)
+	#for enemy1_node in range(len(enemy1_nodes)):
+	#	var item = enemy1_nodes[enemy1_node]
+	#	var status = loading_edge_case_handler(enemy1_node, enemy1s_list, item)
+	#	
+	#	if status == 2:
+	#		continue 
+	#	elif status == 1:
+	#		break
+	#	
+	#	item.position.x = enemy1s_list[enemy1_node]["position_x"] # Set the node's x and y position to the 
+	#	item.position.y = enemy1s_list[enemy1_node]["position_y"] # saved data.
+	#
+	#for enemy2_node in range(len(enemy2_nodes)):
+	#	var item = enemy2_nodes[enemy2_node]
+	#	var status = loading_edge_case_handler(enemy2_node, enemy2s_list, item)
+	#	
+	#	if status == 2:
+	#		continue 
+	#	elif status == 1:
+	#		break
+	#	
+	#	item.position.x = enemy2s_list[enemy2_node]["position_x"]
+	#	item.position.y = enemy2s_list[enemy2_node]["position_y"] 
+	#	item.point1.x = enemy2s_list[enemy2_node]["start_position_x"]
+	#	item.point1.y = enemy2s_list[enemy2_node]["start_position_y"]
+	#	item.point2.x = enemy2s_list[enemy2_node]["end_position_x"]
+	#	item.point2.y = enemy2s_list[enemy2_node]["end_position_y"]
 
 func is_point_on_connections(point):
 	var mouse_on_map = $Save_Functionality/Connections_TileMap.world_to_map(point)
@@ -139,6 +141,8 @@ func _process(delta):
 		
 	if Input.is_action_just_pressed("switch_wire_ui"):
 		is_wire_ui = not is_wire_ui
+	
+	print(get_child_count())
 	
 	var wire_ui_box = get_node("Save_Functionality").get_node("WireUIBox")
 	var player = get_node("Save_Functionality").get_node("Player_Body")
