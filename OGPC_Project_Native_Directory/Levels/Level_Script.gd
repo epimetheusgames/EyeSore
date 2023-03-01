@@ -5,6 +5,7 @@ export var next_level = ""
 export var previous_level = ""
 export var current_level_number = -1
 export var is_wire_ui = false
+export var can_wire_ui = true
 
 var health
 var player_position
@@ -139,10 +140,8 @@ func _process(delta):
 			wire._on_Side1_button_down()
 			get_node("Save_Functionality").add_child(wire)
 		
-	if Input.is_action_just_pressed("switch_wire_ui"):
+	if Input.is_action_just_pressed("switch_wire_ui") and can_wire_ui:
 		is_wire_ui = not is_wire_ui
-	
-	print(get_child_count())
 	
 	var wire_ui_box = get_node("Save_Functionality").get_node("WireUIBox")
 	var player = get_node("Save_Functionality").get_node("Player_Body")
