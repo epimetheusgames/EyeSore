@@ -9,7 +9,7 @@ onready var PauseMenu = preload("res://PauseMenu.tscn")
 onready var AccessibilityMenu = preload("res://AccessibilityMenu.tscn")
 
 var game_paused = false
-var level_name = ""
+var level_name = "Level2"
 
 const levels = [
 	preload("res://Levels/PuzzleLevel1.tscn"),
