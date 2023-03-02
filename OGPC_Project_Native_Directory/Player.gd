@@ -336,10 +336,5 @@ func manage_wires(death_pos_on_tileset, tileset, grass_tileset):
 			if touching_checkpoint:
 				touching_checkpoint.save_checkpoint()
 			
-			var spike_info = wire.delete_tile_at(0, tileset, false, get_parent().get_parent().deleted_spikes, get_parent().get_parent().deleted_spike_types)
-			
-			if spike_info:
-				get_parent().get_parent().deleted_spikes.append(spike_info[2])
-				get_parent().get_parent().deleted_spike_types.append(spike_info[1])
 			else:
 				wire.delete_tile_at(0, grass_tileset, true, get_parent().get_parent().deleted_spikes, get_parent().get_parent().deleted_spike_types)
