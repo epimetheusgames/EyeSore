@@ -76,15 +76,12 @@ scale = Vector2( 2.34375, 1.40625 )
 
 [node name="Checkpoint" parent="Save_Functionality" instance=ExtResource( 5 )]
 position = Vector2( 32, -5.96046e-08 )
-scale = Vector2( 1, 1 )
 
 [node name="Checkpoint2" parent="Save_Functionality" instance=ExtResource( 5 )]
 position = Vector2( -160, 3.55271e-15 )
-scale = Vector2( 1, 1 )
 
 [node name="Checkpoint3" parent="Save_Functionality" instance=ExtResource( 5 )]
 position = Vector2( 96, -96 )
-scale = Vector2( 1, 1 )
 
 [editable path="Save_Functionality/Player_Body"]
 [editable path="Save_Functionality/WireUIBox"]
