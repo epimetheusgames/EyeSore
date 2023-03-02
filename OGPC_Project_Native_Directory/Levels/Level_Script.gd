@@ -107,6 +107,17 @@ func is_point_on_connections(point):
 		return true
 	return false
 	
+func get_pos_on_tilemap(point):
+	return $Save_Functionality/Connections_TileMap.world_to_map(point)
+	
+func is_spike_or_grass(point):
+	if $Save_Functionality/Spikes_TileMap.get_cell(point.x, point.y) != -1:
+		return 's'
+	elif $Save_Functionality/TileMap.get_cell(point.x, point.y) != -1:
+		return 'g'
+	else:
+		return 'n'
+	
 func is_another_already_there(wire_side, not_this_one=null):
 	for wire in get_tree().get_nodes_in_group("wires"):
 		if not_this_one:
@@ -161,8 +172,8 @@ func _process(delta):
 		
 		for wire in get_tree().get_nodes_in_group("wires"):
 			wire.wire_ui = false
+			wire.unselect()
 		
 	if not loaded:
-		print(player.position)
 		loaded = true 
 		set_player_spawnpoint_and_position_reality(health, player_position, spawnpoint, enemy1s, enemy2s, pixelated_bosses, get_tree())
