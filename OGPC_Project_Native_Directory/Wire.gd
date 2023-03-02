@@ -63,18 +63,8 @@ func _process(delta):
 		move_button_and_line_to_mouse($Side2, 1)
 
 func unselect():
-	if moveable:
-		if get_parent().get_parent().is_point_on_connections($Line2D.points[0]) and not get_parent().get_parent().is_another_already_there(0, self):
-			placed_yet = true
-			side1_pressed = false
-		else:
-			queue_free()
-	
-	if moveable:
-		if get_parent().get_parent().is_point_on_connections($Line2D.points[1]) and not get_parent().get_parent().is_another_already_there(1, self):
-			side2_pressed = false
-		else:
-			queue_free()
+	if side1_pressed or side2_pressed:
+		queue_free()
 
 func _on_Side1_button_down():
 	if moveable and wire_ui:
@@ -84,8 +74,6 @@ func _on_Side1_button_down():
 		var gs_or_n = get_parent().get_parent().is_spike_or_grass(pos)
 		
 		if placed_yet:
-			print('giga')
-			print((gs_or_n == "n" and is_on_at_start) or (gs_or_n != "n" and not is_on_at_start))
 			if (gs_or_n == "n" and is_on_at_start) or (gs_or_n != "n" and not is_on_at_start):
 				delete_tile_at(0, get_parent().get_node("TileMap"), true, get_parent().get_parent().deleted_spikes, get_parent().get_parent().deleted_spike_types)
 				delete_tile_at(0, get_parent().get_node("Spikes_TileMap"), false, get_parent().get_parent().deleted_spikes, get_parent().get_parent().deleted_spike_types)
