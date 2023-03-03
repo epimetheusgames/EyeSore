@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Save_Data.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://WireUIBox.tscn" type="PackedScene" id=7]
 [ext_resource path="res://LevelFinish.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Checkpoint.tscn" type="PackedScene" id=9]
+[ext_resource path="res://OGPC Soundtrack 3.mp3" type="AudioStream" id=10]
 
 [node name="Level_Manager" type="Node2D"]
 pause_mode = 1
@@ -59,6 +60,12 @@ position = Vector2( 113, -32 )
 
 [node name="PlayerSpawnPos" type="Node2D" parent="Save_Functionality"]
 position = Vector2( -128, 4 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Save_Functionality"]
+stream = ExtResource( 10 )
+autoplay = true
+mix_target = 1
+bus = "Music"
 
 [editable path="Save_Functionality/Player_Body"]
 [editable path="Save_Functionality/WireUIBox"]
