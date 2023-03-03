@@ -84,14 +84,12 @@ func Open_Pause_Menu():
 	# Play pause menu bg music here
 	game_paused = true 
 	get_tree().paused = true
-	$Grass_Area_Music_Player.stop()
 	add_child(PauseMenu.instance())
 	$PauseMenu.position = get_node(Get_Level_Name()).get_node("Save_Functionality").get_node("Camera2D").position
 	
 func Close_Pause_Menu(closed_window):
 	closed_window.queue_free() 
 	game_paused = false
-	$Grass_Area_Music_Player.play()
 	var camera = get_node(Get_Level_Name()).get_node("Save_Functionality").get_node_or_null("Camera2D")
 	if camera != null:
 		camera.current = true
@@ -109,7 +107,7 @@ func Set_Screen_Brightness(brightness):
 	$Node2D/ColorRect.color = Color(0, 0, 0, brightness)
 		
 func Play_Grass_Area_Music():
-	$Grass_Area_Music_Player.play()
+	pass
 	
 func Play_OWIE_Player():
 	$OWIE_Player.play()
