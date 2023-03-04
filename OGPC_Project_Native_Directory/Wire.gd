@@ -6,6 +6,8 @@ var side2_pressed = false
 export var moveable = true
 export var moveable_color = Color(0, 0, 0, 0)
 export var unmoveable_color = Color(0, 0, 0, 0)
+export var transparent_moveable_color = Color(0, 0, 0, 0)
+export var transparent_immoveable_color = Color(0, 0, 0, 0)
 export var can_connect_with_immoveable = true
 
 var wire_ui = false
@@ -24,6 +26,8 @@ func _ready():
 	
 	if moveable:
 		$Line2D.default_color = moveable_color
+		$Side1IconImmoveable.visible = false
+		$Side2IconImmoveable.visible = false
 	else:
 		$Side1Icon.visible = false
 		$Side2Icon.visible = false
@@ -42,17 +46,35 @@ func move_button_to_line(button, side_num):
 	button.rect_position = $Line2D.points[side_num] - button.rect_size / 2
 
 func _process(delta):
+	if wire_ui and moveable:
+		$Line2D.default_color = moveable_color
+	if not wire_ui and moveable:
+		$Line2D.default_color = transparent_moveable_color
+	if wire_ui and not moveable:
+		$Line2D.default_color = unmoveable_color
+	if not wire_ui and not moveable:
+		$Line2D.default_color = transparent_immoveable_color
+	
 	$Line2D.points[0] = tileset.map_to_world(tileset.world_to_map($Line2D.points[0])) + tileset.cell_size / 2
 	$Line2D.points[1] = tileset.map_to_world(tileset.world_to_map($Line2D.points[1])) + tileset.cell_size / 2
 	
-	if moveable:
-		$Side1Icon.set_position($Line2D.points[0] - $Side1Icon.rect_size / 2)
-		$Side2Icon.set_position($Line2D.points[1] - $Side2Icon.rect_size / 2)
+	var icon_size = Vector2($Side1Icon.texture.get_width(), $Side1Icon.texture.get_height())
+	
+	$Side1Icon.position = $Line2D.points[0] - icon_size / 2
+	$Side2Icon.position = $Line2D.points[1] - icon_size / 2
+	$Side1IconImmoveable.position = $Line2D.points[0] - icon_size / 2
+	$Side2IconImmoveable.position = $Line2D.points[1] - icon_size / 2
 		
 	if wire_ui and moveable:
 		$Side1Icon.visible = true 
 		$Side2Icon.visible = true
-	else:
+	if wire_ui and not moveable:
+		$Side1IconImmoveable.visible = true
+		$Side2IconImmoveable.visible = true
+	if not wire_ui and not moveable:
+		$Side1IconImmoveable.visible = false
+		$Side2IconImmoveable.visible = false
+	if not wire_ui and moveable:
 		$Side1Icon.visible = false 
 		$Side2Icon.visible = false
 		
