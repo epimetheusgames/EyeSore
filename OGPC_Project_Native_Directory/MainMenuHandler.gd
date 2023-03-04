@@ -17,6 +17,7 @@ const levels = [
 	preload("res://Levels/PUZZLE3.tscn"),
 	preload("res://Levels/ExamplePuzzleLevel.tscn"),
 	preload("res://Levels/PuzzleLevel2.tscn"),
+	preload("res://Levels/PuzzleLevel3.tscn"),
 ]
 
 const level_names = [
@@ -25,6 +26,7 @@ const level_names = [
 	"res://Levels/PUZZLE3.tscn",
 	"res://Levels/ExamplePuzzleLevel.tscn",
 	"res://Levels/PuzzleLevel2.tscn",
+	"res://Levels/PuzzleLevel3.tscn",
 ]
 
 func _ready():

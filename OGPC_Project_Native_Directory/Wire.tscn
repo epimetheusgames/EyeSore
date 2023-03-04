@@ -1,31 +1,23 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Wire.gd" type="Script" id=1]
+[ext_resource path="res://WireStart.png" type="Texture" id=2]
+[ext_resource path="res://ImmoveableWireEnding.png" type="Texture" id=3]
+[ext_resource path="res://WireEnding.png" type="Texture" id=4]
+[ext_resource path="res://ImmoveableWireStart.png" type="Texture" id=5]
 
 [node name="Wire" type="Node2D"]
 z_index = 2
 script = ExtResource( 1 )
 moveable_color = Color( 0.0823529, 0.564706, 0, 1 )
-unmoveable_color = Color( 0.519531, 0, 0, 1 )
+unmoveable_color = Color( 0.517647, 0, 0, 1 )
+transparent_moveable_color = Color( 0.0823529, 0.564706, 0, 0.521569 )
+transparent_immoveable_color = Color( 0.517647, 0, 0, 0.521569 )
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PoolVector2Array( 0, 0, 0, 0 )
 width = 2.0
 default_color = Color( 0.0156863, 0.494118, 0, 1 )
-
-[node name="Side2Icon" type="ColorRect" parent="."]
-margin_left = -8.0
-margin_top = -8.0
-margin_right = 8.0
-margin_bottom = 8.0
-color = Color( 0, 0.866667, 0.662745, 0.415686 )
-
-[node name="Side1Icon" type="ColorRect" parent="."]
-margin_left = -8.0
-margin_top = -8.0
-margin_right = 8.0
-margin_bottom = 8.0
-color = Color( 0.92549, 0.196078, 0, 0.537255 )
 
 [node name="Side2" type="TextureButton" parent="."]
 margin_left = -8.0
@@ -42,6 +34,22 @@ margin_right = 8.0
 margin_bottom = 8.0
 focus_mode = 0
 enabled_focus_mode = 0
+
+[node name="Side1Icon" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Side2Icon" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Side1IconImmoveable" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Side2IconImmoveable" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+centered = false
 
 [connection signal="button_down" from="Side2" to="." method="_on_Side2_button_down"]
 [connection signal="button_up" from="Side2" to="." method="_on_Side2_button_up"]
