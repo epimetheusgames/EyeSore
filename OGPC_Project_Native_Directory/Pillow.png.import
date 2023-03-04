@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/00002-282759543-outer space wi.png-66fb642861dca809b6193e644122f4d0.stex"
+path="res://.import/Pillow.png-4d649925c8df469b6c1576163e409c31.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://00002-282759543-outer space wi.png"
-dest_files=[ "res://.import/00002-282759543-outer space wi.png-66fb642861dca809b6193e644122f4d0.stex" ]
+source_file="res://Pillow.png"
+dest_files=[ "res://.import/Pillow.png-4d649925c8df469b6c1576163e409c31.stex" ]
 
 [params]
 

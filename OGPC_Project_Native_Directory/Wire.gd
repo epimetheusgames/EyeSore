@@ -10,6 +10,8 @@ export var can_connect_with_immoveable = true
 
 var wire_ui = false
 var tileset = null
+var is_on_at_start = false
+var placed_yet = false
 
 func _ready():
 	if moveable:
@@ -60,13 +62,34 @@ func _process(delta):
 	elif side2_pressed:
 		move_button_and_line_to_mouse($Side2, 1)
 
+func unselect():
+	if side1_pressed or side2_pressed:
+		queue_free()
+
 func _on_Side1_button_down():
 	if moveable and wire_ui:
 		side1_pressed = true
+		
+		var pos = get_parent().get_parent().get_pos_on_tilemap($Line2D.points[0])
+		var gs_or_n = get_parent().get_parent().is_spike_or_grass(pos)
+		
+		if placed_yet:
+			if (gs_or_n == "n" and is_on_at_start) or (gs_or_n != "n" and not is_on_at_start):
+				delete_tile_at(0, get_parent().get_node("TileMap"), true, get_parent().get_parent().deleted_spikes, get_parent().get_parent().deleted_spike_types)
+				delete_tile_at(0, get_parent().get_node("Spikes_TileMap"), false, get_parent().get_parent().deleted_spikes, get_parent().get_parent().deleted_spike_types)
 
 func _on_Side1_button_up():
 	if moveable and wire_ui:
 		if get_parent().get_parent().is_point_on_connections($Line2D.points[0]) and not get_parent().get_parent().is_another_already_there(0, self):
+			var pos = get_parent().get_parent().get_pos_on_tilemap($Line2D.points[0])
+			var gs_or_n = get_parent().get_parent().is_spike_or_grass(pos)
+			
+			if gs_or_n == "n":
+				is_on_at_start = false
+			else:
+				is_on_at_start = true
+			
+			placed_yet = true
 			side1_pressed = false
 		else:
 			queue_free()
@@ -77,7 +100,7 @@ func _on_Side2_button_down():
 
 func _on_Side2_button_up():
 	if moveable and wire_ui:
-		if get_parent().get_parent().is_point_on_connections($Line2D.points[0]) and not get_parent().get_parent().is_another_already_there(1, self):
+		if get_parent().get_parent().is_point_on_connections($Line2D.points[1]) and not get_parent().get_parent().is_another_already_there(1, self):
 			side2_pressed = false
 		else:
 			queue_free()

@@ -45,13 +45,38 @@ const default_keybind_data = {
 	"shockwave": 88
 }
 
-const levels = [
-	"res://Levels/ExamplePuzzleLevel.tscn"
-]
+func next_level():
+	if get_parent().next_level == "end":
+		print("You finished, credits!")
+	else:
+		data["level"] += 1
+		save_game()
+		get_parent().get_parent().Next_Level(data["level"], get_game_data())
 
+func _ready():
+	
+	# Yes this is where the player's respawn pos is set.
+	var spawn_pos = get_node("PlayerSpawnPos")
+	
+	if spawn_pos != null:
+		# If there is a set spawn pos then do this stuff
+		data["player"]["respawn_position_x"] = spawn_pos.position.x
+		data["player"]["respawn_position_y"] = spawn_pos.position.y
+		$Player_Body.respawn_position = spawn_pos.position
+		$Player_Body.position = spawn_pos.position
+		$Player_Body.start_position = spawn_pos.position
+		print($Player_Body.self_position)
+	else: 
+		# Otherwise (first check if we're not in the main menu or something,) 
+		# set the positions to 0,0. This is just for older scenes to still work.
+		if get_node("Player_Body") != null:
+			$Player_Body.respawn_position = Vector2.ZERO
+			$Player_Body.position = Vector2.ZERO
+			$Player_Body.start_position = Vector2.ZERO
+			
 func save_audio(music, sfx):
 	data["keybinds"] = get_game_data()[4]
-	data["keybinds"]["music-audio"] = music # Ya I know I'll rename the file to game-unspecific-data.json
+	data["keybinds"]["music-audio"] = music # Well that's done now. (totally)
 	data["keybinds"]["sfx-audio"] = sfx
 	
 func save_checkpoint(checkpoint_position):
