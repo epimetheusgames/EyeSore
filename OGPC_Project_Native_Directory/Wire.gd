@@ -127,9 +127,6 @@ func delete_tile_at(point_ind, tileset, is_grass, spike_coords, spike_coord_type
 	
 	if tileset.get_cell(pos.x, pos.y) == -1 and is_grass and not pos in get_parent().get_parent().deleted_spikes:
 		tileset.set_cell(pos.x, pos.y, 0)
-	elif tileset.get_cell(pos.x, pos.y) == -1 and not is_grass and pos in get_parent().get_parent().deleted_spikes:
-		var ind = spike_coords.find(pos, 0)
-		tileset.set_cell(pos.x, pos.y, spike_coord_types[ind])
 	elif tileset.get_cell(pos.x, pos.y) != -1:
 		var type = tileset.get_cell(pos.x, pos.y)
 		tileset.set_cell(pos.x, pos.y, -1)

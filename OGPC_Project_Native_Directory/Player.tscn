@@ -300,6 +300,9 @@ hue_variation_random = 0.02
 collision_layer = 2
 script = ExtResource( 3 )
 ground_reset_countdown = 1
+acceleration_speed = 2
+friction_strength = 40
+max_speed = 100
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( 0, -7.9 )

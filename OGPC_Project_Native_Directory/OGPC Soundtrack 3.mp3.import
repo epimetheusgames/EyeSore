@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/OGPC Soundtrack 3.mp3-1effcfe0ff77100a3bff800c45ed4e32.mp3str"
+
+[deps]
+
+source_file="res://OGPC Soundtrack 3.mp3"
+dest_files=[ "res://.import/OGPC Soundtrack 3.mp3-1effcfe0ff77100a3bff800c45ed4e32.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

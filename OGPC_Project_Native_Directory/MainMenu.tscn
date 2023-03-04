@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://TestMenuBg.mp3" type="AudioStream" id=1]
 [ext_resource path="res://MainMenuHandler.gd" type="Script" id=2]
 [ext_resource path="res://OGPC-UI-Click-SFX-2.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Death_SFX_Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Grass_Area_Music_Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Shooting_SFX_Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://SFX/Land.wav" type="AudioStream" id=7]
 [ext_resource path="res://SFX/Enemy_Damaged.wav" type="AudioStream" id=8]
@@ -37,11 +36,6 @@ bus = "Music"
 stream = ExtResource( 3 )
 volume_db = 2.622
 bus = "SFX"
-
-[node name="Grass_Area_Music_Player" parent="." instance=ExtResource( 5 )]
-volume_db = -24.0
-autoplay = false
-bus = "Music"
 
 [node name="OWIE_Player" parent="." instance=ExtResource( 4 )]
 bus = "SFX"
