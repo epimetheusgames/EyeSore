@@ -14,6 +14,7 @@ var level_name = "Level2"
 const levels = [
 	preload("res://Levels/PuzzleLevel1.tscn"),
 	preload("res://Levels/PUZZLE2.tscn"),
+	preload("res://Levels/PUZZLE5.tscn"),
 	preload("res://Levels/PUZZLE3.tscn"),
 	preload("res://Levels/ExamplePuzzleLevel.tscn"),
 	preload("res://Levels/PuzzleLevel2.tscn"),
@@ -23,6 +24,7 @@ const levels = [
 const level_names = [
 	"res://Levels/PuzzleLevel1.tscn",
 	"res://Levels/PUZZLE2.tscn",
+	"res://Levels/PUZZLE5.tscn",
 	"res://Levels/PUZZLE3.tscn",
 	"res://Levels/ExamplePuzzleLevel.tscn",
 	"res://Levels/PuzzleLevel2.tscn",
