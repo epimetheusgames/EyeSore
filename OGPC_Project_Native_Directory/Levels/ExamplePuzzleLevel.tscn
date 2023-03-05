@@ -93,7 +93,6 @@ margin_bottom = -46.0
 
 [node name="WireUIBox" parent="Save_Functionality" instance=ExtResource( 3 )]
 position = Vector2( 100, 80 )
-scale = Vector2( 2.34375, 1.40625 )
 
 [node name="Camera2D" type="Camera2D" parent="Save_Functionality"]
 offset = Vector2( 100, 80 )
