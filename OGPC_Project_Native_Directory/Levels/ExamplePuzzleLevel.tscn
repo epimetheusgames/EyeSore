@@ -59,7 +59,7 @@ moveable = false
 [node name="Line2D" parent="Save_Functionality/Wire" index="0"]
 points = PoolVector2Array( 231, 41, 71, 46 )
 
-[node name="Side2" parent="Save_Functionality/Wire" index="3"]
+[node name="Side2" parent="Save_Functionality/Wire" index="1"]
 margin_left = 16.0
 margin_top = -22.0
 margin_right = 64.0
@@ -79,25 +79,13 @@ can_connect_with_immoveable = false
 [node name="Line2D" parent="Save_Functionality/Wire3" index="0"]
 points = PoolVector2Array( 252, 77, 200, 40 )
 
-[node name="Side2Icon" parent="Save_Functionality/Wire3" index="1"]
+[node name="Side2" parent="Save_Functionality/Wire3" index="1"]
 margin_left = -224.0
 margin_top = -62.0
 margin_right = -208.0
 margin_bottom = -46.0
 
-[node name="Side1Icon" parent="Save_Functionality/Wire3" index="2"]
-margin_left = -224.0
-margin_top = -62.0
-margin_right = -208.0
-margin_bottom = -46.0
-
-[node name="Side2" parent="Save_Functionality/Wire3" index="3"]
-margin_left = -224.0
-margin_top = -62.0
-margin_right = -208.0
-margin_bottom = -46.0
-
-[node name="Side1" parent="Save_Functionality/Wire3" index="4"]
+[node name="Side1" parent="Save_Functionality/Wire3" index="2"]
 margin_left = -224.0
 margin_top = -62.0
 margin_right = -208.0
