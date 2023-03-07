@@ -1,10 +1,9 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Death_Anim_Transition_Darkness.gd" type="Script" id=1]
 [ext_resource path="res://ProgressBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player.gd" type="Script" id=3]
 [ext_resource path="res://Player_Death_Anim_Transition_Sprite.png" type="Texture" id=4]
-[ext_resource path="res://OGPC_Game_Project_Gun_Position_Indicator.png" type="Texture" id=5]
 [ext_resource path="res://Pixilart Sprite Sheet.png" type="Texture" id=6]
 [ext_resource path="res://OGPC_Player_Bullet_Shockwave_Shader_Outline.png" type="Texture" id=7]
 [ext_resource path="res://OGPC_Project_Player_Health_Bar_Improved_Empty.png" type="Texture" id=8]
@@ -22,21 +21,6 @@ flags = 1
 atlas = ExtResource( 6 )
 region = Rect2( 96, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=78]
-flags = 1
-atlas = ExtResource( 11 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=79]
-flags = 1
-atlas = ExtResource( 11 )
-region = Rect2( 16, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=80]
-flags = 1
-atlas = ExtResource( 11 )
-region = Rect2( 32, 0, 16, 16 )
-
 [sub_resource type="AtlasTexture" id=87]
 flags = 1
 atlas = ExtResource( 12 )
@@ -51,21 +35,6 @@ region = Rect2( 16, 0, 16, 16 )
 flags = 1
 atlas = ExtResource( 12 )
 region = Rect2( 32, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=90]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 48, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=91]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 64, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=92]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 80, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=86]
 flags = 1
@@ -127,6 +96,21 @@ flags = 1
 atlas = ExtResource( 12 )
 region = Rect2( 448, 0, 16, 16 )
 
+[sub_resource type="AtlasTexture" id=78]
+flags = 1
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=79]
+flags = 1
+atlas = ExtResource( 11 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=80]
+flags = 1
+atlas = ExtResource( 11 )
+region = Rect2( 32, 0, 16, 16 )
+
 [sub_resource type="AtlasTexture" id=56]
 flags = 1
 atlas = ExtResource( 6 )
@@ -177,6 +161,21 @@ flags = 1
 atlas = ExtResource( 6 )
 region = Rect2( 176, 0, 16, 16 )
 
+[sub_resource type="AtlasTexture" id=90]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=91]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=92]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 80, 0, 16, 16 )
+
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ SubResource( 105 ) ],
@@ -189,19 +188,9 @@ animations = [ {
 "name": "Idle_Right",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 78 ), SubResource( 79 ), SubResource( 80 ) ],
-"loop": false,
-"name": "Jumping_Center",
-"speed": 15.0
-}, {
 "frames": [ SubResource( 87 ), SubResource( 88 ), SubResource( 89 ) ],
 "loop": false,
 "name": "Jumping_Left",
-"speed": 15.0
-}, {
-"frames": [ SubResource( 90 ), SubResource( 91 ), SubResource( 92 ) ],
-"loop": false,
-"name": "Jumping_Right",
 "speed": 15.0
 }, {
 "frames": [ SubResource( 86 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 103 ), SubResource( 104 ) ],
@@ -209,10 +198,20 @@ animations = [ {
 "name": "Walking_Left",
 "speed": 20.0
 }, {
+"frames": [ SubResource( 78 ), SubResource( 79 ), SubResource( 80 ) ],
+"loop": false,
+"name": "Jumping_Center",
+"speed": 15.0
+}, {
 "frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ) ],
 "loop": true,
 "name": "Walking_Right",
 "speed": 20.0
+}, {
+"frames": [ SubResource( 90 ), SubResource( 91 ), SubResource( 92 ) ],
+"loop": false,
+"name": "Jumping_Right",
+"speed": 15.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=93]
@@ -327,7 +326,6 @@ position = Vector2( 39, -9.53674e-07 )
 rotation = 0.785398
 scale = Vector2( 2, 2 )
 z_index = 5
-texture = ExtResource( 5 )
 
 [node name="Player_Bullet_Position" type="Position2D" parent="Player_Gun_Base"]
 rotation = -1.5708

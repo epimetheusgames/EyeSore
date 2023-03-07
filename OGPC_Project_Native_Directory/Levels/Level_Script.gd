@@ -17,6 +17,8 @@ var pixelated_bosses
 var loaded = false
 var deleted_spikes = []
 var deleted_spike_types = []
+var wire_terminals = [] # this will end up being a list of all the nodes in the wire terminal group so the script can iterate through them and check if the player is in range of any of them
+var in_range_of_wire_terminal = false
 
 onready var wire_scene = preload("res://Wire.tscn")
 
@@ -132,6 +134,8 @@ func is_another_already_there(wire_side, not_this_one=null):
 	
 		
 func _process(delta):
+	check_for_in_range_terminals()
+	
 	if Input.is_action_just_pressed("ui_pause"):
 		get_parent().Open_Pause_Menu()
 		
@@ -151,8 +155,10 @@ func _process(delta):
 			wire._on_Side1_button_down()
 			get_node("Save_Functionality").add_child(wire)
 		
-	if Input.is_action_just_pressed("switch_wire_ui") and can_wire_ui:
+	if Input.is_action_just_pressed("switch_wire_ui") and can_wire_ui and in_range_of_wire_terminal:
 		is_wire_ui = not is_wire_ui
+	elif Input.is_action_just_pressed("switch_wire_ui") and is_wire_ui == true:
+		is_wire_ui = false
 	
 	var wire_ui_box = get_node("Save_Functionality").get_node("WireUIBox")
 	var player = get_node("Save_Functionality").get_node("Player_Body")
@@ -177,3 +183,10 @@ func _process(delta):
 	if not loaded:
 		loaded = true 
 		set_player_spawnpoint_and_position_reality(health, player_position, spawnpoint, enemy1s, enemy2s, pixelated_bosses, get_tree())
+
+func check_for_in_range_terminals():
+	wire_terminals = get_tree().get_nodes_in_group("Wire_Terminal")
+	for i in wire_terminals:
+		in_range_of_wire_terminal = false
+		if i.is_in_use_range == true:
+			in_range_of_wire_terminal = true

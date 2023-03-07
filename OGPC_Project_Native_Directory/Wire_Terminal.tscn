@@ -1,0 +1,88 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Wire_Terminal.gd" type="Script" id=1]
+[ext_resource path="res://ogpc_wire_access_terminal_background.png" type="Texture" id=2]
+[ext_resource path="res://ogpc_wire_access_terminal_spritesheet.png" type="Texture" id=3]
+[ext_resource path="res://press_e_to_use.png" type="Texture" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 1
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 20, 17 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 1
+atlas = ExtResource( 3 )
+region = Rect2( 20, 0, 20, 17 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 1
+atlas = ExtResource( 3 )
+region = Rect2( 40, 0, 20, 17 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 1
+atlas = ExtResource( 3 )
+region = Rect2( 60, 0, 20, 17 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 1
+atlas = ExtResource( 3 )
+region = Rect2( 80, 0, 20, 17 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 1
+atlas = ExtResource( 3 )
+region = Rect2( 100, 0, 20, 17 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 1
+atlas = ExtResource( 3 )
+region = Rect2( 120, 0, 20, 17 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 1
+atlas = ExtResource( 3 )
+region = Rect2( 140, 0, 20, 17 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=10]
+radius = 14.0
+height = 6.0
+
+[node name="Wire_Terminal" type="Node2D" groups=["Wire_Terminal"]]
+script = ExtResource( 1 )
+frequency = 3.0
+amplitude = 12.0
+
+[node name="Terminal_Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 9 )
+animation = "Idle"
+frame = 4
+playing = true
+
+[node name="Terminal_Background_Sprite" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 2 )
+
+[node name="Player_Use_Range" type="Area2D" parent="."]
+
+[node name="Player_Use_Range_Collider" type="CollisionShape2D" parent="Player_Use_Range"]
+rotation = 1.5708
+shape = SubResource( 10 )
+
+[node name="Btn_Prompt_Spr" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.972549 )
+position = Vector2( 0, -21 )
+z_index = 10
+texture = ExtResource( 4 )
+
+[connection signal="body_entered" from="Player_Use_Range" to="." method="_on_Player_Use_Range_body_entered"]
+[connection signal="body_exited" from="Player_Use_Range" to="." method="_on_Player_Use_Range_body_exited"]
