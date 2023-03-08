@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Level_Script.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://OGPC Soundtrack 7.mp3" type="AudioStream" id=9]
 [ext_resource path="res://Wire.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Checkpoint.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Wire_Terminal.tscn" type="PackedScene" id=12]
 
 [node name="Level_Manager" type="Node2D"]
 pause_mode = 1
@@ -124,6 +125,9 @@ can_connect_with_immoveable = false
 
 [node name="Line2D" parent="Save_Functionality/Wire6" index="0"]
 points = PoolVector2Array( -233, -33, 168, -117 )
+
+[node name="Wire_Terminal" parent="Save_Functionality" instance=ExtResource( 12 )]
+position = Vector2( -111, -8 )
 
 [editable path="Save_Functionality/Player_Body"]
 [editable path="Save_Functionality/WireUIBox"]

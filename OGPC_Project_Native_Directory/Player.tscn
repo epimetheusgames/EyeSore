@@ -306,7 +306,7 @@ max_speed = 100
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( 0, -7.9 )
 scale = Vector2( 1, 0.98 )
-polygon = PoolVector2Array( -6, 8.06122, 6, 8.06122, 6, -3.16326, 0, -7.2449, -6, -3.16326 )
+polygon = PoolVector2Array( -7, 8.06122, 7, 8.06122, 7, -3.16326, 0, -7.2449, -7, -3.16326 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -8 )
@@ -331,6 +331,7 @@ z_index = 5
 rotation = -1.5708
 
 [node name="ProgressBar" parent="." instance=ExtResource( 2 )]
+visible = false
 modulate = Color( 1, 1, 1, 1 )
 margin_left = -20.0
 margin_top = -33.0

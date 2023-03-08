@@ -15,7 +15,6 @@ script = ExtResource( 6 )
 next_level = "2"
 previous_level = "0"
 current_level_number = 1
-is_wire_ui = true
 
 [node name="Save_Functionality" type="Node2D" parent="."]
 script = ExtResource( 1 )

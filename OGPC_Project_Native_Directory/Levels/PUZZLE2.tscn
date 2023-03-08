@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Save_Data.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Levels/Level_Script.gd" type="Script" id=7]
 [ext_resource path="res://WireUIBox.tscn" type="PackedScene" id=8]
 [ext_resource path="res://LevelFinish.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Wire_Terminal.tscn" type="PackedScene" id=10]
 
 [node name="Level_Manager" type="Node2D"]
 pause_mode = 1
@@ -16,10 +17,12 @@ script = ExtResource( 7 )
 next_level = "2"
 previous_level = "0"
 current_level_number = 1
-is_wire_ui = true
 
 [node name="Save_Functionality" type="Node2D" parent="."]
 script = ExtResource( 1 )
+
+[node name="Wire_Terminal" parent="Save_Functionality" instance=ExtResource( 10 )]
+position = Vector2( -99, 25 )
 
 [node name="TileMap" parent="Save_Functionality" instance=ExtResource( 5 )]
 z_index = -1

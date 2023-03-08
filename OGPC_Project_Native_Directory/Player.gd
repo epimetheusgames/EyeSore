@@ -84,6 +84,9 @@ func _ready():
 
 # anything that needs to be in a consistent update cycle goes here
 func _physics_process(delta):
+	if Input.is_action_just_pressed("respawn"):
+		position = start_position
+	
 	if paused:
 		return
 	
