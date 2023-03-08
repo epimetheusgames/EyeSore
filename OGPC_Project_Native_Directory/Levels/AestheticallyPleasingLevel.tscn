@@ -78,7 +78,6 @@ position = Vector2( 96, 304 )
 
 [node name="Wire" parent="Save_Functionality" instance=ExtResource( 10 )]
 moveable = false
-moveable_color = Color( 0.0823529, 0.564706, 0, 1 )
 can_connect_with_immoveable = false
 
 [node name="Line2D" parent="Save_Functionality/Wire" index="0"]

@@ -59,13 +59,13 @@ height = 6.0
 
 [node name="Wire_Terminal" type="Node2D" groups=["Wire_Terminal"]]
 script = ExtResource( 1 )
-frequency = 3.0
-amplitude = 12.0
+frequency = 4.0
+amplitude = 15.079
 
 [node name="Terminal_Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 9 )
 animation = "Idle"
-frame = 4
+frame = 6
 playing = true
 
 [node name="Terminal_Background_Sprite" type="Sprite" parent="."]

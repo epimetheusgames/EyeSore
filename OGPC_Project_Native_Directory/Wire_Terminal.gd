@@ -5,6 +5,7 @@ export (float, 1000) var amplitude = 150
 var time = 0
 
 var is_in_use_range = false
+var one_time_no_use = true
 
 
 func _ready():
@@ -12,6 +13,10 @@ func _ready():
 	self.add_to_group("Wire_Terminal")
 
 func _on_Player_Use_Range_body_entered(body):
+	if one_time_no_use:
+		one_time_no_use = false
+		return 
+	
 	$Terminal_Background_Sprite.show()
 	is_in_use_range = true
 

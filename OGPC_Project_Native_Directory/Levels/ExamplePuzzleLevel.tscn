@@ -19,7 +19,6 @@ script = ExtResource( 2 )
 next_level = "2"
 previous_level = "0"
 current_level_number = 1
-is_wire_ui = true
 
 [node name="Save_Functionality" type="Node2D" parent="."]
 script = ExtResource( 8 )
@@ -108,7 +107,7 @@ position = Vector2( -41, 40 )
 z_index = -5
 
 [node name="Terminal_Sprite" parent="Save_Functionality/Wire_Terminal" index="0"]
-frame = 7
+frame = 3
 
 [editable path="Save_Functionality/Player_Body"]
 [editable path="Save_Functionality/Wire"]
