@@ -157,6 +157,7 @@ func _process(delta):
 		
 	if Input.is_action_just_pressed("switch_wire_ui") and can_wire_ui and in_range_of_wire_terminal:
 		is_wire_ui = not is_wire_ui
+			
 	elif Input.is_action_just_pressed("switch_wire_ui") and is_wire_ui == true:
 		is_wire_ui = false
 	

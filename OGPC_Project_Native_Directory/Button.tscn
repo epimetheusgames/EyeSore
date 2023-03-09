@@ -71,9 +71,9 @@ animations = [ {
 "speed": 5.0
 }, {
 "frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
-"loop": true,
+"loop": false,
 "name": "Unpressing",
-"speed": 5.0
+"speed": 20.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=12]
@@ -84,7 +84,9 @@ script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 11 )
-animation = "Unpressed"
+animation = "Unpressing"
+frame = 3
+playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -94,3 +96,4 @@ shape = SubResource( 12 )
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
