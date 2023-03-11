@@ -107,9 +107,6 @@ autoplay = true
 position = Vector2( -41, 40 )
 z_index = -5
 
-[node name="Terminal_Sprite" parent="Save_Functionality/Wire_Terminal" index="0"]
-frame = 1
-
 [node name="Button" parent="Save_Functionality" instance=ExtResource( 13 )]
 position = Vector2( -104, 40 )
 rotation = -1.5708
