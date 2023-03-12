@@ -15,6 +15,7 @@ export var gravity_strength = 10
 export var friction_strength = 20
 
 var first_phase_attacks = ["Scoop_Fire", "Cone_Spin"]
+var doing_spin_attack = false
 
 func _ready():
 	attack_cooldown_timer.start(5)
@@ -32,8 +33,6 @@ func _physics_process(delta):
 			curr_move_speed = move_toward(curr_move_speed, default_move_speed / 1.2, 0.1)
 		
 		self.position.y = move_toward(self.position.y, player_body.position.y - 32, curr_move_speed)
-	
-	$Label.text = str(attack_cooldown_timer.time_left)
 
 
 func Apply_Friction():
@@ -52,15 +51,14 @@ func Scoop_Fire_Attack():
 	return cooldown_to_next_attack
 
 func Cone_Spin_Attack():
+	print("Cone Spin")
 	spin_cone.show()
 	attack_duration_timer.start(8)
-	while attack_duration_timer.time_left > 0:
-		spin_cone.rotation_degrees += 0.1
-	spin_cone.hide()
+	# Set the animationtree's animation here
 	var cooldown_to_next_attack = 5
 	return cooldown_to_next_attack
 
 # if the attack cooldown timer is at 0, start an attack
 func _on_Attack_Cooldown_Timer_timeout():
-	var cooldown_to_next_attack = Start_Attack(first_phase_attacks[randi() % first_phase_attacks.size()])
+	var cooldown_to_next_attack = Start_Attack("Cone_Spin")
 	attack_cooldown_timer.start()

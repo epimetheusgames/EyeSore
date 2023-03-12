@@ -124,20 +124,18 @@ animation = "Idle"
 [sub_resource type="AnimationNodeAnimation" id=12]
 animation = "Spawn"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=13]
-switch_mode = 2
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=14]
-switch_mode = 2
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
 
 [sub_resource type="AnimationNodeStateMachine" id=15]
 states/Cone_Spin_Attack/node = SubResource( 10 )
-states/Cone_Spin_Attack/position = Vector2( 347, 62 )
+states/Cone_Spin_Attack/position = Vector2( 416, 85 )
 states/Idle/node = SubResource( 11 )
-states/Idle/position = Vector2( 67, 62 )
+states/Idle/position = Vector2( 103, 85 )
 states/Spawn/node = SubResource( 12 )
-states/Spawn/position = Vector2( -167, 62 )
-transitions = [ "Idle", "Cone_Spin_Attack", SubResource( 13 ), "Spawn", "Idle", SubResource( 14 ) ]
+states/Spawn/position = Vector2( -171, 85 )
+transitions = [ "Spawn", "Idle", SubResource( 17 ), "Idle", "Cone_Spin_Attack", SubResource( 18 ) ]
 start_node = "Spawn"
 end_node = "Cone_Spin_Attack"
 graph_offset = Vector2( -389, -10 )
@@ -286,10 +284,11 @@ autostart = true
 [node name="Attack_Duration_Timer" type="Timer" parent="Save_Functionality/Boss_Body"]
 
 [node name="Label" type="Label" parent="Save_Functionality/Boss_Body"]
-margin_left = -16.0
-margin_top = -48.0
-margin_right = 24.0
-margin_bottom = -34.0
+margin_left = -29.0
+margin_top = -47.0
+margin_right = 29.0
+margin_bottom = -33.0
+text = "Life Boss"
 
 [node name="Spin_Cone" type="KinematicBody2D" parent="Save_Functionality/Boss_Body"]
 modulate = Color( 1, 1, 1, 0 )
