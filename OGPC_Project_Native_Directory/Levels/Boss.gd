@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-
+# set the playback var, this is a component of the animation tree
+onready var state_machine = $AnimationTree.get("parameters/playback")
 onready var player_body = get_parent().get_node("Player_Body")
 onready var attack_cooldown_timer = $Attack_Cooldown_Timer
 onready var attack_duration_timer = $Attack_Duration_Timer
@@ -19,7 +20,7 @@ var doing_spin_attack = false
 
 func _ready():
 	attack_cooldown_timer.start(5)
-	spin_cone.hide()
+	state_machine.start("Spawn")
 
 func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector2.UP)
@@ -33,6 +34,9 @@ func _physics_process(delta):
 			curr_move_speed = move_toward(curr_move_speed, default_move_speed / 1.2, 0.1)
 		
 		self.position.y = move_toward(self.position.y, player_body.position.y - 32, curr_move_speed)
+		
+		if self.velocity.x >= 0:
+			self.position.x = move_toward(self.position.x, player_body.position.x, curr_move_speed / 2)
 
 
 func Apply_Friction():
@@ -51,10 +55,11 @@ func Scoop_Fire_Attack():
 	return cooldown_to_next_attack
 
 func Cone_Spin_Attack():
-	print("Cone Spin")
-	spin_cone.show()
 	attack_duration_timer.start(8)
 	# Set the animationtree's animation here
+	state_machine.travel("Cone_Spin_Attack")
+	yield($AnimationPlayer, "animation_finished")
+	state_machine.travel("Idle")
 	var cooldown_to_next_attack = 5
 	return cooldown_to_next_attack
 
