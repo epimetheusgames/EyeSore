@@ -144,6 +144,15 @@ func get_touching_checkpoint(point_ind):
 			
 	return false
 	
+func get_touching_portal(point_ind):
+	var portals = get_tree().get_nodes_in_group("portals")
+	
+	for portal in portals:
+		if portal.is_point_inside($Line2D.points[point_ind]):
+			return [portal, portal.entrance]
+			
+	return false
+	
 func delete_tile_at(point_ind, tileset, is_grass, spike_coords, spike_coord_types):
 	var pos = get_tileset_coords(point_ind, tileset)
 	
