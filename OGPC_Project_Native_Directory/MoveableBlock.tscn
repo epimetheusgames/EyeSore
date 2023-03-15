@@ -4,27 +4,23 @@
 [ext_resource path="res://MoveableBlockBody.gd" type="Script" id=2]
 
 [sub_resource type="PhysicsMaterial" id=2]
-friction = 0.5
+rough = true
+bounce = 2.0
 absorbent = true
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 8, 8 )
 
-[node name="MoveableBlock" type="Node2D"]
-
-[node name="MoveableBlockBody" type="RigidBody2D" parent="."]
-position = Vector2( -8, -8 )
-mass = 0.00102041
+[node name="MoveableBlockBody" type="RigidBody2D"]
+mass = 1.02041
 physics_material_override = SubResource( 2 )
-gravity_scale = 33.48
 continuous_cd = 2
 applied_torque = 5.0
 script = ExtResource( 2 )
 
-[node name="MoveableBox" type="Sprite" parent="MoveableBlockBody"]
-position = Vector2( 8, 8 )
+[node name="MoveableBox" type="Sprite" parent="."]
+position = Vector2( 1.90735e-06, 0 )
 texture = ExtResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MoveableBlockBody"]
-position = Vector2( 8, 8 )
-shape = SubResource( 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
