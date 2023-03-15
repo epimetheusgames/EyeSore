@@ -265,7 +265,7 @@ __meta__ = {
 
 [node name="Boss_Body" type="KinematicBody2D" parent="Save_Functionality"]
 position = Vector2( 168, -40 )
-scale = Vector2( 1e-05, 1e-05 )
+scale = Vector2( 0.480519, 0.480519 )
 collision_layer = 4
 collision_mask = 6
 script = ExtResource( 4 )

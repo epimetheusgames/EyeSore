@@ -53,7 +53,6 @@ current = true
 
 [node name="WireUIBox" parent="Save_Functionality" instance=ExtResource( 3 )]
 position = Vector2( -139, -149 )
-scale = Vector2( 1, 1 )
 
 [node name="PlayerSpawnPos" type="Node2D" parent="Save_Functionality"]
 position = Vector2( -129, -4 )

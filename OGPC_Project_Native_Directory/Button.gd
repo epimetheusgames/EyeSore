@@ -1,5 +1,7 @@
 extends Node2D
 
+export var toggle = false
+
 
 func _ready():
 	add_to_group("buttons")
@@ -14,7 +16,8 @@ func _on_Area2D_area_exited(area):
 	if $AnimatedSprite.animation == "Pressing" and "Player" in area.name:
 		$AnimatedSprite.animation = "Unpressing"
 		$AnimatedSprite.play()
-		Player_Manage_Wires()
+		if not toggle:
+			Player_Manage_Wires()
 
 func Player_Manage_Wires():
 	var grass_tileset = get_parent().get_node("TileMap")
