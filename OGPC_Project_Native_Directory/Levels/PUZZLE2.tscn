@@ -46,12 +46,10 @@ position = Vector2( -128, 4 )
 visible = false
 
 [node name="WireUIBox" parent="Save_Functionality" instance=ExtResource( 8 )]
-position = Vector2( -15, 13 )
-scale = Vector2( 2.34375, 1.40625 )
+position = Vector2( -15, -8 )
 
 [node name="Camera2D" type="Camera2D" parent="Save_Functionality"]
-position = Vector2( -115, -67 )
-offset = Vector2( 100, 80 )
+position = Vector2( -15, -8 )
 current = true
 
 [node name="LevelFinish" parent="Save_Functionality" instance=ExtResource( 9 )]

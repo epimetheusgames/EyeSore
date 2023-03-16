@@ -46,13 +46,8 @@ position = Vector2( -128, 4 )
 visible = false
 
 [node name="Camera2D" type="Camera2D" parent="Save_Functionality"]
-position = Vector2( -124, -134 )
-offset = Vector2( 100, 80 )
-current = true
-
-[node name="WireUIBox" parent="Save_Functionality" instance=ExtResource( 3 )]
 position = Vector2( -24, -54 )
-scale = Vector2( 2.34375, 1.40625 )
+current = true
 
 [node name="PlayerSpawnPos" type="Node2D" parent="Save_Functionality"]
 position = Vector2( -128, -6 )
@@ -88,7 +83,10 @@ points = PoolVector2Array( 57, 76, -278, 57 )
 [node name="Wire_Terminal" parent="Save_Functionality" instance=ExtResource( 12 )]
 position = Vector2( -152, 8 )
 
+[node name="WireUIBox" parent="Save_Functionality" instance=ExtResource( 3 )]
+position = Vector2( -24, -54 )
+
 [editable path="Save_Functionality/Player_Body"]
-[editable path="Save_Functionality/WireUIBox"]
 [editable path="Save_Functionality/Wire"]
 [editable path="Save_Functionality/Wire2"]
+[editable path="Save_Functionality/WireUIBox"]

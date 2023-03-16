@@ -96,7 +96,7 @@ margin_bottom = -46.0
 position = Vector2( 100, 80 )
 
 [node name="Camera2D" type="Camera2D" parent="Save_Functionality"]
-offset = Vector2( 100, 80 )
+position = Vector2( 100, 80 )
 current = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Save_Functionality"]
@@ -108,7 +108,7 @@ position = Vector2( -41, 40 )
 z_index = -5
 
 [node name="Terminal_Sprite" parent="Save_Functionality/Wire_Terminal" index="0"]
-frame = 5
+frame = 4
 
 [node name="ToggleButton" parent="Save_Functionality" instance=ExtResource( 13 )]
 position = Vector2( -104, 40 )
