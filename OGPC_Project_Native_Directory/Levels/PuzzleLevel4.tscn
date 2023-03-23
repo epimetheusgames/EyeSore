@@ -30,7 +30,7 @@ script = ExtResource( 8 )
 
 [node name="TileMap" parent="Save_Functionality" instance=ExtResource( 6 )]
 z_index = -1
-tile_data = PoolIntArray( -655360, 0, 4, -655359, 0, 2, -655358, 0, 2, -655357, 0, 5, -589824, 0, 131072, -589821, 0, 131072, -524288, 0, 131072, -524285, 0, 131072, -458752, 0, 131072, -458749, 0, 131072, -393216, 0, 131072, -393213, 0, 131072, -327680, 0, 131072, -327677, 0, 131072, -262144, 0, 131072, -262141, 0, 131072, -196608, 0, 131072, -196605, 0, 131072, -131072, 0, 131072, -131069, 0, 131072, -10, 10, 0, -65536, 0, 131072, -65533, 0, 131072, 65525, 0, 65537, 65526, 0, 65538, 65527, 0, 65538, 65528, 0, 65538, 65529, 0, 65538, 65530, 0, 65538, 65531, 0, 65539, 65533, 0, 65537, 65534, 0, 65538, 65535, 0, 65538, 0, 0, 393217, 3, 0, 131072, 131061, 0, 131073, 131062, 0, 131074, 131063, 0, 131074, 131064, 0, 131074, 131065, 0, 131074, 131066, 0, 131074, 131067, 0, 262144, 131068, 0, 65538, 131069, 0, 262145, 131070, 0, 131074, 131071, 0, 131074, 65536, 0, 458754, 65537, 0, 2, 65538, 0, 2, 65539, 0, 65541, 196597, 0, 196609, 196598, 0, 196610, 196599, 0, 196610, 196600, 0, 196610, 196601, 0, 196610, 196602, 0, 196610, 196603, 0, 196610, 196604, 0, 196610, 196605, 0, 196610, 196606, 0, 196610, 196607, 0, 196610, 131072, 0, 196611 )
+tile_data = PoolIntArray( -655360, 0, 4, -655359, 0, 2, -655358, 0, 2, -655357, 0, 5, -589824, 0, 196608, -589821, 0, 131072, -524285, 0, 131072, -393228, 0, 65537, -393227, 0, 65538, -393226, 0, 65538, -393225, 0, 65538, -393224, 0, 65538, -393223, 0, 65538, -393222, 0, 65538, -393221, 0, 65538, -393220, 0, 65538, -393219, 0, 65538, -393218, 0, 65538, -393217, 0, 65538, -458752, 0, 65539, -458749, 0, 131072, -327692, 0, 131073, -327691, 0, 262146, -327690, 0, 196610, -327689, 0, 196610, -327688, 0, 196610, -327687, 0, 196610, -327686, 0, 196610, -327685, 0, 196610, -327684, 0, 196610, -327683, 0, 196610, -327682, 0, 196610, -327681, 0, 196610, -393216, 0, 327681, -393213, 0, 131072, -262156, 0, 131073, -262155, 0, 131075, -327680, 0, 131076, -327679, 0, 2, -327678, 0, 2, -327677, 0, 131077, -196620, 0, 196609, -196619, 0, 196611, -262144, 0, 131072, -262141, 0, 131072, -196608, 0, 131072, -196605, 0, 131072, -65551, 0, 65537, -65550, 0, 65538, -65549, 0, 65538, -65548, 0, 65538, -65547, 0, 65539, -131072, 0, 131072, -131069, 0, 131072, -15, 0, 131073, -14, 0, 131074, -13, 0, 131074, -12, 0, 131074, -11, 0, 131075, -10, 10, 0, -65536, 0, 131072, -65533, 0, 131072, 65521, 0, 131073, 65522, 0, 131074, 65523, 0, 131074, 65524, 0, 131074, 65525, 0, 262144, 65526, 0, 65538, 65527, 0, 65538, 65528, 0, 65538, 65529, 0, 65538, 65530, 0, 65538, 65531, 0, 65539, 65533, 0, 65537, 65534, 0, 65538, 65535, 0, 65538, 0, 0, 393217, 3, 0, 131072, 131057, 0, 131073, 131058, 0, 131074, 131059, 0, 131074, 131060, 0, 131074, 131061, 0, 131074, 131062, 0, 131074, 131063, 0, 131074, 131064, 0, 131074, 131065, 0, 131074, 131066, 0, 131074, 131067, 0, 262144, 131068, 0, 65538, 131069, 0, 262145, 131070, 0, 131074, 131071, 0, 131074, 65536, 0, 458754, 65537, 0, 2, 65538, 0, 2, 65539, 0, 65541, 196593, 0, 196609, 196594, 0, 196610, 196595, 0, 196610, 196596, 0, 196610, 196597, 0, 196610, 196598, 0, 196610, 196599, 0, 196610, 196600, 0, 196610, 196601, 0, 196610, 196602, 0, 196610, 196603, 0, 196610, 196604, 0, 196610, 196605, 0, 196610, 196606, 0, 196610, 196607, 0, 196610, 131072, 0, 196611 )
 
 [node name="Spikes_TileMap" parent="Save_Functionality" instance=ExtResource( 6 )]
 z_index = -1
@@ -41,7 +41,7 @@ z_index = 2
 tile_set = ExtResource( 5 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( -589823, 0, 196611, 65532, 0, 196611 )
+tile_data = PoolIntArray( -589823, 0, 196611, -262150, 0, 196611, -327678, 0, 196611, -131083, 0, 196611, 65532, 0, 196611, 1, 0, 196611 )
 
 [node name="WireUIBox" parent="Save_Functionality" instance=ExtResource( 3 )]
 position = Vector2( -24, -54 )
@@ -61,7 +61,7 @@ position = Vector2( -142, -19 )
 scale = Vector2( 1e-05, 1e-05 )
 
 [node name="LevelFinish" parent="Save_Functionality" instance=ExtResource( 7 )]
-position = Vector2( -137, -80 )
+position = Vector2( -240, -116 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Save_Functionality"]
 stream = ExtResource( 9 )
@@ -89,7 +89,7 @@ position = Vector2( 32, -48 )
 rotation = 3.14159
 
 [node name="Button" parent="Save_Functionality" instance=ExtResource( 14 )]
-position = Vector2( 32, 8 )
+position = Vector2( 26, 8 )
 rotation = -1.5708
 
 [node name="ToggleButton" parent="Save_Functionality" instance=ExtResource( 15 )]
@@ -106,7 +106,39 @@ points = PoolVector2Array( -55, -7, -23, -4 )
 [node name="MoveableBlockBody" parent="Save_Functionality" instance=ExtResource( 16 )]
 position = Vector2( -87, -53 )
 
+[node name="Wire2" parent="Save_Functionality" instance=ExtResource( 10 )]
+moveable = false
+
+[node name="Line2D" parent="Save_Functionality/Wire2" index="0"]
+points = PoolVector2Array( 24, -73, -88, -74 )
+
+[node name="PortalEntrance2" parent="Save_Functionality" instance=ExtResource( 11 )]
+position = Vector2( 16, -18 )
+
+[node name="Button2" parent="Save_Functionality" instance=ExtResource( 14 )]
+position = Vector2( 29, -44 )
+rotation = -1.5708
+
+[node name="Wire3" parent="Save_Functionality" instance=ExtResource( 10 )]
+moveable = false
+
+[node name="Line2D" parent="Save_Functionality/Wire3" index="0"]
+points = PoolVector2Array( 25, -26, 30, -41 )
+
+[node name="Wire4" parent="Save_Functionality" instance=ExtResource( 10 )]
+moveable = false
+
+[node name="Line2D" parent="Save_Functionality/Wire4" index="0"]
+points = PoolVector2Array( 41, -137, 39, -28 )
+
+[node name="ToggleButton2" parent="Save_Functionality" instance=ExtResource( 15 )]
+position = Vector2( -88, -72 )
+rotation = 1.5708
+
 [editable path="Save_Functionality/WireUIBox"]
 [editable path="Save_Functionality/Player_Body"]
 [editable path="Save_Functionality/PortalExit"]
 [editable path="Save_Functionality/Wire"]
+[editable path="Save_Functionality/Wire2"]
+[editable path="Save_Functionality/Wire3"]
+[editable path="Save_Functionality/Wire4"]
