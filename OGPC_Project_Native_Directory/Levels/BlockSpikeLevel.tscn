@@ -1,0 +1,202 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Level_Script.gd" type="Script" id=2]
+[ext_resource path="res://WireUIBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/Spikes_TileSet.tres" type="TileSet" id=4]
+[ext_resource path="res://Levels/ConnectionsTileset.tres" type="TileSet" id=5]
+[ext_resource path="res://GroundTileMap.tscn" type="PackedScene" id=6]
+[ext_resource path="res://LevelFinish.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Save_Data.gd" type="Script" id=8]
+[ext_resource path="res://OGPC Soundtrack 5 MAYBE.mp3" type="AudioStream" id=9]
+[ext_resource path="res://Wire.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Checkpoint.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Wire_Terminal.tscn" type="PackedScene" id=12]
+[ext_resource path="res://BlockPlayerTeleporter.tscn" type="PackedScene" id=13]
+[ext_resource path="res://PortalEntrance.tscn" type="PackedScene" id=14]
+[ext_resource path="res://PortalExit.tscn" type="PackedScene" id=15]
+[ext_resource path="res://MoveableBlock.tscn" type="PackedScene" id=16]
+
+[node name="Level_Manager" type="Node2D"]
+pause_mode = 1
+script = ExtResource( 2 )
+next_level = "5"
+previous_level = "3"
+current_level_number = 4
+is_wire_ui = true
+
+[node name="Save_Functionality" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="TileMap" parent="Save_Functionality" instance=ExtResource( 6 )]
+z_index = -1
+tile_data = PoolIntArray( -589825, 0, 0, -589812, 0, 1, -589811, 0, 5, -524275, 0, 131072, -458739, 0, 131072, -327692, 0, 4, -327691, 0, 2, -327690, 0, 2, -327689, 0, 2, -327688, 0, 2, -327687, 0, 2, -327686, 0, 2, -327685, 0, 196612, -327684, 0, 2, -327683, 0, 2, -327682, 0, 2, -327681, 0, 2, -393216, 0, 2, -393215, 0, 196612, -393214, 0, 2, -393213, 0, 2, -393212, 0, 2, -393211, 0, 2, -393210, 0, 2, -393209, 0, 2, -393208, 0, 2, -393207, 0, 2, -393206, 0, 2, -393205, 0, 2, -393204, 0, 2, -393203, 0, 196613, -393202, 0, 2, -393201, 0, 2, -393200, 0, 393219, -393199, 0, 65538, -393198, 0, 65539, -262156, 0, 131072, -262149, 0, 131072, -327679, 0, 131072, -327664, 0, 131073, -327663, 0, 131074, -327662, 0, 131075, -196620, 0, 131072, -196613, 0, 131072, -262143, 0, 131072, -262128, 0, 196609, -262127, 0, 196610, -262126, 0, 196611, -131084, 0, 131072, -131077, 0, 131072, -196607, 0, 131072, -65548, 0, 131072, -65541, 0, 131072, -131071, 0, 131072, -12, 0, 131072, -5, 0, 131072, -65535, 0, 131072, -65520, 0, 65537, -65519, 0, 65538, -65518, 0, 65539, 65524, 0, 131072, 65531, 0, 131072, 1, 0, 131072, 16, 0, 131073, 17, 0, 131074, 18, 0, 131075, 131060, 0, 65540, 131061, 0, 2, 131062, 0, 2, 131063, 0, 2, 131064, 0, 2, 131065, 0, 2, 131066, 0, 2, 131067, 0, 196613, 131068, 0, 2, 131069, 0, 2, 131070, 0, 2, 131071, 0, 2, 65536, 0, 2, 65537, 0, 196613, 65538, 0, 2, 65539, 0, 2, 65540, 0, 2, 65541, 0, 2, 65542, 0, 2, 65543, 0, 2, 65544, 0, 2, 65545, 0, 2, 65546, 0, 2, 65547, 0, 2, 65548, 0, 2, 65549, 0, 2, 65550, 0, 2, 65551, 0, 2, 65552, 0, 327683, 65553, 0, 196610, 65554, 0, 196611 )
+
+[node name="Spikes_TileMap" parent="Save_Functionality" instance=ExtResource( 6 )]
+z_index = -1
+tile_set = ExtResource( 4 )
+tile_data = PoolIntArray( -589813, 3, 196608, -393219, 0, 3, 65529, 0, 3, 65533, 0, 3, 131079, 2, 65537 )
+
+[node name="Connections_TileMap" type="TileMap" parent="Save_Functionality"]
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -65535, 0, 196611, 65533, 0, 196611 )
+
+[node name="WireUIBox" parent="Save_Functionality" instance=ExtResource( 3 )]
+position = Vector2( -24, -54 )
+
+[node name="Player_Body" parent="Save_Functionality" instance=ExtResource( 1 )]
+position = Vector2( -128, 4 )
+
+[node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="1"]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="Save_Functionality"]
+position = Vector2( -24, -54 )
+current = true
+
+[node name="PlayerSpawnPos" type="Node2D" parent="Save_Functionality"]
+position = Vector2( -128, -6 )
+scale = Vector2( 1e-05, 1e-05 )
+
+[node name="LevelFinish" parent="Save_Functionality" instance=ExtResource( 7 )]
+position = Vector2( 293, -34 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Save_Functionality"]
+stream = ExtResource( 9 )
+autoplay = true
+mix_target = 1
+bus = "Music"
+
+[node name="Wire_Terminal" parent="Save_Functionality" instance=ExtResource( 12 )]
+position = Vector2( -152, 8 )
+
+[node name="Checkpoint" parent="Save_Functionality" instance=ExtResource( 11 )]
+position = Vector2( -73, -112 )
+
+[node name="MoveableBlockBody" parent="Save_Functionality" instance=ExtResource( 16 )]
+position = Vector2( -8, -172 )
+
+[node name="Wire" parent="Save_Functionality" instance=ExtResource( 10 )]
+moveable = false
+
+[node name="Line2D" parent="Save_Functionality/Wire" index="0"]
+points = PoolVector2Array( -6, -151, -40, -100 )
+
+[node name="PortalEntrance" parent="Save_Functionality" instance=ExtResource( 14 )]
+position = Vector2( -24, -96 )
+
+[node name="PortalExit" parent="Save_Functionality" instance=ExtResource( 15 )]
+position = Vector2( -24, -32 )
+
+[node name="PortalSpriteActive" parent="Save_Functionality/PortalExit" index="0"]
+rotation = 3.14159
+
+[node name="PortalSprite" parent="Save_Functionality/PortalExit" index="1"]
+rotation = 3.14159
+
+[node name="RigidBody2D" parent="Save_Functionality/PortalExit" index="2"]
+rotation = 3.14159
+
+[node name="CollisionPolygon2D" parent="Save_Functionality/PortalExit/RigidBody2D" index="0"]
+position = Vector2( -32, 48 )
+
+[node name="TeleportationShape" parent="Save_Functionality/PortalExit/TeleportationArea" index="0"]
+visible = true
+position = Vector2( 16, -40 )
+
+[node name="Wire2" parent="Save_Functionality" instance=ExtResource( 10 )]
+moveable = false
+
+[node name="Line2D" parent="Save_Functionality/Wire2" index="0"]
+points = PoolVector2Array( -8, -118, 119, 35 )
+
+[node name="BlockPlayerTeleporter" parent="Save_Functionality" instance=ExtResource( 13 )]
+position = Vector2( 112, 83 )
+
+[node name="MoveableBlockBody2" parent="Save_Functionality" instance=ExtResource( 16 )]
+position = Vector2( 117, -110 )
+
+[node name="PortalEntrance2" parent="Save_Functionality" instance=ExtResource( 14 )]
+position = Vector2( 168, -88 )
+
+[node name="PortalSpriteActive" parent="Save_Functionality/PortalEntrance2" index="0"]
+rotation = -1.5708
+
+[node name="PortalSprite" parent="Save_Functionality/PortalEntrance2" index="1"]
+rotation = -1.5708
+
+[node name="RigidBody2D" parent="Save_Functionality/PortalEntrance2" index="2"]
+position = Vector2( 40, -8 )
+rotation = -1.5708
+
+[node name="TeleportationArea" parent="Save_Functionality/PortalEntrance2" index="3"]
+position = Vector2( 31, -40 )
+rotation = 1.5708
+
+[node name="TeleportationShape" parent="Save_Functionality/PortalEntrance2/TeleportationArea" index="0"]
+visible = true
+
+[node name="Wire3" parent="Save_Functionality" instance=ExtResource( 10 )]
+moveable = false
+
+[node name="Line2D" parent="Save_Functionality/Wire3" index="0"]
+points = PoolVector2Array( 182, -110, 188, -137 )
+
+[node name="Wire4" parent="Save_Functionality" instance=ExtResource( 10 )]
+moveable = false
+
+[node name="Line2D" parent="Save_Functionality/Wire4" index="0"]
+position = Vector2( -1, 0 )
+points = PoolVector2Array( 98, 72, 178, -114 )
+
+[node name="BlockPlayerTeleporter" parent="Save_Functionality/Wire4/Line2D" index="0" instance=ExtResource( 13 )]
+position = Vector2( -15, -25 )
+
+[node name="PortalExit2" parent="Save_Functionality" instance=ExtResource( 15 )]
+position = Vector2( 76, 90 )
+
+[node name="PortalSpriteActive" parent="Save_Functionality/PortalExit2" index="0"]
+rotation = 1.5708
+
+[node name="PortalSprite" parent="Save_Functionality/PortalExit2" index="1"]
+rotation = 1.5708
+
+[node name="RigidBody2D" parent="Save_Functionality/PortalExit2" index="2"]
+rotation = 1.5708
+
+[node name="CollisionPolygon2D" parent="Save_Functionality/PortalExit2/RigidBody2D" index="0"]
+position = Vector2( -40, 9 )
+polygon = PoolVector2Array( 2, -21, 0, -17, 0, 0, 32, 0, 32, -17, 30, -21, 28, -21, 28, -1, 4, -1, 4, -21 )
+
+[node name="TeleportationArea" parent="Save_Functionality/PortalExit2" index="3"]
+position = Vector2( 1, -40 )
+rotation = 1.5708
+
+[node name="TeleportationShape" parent="Save_Functionality/PortalExit2/TeleportationArea" index="0"]
+visible = true
+
+[node name="Wire5" parent="Save_Functionality" instance=ExtResource( 10 )]
+moveable = false
+
+[node name="Line2D" parent="Save_Functionality/Wire5" index="0"]
+points = PoolVector2Array( -7, -56, -8, -108 )
+
+[node name="Wire6" parent="Save_Functionality" instance=ExtResource( 10 )]
+moveable = false
+
+[node name="Line2D" parent="Save_Functionality/Wire6" index="0"]
+points = PoolVector2Array( -73, -117, -103, 11 )
+
+[editable path="Save_Functionality/WireUIBox"]
+[editable path="Save_Functionality/Player_Body"]
+[editable path="Save_Functionality/Wire"]
+[editable path="Save_Functionality/PortalExit"]
+[editable path="Save_Functionality/Wire2"]
+[editable path="Save_Functionality/PortalEntrance2"]
+[editable path="Save_Functionality/Wire3"]
+[editable path="Save_Functionality/Wire4"]
+[editable path="Save_Functionality/PortalExit2"]
+[editable path="Save_Functionality/Wire5"]
+[editable path="Save_Functionality/Wire6"]
