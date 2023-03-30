@@ -58,6 +58,7 @@ radius = 14.0
 height = 6.0
 
 [node name="Wire_Terminal" type="Node2D" groups=["Wire_Terminal"]]
+z_index = -2
 script = ExtResource( 1 )
 frequency = 4.0
 amplitude = 15.079

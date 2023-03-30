@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Save_Data.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Levels/ConnectionsTileset.tres" type="TileSet" id=8]
 [ext_resource path="res://Levels/Spikes_TileSet.tres" type="TileSet" id=9]
 [ext_resource path="res://OGPC_Project_Cursor.png" type="Texture" id=10]
+[ext_resource path="res://LevelFinish.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=4]
 resource_name = "Cone_Spin_Attack"
@@ -322,6 +323,9 @@ scale = Vector2( 6, 6 )
 texture = ExtResource( 10 )
 
 [node name="WireUIBox" type="Sprite" parent="Save_Functionality"]
+
+[node name="LevelFinish" parent="." instance=ExtResource( 11 )]
+position = Vector2( -1497, -85 )
 
 [connection signal="timeout" from="Save_Functionality/Boss_Body/Attack_Cooldown_Timer" to="Save_Functionality/Boss_Body" method="_on_Attack_Cooldown_Timer_timeout"]
 
