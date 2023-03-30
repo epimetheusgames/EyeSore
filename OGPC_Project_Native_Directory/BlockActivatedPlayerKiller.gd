@@ -8,7 +8,7 @@ func _on_Area2D_body_entered(body):
 		var player = get_parent().get_node("Player_Body")
 	
 		countdown_player_tel = 10
-		block_old_pos = body.position
+		block_old_pos = body.global_position
 	
 		body.set_telepoint(player.position)
 

@@ -15,7 +15,7 @@
 [ext_resource path="res://BlockPlayerTeleporter.tscn" type="PackedScene" id=13]
 [ext_resource path="res://PortalEntrance.tscn" type="PackedScene" id=14]
 [ext_resource path="res://PortalExit.tscn" type="PackedScene" id=15]
-[ext_resource path="res://MoveableBlock.tscn" type="PackedScene" id=16]
+[ext_resource path="res://BlockDispenser.tscn" type="PackedScene" id=17]
 
 [node name="Level_Manager" type="Node2D"]
 pause_mode = 1
@@ -78,9 +78,6 @@ position = Vector2( -152, 8 )
 [node name="Checkpoint" parent="Save_Functionality" instance=ExtResource( 11 )]
 position = Vector2( -73, -127 )
 
-[node name="MoveableBlockBody" parent="Save_Functionality" instance=ExtResource( 16 )]
-position = Vector2( 44, -111 )
-
 [node name="PortalEntrance" parent="Save_Functionality" instance=ExtResource( 14 )]
 position = Vector2( -8, -88 )
 
@@ -126,9 +123,6 @@ points = PoolVector2Array( 7, -115, 103, 51 )
 
 [node name="BlockPlayerTeleporter" parent="Save_Functionality" instance=ExtResource( 13 )]
 position = Vector2( 112, 83 )
-
-[node name="MoveableBlockBody2" parent="Save_Functionality" instance=ExtResource( 16 )]
-position = Vector2( 117, -110 )
 
 [node name="PortalEntrance2" parent="Save_Functionality" instance=ExtResource( 14 )]
 position = Vector2( 168, -88 )
@@ -200,6 +194,9 @@ points = PoolVector2Array( -72, -129, -103, 11 )
 
 [node name="Checkpoint2" parent="Save_Functionality" instance=ExtResource( 11 )]
 position = Vector2( -48, 0 )
+
+[node name="BlockDispenser" parent="Save_Functionality" instance=ExtResource( 17 )]
+position = Vector2( 68, -176 )
 
 [editable path="Save_Functionality/WireUIBox"]
 [editable path="Save_Functionality/Player_Body"]
