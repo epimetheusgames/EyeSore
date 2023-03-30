@@ -1,5 +1,9 @@
 extends KinematicBody2D
 
+
+# the file path to instance the boss bullets, the bullets are reused from the old player bullets that were scrapped
+const boss_bullet_file_path = preload("res://Player_Bullet.tscn")
+
 # set the playback var, this is a component of the animation tree
 onready var state_machine = $AnimationTree.get("parameters/playback")
 onready var player_body = get_parent().get_node("Player_Body")
@@ -45,25 +49,41 @@ func Apply_Friction():
 func Start_Attack(attack_name):
 	if attack_name == "Scoop_Fire":
 		Scoop_Fire_Attack()
+		yield(Scoop_Fire_Attack(), "completed")
 	elif attack_name == "Cone_Spin":
 		Cone_Spin_Attack()
+		yield(Cone_Spin_Attack(), "completed")
+	
+	attack_cooldown_timer.start(3)
 
 # attack functions
 func Scoop_Fire_Attack():
-	print("Scoop Fire")
+	for i in range(5):
+		var boss_bullet = boss_bullet_file_path.instance()
+			
+		get_node("/root/MainMenuRootNode/Shooting_SFX_Player").play()
+			
+		get_parent().add_child(boss_bullet)
+			
+		boss_bullet.position = $Boss_Gun_Base.global_position
+		
+		yield(get_tree().create_timer(0.5), "timeout")
+	
 	var cooldown_to_next_attack = 5
 	return cooldown_to_next_attack
 
 func Cone_Spin_Attack():
+	$Label.text = "cone_spin"
 	attack_duration_timer.start(8)
 	# Set the animationtree's animation here
 	state_machine.travel("Cone_Spin_Attack")
 	yield($AnimationPlayer, "animation_finished")
+	$Label.text = "idle"
 	state_machine.travel("Idle")
-	var cooldown_to_next_attack = 5
+	var cooldown_to_next_attack = 3
 	return cooldown_to_next_attack
 
 # if the attack cooldown timer is at 0, start an attack
 func _on_Attack_Cooldown_Timer_timeout():
-	var cooldown_to_next_attack = Start_Attack("Cone_Spin")
+	var cooldown_to_next_attack = Start_Attack(first_phase_attacks[(randi() % first_phase_attacks.size())])
 	attack_cooldown_timer.start()

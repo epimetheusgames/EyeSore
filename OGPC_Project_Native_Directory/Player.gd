@@ -216,7 +216,7 @@ func _process(delta):
 		bullet_type = 1
 		Shoot_Bullet(bullet_type)
 		
-		shockwave_bullet_cooldown_timer = 45
+		shockwave_bullet_cooldown_timer = 30
 	
 	$Player_Gun_Base.look_at(get_global_mouse_position())
 	
