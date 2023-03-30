@@ -15,18 +15,16 @@ func _on_TeleportationArea_body_entered(body):
 			if portal and portal[0] == self and portal[1]:
 				var other_side = wire.get_touching_portal(0)
 				
-				print(other_side)
-				print(body.global_position)
-				print(wire.get_node("Line2D").points)
-				
 				if other_side and not other_side[1]:
 					body.set_telepoint(other_side[0].get_node("PortalTelepoint").global_position)
 
 func _process(delta):
 	if active:
+		$RigidBody2D/CollisionPolygon2D.disabled = false
 		$PortalSprite.visible = false
 		$PortalSpriteActive.visible = true
 	else:
+		$RigidBody2D/CollisionPolygon2D.disabled = true
 		$PortalSprite.visible = true
 		$PortalSpriteActive.visible = false
 

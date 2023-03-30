@@ -12,6 +12,8 @@ var game_paused = false
 var level_name = "Level2"
 
 const levels = [
+	preload("res://Levels/BlockSpikeLevel.tscn"),
+	preload("res://Levels/PuzzleLevel4.tscn"),
 	preload("res://Levels/AestheticallyPleasingLevel.tscn"),
 	preload("res://Levels/PortalTestLevel.tscn"),
 	preload("res://Levels/Boss.tscn"),
@@ -25,6 +27,8 @@ const levels = [
 ]
 
 const level_names = [
+	"res://Levels/BlockSpikeLevel.tscn",
+	"res://Levels/PuzzleLevel4.tscn",
 	"res://Levels/AestheticallyPleasingLevel.tscn",
 	"res://Levels/PortalTestLevel.tscn",
 	"res://Levels/Boss.tscn",
@@ -97,14 +101,22 @@ func Open_Pause_Menu():
 	game_paused = true 
 	get_tree().paused = true
 	add_child(PauseMenu.instance())
-	$PauseMenu.position = get_node(Get_Level_Name()).get_node("Save_Functionality").get_node("Camera2D").position
+	
+	var whole_level_cam = get_node(Get_Level_Name()).get_node("Save_Functionality").get_node("Camera2D")
+	var player_cam = get_node(Get_Level_Name()).get_node("Save_Functionality").get_node("Player_Body").get_node("Camera2D")
+	
+	if whole_level_cam.current == true:
+		$PauseMenu.position = whole_level_cam.position
+		print(whole_level_cam.position)
+		print($PauseMenu.position)
+		print(get_local_mouse_position())
+	else:
+		$PauseMenu.position = player_cam.get_parent().position
 	
 func Close_Pause_Menu(closed_window):
 	closed_window.queue_free() 
 	game_paused = false
-	var camera = get_node(Get_Level_Name()).get_node("Save_Functionality").get_node_or_null("Camera2D")
-	if camera != null:
-		camera.current = true
+	var camera = get_node(Get_Level_Name()).get_node("Save_Functionality").get_node("Camera2D")
 	get_tree().paused = false
 	
 func Close_Pause_Menu_To_Main(closed_window):

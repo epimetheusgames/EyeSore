@@ -34,10 +34,10 @@ z_index = 10
 script = ExtResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -343.0
-margin_top = -197.0
-margin_right = 340.0
-margin_bottom = 175.0
+margin_left = -929.0
+margin_top = -573.0
+margin_right = 952.0
+margin_bottom = 561.0
 color = Color( 0, 0, 0, 0.376471 )
 
 [node name="Label" type="Label" parent="."]

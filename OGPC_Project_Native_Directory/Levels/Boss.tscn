@@ -201,9 +201,6 @@ tile_set = ExtResource( 8 )
 cell_size = Vector2( 16, 16 )
 format = 1
 
-[node name="Camera2D" type="Camera2D" parent="Save_Functionality"]
-position = Vector2( -16, -72 )
-
 [node name="Player_Body" parent="Save_Functionality" instance=ExtResource( 1 )]
 
 [node name="Camera2D" parent="Save_Functionality/Player_Body" index="2"]
@@ -211,6 +208,9 @@ current = true
 
 [node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="1"]
 visible = false
+
+[node name="Camera2D" type="Camera2D" parent="Save_Functionality"]
+position = Vector2( -16, -72 )
 
 [node name="Background" type="ParallaxBackground" parent="Save_Functionality"]
 
