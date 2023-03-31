@@ -12,6 +12,7 @@ var game_paused = false
 var level_name = "Level2"
 
 const levels = [
+	preload("res://Levels/PortalUnmanualTutorial.tscn"),
 	preload("res://Levels/BlockSpikeLevel.tscn"),
 	preload("res://Levels/PuzzleLevel4.tscn"),
 	preload("res://Levels/AestheticallyPleasingLevel.tscn"),
@@ -27,6 +28,7 @@ const levels = [
 ]
 
 const level_names = [
+	"res://Levels/PortalUnmanualTutorial.tscn",
 	"res://Levels/BlockSpikeLevel.tscn",
 	"res://Levels/PuzzleLevel4.tscn",
 	"res://Levels/AestheticallyPleasingLevel.tscn",

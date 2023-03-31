@@ -171,7 +171,6 @@ rotation = 1.5708
 
 [node name="CollisionPolygon2D" parent="Save_Functionality/PortalExit2/RigidBody2D" index="0"]
 position = Vector2( -40, 9 )
-polygon = PoolVector2Array( 2, -21, 0, -17, 0, 0, 32, 0, 32, -17, 30, -21, 28, -21, 28, -1, 4, -1, 4, -21 )
 
 [node name="TeleportationArea" parent="Save_Functionality/PortalExit2" index="3"]
 position = Vector2( 1, -40 )

@@ -324,7 +324,7 @@ texture = ExtResource( 10 )
 
 [node name="WireUIBox" type="Sprite" parent="Save_Functionality"]
 
-[node name="LevelFinish" parent="." instance=ExtResource( 11 )]
+[node name="LevelFinish" parent="Save_Functionality" instance=ExtResource( 11 )]
 position = Vector2( -1497, -85 )
 
 [connection signal="timeout" from="Save_Functionality/Boss_Body/Attack_Cooldown_Timer" to="Save_Functionality/Boss_Body" method="_on_Attack_Cooldown_Timer_timeout"]
