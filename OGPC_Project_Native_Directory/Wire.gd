@@ -56,14 +56,14 @@ func _process(delta):
 		$Line2D.default_color = transparent_immoveable_color
 	
 	$Line2D.points[0] = tileset.map_to_world(tileset.world_to_map($Line2D.points[0])) + tileset.cell_size / 2
-	$Line2D.points[1] = tileset.map_to_world(tileset.world_to_map($Line2D.points[1])) + tileset.cell_size / 2
+	$Line2D.points[-1] = tileset.map_to_world(tileset.world_to_map($Line2D.points[-1])) + tileset.cell_size / 2
 	
 	var icon_size = Vector2($Side1Icon.texture.get_width(), $Side1Icon.texture.get_height())
 	
 	$Side1Icon.position = $Line2D.points[0] - icon_size / 2
-	$Side2Icon.position = $Line2D.points[1] - icon_size / 2
+	$Side2Icon.position = $Line2D.points[-1] - icon_size / 2
 	$Side1IconImmoveable.position = $Line2D.points[0] - icon_size / 2
-	$Side2IconImmoveable.position = $Line2D.points[1] - icon_size / 2
+	$Side2IconImmoveable.position = $Line2D.points[-1] - icon_size / 2
 		
 	if wire_ui and moveable:
 		$Side1Icon.visible = true 
@@ -122,7 +122,7 @@ func _on_Side2_button_down():
 
 func _on_Side2_button_up():
 	if moveable and wire_ui:
-		if get_parent().get_parent().is_point_on_connections($Line2D.points[1]) and not get_parent().get_parent().is_another_already_there(1, self):
+		if get_parent().get_parent().is_point_on_connections($Line2D.points[-1]) and not get_parent().get_parent().is_another_already_there(1, self):
 			side2_pressed = false
 		else:
 			queue_free()
@@ -146,7 +146,7 @@ func get_touching_checkpoint(point_ind):
 	
 func get_touching_portal(point_ind):
 	var portals = get_tree().get_nodes_in_group("portals")
-	
+	  
 	for portal in portals:
 		if portal.is_point_inside($Line2D.points[point_ind]):
 			return [portal, portal.entrance]
@@ -168,6 +168,6 @@ func delete_tile_at(point_ind, tileset, is_grass, spike_coords, spike_coord_type
 
 func set_pos(pos):
 	$Line2D.points[0] = pos 
-	$Line2D.points[1] = pos
+	$Line2D.points[-1] = pos
 	$Side1.rect_position = pos - $Side1.rect_size / 2
 	$Side2.rect_position = pos - $Side2.rect_size / 2
