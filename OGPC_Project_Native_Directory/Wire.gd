@@ -10,10 +10,12 @@ export var transparent_moveable_color = Color(0, 0, 0, 0)
 export var transparent_immoveable_color = Color(0, 0, 0, 0)
 export var can_connect_with_immoveable = true
 
+var particle_explosion_reset = 0
 var wire_ui = false
 var tileset = null
 var is_on_at_start = false
 var placed_yet = false
+var particles_list = []
 
 func _ready():
 	if moveable:
@@ -38,14 +40,45 @@ func is_mouse_pressed():
 		return true 
 	return false 
 	
+func distance(p1x, p1y, p2x, p2y):
+	return sqrt(pow((p2x - p1x), 2) + pow((p2y - p1y), 2))
+	
 func move_button_and_line_to_mouse(button, side_num):
 	$Line2D.points[side_num] = get_local_mouse_position()
 	button.rect_position = get_local_mouse_position() - button.rect_size / 2
 	
 func move_button_to_line(button, side_num):
 	button.rect_position = $Line2D.points[side_num] - button.rect_size / 2
+	
+func run_particles_down_wire():
+	var pos_1 = $Line2D.points[0]
+	var pos_2 = $Line2D.points[1]
+	var start_to_end_dir = (pos_2 - pos_1).normalized()
+	var spacing = 10
+	
+	particles_list = []
+	
+	print('hi')
+	
+	for i in range(distance(pos_1.x, pos_1.y, pos_2.x, pos_2.y) / 10):
+		var particle_instance = $Particles2D.duplicate()
+		particle_instance.position = pos_1 + (i * start_to_end_dir * 10)
+		particle_instance.emitting = true
+		particles_list.append(particle_instance)
+		add_child(particle_instance)
+		
+	particle_explosion_reset = 500
 
 func _process(delta):
+	if particle_explosion_reset > 0:
+		particle_explosion_reset -= 1
+	else:
+		for i in range(len(particles_list)):
+			particles_list[i].emitting = false
+			remove_child(particles_list[i])
+			particles_list[i].queue_free()
+		particles_list = []
+	
 	if wire_ui and moveable:
 		$Line2D.default_color = moveable_color
 	if not wire_ui and moveable:
@@ -105,6 +138,8 @@ func _on_Side1_button_up():
 		if get_parent().get_parent().is_point_on_connections($Line2D.points[0]) and not get_parent().get_parent().is_another_already_there(0, self):
 			var pos = get_parent().get_parent().get_pos_on_tilemap($Line2D.points[0])
 			var gs_or_n = get_parent().get_parent().is_spike_or_grass(pos)
+			
+			run_particles_down_wire()
 			
 			if gs_or_n == "n":
 				is_on_at_start = false
@@ -171,3 +206,5 @@ func set_pos(pos):
 	$Line2D.points[-1] = pos
 	$Side1.rect_position = pos - $Side1.rect_size / 2
 	$Side2.rect_position = pos - $Side2.rect_size / 2
+
+

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://CoolParticles.gd" type="Script" id=1]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.358824, 0.994118, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.177002, 0.453125, 0.19426, 1, 0.14267, 0.248578, 0.664062, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=1]
+lifetime_randomness = 0.62
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 0.1
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 10.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = 10.0
+color = Color( 0.713726, 0.0980392, 0.0980392, 1 )
+color_ramp = SubResource( 3 )
+
+[node name="CoolParticles" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+amount = 10000
+lifetime = 200.0
+process_material = SubResource( 1 )
