@@ -16,6 +16,10 @@ var tileset = null
 var is_on_at_start = false
 var placed_yet = false
 var particles_list = []
+var really_placed_yet = false
+
+onready var sparks = $Particles2D
+onready var poof = $Particles2D2
 
 func _ready():
 	if moveable:
@@ -50,7 +54,14 @@ func move_button_and_line_to_mouse(button, side_num):
 func move_button_to_line(button, side_num):
 	button.rect_position = $Line2D.points[side_num] - button.rect_size / 2
 	
-func run_particles_down_wire():
+func run_particles_down_wire(duped_particle, delete_other_emitters):
+	if delete_other_emitters:
+		for i in range(len(particles_list)):
+			particles_list[i].emitting = false
+			remove_child(particles_list[i])
+			particles_list[i].queue_free()
+		particles_list = []
+	
 	var pos_1 = $Line2D.points[0]
 	var pos_2 = $Line2D.points[1]
 	var start_to_end_dir = (pos_2 - pos_1).normalized()
@@ -58,12 +69,12 @@ func run_particles_down_wire():
 	
 	particles_list = []
 	
-	print('hi')
-	
 	for i in range(distance(pos_1.x, pos_1.y, pos_2.x, pos_2.y) / 10):
-		var particle_instance = $Particles2D.duplicate()
+		var particle_instance = duped_particle.duplicate()
 		particle_instance.position = pos_1 + (i * start_to_end_dir * 10)
 		particle_instance.emitting = true
+		particle_instance.lifetime = (randi() % 50) + 5
+		particle_instance.visible = true
 		particles_list.append(particle_instance)
 		add_child(particle_instance)
 		
@@ -73,11 +84,12 @@ func _process(delta):
 	if particle_explosion_reset > 0:
 		particle_explosion_reset -= 1
 	else:
-		for i in range(len(particles_list)):
-			particles_list[i].emitting = false
-			remove_child(particles_list[i])
-			particles_list[i].queue_free()
-		particles_list = []
+		#for i in range(len(particles_list)):
+		#	particles_list[i].emitting = false
+		#	remove_child(particles_list[i])
+		#	particles_list[i].queue_free()
+		#particles_list = []
+		pass
 	
 	if wire_ui and moveable:
 		$Line2D.default_color = moveable_color
@@ -113,8 +125,16 @@ func _process(delta):
 		
 	
 	if side1_pressed:
+		for child in get_children():
+			if "Particles" in child.name and child != sparks and child != poof:
+				child.queue_free()
+		particles_list = []
 		move_button_and_line_to_mouse($Side1, 0)
 	elif side2_pressed:
+		for child in get_children():
+			if "Particles" in child.name:
+				child.queue_free()
+		particles_list = []
 		move_button_and_line_to_mouse($Side2, 1)
 
 func unselect():
@@ -136,10 +156,14 @@ func _on_Side1_button_down():
 func _on_Side1_button_up():
 	if moveable and wire_ui:
 		if get_parent().get_parent().is_point_on_connections($Line2D.points[0]) and not get_parent().get_parent().is_another_already_there(0, self):
+			run_particles_down_wire($Particles2D, true)
+			
+			if not really_placed_yet:
+				really_placed_yet = true
+				run_particles_down_wire($Particles2D2, false)
+			
 			var pos = get_parent().get_parent().get_pos_on_tilemap($Line2D.points[0])
 			var gs_or_n = get_parent().get_parent().is_spike_or_grass(pos)
-			
-			run_particles_down_wire()
 			
 			if gs_or_n == "n":
 				is_on_at_start = false
@@ -158,6 +182,7 @@ func _on_Side2_button_down():
 func _on_Side2_button_up():
 	if moveable and wire_ui:
 		if get_parent().get_parent().is_point_on_connections($Line2D.points[-1]) and not get_parent().get_parent().is_another_already_there(1, self):
+			run_particles_down_wire($Particles2D, true)
 			side2_pressed = false
 		else:
 			queue_free()
