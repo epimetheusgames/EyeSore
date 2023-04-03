@@ -290,7 +290,7 @@ func _on_Area2D_body_entered(body):
 		var coords = get_spike_coords(body)
 		manage_wires(coords, body, get_parent().get_node("TileMap"))
 		# start the timer for respawn to allow the death animation to play
-		$Death_Animation_Timer.start(1)
+		$Death_Animation_Timer.start(1.5)
 		# play the death sfx and hide the player to replace it with the death particles
 		get_node("/root/MainMenuRootNode/Player_Hurt_Player").play()
 		# spawn the player's death particles (just four quadrants of the player that split away from each other when spawned)

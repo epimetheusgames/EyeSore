@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Save_Data.gd" type="Script" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://Levels/Spikes_TileSet.tres" type="TileSet" id=9]
 [ext_resource path="res://OGPC_Project_Cursor.png" type="Texture" id=10]
 [ext_resource path="res://LevelFinish.tscn" type="PackedScene" id=11]
+[ext_resource path="res://OGPC_Game_Project_2022.icon.png" type="Texture" id=12]
+[ext_resource path="res://Levels/Ice_Cream_Wall_Of_Death.gd" type="Script" id=13]
 
 [sub_resource type="Animation" id=4]
 resource_name = "Cone_Spin_Attack"
@@ -22,7 +24,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 7.8, 8 ),
+"times": PoolRealArray( 0, 0.3, 7.8, 8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -35,7 +37,7 @@ tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "points": PoolRealArray( 0, -6.20154e-05, 0.0162306, 2.81, -735.431, 5400, -1.59, 927.142, 0.00231885, -1.35214 ),
-"times": PoolRealArray( 0.2, 8 )
+"times": PoolRealArray( 0.3, 8 )
 }
 
 [sub_resource type="Animation" id=19]
@@ -105,6 +107,10 @@ tracks/0/keys = {
 "values": [ 0.0 ]
 }
 
+[sub_resource type="Animation" id=24]
+resource_name = "Scoop_Fire_Attack"
+length = 4.0
+
 [sub_resource type="Animation" id=9]
 resource_name = "Spawn"
 length = 0.5
@@ -130,13 +136,18 @@ animation = "Death"
 [sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Idle"
 
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "Scoop_Fire_Attack"
+
 [sub_resource type="AnimationNodeAnimation" id=12]
 animation = "Spawn"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
-switch_mode = 1
+xfade_time = 1.0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
 switch_mode = 2
@@ -144,19 +155,27 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=22]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+switch_mode = 2
+auto_advance = true
+
 [sub_resource type="AnimationNodeStateMachine" id=15]
 states/Cone_Spin_Attack/node = SubResource( 10 )
-states/Cone_Spin_Attack/position = Vector2( 336, 93 )
+states/Cone_Spin_Attack/position = Vector2( 333, 85 )
 states/Death/node = SubResource( 21 )
 states/Death/position = Vector2( -171, 179 )
 states/Idle/node = SubResource( 11 )
 states/Idle/position = Vector2( 110, 85 )
+states/Scoop_Fire_Attack/node = SubResource( 25 )
+states/Scoop_Fire_Attack/position = Vector2( 211, 190 )
 states/Spawn/node = SubResource( 12 )
 states/Spawn/position = Vector2( -171, 85 )
-transitions = [ "Spawn", "Idle", SubResource( 17 ), "Idle", "Cone_Spin_Attack", SubResource( 18 ), "Cone_Spin_Attack", "Idle", SubResource( 20 ), "Idle", "Death", SubResource( 22 ) ]
+transitions = [ "Spawn", "Idle", SubResource( 17 ), "Idle", "Cone_Spin_Attack", SubResource( 18 ), "Cone_Spin_Attack", "Idle", SubResource( 20 ), "Idle", "Death", SubResource( 22 ), "Idle", "Scoop_Fire_Attack", SubResource( 26 ), "Scoop_Fire_Attack", "Idle", SubResource( 27 ) ]
 start_node = "Spawn"
 end_node = "Death"
-graph_offset = Vector2( -389, -10 )
+graph_offset = Vector2( -474, 18 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
@@ -174,6 +193,14 @@ animations = [ {
 "name": "Idle",
 "speed": 5.0
 } ]
+
+[sub_resource type="RectangleShape2D" id=28]
+extents = Vector2( 80, 1384 )
+
+[sub_resource type="Environment" id=29]
+ambient_light_color = Color( 0.85098, 0.454902, 0.87451, 1 )
+fog_enabled = true
+glow_enabled = true
 
 [node name="Level_Manager" type="Node2D"]
 pause_mode = 1
@@ -206,9 +233,6 @@ format = 1
 
 [node name="Camera2D" parent="Save_Functionality/Player_Body" index="2"]
 current = true
-
-[node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="1"]
-visible = false
 
 [node name="Camera2D" type="Camera2D" parent="Save_Functionality"]
 position = Vector2( -16, -72 )
@@ -277,6 +301,7 @@ anims/Idle = SubResource( 5 )
 anims/Move_Down = SubResource( 6 )
 anims/Move_Up = SubResource( 7 )
 anims/RESET = SubResource( 8 )
+anims/Scoop_Fire_Attack = SubResource( 24 )
 anims/Spawn = SubResource( 9 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Save_Functionality/Boss_Body"]
@@ -302,16 +327,8 @@ __meta__ = {
 
 [node name="Attack_Cooldown_Timer" type="Timer" parent="Save_Functionality/Boss_Body"]
 wait_time = 5.0
-autostart = true
 
 [node name="Attack_Duration_Timer" type="Timer" parent="Save_Functionality/Boss_Body"]
-
-[node name="Label" type="Label" parent="Save_Functionality/Boss_Body"]
-margin_left = -29.0
-margin_top = -47.0
-margin_right = 29.0
-margin_bottom = -33.0
-text = "Life Boss"
 
 [node name="Spin_Cone" type="KinematicBody2D" parent="Save_Functionality/Boss_Body"]
 modulate = Color( 1, 1, 1, 0 )
@@ -327,6 +344,22 @@ texture = ExtResource( 10 )
 [node name="LevelFinish" parent="Save_Functionality" instance=ExtResource( 11 )]
 position = Vector2( -1497, -85 )
 
-[connection signal="timeout" from="Save_Functionality/Boss_Body/Attack_Cooldown_Timer" to="Save_Functionality/Boss_Body" method="_on_Attack_Cooldown_Timer_timeout"]
+[node name="Ice_Cream_Wall_Of_Death" type="Area2D" parent="Save_Functionality"]
+position = Vector2( 568, -24 )
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Save_Functionality/Ice_Cream_Wall_Of_Death"]
+shape = SubResource( 28 )
+
+[node name="Sprite" type="Sprite" parent="Save_Functionality/Ice_Cream_Wall_Of_Death"]
+position = Vector2( -1.52588e-05, 6.10352e-05 )
+scale = Vector2( 2.5, 43.25 )
+texture = ExtResource( 12 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Save_Functionality/Ice_Cream_Wall_Of_Death"]
+environment = SubResource( 29 )
 
 [editable path="Save_Functionality/Player_Body"]
