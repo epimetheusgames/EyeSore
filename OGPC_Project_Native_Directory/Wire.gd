@@ -24,12 +24,12 @@ onready var poof = $Particles2D2
 func _ready():
 	if moveable:
 		side1_pressed = true
-	
+
 	add_to_group("wires")
 	
 	move_button_to_line($Side1, 0)
 	move_button_to_line($Side2, 1)
-	
+		
 	if moveable:
 		$Line2D.default_color = moveable_color
 		$Side1IconImmoveable.visible = false

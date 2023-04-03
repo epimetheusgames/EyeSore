@@ -178,7 +178,7 @@ animations = [ {
 [node name="Level_Manager" type="Node2D"]
 pause_mode = 1
 script = ExtResource( 5 )
-next_level = "end"
+next_level = "5"
 previous_level = "start"
 current_level_number = 0
 

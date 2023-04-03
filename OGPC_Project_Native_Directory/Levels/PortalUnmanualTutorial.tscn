@@ -196,17 +196,11 @@ moveable = false
 [node name="Line2D" parent="Save_Functionality/Wire" index="0"]
 points = PoolVector2Array( -280, -135, -280, 58 )
 
-[node name="Camera2D" parent="Save_Functionality/Wire" index="8"]
-current = false
-
 [node name="Wire2" parent="Save_Functionality" instance=ExtResource( 14 )]
 moveable = false
 
 [node name="Line2D" parent="Save_Functionality/Wire2" index="0"]
 points = PoolVector2Array( -112, -149, -282, -53 )
-
-[node name="Camera2D" parent="Save_Functionality/Wire2" index="8"]
-current = false
 
 [node name="Wire3" parent="Save_Functionality" instance=ExtResource( 14 )]
 moveable = false

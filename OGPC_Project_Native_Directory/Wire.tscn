@@ -30,8 +30,8 @@ damping = 10.0
 color_ramp = SubResource( 2 )
 
 [sub_resource type="Gradient" id=4]
-offsets = PoolRealArray( 0.0117647, 0.452941 )
-colors = PoolColorArray( 0.335938, 1, 0, 1, 0.0117647, 0.109804, 0.0392157, 0 )
+offsets = PoolRealArray( 0.0117647, 0.158824, 0.452941 )
+colors = PoolColorArray( 0.335938, 1, 0, 1, 0.0420208, 0.192889, 0.0355556, 0.0933333, 0.0117647, 0.109804, 0.0392157, 0 )
 
 [sub_resource type="GradientTexture" id=5]
 gradient = SubResource( 4 )
@@ -114,7 +114,7 @@ visible = false
 amount = 100
 lifetime = 2.0
 one_shot = true
-speed_scale = 3.0
+speed_scale = 4.0
 explosiveness = 0.95
 local_coords = false
 process_material = SubResource( 6 )
