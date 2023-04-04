@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Save_Data.gd" type="Script" id=2]
@@ -24,7 +24,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 7.8, 8 ),
+"times": PoolRealArray( 0, 0.2, 7.8, 8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -37,7 +37,7 @@ tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "points": PoolRealArray( 0, -6.20154e-05, 0.0162306, 2.81, -735.431, 5400, -1.59, 927.142, 0.00231885, -1.35214 ),
-"times": PoolRealArray( 0.3, 8 )
+"times": PoolRealArray( 0.2, 8 )
 }
 
 [sub_resource type="Animation" id=19]
@@ -136,18 +136,13 @@ animation = "Death"
 [sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=25]
-animation = "Scoop_Fire_Attack"
-
 [sub_resource type="AnimationNodeAnimation" id=12]
 animation = "Spawn"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
-xfade_time = 1.0
+switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
 switch_mode = 2
@@ -155,27 +150,19 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=22]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=26]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=27]
-switch_mode = 2
-auto_advance = true
-
 [sub_resource type="AnimationNodeStateMachine" id=15]
 states/Cone_Spin_Attack/node = SubResource( 10 )
-states/Cone_Spin_Attack/position = Vector2( 333, 85 )
+states/Cone_Spin_Attack/position = Vector2( 336, 93 )
 states/Death/node = SubResource( 21 )
 states/Death/position = Vector2( -171, 179 )
 states/Idle/node = SubResource( 11 )
 states/Idle/position = Vector2( 110, 85 )
-states/Scoop_Fire_Attack/node = SubResource( 25 )
-states/Scoop_Fire_Attack/position = Vector2( 211, 190 )
 states/Spawn/node = SubResource( 12 )
 states/Spawn/position = Vector2( -171, 85 )
-transitions = [ "Spawn", "Idle", SubResource( 17 ), "Idle", "Cone_Spin_Attack", SubResource( 18 ), "Cone_Spin_Attack", "Idle", SubResource( 20 ), "Idle", "Death", SubResource( 22 ), "Idle", "Scoop_Fire_Attack", SubResource( 26 ), "Scoop_Fire_Attack", "Idle", SubResource( 27 ) ]
+transitions = [ "Spawn", "Idle", SubResource( 17 ), "Idle", "Cone_Spin_Attack", SubResource( 18 ), "Cone_Spin_Attack", "Idle", SubResource( 20 ), "Idle", "Death", SubResource( 22 ) ]
 start_node = "Spawn"
 end_node = "Death"
-graph_offset = Vector2( -474, 18 )
+graph_offset = Vector2( -389, -10 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
