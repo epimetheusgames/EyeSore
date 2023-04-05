@@ -6,32 +6,48 @@ const boss_bullet_file_path = preload("res://Boss_Bullet.tscn")
 
 # set the playback var, this is a component of the animation tree
 onready var state_machine = $AnimationTree.get("parameters/playback")
+
+# Player body variable
 onready var player_body = get_parent().get_node("Player_Body")
+
+# Timer for different attack cooldowns, so they don't go emedietely. 
 onready var attack_cooldown_timer = $Attack_Cooldown_Timer
+
+# Timer for the duration of the attack.
 onready var attack_duration_timer = $Attack_Duration_Timer
+
+# The cone that spins and kills you.
 onready var spin_cone = $Spin_Cone
 
 var velocity = Vector2.ZERO
 var default_y_move_speed = 3
 var curr_move_speed = default_y_move_speed 
+
+# How fast the boss moves towards the player
 var x_speed = 1
 var match_player_y = true
 
 export var gravity_strength = 10
 export var friction_strength = 20
 
+# Different attacks that the boss has, reference the README.md or EyeSore ideas doc for more info.
 var first_phase_attacks = ["Scoop_Fire", "Cone_Spin"]
 var doing_spin_attack = false
 
 func _ready():
+	# Start the attack cooldown timer at the start of the level, and player the spawn animation.
 	attack_cooldown_timer.start(5)
 	state_machine.start("Spawn")
 
 func _physics_process(delta):
+	# Move and slide for velocity, aka movement
 	velocity = move_and_slide(velocity, Vector2.UP)
 	
+	# Apply friction to boss
 	Apply_Friction()
 	
+	# If matching player's y (yes) match the boss's y exactly, or move towards it fast enough that
+	# the boss never breaks.
 	if match_player_y == true:
 		if abs(player_body.velocity.y) < 5.5:
 			curr_move_speed = move_toward(curr_move_speed, default_y_move_speed / 1.8, 0.1)

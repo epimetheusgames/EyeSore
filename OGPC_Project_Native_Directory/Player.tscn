@@ -11,6 +11,11 @@
 [ext_resource path="res://OGPC_2022_Player_2_Jumping_Spritesheet.png" type="Texture" id=11]
 [ext_resource path="res://ogpc_project_player_2_spritesheet_new_walk_anim.png" type="Texture" id=12]
 
+[sub_resource type="AtlasTexture" id=105]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 16, 16 )
+
 [sub_resource type="AtlasTexture" id=61]
 flags = 1
 atlas = ExtResource( 6 )
@@ -173,6 +178,11 @@ region = Rect2( 176, 0, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ SubResource( 105 ) ],
+"loop": true,
+"name": "Idle_Left",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 61 ) ],
 "loop": true,
 "name": "Idle_Right",
@@ -198,10 +208,10 @@ animations = [ {
 "name": "Walking_Left",
 "speed": 20.0
 }, {
-"frames": [ SubResource( 105 ) ],
+"frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ) ],
 "loop": true,
-"name": "Idle_Left",
-"speed": 5.0
+"name": "Walking_Right",
+"speed": 20.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=93]
@@ -376,3 +386,4 @@ texture = ExtResource( 7 )
 [connection signal="body_entered" from="Player_Area" to="." method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="Death_Animation_Timer" to="." method="_on_Death_Animation_Timer_timeout"]
 [connection signal="animation_finished" from="Death_Anim_Transition/Death_Vignette_Player" to="Death_Anim_Transition" method="_on_Death_Vignette_Player_animation_finished"]
+

@@ -52,7 +52,7 @@ position = Vector2( -24, -54 )
 [node name="Player_Body" parent="Save_Functionality" instance=ExtResource( 1 )]
 position = Vector2( -128, 4 )
 
-[node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="1"]
+[node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="2"]
 visible = false
 
 [node name="Camera2D" type="Camera2D" parent="Save_Functionality"]
