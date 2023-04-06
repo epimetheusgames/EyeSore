@@ -56,8 +56,9 @@ func _physics_process(delta):
 		
 		self.position.y = move_toward(self.position.y, player_body.position.y - 32, curr_move_speed)
 		
+	# Move position to follow the player on the x axis
 	self.position.x -= x_speed
-	
+
 	if player_body.position.distance_to(self.position) > 230:
 		x_speed += 0.01
 	elif player_body.position.distance_to(self.position) < 330 and x_speed >= 1.4:
