@@ -20,8 +20,8 @@ var particles_list = []
 var really_placed_yet = false
 var added_particle_ind = 0
 
-onready var sparks = $Particles2D
-onready var poof = $Particles2D2
+onready var sparks = $DupeHolder/DupeParticles2D
+var poof = null
 
 func _ready():
 	if moveable:
@@ -74,7 +74,7 @@ func run_particles_down_wire(delete_other_emitters):
 	particle_explosion_reset = 500
 	
 func add_particle(i):
-	var particle_instance = $Particles2D.duplicate()
+	var particle_instance = sparks.duplicate()
 	var pos_1 = $Line2D.points[0]
 	var pos_2 = $Line2D.points[1]
 	var start_to_end_dir = (pos_2 - pos_1).normalized()

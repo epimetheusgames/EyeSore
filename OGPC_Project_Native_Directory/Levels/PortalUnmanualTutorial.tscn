@@ -55,6 +55,7 @@ visible = false
 
 [node name="Camera2D" type="Camera2D" parent="Save_Functionality"]
 position = Vector2( -24, -54 )
+current = true
 
 [node name="PlayerSpawnPos" type="Node2D" parent="Save_Functionality"]
 position = Vector2( -189, -19 )

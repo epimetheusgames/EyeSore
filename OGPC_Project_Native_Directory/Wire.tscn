@@ -77,7 +77,9 @@ visible = false
 texture = ExtResource( 5 )
 centered = false
 
-[node name="Particles2D" type="Particles2D" parent="."]
+[node name="DupeHolder" type="Node2D" parent="."]
+
+[node name="DupeParticles2D" type="Particles2D" parent="DupeHolder"]
 visible = false
 amount = 1
 lifetime = 20.0

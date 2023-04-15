@@ -42,7 +42,7 @@ tile_data = PoolIntArray( 65545, 0, 196611, 196601, 0, 196611, 131076, 0, 196611
 [node name="Player_Body" parent="Save_Functionality" instance=ExtResource( 1 )]
 position = Vector2( -128, 4 )
 
-[node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="1"]
+[node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="2"]
 visible = false
 
 [node name="Checkpoint" parent="Save_Functionality" instance=ExtResource( 5 )]
@@ -108,7 +108,7 @@ position = Vector2( -41, 40 )
 z_index = -5
 
 [node name="Terminal_Sprite" parent="Save_Functionality/Wire_Terminal" index="0"]
-frame = 6
+frame = 7
 
 [node name="ToggleButton" parent="Save_Functionality" instance=ExtResource( 13 )]
 position = Vector2( -104, 40 )

@@ -41,7 +41,7 @@ tile_data = PoolIntArray( 65525, 0, 196611, 131069, 0, 196611, 524289, 0, 196611
 [node name="Player_Body" parent="Save_Functionality" instance=ExtResource( 2 )]
 position = Vector2( -128, 4 )
 
-[node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="1"]
+[node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="2"]
 visible = false
 
 [node name="WireUIBox" parent="Save_Functionality" instance=ExtResource( 7 )]

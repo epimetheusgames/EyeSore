@@ -35,7 +35,7 @@ position = Vector2( -5, 4 )
 [node name="Death_Vignette_Player" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="0"]
 anims/Not_Dead = SubResource( 108 )
 
-[node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="1"]
+[node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="2"]
 visible = false
 
 [node name="Checkpoint" parent="Save_Functionality" instance=ExtResource( 6 )]
