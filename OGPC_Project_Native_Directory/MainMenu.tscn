@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://TestMenuBg.mp3" type="AudioStream" id=1]
 [ext_resource path="res://MainMenuHandler.gd" type="Script" id=2]
 [ext_resource path="res://OGPC-UI-Click-SFX-2.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Death_SFX_Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Save_Data.gd" type="Script" id=5]
 [ext_resource path="res://Shooting_SFX_Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://SFX/Land.wav" type="AudioStream" id=7]
 [ext_resource path="res://SFX/Enemy_Damaged.wav" type="AudioStream" id=8]
@@ -26,11 +27,6 @@ shader = SubResource( 1 )
 pause_mode = 2
 material = SubResource( 2 )
 script = ExtResource( 2 )
-
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 1 )
-mix_target = 1
-bus = "Music"
 
 [node name="ClickAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
@@ -89,3 +85,9 @@ margin_top = -1819.0
 margin_right = 3689.0
 margin_bottom = 2313.0
 color = Color( 0, 0, 0, 0 )
+
+[node name="SaveFunctionality" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )

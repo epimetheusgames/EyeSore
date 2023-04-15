@@ -42,7 +42,7 @@ tile_data = PoolIntArray( -262147, 0, 196608, -262146, 0, 196610, -131067, 0, 19
 [node name="Player_Body" parent="Save_Functionality" instance=ExtResource( 1 )]
 position = Vector2( -128, 4 )
 
-[node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="1"]
+[node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="2"]
 visible = false
 
 [node name="Camera2D" type="Camera2D" parent="Save_Functionality"]

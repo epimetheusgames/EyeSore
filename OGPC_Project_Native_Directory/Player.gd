@@ -286,9 +286,18 @@ func Shockwave_Hit_Player(player_shockwave_bullet_node_self):
 
 func _on_Area2D_body_entered(body):
 	# check if body is spikes and the player is not already dead
-	if "Spikes" in body.name and $Death_Animation_Timer.time_left <= 0:
-		var coords = get_spike_coords(body)
-		manage_wires(coords, body, get_parent().get_node("TileMap"))
+	if ("Spikes" in body.name or "Ice_Cream_Wall_Of_Death" in body.name) and $Death_Animation_Timer.time_left <= 0:
+		if "Spikes" in body.name:
+			var coords = get_spike_coords(body)
+			manage_wires(coords, body, get_parent().get_node("TileMap"))
+		
+		# Fade out bg music if in boss
+		var bg_music = get_parent().get_node_or_null("AudioStreamPlayer")
+		var boss = get_parent().get_node_or_null("Boss_Body")
+		
+		if boss:
+			bg_music.fadeout = true 
+		
 		# start the timer for respawn to allow the death animation to play
 		$Death_Animation_Timer.start(1.5)
 		# play the death sfx and hide the player to replace it with the death particles
@@ -299,6 +308,7 @@ func _on_Area2D_body_entered(body):
 		$AnimatedSprite.hide()
 		death_particles.position = self.position
 		get_parent().add_child(death_particles)
+	
 		
 func force_death():
 	#position = start_position 
@@ -309,6 +319,18 @@ func _on_Death_Animation_Timer_timeout():
 	position = respawn_position
 	$Death_Animation_Timer.stop()
 	$Death_Anim_Transition.stop_anim()
+	
+	# Check if player is in the boss battle
+	var boss = get_parent().get_node_or_null("Boss_Body")
+	var death_wall = get_parent().get_node_or_null("Ice_Cream_Wall_Of_Death")
+	var bg_music = get_parent().get_node_or_null("AudioStreamPlayer")
+	
+	if boss:
+		# Reset wall and boss
+		death_wall.reset()
+		boss.reset()
+		bg_music.fadein = true
+		bg_music.play()
 	
 func get_spike_coords(spike_tileset):
 	var tile_coords = spike_tileset.world_to_map(position)
@@ -346,3 +368,6 @@ func manage_wires(death_pos_on_tileset, tileset, grass_tileset):
 			
 			else:
 				wire.delete_tile_at(0, grass_tileset, true, get_parent().get_parent().deleted_spikes, get_parent().get_parent().deleted_spike_types)
+
+func _on_Player_Area_area_entered(area):
+	_on_Area2D_body_entered(area)

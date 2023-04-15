@@ -46,6 +46,13 @@ const level_names = [
 func _ready():
 	add_child(MenuOptions.instance())
 	
+	var data = $SaveFunctionality.get_game_data()
+	
+	AudioServer.set_bus_volume_db(1, linear2db(data[5]/100))
+	AudioServer.set_bus_mute(1, data[5] < 0.01)
+	AudioServer.set_bus_volume_db(2, linear2db(data[6]/100))
+	AudioServer.set_bus_mute(2, data[6] < 0.01)
+	
 	$BackgroundMusic.playing = true
 	# Play Main Menu Audio
 	
@@ -71,7 +78,7 @@ func Open_Main_Menu(closed_window):
 	if not game_paused:
 		add_child(MenuOptions.instance())
 	else:
-		add_child(PauseMenu.instance())
+		Open_Pause_Menu()
 
 func Open_Video_Menu(closed_window):
 	closed_window.queue_free()
@@ -109,10 +116,8 @@ func Open_Pause_Menu():
 	
 	if whole_level_cam.current == true:
 		$PauseMenu.position = whole_level_cam.position
-		print(whole_level_cam.position)
-		print($PauseMenu.position)
-		print(get_local_mouse_position())
 	else:
+		player_cam.current = true
 		$PauseMenu.position = player_cam.get_parent().position
 	
 func Close_Pause_Menu(closed_window):
@@ -134,6 +139,9 @@ func Set_Screen_Brightness(brightness):
 		
 func Play_Grass_Area_Music():
 	pass
+	
+func Play_Boss_Music():
+	$BossMusic.play()
 	
 func Play_OWIE_Player():
 	$OWIE_Player.play()

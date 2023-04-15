@@ -24,8 +24,10 @@ var default_y_move_speed = 3
 var curr_move_speed = default_y_move_speed 
 
 # How fast the boss moves towards the player
-var x_speed = 1
+var x_speed = 1.5
 var match_player_y = true
+
+var original_pos = position
 
 export var gravity_strength = 10
 export var friction_strength = 20
@@ -33,6 +35,10 @@ export var friction_strength = 20
 # Different attacks that the boss has, reference the README.md or EyeSore ideas doc for more info.
 var first_phase_attacks = ["Scoop_Fire", "Cone_Spin"]
 var doing_spin_attack = false
+
+func reset():
+	doing_spin_attack = false
+	position = original_pos
 
 func _ready():
 	# Start the attack cooldown timer at the start of the level, and player the spawn animation.
@@ -58,11 +64,6 @@ func _physics_process(delta):
 		
 	# Move position to follow the player on the x axis
 	self.position.x -= x_speed
-
-	if player_body.position.distance_to(self.position) > 230:
-		x_speed += 0.01
-	elif player_body.position.distance_to(self.position) < 330 and x_speed >= 1.4:
-		x_speed -= 0.02
 	
 	# if the attack cooldown timer is at 0, start an attack
 	if state_machine.get_current_node() == "Idle" and attack_cooldown_timer.time_left <= 0:
