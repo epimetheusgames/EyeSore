@@ -128,6 +128,9 @@ func Open_Pause_Menu():
 		player_cam.current = true
 		$PauseMenu.position = player_cam.get_parent().position
 	
+	if get_node(Get_Level_Name()).zoomed_level:
+		$PauseMenu.scale = Vector2(0.5, 0.5)
+	
 func Close_Pause_Menu(closed_window):
 	closed_window.queue_free() 
 	game_paused = false

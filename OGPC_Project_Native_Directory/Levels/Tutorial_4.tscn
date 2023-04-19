@@ -6,23 +6,23 @@
 [ext_resource path="res://Levels/ConnectionsTileset.tres" type="TileSet" id=4]
 [ext_resource path="res://Wire_Terminal.tscn" type="PackedScene" id=5]
 [ext_resource path="res://GroundTileMap.tscn" type="PackedScene" id=6]
-[ext_resource path="res://MouseLeftClick.png" type="Texture" id=7]
+[ext_resource path="res://Levels/TutorialIconManager.gd" type="Script" id=7]
 [ext_resource path="res://Save_Data.gd" type="Script" id=8]
 [ext_resource path="res://Levels/Spikes_TileSet.tres" type="TileSet" id=9]
 [ext_resource path="res://LevelFinish.tscn" type="PackedScene" id=10]
 [ext_resource path="res://OGPC Soundtrack 6.mp3" type="AudioStream" id=11]
-[ext_resource path="res://MouseRightClick.png" type="Texture" id=12]
-[ext_resource path="res://Levels/MouseClickIcons.gd" type="Script" id=13]
+[ext_resource path="res://OGPC_Project_Grass_Tileset_New_Test.png" type="Texture" id=12]
+[ext_resource path="res://Connections_Overlay_Tileset.png" type="Texture" id=13]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 1
-atlas = ExtResource( 7 )
-region = Rect2( 0, 0, 16, 16 )
+atlas = ExtResource( 13 )
+region = Rect2( 48, 48, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 1
-atlas = ExtResource( 7 )
-region = Rect2( 16, 0, 16, 16 )
+atlas = ExtResource( 12 )
+region = Rect2( 156, 144, 52, 48 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -35,12 +35,12 @@ animations = [ {
 [sub_resource type="AtlasTexture" id=4]
 flags = 1
 atlas = ExtResource( 12 )
-region = Rect2( 0, 0, 16, 16 )
+region = Rect2( 96, 128, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 1
 atlas = ExtResource( 12 )
-region = Rect2( 16, 0, 16, 16 )
+region = Rect2( 128, 160, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
@@ -56,6 +56,7 @@ script = ExtResource( 2 )
 next_level = "2"
 previous_level = "0"
 current_level_number = 1
+zoomed_level = true
 
 [node name="Save_Functionality" type="Node2D" parent="."]
 script = ExtResource( 8 )
@@ -103,19 +104,17 @@ position = Vector2( -10, 51 )
 [node name="Wire_Terminal" parent="Save_Functionality" instance=ExtResource( 5 )]
 position = Vector2( 64, 104 )
 
-[node name="MouseClickIcons" type="Node2D" parent="Save_Functionality"]
-script = ExtResource( 13 )
+[node name="TutorialWireHelp" type="Node2D" parent="Save_Functionality"]
+script = ExtResource( 7 )
 
-[node name="MouseLeftClick" type="AnimatedSprite" parent="Save_Functionality/MouseClickIcons"]
-position = Vector2( 88, 86 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Save_Functionality/TutorialWireHelp"]
+position = Vector2( 24, 104 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
-[node name="MouseRightClick" type="AnimatedSprite" parent="Save_Functionality/MouseClickIcons"]
-position = Vector2( 24, 86 )
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="Save_Functionality/TutorialWireHelp"]
+position = Vector2( 104, 88 )
 frames = SubResource( 6 )
-frame = 1
 playing = true
 
 [editable path="Save_Functionality/Player_Body"]
