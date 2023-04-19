@@ -8,10 +8,8 @@ func _ready():
 	visible = true
 
 func play_anim():
-	print('hi')
 	visible = true
 	$Death_Vignette_Player.play("Death_Vignette")
 
 func stop_anim():
-	print('ho')
 	visible = false
