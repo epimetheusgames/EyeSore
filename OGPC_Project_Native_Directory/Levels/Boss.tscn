@@ -401,13 +401,11 @@ environment = SubResource( 29 )
 position = Vector2( 749, 59 )
 frames = SubResource( 33 )
 animation = "Idle"
-frame = 1
+frame = 2
 playing = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Save_Functionality"]
 stream = ExtResource( 6 )
-volume_db = 2.539
-pitch_scale = 0.25
 autoplay = true
 bus = "Music"
 script = ExtResource( 16 )
