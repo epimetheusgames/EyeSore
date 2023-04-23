@@ -5,7 +5,7 @@
 [ext_resource path="res://OGPC_Project_WIP_Background_Lights.png" type="Texture" id=3]
 [ext_resource path="res://Levels/Boss.gd" type="Script" id=4]
 [ext_resource path="res://Levels/Level_Script.gd" type="Script" id=5]
-[ext_resource path="res://OGPC Soundtrack 9 - Carson Bates And Noah Johnson-Green.mp3" type="AudioStream" id=6]
+[ext_resource path="res://Boss_Theme_WIP.wav" type="AudioStream" id=6]
 [ext_resource path="res://GroundTileMap.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Levels/ConnectionsTileset.tres" type="TileSet" id=8]
 [ext_resource path="res://Levels/Spikes_TileSet.tres" type="TileSet" id=9]
@@ -260,6 +260,9 @@ format = 1
 [node name="Camera2D" parent="Save_Functionality/Player_Body" index="2"]
 current = true
 
+[node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="2"]
+visible = false
+
 [node name="Camera2D" type="Camera2D" parent="Save_Functionality"]
 position = Vector2( -16, -72 )
 
@@ -401,7 +404,6 @@ environment = SubResource( 29 )
 position = Vector2( 749, 59 )
 frames = SubResource( 33 )
 animation = "Idle"
-frame = 2
 playing = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Save_Functionality"]

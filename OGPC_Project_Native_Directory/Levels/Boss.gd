@@ -69,6 +69,7 @@ func _physics_process(delta):
 	if state_machine.get_current_node() == "Idle" and attack_cooldown_timer.time_left <= 0:
 		attack_cooldown_timer.start(5)
 	if attack_cooldown_timer.time_left <= 1 and state_machine.get_current_node() == "Idle":
+		print("hiii")
 		var cooldown_to_next_attack = Start_Attack(first_phase_attacks[(randi() % first_phase_attacks.size())])
 
 

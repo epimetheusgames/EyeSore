@@ -78,6 +78,8 @@ var start_position = respawn_position
 
 func _ready():
 	self.show()
+	$Death_Anim_Transition/Sprite.show()
+	$Death_Anim_Transition/Sprite2.show()
 	$Death_Anim_Transition.stop_anim()
 	respawn_position = position
 
