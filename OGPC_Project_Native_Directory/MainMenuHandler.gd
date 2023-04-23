@@ -17,7 +17,6 @@ const levels = [
 	preload("res://Levels/Tutorial2.tscn"),
 	preload("res://Levels/Tutorial_3.tscn"),
 	preload("res://Levels/Tutorial_4.tscn"),
-	preload("res://Levels/PUZZLE2.tscn"),
 	preload("res://Levels/PUZZLE5.tscn"),
 	preload("res://Levels/PUZZLE6.tscn"),
 	preload("res://Levels/PUZZLE3.tscn"),
@@ -69,6 +68,9 @@ func Next_Level(level, data):
 	add_child(level_obj)
 	
 func Open_Options_Menu(closed_window):
+	if Get_Level_Name():
+		get_node(Get_Level_Name()).visible = false
+	
 	closed_window.queue_free()
 	add_child(OptionsMenu.instance())
 
@@ -114,10 +116,13 @@ func Open_Pause_Menu():
 	get_tree().paused = true
 	add_child(PauseMenu.instance())
 	
+	get_node(Get_Level_Name()).visible = true
+	
 	var whole_level_cam = get_node(Get_Level_Name()).get_node("Save_Functionality").get_node("Camera2D")
 	var player_cam = get_node(Get_Level_Name()).get_node("Save_Functionality").get_node("Player_Body").get_node("Camera2D")
 	
-	if whole_level_cam.current == true:
+	if not get_node(Get_Level_Name()).player_camera_level:
+		whole_level_cam.current = true
 		$PauseMenu.position = whole_level_cam.position
 	else:
 		player_cam.current = true
@@ -129,7 +134,6 @@ func Open_Pause_Menu():
 func Close_Pause_Menu(closed_window):
 	closed_window.queue_free() 
 	game_paused = false
-	var camera = get_node(Get_Level_Name()).get_node("Save_Functionality").get_node("Camera2D")
 	get_tree().paused = false
 	
 func Close_Pause_Menu_To_Main(closed_window):

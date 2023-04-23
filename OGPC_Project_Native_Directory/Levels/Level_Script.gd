@@ -7,6 +7,7 @@ export var current_level_number = -1
 export var is_wire_ui = false
 export var can_wire_ui = true
 export var zoomed_level = false
+export var player_camera_level = false
 
 var health
 var player_position

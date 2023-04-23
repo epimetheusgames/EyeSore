@@ -196,7 +196,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=28]
-extents = Vector2( 43.5, 1384 )
+extents = Vector2( 5740, 1384 )
 
 [sub_resource type="Environment" id=29]
 ambient_light_color = Color( 0.85098, 0.454902, 0.87451, 1 )
@@ -378,7 +378,7 @@ position = Vector2( 318, -14 )
 script = ExtResource( 13 )
 
 [node name="IceCreamWallColl" type="CollisionShape2D" parent="Save_Functionality/Ice_Cream_Wall_Of_Death"]
-position = Vector2( 36.5, 0 )
+position = Vector2( 5733, 0 )
 shape = SubResource( 28 )
 __meta__ = {
 "_edit_group_": true
@@ -404,6 +404,10 @@ environment = SubResource( 29 )
 position = Vector2( 749, 59 )
 frames = SubResource( 33 )
 animation = "Idle"
+<<<<<<< HEAD
+=======
+frame = 1
+>>>>>>> da655a02dea9f1cec51911030f291bd9c03c2f18
 playing = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Save_Functionality"]
