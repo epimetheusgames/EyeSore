@@ -101,7 +101,7 @@ func _physics_process(delta):
 	if input.x == 0 or $Death_Animation_Timer.time_left > 0:
 		Apply_Friction()
 	else:
-		Apply_Acceleration(input.x)
+		Apply_Acceleration(input.x, delta)
 	
 	# if player is touching ground set ground buffer to max
 	if is_on_floor():
@@ -229,7 +229,7 @@ func Apply_Gravity():
 		velocity.y += gravity_strength
 
 # if the player's velocity is less than the fast_turnaround_threshold variable, move the player's x velocity towards a higher speed in whatever direction the player is facing by the acceleration speed, but with double the turnaround speed, but if it is more than the fast_turnaround_threshold variable, then do the same thing but with the normal turnaround speed
-func Apply_Acceleration(x_input):
+func Apply_Acceleration(x_input, delta):
 	if current_speed < fast_turnaround_threshold:
 		acceleration_speed = 10
 		turnaround_speed = 24

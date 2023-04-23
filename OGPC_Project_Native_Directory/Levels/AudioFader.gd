@@ -6,7 +6,7 @@ var fadeout = false
 var fade_prog = 0
 onready var max_volume = volume_db
 
-func _process(delta):
+func _process(_delta):
 	if fadein and fade_prog < max_volume:
 		fade_prog += 1
 	else:
