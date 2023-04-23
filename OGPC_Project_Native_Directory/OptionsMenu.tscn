@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Fonts/PTMono-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://OptionsMenu.gd" type="Script" id=2]
@@ -22,10 +22,6 @@ size = 180
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=6]
-size = 180
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=7]
 size = 180
 font_data = ExtResource( 1 )
 
@@ -96,20 +92,11 @@ custom_fonts/font = SubResource( 6 )
 text = "Controls"
 align = 1
 
-[node name="Label4" type="Label" parent="."]
-margin_left = 91.0
-margin_top = 550.0
-margin_right = 1491.0
-margin_bottom = 755.0
-custom_fonts/font = SubResource( 7 )
-text = "Accesibility"
-align = 1
-
 [node name="Label5" type="Label" parent="."]
-margin_left = 81.0
-margin_top = 773.0
-margin_right = 1481.0
-margin_bottom = 978.0
+margin_left = 87.0
+margin_top = 548.0
+margin_right = 1487.0
+margin_bottom = 753.0
 custom_fonts/font = SubResource( 8 )
 text = "Back"
 align = 1
@@ -123,16 +110,10 @@ zoom = Vector2( 5, 5 )
 environment = SubResource( 10 )
 
 [node name="BackButton" type="TextureButton" parent="."]
-margin_left = 538.0
-margin_top = 792.0
-margin_right = 1003.0
-margin_bottom = 984.0
-
-[node name="AccesibilityButton" type="TextureButton" parent="."]
-margin_left = 219.0
-margin_top = 564.0
-margin_right = 1346.0
-margin_bottom = 768.0
+margin_left = 544.0
+margin_top = 567.0
+margin_right = 1009.0
+margin_bottom = 759.0
 
 [node name="ControlsButton" type="TextureButton" parent="."]
 margin_left = 364.0
@@ -153,7 +134,6 @@ margin_right = 1094.0
 margin_bottom = 156.0
 
 [connection signal="button_up" from="BackButton" to="." method="_on_BackButton_button_up"]
-[connection signal="button_up" from="AccesibilityButton" to="." method="_on_AccesibilityButton_button_up"]
 [connection signal="button_up" from="ControlsButton" to="." method="_on_ControlsButton_button_up"]
 [connection signal="button_up" from="VideoButton" to="." method="_on_VideoButton_button_up"]
 [connection signal="button_up" from="AudioButton" to="." method="_on_AudioButton_button_up"]
