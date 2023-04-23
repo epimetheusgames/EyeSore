@@ -12,43 +12,38 @@ var game_paused = false
 var level_name = "Level2"
 
 const levels = [
+	preload("res://Levels/AestheticallyPleasingLevel.tscn"),
 	preload("res://Levels/Tutorial1.tscn"),
 	preload("res://Levels/Tutorial2.tscn"),
 	preload("res://Levels/Tutorial_3.tscn"),
 	preload("res://Levels/Tutorial_4.tscn"),
-	preload("res://Levels/PortalUnmanualTutorial.tscn"),
-	preload("res://Levels/BlockSpikeLevel.tscn"),
-	preload("res://Levels/PuzzleLevel4.tscn"),
-	preload("res://Levels/AestheticallyPleasingLevel.tscn"),
-	preload("res://Levels/PortalTestLevel.tscn"),
-	preload("res://Levels/Boss.tscn"),
 	preload("res://Levels/PUZZLE2.tscn"),
 	preload("res://Levels/PUZZLE5.tscn"),
 	preload("res://Levels/PUZZLE6.tscn"),
 	preload("res://Levels/PUZZLE3.tscn"),
+	preload("res://Levels/PortalUnmanualTutorial.tscn"),
 	preload("res://Levels/ExamplePuzzleLevel.tscn"),
-	preload("res://Levels/PuzzleLevel2.tscn"),
 	preload("res://Levels/PuzzleLevel3.tscn"),
+	preload("res://Levels/PuzzleLevel2.tscn"),
+	preload("res://Levels/BlockSpikeLevel.tscn"),
+	preload("res://Levels/Boss.tscn"),
 ]
 
 const level_names = [
+	"res://Levels/AestheticallyPleasingLevel.tscn",
 	"res://Levels/Tutorial1.tscn",
 	"res://Levels/Tutorial2.tscn",
 	"res://Levels/Tutorial_3.tscn",
 	"res://Levels/Tutorial_4.tscn",
-	"res://Levels/PortalUnmanualTutorial.tscn",
-	"res://Levels/BlockSpikeLevel.tscn",
-	"res://Levels/PuzzleLevel4.tscn",
-	"res://Levels/AestheticallyPleasingLevel.tscn",
-	"res://Levels/PortalTestLevel.tscn",
-	"res://Levels/Boss.tscn",
-	"res://Levels/PUZZLE2.tscn",
 	"res://Levels/PUZZLE5.tscn",
 	"res://Levels/PUZZLE6.tscn",
 	"res://Levels/PUZZLE3.tscn",
+	"res://Levels/PortalUnmanualTutorial.tscn",
 	"res://Levels/ExamplePuzzleLevel.tscn",
-	"res://Levels/PuzzleLevel2.tscn",
 	"res://Levels/PuzzleLevel3.tscn",
+	"res://Levels/PuzzleLevel2.tscn",
+	"res://Levels/BlockSpikeLevel.tscn",
+	"res://Levels/Boss.tscn",
 ]
 
 func _ready():
@@ -127,6 +122,9 @@ func Open_Pause_Menu():
 	else:
 		player_cam.current = true
 		$PauseMenu.position = player_cam.get_parent().position
+	
+	if get_node(Get_Level_Name()).zoomed_level:
+		$PauseMenu.scale = Vector2(0.5, 0.5)
 	
 func Close_Pause_Menu(closed_window):
 	closed_window.queue_free() 

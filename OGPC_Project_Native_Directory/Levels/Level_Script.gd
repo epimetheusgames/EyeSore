@@ -6,6 +6,7 @@ export var previous_level = ""
 export var current_level_number = -1
 export var is_wire_ui = false
 export var can_wire_ui = true
+export var zoomed_level = false
 
 var health
 var player_position
@@ -19,6 +20,7 @@ var deleted_spikes = []
 var deleted_spike_types = []
 var wire_terminals = [] # this will end up being a list of all the nodes in the wire terminal group so the script can iterate through them and check if the player is in range of any of them
 var in_range_of_wire_terminal = false
+var added_wire = false
 
 onready var wire_scene = preload("res://Wire.tscn")
 
@@ -146,14 +148,16 @@ func _process(delta):
 		if wire.is_selected():
 			any_wires_selected = true 
 
-	if is_wire_ui and Input.is_action_just_pressed("mouse_right_click") and not any_wires_selected and is_point_on_connections(get_local_mouse_position()):
+	if is_wire_ui and Input.is_action_just_pressed("mouse_click") and not any_wires_selected and is_point_on_connections(get_local_mouse_position()):
 		var already_there = is_another_already_there(1)
+		var already_there_end = is_another_already_there(0)
 		
-		if not already_there:
+		if not already_there and not already_there_end:
 			var wire = wire_scene.instance()
 			wire.set_pos(get_local_mouse_position())
 			wire._on_Side1_button_down()
 			get_node("Save_Functionality").add_child(wire)
+			added_wire = true
 		
 	if Input.is_action_just_pressed("switch_wire_ui") and can_wire_ui and in_range_of_wire_terminal:
 		is_wire_ui = not is_wire_ui

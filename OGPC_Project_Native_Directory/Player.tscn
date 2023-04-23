@@ -353,7 +353,6 @@ shape = SubResource( 93 )
 [node name="Death_Animation_Timer" type="Timer" parent="."]
 
 [node name="Death_Anim_Transition" type="Node2D" parent="."]
-visible = false
 script = ExtResource( 1 )
 
 [node name="Death_Vignette_Player" type="AnimationPlayer" parent="Death_Anim_Transition"]
@@ -362,7 +361,8 @@ anims/Not_Dead = SubResource( 108 )
 anims/RESET = SubResource( 107 )
 
 [node name="Sprite2" type="Sprite" parent="Death_Anim_Transition"]
-position = Vector2( 905, 27 )
+visible = false
+position = Vector2( 0, -6 )
 texture = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Death_Anim_Transition"]
@@ -386,4 +386,3 @@ texture = ExtResource( 7 )
 [connection signal="body_entered" from="Player_Area" to="." method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="Death_Animation_Timer" to="." method="_on_Death_Animation_Timer_timeout"]
 [connection signal="animation_finished" from="Death_Anim_Transition/Death_Vignette_Player" to="Death_Anim_Transition" method="_on_Death_Vignette_Player_animation_finished"]
-

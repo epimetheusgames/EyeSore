@@ -17,6 +17,7 @@ script = ExtResource( 2 )
 next_level = "2"
 previous_level = "0"
 current_level_number = 1
+zoomed_level = true
 
 [node name="Save_Functionality" type="Node2D" parent="."]
 script = ExtResource( 8 )

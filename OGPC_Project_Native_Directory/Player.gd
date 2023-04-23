@@ -80,7 +80,6 @@ func _ready():
 	self.show()
 	$Death_Anim_Transition.stop_anim()
 	respawn_position = position
-	print("player" + str(start_position))
 
 # anything that needs to be in a consistent update cycle goes here
 func _physics_process(delta):
