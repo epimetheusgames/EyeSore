@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Save_Data.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://LevelFinish.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Checkpoint.tscn" type="PackedScene" id=9]
 [ext_resource path="res://OGPC Soundtrack 3.mp3" type="AudioStream" id=10]
-[ext_resource path="res://PressR.png" type="Texture" id=11]
 [ext_resource path="res://Wire_Terminal.tscn" type="PackedScene" id=12]
 
 [node name="Level_Manager" type="Node2D"]
@@ -36,7 +35,7 @@ tile_data = PoolIntArray( 65525, 0, 3, 131069, 0, 3 )
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 65525, 0, 196611, 131069, 0, 196611, 524289, 0, 196611, 589828, 0, 3, 655364, 0, 131075 )
+tile_data = PoolIntArray( 65525, 0, 196611, 131069, 0, 196611, 524289, 1, 262146, 589828, 1, 262146 )
 
 [node name="Player_Body" parent="Save_Functionality" instance=ExtResource( 2 )]
 position = Vector2( -128, 4 )
@@ -65,10 +64,6 @@ stream = ExtResource( 10 )
 autoplay = true
 mix_target = 1
 bus = "Music"
-
-[node name="PressR" type="Sprite" parent="Save_Functionality"]
-position = Vector2( 128, 161 )
-texture = ExtResource( 11 )
 
 [node name="Wire_Terminal" parent="." instance=ExtResource( 12 )]
 position = Vector2( -98, 9 )

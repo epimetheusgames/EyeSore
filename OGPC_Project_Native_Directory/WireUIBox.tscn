@@ -4,4 +4,5 @@
 
 [node name="ShadowBackground" type="Sprite"]
 position = Vector2( -1, -11 )
+z_index = 100
 texture = ExtResource( 1 )

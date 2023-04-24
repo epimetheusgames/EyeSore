@@ -171,6 +171,7 @@ func _process(delta):
 	
 	if is_wire_ui:
 		wire_ui_box.visible = true
+		$Save_Functionality/Player_Body.visible = false
 		$Save_Functionality/Connections_TileMap.visible = true
 		player.force_death()
 		player.pause()
@@ -180,6 +181,7 @@ func _process(delta):
 	else:
 		player.unpause()
 		wire_ui_box.visible = false
+		$Save_Functionality/Player_Body.visible = true
 		$Save_Functionality/Connections_TileMap.visible = false
 		
 		for wire in get_tree().get_nodes_in_group("wires"):

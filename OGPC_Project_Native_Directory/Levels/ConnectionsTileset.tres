@@ -26,7 +26,7 @@
 0/shape_one_way = false
 0/shape_one_way_margin = 0.0
 0/shapes = [  ]
-0/z_index = 0
+0/z_index = 50
 1/name = "OGPC_Project_Grass_Tileset_New_Test.png 1"
 1/texture = ExtResource( 2 )
 1/tex_offset = Vector2( 0, 0 )
@@ -49,4 +49,4 @@
 1/shape_one_way = false
 1/shape_one_way_margin = 0.0
 1/shapes = [  ]
-1/z_index = 0
+1/z_index = 50

@@ -29,7 +29,7 @@ damping = 10.0
 color_ramp = SubResource( 2 )
 
 [node name="Wire" type="Node2D"]
-z_index = 2
+z_index = 20
 script = ExtResource( 1 )
 moveable_color = Color( 0.0823529, 0.564706, 0, 1 )
 unmoveable_color = Color( 0.517647, 0, 0, 1 )

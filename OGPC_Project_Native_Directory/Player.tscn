@@ -296,6 +296,7 @@ hue_variation = 1.0
 hue_variation_random = 0.02
 
 [node name="Player_Body" type="KinematicBody2D"]
+z_index = 50
 collision_layer = 2
 script = ExtResource( 3 )
 shockwave_knockback_strength = Vector2( 480, 380 )

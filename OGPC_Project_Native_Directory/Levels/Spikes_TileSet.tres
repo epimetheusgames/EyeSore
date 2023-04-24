@@ -98,7 +98,7 @@ points = PoolVector2Array( 13.9567, 7.42569, 16, 7.02193, 16, 10.252, 13.5529, 8
 "shape": SubResource( 4 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-0/z_index = 2
+0/z_index = 5
 1/name = "OGPC_Project_Spikes_Tileset-export.png 1"
 1/texture = ExtResource( 1 )
 1/tex_offset = Vector2( 0, 0 )
@@ -146,7 +146,7 @@ points = PoolVector2Array( 13.9567, 7.42569, 16, 7.02193, 16, 10.252, 13.5529, 8
 "shape": SubResource( 8 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-1/z_index = 0
+1/z_index = 5
 2/name = "OGPC_Project_Spikes_Tileset-export.png 2"
 2/texture = ExtResource( 1 )
 2/tex_offset = Vector2( 0, 0 )
@@ -194,7 +194,7 @@ points = PoolVector2Array( 13.9567, 7.42569, 16, 7.02193, 16, 10.252, 13.5529, 8
 "shape": SubResource( 12 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-2/z_index = 2
+2/z_index = 5
 3/name = "OGPC_Project_Spikes_Tileset-export.png 3"
 3/texture = ExtResource( 1 )
 3/tex_offset = Vector2( 0, 0 )
@@ -242,4 +242,4 @@ points = PoolVector2Array( 13.9567, 7.42569, 16, 7.02193, 16, 10.252, 13.5529, 8
 "shape": SubResource( 16 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-3/z_index = 0
+3/z_index = 5
