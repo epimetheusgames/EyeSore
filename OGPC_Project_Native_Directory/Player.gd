@@ -331,7 +331,8 @@ func _on_Death_Animation_Timer_timeout():
 		death_wall.reset()
 		boss.reset()
 		bg_music.fadein = true
-		bg_music.play()
+		# tring out having the bg music persist in between attempts
+		#bg_music.play()
 	
 func get_spike_coords(spike_tileset):
 	var tile_coords = spike_tileset.world_to_map(position)
