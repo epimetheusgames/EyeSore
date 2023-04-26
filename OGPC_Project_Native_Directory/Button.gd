@@ -9,12 +9,12 @@ func _ready():
 
 func _on_Area2D_area_entered(area):
 	print(area.name)
-	if $AnimatedSprite.animation == "Unpressing" and finished and ("Player" in area.name or "MoveableBlock" in area.name):
+	if $AnimatedSprite.animation == "Unpressing" and finished and ("Player_Area" in area.name or "MoveableBlock" in area.name):
 		$AnimatedSprite.animation = "Pressing"
 		$AnimatedSprite.play()
 
 func _on_Area2D_area_exited(area):
-	if $AnimatedSprite.animation == "Pressing" and ("Player" in area.name or "MoveableBlock" in area.name):
+	if $AnimatedSprite.animation == "Pressing" and ("Player_Area" in area.name or "MoveableBlock" in area.name):
 		finished = false
 		$AnimatedSprite.animation = "Unpressing"
 		$AnimatedSprite.play()

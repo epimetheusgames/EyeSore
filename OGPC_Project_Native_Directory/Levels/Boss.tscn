@@ -234,6 +234,7 @@ script = ExtResource( 5 )
 next_level = "5"
 previous_level = "start"
 current_level_number = 0
+player_camera_level = true
 
 [node name="Save_Functionality" type="Node2D" parent="."]
 script = ExtResource( 2 )
@@ -413,7 +414,6 @@ environment = SubResource( 29 )
 position = Vector2( 749, 59 )
 frames = SubResource( 33 )
 animation = "Idle"
-frame = 2
 playing = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Save_Functionality"]

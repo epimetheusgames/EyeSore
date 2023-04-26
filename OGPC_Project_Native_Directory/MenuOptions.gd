@@ -45,7 +45,7 @@ func buttons_pressed():
 		var level = load(level_path).instance()
 		level.set_player_spawnpoint_and_position(data[1], data[2], data[3], data[7], data[8], data[9])
 		get_parent().Play_Grass_Area_Music()
-		$Load_Functionality.set_keybinds(data[4]) 
+		$Load_Functionality.set_keybinds(data[4], data[4]) 
 		get_parent().Open_Other(self, level, true)
 	if selected == 2:
 		get_parent().Open_Options_Menu(self)
