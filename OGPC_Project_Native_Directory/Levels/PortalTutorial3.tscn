@@ -10,7 +10,7 @@
 [ext_resource path="res://Save_Data.gd" type="Script" id=8]
 [ext_resource path="res://Levels/Spikes_TileSet.tres" type="TileSet" id=9]
 [ext_resource path="res://LevelFinish.tscn" type="PackedScene" id=10]
-[ext_resource path="res://OGPC Soundtrack 6.mp3" type="AudioStream" id=11]
+[ext_resource path="res://OGPC Soundtrack 1.mp3" type="AudioStream" id=11]
 [ext_resource path="res://PortalEntrance.tscn" type="PackedScene" id=12]
 [ext_resource path="res://PortalExit.tscn" type="PackedScene" id=13]
 [ext_resource path="res://BlockPlayerTeleporter.tscn" type="PackedScene" id=14]
@@ -97,7 +97,7 @@ position = Vector2( -1, 100 )
 position = Vector2( 21, 16 )
 
 [node name="PortalEntrance" parent="Save_Functionality" instance=ExtResource( 12 )]
-position = Vector2( -22, 136 )
+position = Vector2( -24, 136 )
 
 [node name="PortalSpriteActive" parent="Save_Functionality/PortalEntrance" index="0"]
 rotation = 1.5708

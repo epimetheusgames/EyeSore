@@ -9,7 +9,7 @@
 [ext_resource path="res://WireUIBox.tscn" type="PackedScene" id=7]
 [ext_resource path="res://LevelFinish.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Checkpoint.tscn" type="PackedScene" id=9]
-[ext_resource path="res://OGPC Soundtrack 3.mp3" type="AudioStream" id=10]
+[ext_resource path="res://OGPC Soundtrack 10 - Alejandro Belgique.mp3" type="AudioStream" id=10]
 [ext_resource path="res://Wire_Terminal.tscn" type="PackedScene" id=11]
 
 [node name="Level_Manager" type="Node2D"]

@@ -5,7 +5,7 @@
 [ext_resource path="res://Levels/ConnectionsTileset.tres" type="TileSet" id=3]
 [ext_resource path="res://Levels/Spikes_TileSet.tres" type="TileSet" id=4]
 [ext_resource path="res://GroundTileMap.tscn" type="PackedScene" id=5]
-[ext_resource path="res://OGPC Soundtrack 3.mp3" type="AudioStream" id=6]
+[ext_resource path="res://OGPC Soundtrack 1.mp3" type="AudioStream" id=6]
 [ext_resource path="res://Levels/Level_Script.gd" type="Script" id=7]
 [ext_resource path="res://WireUIBox.tscn" type="PackedScene" id=8]
 [ext_resource path="res://LevelFinish.tscn" type="PackedScene" id=9]

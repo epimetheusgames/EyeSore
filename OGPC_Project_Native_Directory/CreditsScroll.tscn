@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Fonts/PTMono-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://CreditsScroller.gd" type="Script" id=2]
-[ext_resource path="res://OGPC Soundtrack 8.mp3" type="AudioStream" id=3]
+[ext_resource path="res://OGPC Soundtrack 6.mp3" type="AudioStream" id=3]
 [ext_resource path="res://CoolParticles.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]

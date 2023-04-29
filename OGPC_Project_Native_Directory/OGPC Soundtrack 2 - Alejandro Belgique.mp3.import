@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/OGPC Soundtrack 2 - Alejandro Belgique.mp3-e5349203b56717135b73454099f763c6.mp3str"
+
+[deps]
+
+source_file="res://OGPC Soundtrack 2 - Alejandro Belgique.mp3"
+dest_files=[ "res://.import/OGPC Soundtrack 2 - Alejandro Belgique.mp3-e5349203b56717135b73454099f763c6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

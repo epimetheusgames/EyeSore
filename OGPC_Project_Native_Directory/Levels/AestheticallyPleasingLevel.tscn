@@ -8,7 +8,7 @@
 [ext_resource path="res://GroundTileMap.tscn" type="PackedScene" id=6]
 [ext_resource path="res://LevelFinish.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Save_Data.gd" type="Script" id=8]
-[ext_resource path="res://OGPC Soundtrack 5 MAYBE.mp3" type="AudioStream" id=9]
+[ext_resource path="res://OGPC Soundtrack 2 - Alejandro Belgique.mp3" type="AudioStream" id=9]
 [ext_resource path="res://Levels/ActivatePlayerCam.gd" type="Script" id=12]
 
 [node name="Level_Manager" type="Node2D"]
