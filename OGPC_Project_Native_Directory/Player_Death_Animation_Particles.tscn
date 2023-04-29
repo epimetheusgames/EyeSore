@@ -19,11 +19,11 @@ extents = Vector2( 3.5, 3.5 )
 extents = Vector2( 3.5, 4 )
 
 [node name="Player_Death_Animation_Particles" type="Node2D"]
-z_index = 20
+z_index = 50
 script = ExtResource( 3 )
 
 [node name="Player_TopLeft" type="RigidBody2D" parent="."]
-z_index = 2
+z_index = 5
 applied_force = Vector2( -30, -15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_TopLeft"]
@@ -35,7 +35,7 @@ position = Vector2( -4, -12 )
 texture = ExtResource( 1 )
 
 [node name="Player_BottomLeft" type="RigidBody2D" parent="."]
-z_index = 2
+z_index = 5
 applied_force = Vector2( -25, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_BottomLeft"]
@@ -48,7 +48,7 @@ texture = ExtResource( 4 )
 
 [node name="Player_TopRight" type="RigidBody2D" parent="."]
 position = Vector2( 0, -4 )
-z_index = 2
+z_index = 5
 applied_force = Vector2( 30, -15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_TopRight"]
@@ -61,7 +61,7 @@ texture = ExtResource( 5 )
 
 [node name="Player_BottomRight" type="RigidBody2D" parent="."]
 position = Vector2( 0, -4 )
-z_index = 2
+z_index = 5
 applied_force = Vector2( 25, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_BottomRight"]
