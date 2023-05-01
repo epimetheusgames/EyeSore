@@ -17,7 +17,17 @@ func _input(event):
 	# check for keyboard
 	if event is InputEventKey and selected:
 		keybind = event.get_scancode()
-		text_keybind = OS.get_scancode_string(event.unicode)
+		text_keybind = OS.get_scancode_string(event.unicode).to_upper()
+		
+		if keybind == 16777231:
+			text_keybind = "LEFT"
+		if keybind == 16777232:
+			text_keybind = "UP"
+		if keybind == 16777233:
+			text_keybind = "RIGHT"
+		if keybind == 16777234:
+			text_keybind = "DOWN"
+		
 		unselect_next_frame = true
 		keybind_type = 0
 	# check for controller

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/OGPC Soundtrack 8 - Alejandro Belgique.mp3-ec205cf4c339442812cce85e1c7f42b7.mp3str"
+
+[deps]
+
+source_file="res://OGPC Soundtrack 8 - Alejandro Belgique.mp3"
+dest_files=[ "res://.import/OGPC Soundtrack 8 - Alejandro Belgique.mp3-ec205cf4c339442812cce85e1c7f42b7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

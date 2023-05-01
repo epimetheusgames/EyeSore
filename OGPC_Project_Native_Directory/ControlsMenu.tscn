@@ -107,23 +107,23 @@ margin_right = 421.0
 margin_bottom = 269.0
 rect_pivot_offset = Vector2( 99, 19 )
 custom_fonts/font = SubResource( 4 )
-text = "Shockwave"
+text = "Wires"
 align = 1
 
-[node name="Shockwave" parent="." instance=ExtResource( 4 )]
+[node name="Terminal" parent="." instance=ExtResource( 4 )]
 position = Vector2( 289, 192 )
 
-[node name="Bullet" parent="." instance=ExtResource( 4 )]
+[node name="Respawn" parent="." instance=ExtResource( 4 )]
 position = Vector2( 372, 192 )
 
 [node name="Label7" type="Label" parent="."]
 modulate = Color( 2, 2, 2, 1 )
-margin_left = 305.0
+margin_left = 307.0
 margin_top = 251.0
-margin_right = 503.0
+margin_right = 505.0
 margin_bottom = 270.0
 custom_fonts/font = SubResource( 4 )
-text = "Bullet"
+text = "Respawn"
 align = 1
 
 [node name="SaveFunctionality" type="Node2D" parent="."]

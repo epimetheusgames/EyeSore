@@ -10,7 +10,7 @@
 [ext_resource path="res://Save_Data.gd" type="Script" id=8]
 [ext_resource path="res://Levels/Spikes_TileSet.tres" type="TileSet" id=9]
 [ext_resource path="res://LevelFinish.tscn" type="PackedScene" id=10]
-[ext_resource path="res://OGPC Soundtrack 6.mp3" type="AudioStream" id=11]
+[ext_resource path="res://OGPC Soundtrack 5.mp3" type="AudioStream" id=11]
 [ext_resource path="res://Wire_Terminal.tscn" type="PackedScene" id=12]
 
 [node name="Level_Manager" type="Node2D"]
@@ -105,9 +105,6 @@ autoplay = true
 [node name="Wire_Terminal" parent="Save_Functionality" instance=ExtResource( 12 )]
 position = Vector2( -41, 40 )
 z_index = -5
-
-[node name="Terminal_Sprite" parent="Save_Functionality/Wire_Terminal" index="0"]
-frame = 1
 
 [editable path="Save_Functionality/Player_Body"]
 [editable path="Save_Functionality/Wire"]

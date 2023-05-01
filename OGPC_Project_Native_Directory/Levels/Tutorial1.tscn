@@ -4,12 +4,12 @@
 [ext_resource path="res://Levels/Level_Script.gd" type="Script" id=2]
 [ext_resource path="res://WireUIBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/ConnectionsTileset.tres" type="TileSet" id=4]
+[ext_resource path="res://OGPC Soundtrack 1.mp3" type="AudioStream" id=5]
 [ext_resource path="res://GroundTileMap.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Wire.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Save_Data.gd" type="Script" id=8]
 [ext_resource path="res://Levels/Spikes_TileSet.tres" type="TileSet" id=9]
 [ext_resource path="res://LevelFinish.tscn" type="PackedScene" id=10]
-[ext_resource path="res://OGPC Soundtrack 6.mp3" type="AudioStream" id=11]
 
 [node name="Level_Manager" type="Node2D"]
 pause_mode = 1
@@ -69,7 +69,7 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Save_Functionality"]
-stream = ExtResource( 11 )
+stream = ExtResource( 5 )
 autoplay = true
 
 [node name="PlayerSpawnPos" type="Node2D" parent="Save_Functionality"]

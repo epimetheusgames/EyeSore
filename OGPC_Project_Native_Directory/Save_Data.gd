@@ -33,16 +33,16 @@ const default_keybind_data = {
 	"darkness": 0,
 	"sfx-audio": 1,
 	"music-audio": 1,
-	"bullet-type": 0,
-	"bullet": 83,
+	"respawn-type": 0,
+	"respawn": 82,
 	"jump-type": 0,
 	"jump": 32,
 	"left-type": 0,
 	"left": 65,
 	"right-type": 0,
 	"right": 68,
-	"shockwave-type": 0,
-	"shockwave": 88
+	"terminal-type": 0,
+	"terminal": 69
 }
 
 func next_level():
@@ -218,8 +218,8 @@ func set_keybinds(keybinds, old_keybinds): # Sets all keybinds to what is in dat
 	set_specific_keybind("movement_left", keybinds["left"], keybinds["left-type"])
 	set_specific_keybind("movement_right", keybinds["right"], keybinds["right-type"])
 	set_specific_keybind("movement_jump", keybinds["jump"], keybinds["jump-type"])
-	set_specific_keybind("Shoot_Normal_Bullet", keybinds["bullet"], keybinds["bullet-type"])
-	set_specific_keybind("Shoot_Shockwave_Bullet", keybinds["shockwave"], keybinds["shockwave-type"])
+	set_specific_keybind("respawn", keybinds["respawn"], keybinds["respawn-type"])
+	set_specific_keybind("switch_wire_ui", keybinds["terminal"], keybinds["terminal-type"])
 	
 func set_specific_keybind(action, keybind, type): # Sets a specific keybind
 	var key
