@@ -44,7 +44,7 @@ tile_data = PoolIntArray( -589813, 3, 196608, 65529, 0, 3, 65535, 0, 3, 196614, 
 tile_set = ExtResource( 5 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( -196607, 0, 196611, 65535, 0, 196611 )
+tile_data = PoolIntArray( -196607, 1, 262146, 65535, 0, 196611 )
 
 [node name="WireUIBox" parent="Save_Functionality" instance=ExtResource( 3 )]
 position = Vector2( -24, -54 )

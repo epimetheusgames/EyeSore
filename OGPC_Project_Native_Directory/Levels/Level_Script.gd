@@ -47,63 +47,17 @@ func loading_edge_case_handler(node, list, item): # Handle edge cases that may h
 	return 0
 	
 func set_player_spawnpoint_and_position(healthp, player_positionp, spawnpointp, enemy1sp, enemy2sp, pixelated_bossesp):
-	# This function is responsible for setting all of that stuff that the player would
-	# Explode if they didn't have. I know right remove one line of code and you could 
-	# Reset your health just by clicking exit to menu. Lol that I didn't let that happen.
-	# I sound very stuckup don't I
 	health = healthp
 	enemy1s = enemy1sp 
 	enemy2s = enemy2sp 
 	pixelated_bosses = pixelated_bossesp
 
 func set_player_spawnpoint_and_position_reality(health, player_position, spawnpoint, enemy1s, enemy2s, pixelated_bosses, tree):
-	# The function above, but all those crazy exploits are fixed but I wanted to keep
-	# that for reference. and other functions break without it so I'll just keep it.
-	
-	# BTW The player's position isn't actually set here (lol), it used to but it doesn't
-	# Now it's set in the _ready function in Save_Functionality so that custom spawnpoints
-	# Could be a thing, but I didn't want to change the name and it's still somewhat
-	# (WELL ...) relevant.
-	
-	# Actually, pretty much this entire function is obsolete now because since our levels
-	# are probably going to be much shorter now, in puzzle form, we don't need to save 
-	# the exact position of everything, but I'm too lazy to take it out altogether.
-	
 	var enemy1_nodes = tree.get_nodes_in_group("enemy1group")
 	var enemy2_nodes = tree.get_nodes_in_group("enemy2group")
 	var pixelated_boss = tree.get_nodes_in_group("pixelated_boss")
 	if len(pixelated_boss) > 0:
 		pixelated_boss = pixelated_boss[0]
-	#var enemy1s_list = convert2list(enemy1s)
-	#var enemy2s_list = convert2list(enemy2s)
-	
-	#for enemy1_node in range(len(enemy1_nodes)):
-	#	var item = enemy1_nodes[enemy1_node]
-	#	var status = loading_edge_case_handler(enemy1_node, enemy1s_list, item)
-	#	
-	#	if status == 2:
-	#		continue 
-	#	elif status == 1:
-	#		break
-	#	
-	#	item.position.x = enemy1s_list[enemy1_node]["position_x"] # Set the node's x and y position to the 
-	#	item.position.y = enemy1s_list[enemy1_node]["position_y"] # saved data.
-	#
-	#for enemy2_node in range(len(enemy2_nodes)):
-	#	var item = enemy2_nodes[enemy2_node]
-	#	var status = loading_edge_case_handler(enemy2_node, enemy2s_list, item)
-	#	
-	#	if status == 2:
-	#		continue 
-	#	elif status == 1:
-	#		break
-	#	
-	#	item.position.x = enemy2s_list[enemy2_node]["position_x"]
-	#	item.position.y = enemy2s_list[enemy2_node]["position_y"] 
-	#	item.point1.x = enemy2s_list[enemy2_node]["start_position_x"]
-	#	item.point1.y = enemy2s_list[enemy2_node]["start_position_y"]
-	#	item.point2.x = enemy2s_list[enemy2_node]["end_position_x"]
-	#	item.point2.y = enemy2s_list[enemy2_node]["end_position_y"]
 
 func is_point_on_connections(point):
 	var mouse_on_map = $Save_Functionality/Connections_TileMap.world_to_map(point)

@@ -41,7 +41,7 @@ tile_data = PoolIntArray( 524291, 0, 3 )
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 196616, 1, 262146, 327690, 1, 0, 327691, 1, 65536, 393224, 0, 196611, 393226, 1, 196608, 393227, 1, 131072, 524285, 0, 196611, 589821, 1, 262146, 524291, 0, 196611 )
+tile_data = PoolIntArray( 196616, 1, 262146, 327690, 1, 0, 327691, 1, 65536, 393224, 0, 196611, 393226, 1, 196608, 393227, 1, 131072, 524285, 0, 196611, 589821, 1, 262146 )
 
 [node name="Player_Body" parent="Save_Functionality" instance=ExtResource( 1 )]
 position = Vector2( -128, 4 )

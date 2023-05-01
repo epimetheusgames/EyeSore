@@ -110,29 +110,30 @@ func set_keybind_data_to_data():
 func get_game_data():
 	var file = File.new()
 	var keybind_data = default_keybind_data
+	var game_data
 	
 	if not file.file_exists(file_name):
-		data = default_data
+		game_data = default_data
 		
 	else:
 		file.open(file_name, file.READ)
-		data = parse_json(file.get_as_text())
+		game_data = parse_json(file.get_as_text())
 		
 	if file.file_exists(keybind_file_name):
 		file.open(keybind_file_name, file.READ)
 		keybind_data = parse_json(file.get_as_text())
 		
 	return [
-		data["level"],
-		data["player"]["health"],
-		Vector2(data["player"]["position_x"], data["player"]["position_y"]),
-		Vector2(data["player"]["respawn_position_x"], data["player"]["respawn_position_y"]),
+		game_data["level"],
+		game_data["player"]["health"],
+		Vector2(game_data["player"]["position_x"], game_data["player"]["position_y"]),
+		Vector2(game_data["player"]["respawn_position_x"], game_data["player"]["respawn_position_y"]),
 		keybind_data,
 		keybind_data["music-audio"],
 		keybind_data["sfx-audio"],
-		data["zombie_enemies"],
-		data["patrolling_enemies"],
-		data["pixelated_boss"]
+		game_data["zombie_enemies"],
+		game_data["patrolling_enemies"],
+		game_data["pixelated_boss"]
 	]
 	
 func get_file_data(): # Also don't use this one unless it's from inside this file
@@ -213,7 +214,7 @@ func save_game():
 	file.close()
 	data["keybinds"] = keybinds
 
-func set_keybinds(keybinds): # Sets all keybinds to what is in data
+func set_keybinds(keybinds, old_keybinds): # Sets all keybinds to what is in data
 	set_specific_keybind("movement_left", keybinds["left"], keybinds["left-type"])
 	set_specific_keybind("movement_right", keybinds["right"], keybinds["right-type"])
 	set_specific_keybind("movement_jump", keybinds["jump"], keybinds["jump-type"])
@@ -231,13 +232,15 @@ func set_specific_keybind(action, keybind, type): # Sets a specific keybind
 		key = InputEventJoypadButton.new()
 		key.button_index = keybind
 	InputMap.action_add_event(action, key)
-	
-func delete_old_keys(keybinds):
-	delete_specific_keybind("movement_left")
-	delete_specific_keybind("movement_right")
-	delete_specific_keybind("movement_jump")
-	delete_specific_keybind("Shoot_Normal_Bullet")
-	delete_specific_keybind("Shoot_Shockwave_Bullet")
 
-func delete_specific_keybind(action):
-	InputMap.action_erase_events(action)
+func delete_specific_keybind(action, event, type):
+	var key 
+	
+	if type == 0:
+		key = InputEventKey.new()
+		key.set_scancode(event)
+	if type == 1:
+		key = InputEventJoypadButton.new()
+		key.button_index = event
+	
+	InputMap.action_erase_event(action, key)
