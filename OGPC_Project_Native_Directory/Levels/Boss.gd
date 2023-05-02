@@ -26,7 +26,7 @@ var curr_move_speed = default_y_move_speed
 # How fast the boss moves towards the player
 var x_speed = 1.5
 var match_player_y = true
-
+onready var match_player_y_tween = get_node("Player_Follow_Tween")
 var original_pos = position
 
 export var gravity_strength = 10
@@ -41,7 +41,7 @@ func reset():
 	position = original_pos
 
 func _ready():
-	# Start the attack cooldown timer at the start of the level, and player the spawn animation.
+	# Start the attack cooldown timer at the start of the level, and play the spawn animation.
 	attack_cooldown_timer.start(5)
 	state_machine.start("Spawn")
 
@@ -49,32 +49,36 @@ func _physics_process(delta):
 	# Move and slide for velocity, aka movement
 	velocity = move_and_slide(velocity, Vector2.UP)
 	
-	# Apply friction to boss
-	Apply_Friction()
-	
 	# If matching player's y (yes) match the boss's y exactly, or move towards it fast enough that
 	# the boss never breaks.
-	if match_player_y == true:
-		if abs(player_body.velocity.y) < 5.5:
-			curr_move_speed = move_toward(curr_move_speed, default_y_move_speed / 1.8, 0.1)
-		elif abs(player_body.velocity.y) > 55:
-			curr_move_speed = move_toward(curr_move_speed, default_y_move_speed / 1.2, 0.1)
-		
-		self.position.y = move_toward(self.position.y, player_body.position.y - 32, curr_move_speed)
-		
+#	if match_player_y == true:
+#		if abs(player_body.velocity.y) < 5.5:
+#			curr_move_speed = move_toward(curr_move_speed, default_y_move_speed / 1.8, 0.1)
+#		elif abs(player_body.velocity.y) > 55:
+#			curr_move_speed = move_toward(curr_move_speed, default_y_move_speed / 1.2, 0.1)
+#
+#		self.position.y = move_toward(self.position.y, player_body.position.y - 32, curr_move_speed)
+	
+	if player_body.position.distance_to(self.position) > 310:
+		x_speed += 0.0085
+	elif player_body.position.distance_to(self.position) < 50 and x_speed >= 1:
+		x_speed -= 0.01
+	
+	
+	self.position.y = (player_body.position.y - 20)
+	
 	# Move position to follow the player on the x axis
 	self.position.x -= x_speed
+	
+	print(state_machine.get_current_node())
 	
 	# if the attack cooldown timer is at 0, start an attack
 	if state_machine.get_current_node() == "Idle" and attack_cooldown_timer.time_left <= 0:
 		attack_cooldown_timer.start(5)
+		print("ikk")
 	if attack_cooldown_timer.time_left <= 1 and state_machine.get_current_node() == "Idle":
 		print("hiii")
 		var cooldown_to_next_attack = Start_Attack(first_phase_attacks[(randi() % first_phase_attacks.size())])
-
-
-func Apply_Friction():
-	velocity.x = move_toward(velocity.x, 0, friction_strength)
 
 func Start_Attack(attack_name):
 	if attack_name == "Scoop_Fire":
@@ -97,8 +101,8 @@ func Scoop_Fire_Attack():
 				
 			boss_bullet.position = $Boss_Gun_Base.global_position
 			
-			yield(get_tree().create_timer(0.1), "timeout")
-		yield(get_tree().create_timer(0.5), "timeout")
+			yield(get_tree().create_timer(0.2), "timeout")
+		yield(get_tree().create_timer(0.6), "timeout")
 
 func Cone_Spin_Attack():
 	# go to the correct statemachine node

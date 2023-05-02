@@ -12,7 +12,7 @@ config_version=4
 
 config/name="OGPC_Game_Project_2022"
 run/main_scene="res://MainMenu.tscn"
-boot_splash/image="res://OGPC_Project_Singular_Grass_Block_Sprite.png"
+boot_splash/image="res://icon.png"
 config/icon="res://icon.png"
 
 [display]
