@@ -27,7 +27,7 @@ func exit_menu():
 	)
 	$SaveFunctionality.save_game()
 	get_tree().paused = false
-	get_tree().reload_current_scene()
+	#get_tree().reload_current_scene()
 	get_parent().Open_Options_Menu(self)
 
 func _on_TextureButton_button_up():

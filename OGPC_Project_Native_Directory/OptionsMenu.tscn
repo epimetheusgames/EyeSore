@@ -49,60 +49,60 @@ material = SubResource( 2 )
 script = ExtResource( 2 )
 
 [node name="OgpcMainMenuBackgroundSpriteBlurred" type="Sprite" parent="."]
-position = Vector2( -2720, -63 )
+position = Vector2( -2818, -59 )
 scale = Vector2( 2.09063, 1.68333 )
 texture = ExtResource( 3 )
 offset = Vector2( 1640.27, 234.06 )
 
 [node name="Title" type="Label" parent="."]
-margin_left = 255.0
-margin_top = -430.0
-margin_right = 1289.0
-margin_bottom = -145.0
+margin_left = 157.0
+margin_top = -426.0
+margin_right = 1191.0
+margin_bottom = -141.0
 custom_fonts/font = SubResource( 9 )
 text = "Settings"
 
 [node name="Label" type="Label" parent="."]
 modulate = Color( 2.00392, 2, 2, 1 )
-margin_left = 96.0
-margin_top = -63.0
-margin_right = 1496.0
-margin_bottom = 142.0
+margin_left = -2.0
+margin_top = -59.0
+margin_right = 1398.0
+margin_bottom = 146.0
 custom_fonts/font = SubResource( 4 )
 text = "Audio"
 align = 1
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 91.0
-margin_top = 142.0
-margin_right = 1491.0
-margin_bottom = 347.0
+margin_left = -7.0
+margin_top = 146.0
+margin_right = 1393.0
+margin_bottom = 351.0
 grow_horizontal = 2
 custom_fonts/font = SubResource( 5 )
 text = "Video"
 align = 1
 
 [node name="Label3" type="Label" parent="."]
-margin_left = 91.0
-margin_top = 338.0
-margin_right = 1491.0
-margin_bottom = 543.0
+margin_left = -7.0
+margin_top = 342.0
+margin_right = 1393.0
+margin_bottom = 547.0
 grow_horizontal = 2
 custom_fonts/font = SubResource( 6 )
 text = "Controls"
 align = 1
 
 [node name="Label5" type="Label" parent="."]
-margin_left = 87.0
-margin_top = 548.0
-margin_right = 1487.0
-margin_bottom = 753.0
+margin_left = -11.0
+margin_top = 552.0
+margin_right = 1389.0
+margin_bottom = 757.0
 custom_fonts/font = SubResource( 8 )
 text = "Back"
 align = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 649, 336 )
+position = Vector2( 647, 336 )
 current = true
 zoom = Vector2( 5, 5 )
 
@@ -110,28 +110,28 @@ zoom = Vector2( 5, 5 )
 environment = SubResource( 10 )
 
 [node name="BackButton" type="TextureButton" parent="."]
-margin_left = 544.0
-margin_top = 567.0
-margin_right = 1009.0
-margin_bottom = 759.0
+margin_left = 446.0
+margin_top = 571.0
+margin_right = 911.0
+margin_bottom = 763.0
 
 [node name="ControlsButton" type="TextureButton" parent="."]
-margin_left = 364.0
-margin_top = 330.0
-margin_right = 1220.0
-margin_bottom = 550.0
+margin_left = 266.0
+margin_top = 334.0
+margin_right = 1122.0
+margin_bottom = 554.0
 
 [node name="VideoButton" type="TextureButton" parent="."]
-margin_left = 508.0
-margin_top = 152.0
-margin_right = 1068.0
-margin_bottom = 352.0
+margin_left = 410.0
+margin_top = 156.0
+margin_right = 970.0
+margin_bottom = 356.0
 
 [node name="AudioButton" type="TextureButton" parent="."]
-margin_left = 484.0
-margin_top = -56.0
-margin_right = 1094.0
-margin_bottom = 156.0
+margin_left = 386.0
+margin_top = -52.0
+margin_right = 996.0
+margin_bottom = 160.0
 
 [connection signal="button_up" from="BackButton" to="." method="_on_BackButton_button_up"]
 [connection signal="button_up" from="ControlsButton" to="." method="_on_ControlsButton_button_up"]

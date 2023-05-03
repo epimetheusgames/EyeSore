@@ -38,7 +38,6 @@ func exit_menu():
 	get_parent().Play_Click_SFX()
 	if selected == 0:
 		$SaveFunctionality.save_audio($Music.get_value(), $SFX.get_value())
-		print($SaveFunctionality.data["keybinds"]["music-audio"])
 		$SaveFunctionality.save_game()
 		get_parent().Open_Options_Menu(self)
 

@@ -215,6 +215,11 @@ func save_game():
 	data["keybinds"] = keybinds
 
 func set_keybinds(keybinds, old_keybinds): # Sets all keybinds to what is in data
+	InputMap.erase_action("movement_left")
+	InputMap.erase_action("movement_right")
+	InputMap.erase_action("movement_jump")
+	InputMap.erase_action("respawn")
+	InputMap.erase_action("switch_wire_ui")
 	set_specific_keybind("movement_left", keybinds["left"], keybinds["left-type"])
 	set_specific_keybind("movement_right", keybinds["right"], keybinds["right-type"])
 	set_specific_keybind("movement_jump", keybinds["jump"], keybinds["jump-type"])
