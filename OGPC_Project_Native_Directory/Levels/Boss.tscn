@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Save_Data.gd" type="Script" id=2]
@@ -139,15 +139,10 @@ animation = "Death"
 [sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=37]
-animation = "Scoop_Fire_Attack"
-
 [sub_resource type="AnimationNodeAnimation" id=12]
 animation = "Spawn"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
 
@@ -157,12 +152,6 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=22]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=38]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=39]
-switch_mode = 2
-auto_advance = true
-
 [sub_resource type="AnimationNodeStateMachine" id=15]
 states/Cone_Spin_Attack/node = SubResource( 10 )
 states/Cone_Spin_Attack/position = Vector2( 336, 93 )
@@ -170,11 +159,9 @@ states/Death/node = SubResource( 21 )
 states/Death/position = Vector2( -171, 179 )
 states/Idle/node = SubResource( 11 )
 states/Idle/position = Vector2( 110, 85 )
-states/Scoop_Fire_Attack/node = SubResource( 37 )
-states/Scoop_Fire_Attack/position = Vector2( 132, 196 )
 states/Spawn/node = SubResource( 12 )
 states/Spawn/position = Vector2( -171, 85 )
-transitions = [ "Spawn", "Idle", SubResource( 17 ), "Idle", "Cone_Spin_Attack", SubResource( 18 ), "Cone_Spin_Attack", "Idle", SubResource( 20 ), "Idle", "Death", SubResource( 22 ), "Idle", "Scoop_Fire_Attack", SubResource( 38 ), "Scoop_Fire_Attack", "Idle", SubResource( 39 ) ]
+transitions = [ "Spawn", "Idle", SubResource( 17 ), "Idle", "Cone_Spin_Attack", SubResource( 18 ), "Cone_Spin_Attack", "Idle", SubResource( 20 ), "Idle", "Death", SubResource( 22 ) ]
 start_node = "Spawn"
 end_node = "Death"
 graph_offset = Vector2( -389, -10 )
@@ -243,7 +230,7 @@ animations = [ {
 [node name="Level_Manager" type="Node2D"]
 pause_mode = 1
 script = ExtResource( 5 )
-next_level = "5"
+next_level = "end"
 previous_level = "start"
 current_level_number = 0
 player_camera_level = true
@@ -274,7 +261,6 @@ format = 1
 current = true
 
 [node name="Sprite2" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="1"]
-visible = false
 z_index = 15
 
 [node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="2"]

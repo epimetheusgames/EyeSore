@@ -121,6 +121,7 @@ func Open_Pause_Menu():
 	add_child(PauseMenu.instance())
 	
 	get_node(Get_Level_Name()).visible = true
+	get_node(Get_Level_Name()).get_node("Save_Functionality").get_node("AudioStreamPlayer").playing = false
 	
 	var whole_level_cam = get_node(Get_Level_Name()).get_node("Save_Functionality").get_node("Camera2D")
 	var player_cam = get_node(Get_Level_Name()).get_node("Save_Functionality").get_node("Player_Body").get_node("Camera2D")
@@ -139,6 +140,7 @@ func Close_Pause_Menu(closed_window):
 	closed_window.queue_free() 
 	game_paused = false
 	get_tree().paused = false
+	get_node(Get_Level_Name()).get_node("Save_Functionality").get_node("AudioStreamPlayer").playing = true
 	
 func Close_Pause_Menu_To_Main(closed_window):
 	get_node(Get_Level_Name()).queue_free()
