@@ -34,30 +34,21 @@ export var friction_strength = 20
 
 # Different attacks that the boss has, reference the README.md or EyeSore ideas doc for more info.
 var first_phase_attacks = ["Scoop_Fire", "Cone_Spin"]
-var doing_spin_attack = false
+var attacking = false
 
 func reset():
-	doing_spin_attack = false
+	attacking = false
 	position = original_pos
+	attack_cooldown_timer.start(4)
 
 func _ready():
 	# Start the attack cooldown timer at the start of the level, and play the spawn animation.
-	attack_cooldown_timer.start(5)
+	attack_cooldown_timer.start(4)
 	state_machine.start("Spawn")
 
 func _physics_process(delta):
 	# Move and slide for velocity, aka movement
 	velocity = move_and_slide(velocity, Vector2.UP)
-	
-	# If matching player's y (yes) match the boss's y exactly, or move towards it fast enough that
-	# the boss never breaks.
-#	if match_player_y == true:
-#		if abs(player_body.velocity.y) < 5.5:
-#			curr_move_speed = move_toward(curr_move_speed, default_y_move_speed / 1.8, 0.1)
-#		elif abs(player_body.velocity.y) > 55:
-#			curr_move_speed = move_toward(curr_move_speed, default_y_move_speed / 1.2, 0.1)
-#
-#		self.position.y = move_toward(self.position.y, player_body.position.y - 32, curr_move_speed)
 	
 	if player_body.position.distance_to(self.position) > 310:
 		x_speed += 0.0085
@@ -70,14 +61,10 @@ func _physics_process(delta):
 	# Move position to follow the player on the x axis
 	self.position.x -= x_speed
 	
-	print(state_machine.get_current_node())
-	
 	# if the attack cooldown timer is at 0, start an attack
 	if state_machine.get_current_node() == "Idle" and attack_cooldown_timer.time_left <= 0:
-		attack_cooldown_timer.start(5)
-		print("ikk")
+		attack_cooldown_timer.start(4)
 	if attack_cooldown_timer.time_left <= 1 and state_machine.get_current_node() == "Idle":
-		print("hiii")
 		var cooldown_to_next_attack = Start_Attack(first_phase_attacks[(randi() % first_phase_attacks.size())])
 
 func Start_Attack(attack_name):
