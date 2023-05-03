@@ -137,14 +137,16 @@ animation = "Cone_Spin_Attack"
 animation = "Death"
 
 [sub_resource type="AnimationNodeAnimation" id=11]
-animation = "Idle"
+animation = "Spawn"
 
 [sub_resource type="AnimationNodeAnimation" id=12]
 animation = "Spawn"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
+switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
 switch_mode = 2
@@ -368,7 +370,6 @@ wait_time = 4.0
 
 [node name="Spin_Cone" type="KinematicBody2D" parent="Save_Functionality/Boss_Body"]
 modulate = Color( 1, 1, 1, 0 )
-rotation = 94.2478
 z_index = 2
 
 [node name="Spin_Cone_Sprite" type="Sprite" parent="Save_Functionality/Boss_Body/Spin_Cone"]
@@ -416,7 +417,6 @@ environment = SubResource( 29 )
 position = Vector2( 749, 59 )
 frames = SubResource( 33 )
 animation = "Idle"
-frame = 2
 playing = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Save_Functionality"]

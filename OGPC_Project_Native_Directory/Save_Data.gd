@@ -2,7 +2,6 @@ extends Node2D
 
 var file_name = "user://save1.json"
 var keybind_file_name = "user://keybinds.json"
-onready var pixelated_boss = preload("res://PixelatedBoss.tscn")
 onready var enemy1 = preload("res://Enemy1.tscn")
 onready var enemy2 = preload("res://Enemy2.tscn")
 onready var player = preload("res://Player.tscn")

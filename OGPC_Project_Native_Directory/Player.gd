@@ -152,9 +152,6 @@ func _physics_process(delta):
 		position = respawn_position
 		player_health -= 3
 		
-	if Input.is_action_just_pressed("self_destruct"):
-		get_node("/root/MainMenuRootNode/Player_Hurt_Player").play()
-		
 		position = respawn_position
 	
 	# if the player is not moving, start the animation player and play the idle animation, and the rest of the animations have not been implemented yet so if it needs to play those it just stops the animation
