@@ -216,7 +216,7 @@ func save_game():
 	file.close()
 	data["keybinds"] = keybinds
 
-func set_keybinds(keybinds, old_keybinds): # Sets all keybinds to what is in data
+func set_keybinds(keybinds, old_keybinds=null): # Sets all keybinds to what is in data
 	InputMap.erase_action("movement_left")
 	InputMap.erase_action("movement_right")
 	InputMap.erase_action("movement_jump")
