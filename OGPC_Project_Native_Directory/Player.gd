@@ -370,10 +370,8 @@ func manage_wires(death_pos_on_tileset, tileset, grass_tileset):
 				touching_checkpoint.save_checkpoint()
 			
 			elif touching_portal and touching_portal[1]:
-				touching_portal[0].active = not touching_portal[0].active
-				
 				if wire.get_tileset_coords(0, tileset) == death_pos_on_tileset:
-					touching_portal[1].active = not touching_portal[1].active
+					touching_portal[0].active = not touching_portal[0].active
 				else:
 					touching_portal[0].active = not touching_portal[0].active
 			
