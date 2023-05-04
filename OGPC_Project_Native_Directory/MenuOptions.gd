@@ -5,7 +5,7 @@ var prev_selected = 1
 
 func _process(delta):
 	if Input.is_action_just_pressed("Just_Arrowkey_Down"):
-		if selected < 3:
+		if selected < 4:
 			selected += 1
 	if Input.is_action_just_pressed("Just_Arrowkey_Up"):
 		if selected > 1:
@@ -15,22 +15,19 @@ func _process(delta):
 		get_parent().Play_Click_SFX()
 			
 	if selected == 1:
-		#$Label.text = "- Play -"
 		$Label.modulate = Color(2.75, 2.75, 2.75, 1)
-		#$Label2.text = "Options"
 		$Label2.modulate = Color(1, 1, 1, 1)
 	if selected == 2:
-		#$Label2.text = "- Options -"
 		$Label2.modulate = Color(2.75, 2.75, 2.75, 1) 
-		#$Label.text = "Play"
 		$Label.modulate = Color(1, 1, 1, 1)
-		#$Label3.text = "Quit"
 		$Label3.modulate = Color(1, 1, 1, 1)
 	if selected == 3:
-		#$Label2.text = "Options"
+		$Label3.modulate = Color(2.75, 2.75, 2.75, 1) 
 		$Label2.modulate = Color(1, 1, 1, 1)
-		#$Label3.text = "- Quit -"
-		$Label3.modulate = Color(2.75, 2.75, 2.75, 1)
+		$Label4.modulate = Color(1, 1, 1, 1)
+	if selected == 4:
+		$Label3.modulate = Color(1, 1, 1, 1)
+		$Label4.modulate = Color(2.75, 2.75, 2.75, 1)
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		get_parent().Play_Click_SFX()
@@ -48,18 +45,25 @@ func buttons_pressed():
 		$Load_Functionality.set_keybinds(data[4], data[4]) 
 		get_parent().Open_Other(self, level, true)
 	if selected == 2:
-		get_parent().Open_Options_Menu(self)
+		get_parent().Open_Level_Select_Menu(self)
 	if selected == 3:
+		get_parent().Open_Options_Menu(self)
+	if selected == 4:
 		get_tree().quit()
-
-func _on_OptionsButton_button_up():
-	selected = 2
-	buttons_pressed()
 
 func _on_PlayButton_button_up():
 	selected = 1
 	buttons_pressed()
-
-func _on_QuitButton_button_up():
+	
+func _on_LevelSelectButton_button_up():
+	selected = 2
+	buttons_pressed()
+	
+func _on_OptionsButton_button_up():
 	selected = 3
 	buttons_pressed()
+
+func _on_QuitButton_button_up():
+	selected = 4
+	buttons_pressed()
+

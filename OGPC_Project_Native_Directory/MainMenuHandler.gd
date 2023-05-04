@@ -7,6 +7,7 @@ onready var VideoMenu = preload("res://VideoMenu.tscn")
 onready var ControlsMenu = preload("res://ControlsMenu.tscn")
 onready var PauseMenu = preload("res://PauseMenu.tscn")
 onready var AccessibilityMenu = preload("res://AccessibilityMenu.tscn")
+onready var LevelSelectMenu = preload("res://Level_Select.tscn")
 
 var game_paused = false
 var level_name = "Level2"
@@ -62,10 +63,11 @@ func _ready():
 	$BackgroundMusic.playing = true
 	# Play Main Menu Audio
 	
-func Next_Level(level, data):
+func Next_Level(level, data, temp_level_num = -1):
 	var level_obj = levels[level].instance()
 	level_name = level_obj.name
 	level_obj.set_player_spawnpoint_and_position(data[1], data[2], data[3], data[7], data[8], data[9])
+	level_obj.temp_current_level = temp_level_num
 	Play_Grass_Area_Music()
 	get_node(Get_Level_Name()).queue_free()
 	level_name = level_obj.name
@@ -81,6 +83,10 @@ func Open_Options_Menu(closed_window):
 func Open_Audio_Menu(closed_window):
 	closed_window.queue_free()
 	add_child(AudioMenu.instance())
+	
+func Open_Level_Select_Menu(closed_window):
+	closed_window.queue_free()
+	add_child(LevelSelectMenu.instance())
 
 func Open_Main_Menu(closed_window):
 	closed_window.queue_free()
