@@ -52,6 +52,7 @@ const level_names = [
 
 func _ready():
 	add_child(MenuOptions.instance())
+	Set_Screen_Brightness($SaveFunctionality.get_game_data()[4]["darkness"])
 	
 	var data = $SaveFunctionality.get_game_data()
 	

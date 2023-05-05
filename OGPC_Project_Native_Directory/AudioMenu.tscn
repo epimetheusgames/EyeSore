@@ -30,7 +30,7 @@ font_data = ExtResource( 1 )
 script = ExtResource( 4 )
 
 [node name="OgpcMainMenuBackgroundSpriteBlurred" type="Sprite" parent="."]
-position = Vector2( -267, 92 )
+position = Vector2( -268, 92 )
 scale = Vector2( 0.3625, 0.365741 )
 texture = ExtResource( 3 )
 offset = Vector2( 1640.27, 234.06 )
@@ -39,9 +39,9 @@ offset = Vector2( 1640.27, 234.06 )
 environment = SubResource( 1 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 260.0
+margin_left = -2.0
 margin_top = 11.0
-margin_right = 405.0
+margin_right = 598.0
 margin_bottom = 69.0
 custom_fonts/font = SubResource( 2 )
 text = "Audio"
@@ -49,9 +49,9 @@ align = 1
 
 [node name="Label2" type="Label" parent="."]
 modulate = Color( 4, 4, 4, 1 )
-margin_left = 292.0
+margin_left = -2.0
 margin_top = 252.0
-margin_right = 377.0
+margin_right = 601.0
 margin_bottom = 294.0
 custom_fonts/font = SubResource( 3 )
 text = "Back"
@@ -59,9 +59,8 @@ align = 1
 
 [node name="Label3" type="Label" parent="."]
 modulate = Color( 2, 2, 2, 1 )
-margin_left = 240.0
 margin_top = 114.0
-margin_right = 438.0
+margin_right = 598.0
 margin_bottom = 133.0
 custom_fonts/font = SubResource( 4 )
 text = "Sound Effects"
@@ -69,27 +68,27 @@ align = 1
 
 [node name="Label4" type="Label" parent="."]
 modulate = Color( 2, 2, 2, 1 )
-margin_left = 236.0
+margin_left = -1.0
 margin_top = 175.0
-margin_right = 437.0
+margin_right = 599.0
 margin_bottom = 194.0
 custom_fonts/font = SubResource( 4 )
 text = "Music"
 align = 1
 
 [node name="Music" parent="." instance=ExtResource( 5 )]
-position = Vector2( 245, 199 )
+position = Vector2( 215, 199 )
 
 [node name="SFX" parent="." instance=ExtResource( 5 )]
-position = Vector2( 246, 138 )
+position = Vector2( 215, 138 )
 
 [node name="SaveFunctionality" type="Node2D" parent="."]
 script = ExtResource( 2 )
 
 [node name="TextureButton" type="TextureButton" parent="."]
-margin_left = 283.0
-margin_top = 244.0
-margin_right = 379.0
-margin_bottom = 296.0
+margin_left = 252.0
+margin_top = 245.0
+margin_right = 348.0
+margin_bottom = 297.0
 
 [connection signal="button_up" from="TextureButton" to="." method="_on_TextureButton_button_up"]
