@@ -8,6 +8,7 @@ onready var ControlsMenu = preload("res://ControlsMenu.tscn")
 onready var PauseMenu = preload("res://PauseMenu.tscn")
 onready var AccessibilityMenu = preload("res://AccessibilityMenu.tscn")
 onready var LevelSelectMenu = preload("res://Level_Select.tscn")
+onready var Credits = preload("CreditsScroll.tscn")
 
 var game_paused = false
 var level_name = "Level2"
@@ -156,6 +157,13 @@ func Close_Pause_Menu_To_Main(closed_window):
 	$BackgroundMusic.play()
 	get_tree().paused = false
 	add_child(MenuOptions.instance())
+	
+func Open_Credits(closed_window):
+	closed_window.queue_free()
+	get_node(Get_Level_Name()).queue_free()
+	game_paused = false
+	get_tree().paused = false
+	add_child(Credits.instance())
 	
 func Set_Screen_Brightness(brightness):
 	$Node2D/ColorRect.color = Color(0, 0, 0, brightness)

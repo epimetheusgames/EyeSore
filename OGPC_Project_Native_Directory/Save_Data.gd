@@ -46,14 +46,13 @@ const default_keybind_data = {
 
 func next_level():
 	if get_parent().next_level == "end":
-		print("You finished, credits!")
+		get_parent().get_parent().Open_Credits(self)
 	else:
 		if get_parent().temp_current_level == -1:
 			data["level"] += 1
 			save_game()
 			get_parent().get_parent().Next_Level(data["level"], get_game_data())
 		else:
-			print(get_parent().temp_current_level)
 			get_parent().get_parent().Next_Level(get_parent().temp_current_level + 1, get_game_data(), get_parent().temp_current_level + 1)
 
 func _ready():

@@ -112,13 +112,11 @@ script = ExtResource( 7 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Save_Functionality/TutorialWireHelp"]
 position = Vector2( 24, 104 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="Save_Functionality/TutorialWireHelp"]
 position = Vector2( 104, 88 )
 frames = SubResource( 6 )
-frame = 1
 playing = true
 
 [editable path="Save_Functionality/Player_Body"]
