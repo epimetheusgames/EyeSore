@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://MenuOptions.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/PTMono-Regular.ttf" type="DynamicFontData" id=2]
@@ -12,6 +12,10 @@ shader = SubResource( 6 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 180
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 250
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=4]
@@ -47,19 +51,30 @@ texture = ExtResource( 4 )
 [node name="Label" type="Label" parent="."]
 modulate = Color( 2.5, 2.5, 2.5, 1 )
 margin_left = -1714.0
-margin_top = -275.0
+margin_top = -69.2855
 margin_right = 1714.0
-margin_bottom = -70.0
+margin_bottom = 135.714
 grow_horizontal = 2
 custom_fonts/font = SubResource( 2 )
 text = "Play"
 align = 1
 
+[node name="Label5" type="Label" parent="."]
+modulate = Color( 1.2, 2.7, 1.7, 1 )
+margin_left = -1714.0
+margin_top = -669.286
+margin_right = 1714.0
+margin_bottom = -384.286
+grow_horizontal = 2
+custom_fonts/font = SubResource( 8 )
+text = "E y e S o r e"
+align = 1
+
 [node name="Label3" type="Label" parent="."]
 margin_left = -1709.0
-margin_top = 152.0
+margin_top = 357.714
 margin_right = 1714.0
-margin_bottom = 357.0
+margin_bottom = 562.714
 grow_horizontal = 2
 custom_fonts/font = SubResource( 4 )
 text = "Options"
@@ -67,9 +82,9 @@ align = 1
 
 [node name="Label4" type="Label" parent="."]
 margin_left = -1714.0
-margin_top = 363.0
+margin_top = 568.714
 margin_right = 1709.0
-margin_bottom = 579.0
+margin_bottom = 784.714
 grow_horizontal = 2
 custom_fonts/font = SubResource( 5 )
 text = "Quit"
@@ -84,21 +99,21 @@ load_saved_game = false
 
 [node name="OptionsButton" type="TextureButton" parent="."]
 margin_left = -396.0
-margin_top = 180.0
+margin_top = 385.714
 margin_right = 392.0
-margin_bottom = 364.0
+margin_bottom = 569.714
 
 [node name="PlayButton" type="TextureButton" parent="."]
 margin_left = -232.0
-margin_top = -263.0
+margin_top = -57.2855
 margin_right = 212.0
-margin_bottom = -52.0
+margin_bottom = 153.714
 
 [node name="Label2" type="Label" parent="."]
 margin_left = -1720.0
-margin_top = -57.0
+margin_top = 148.714
 margin_right = 1714.0
-margin_bottom = 148.0
+margin_bottom = 353.714
 grow_horizontal = 2
 custom_fonts/font = SubResource( 2 )
 text = "Level Select"
@@ -106,15 +121,15 @@ align = 1
 
 [node name="LevelSelectButton" type="TextureButton" parent="."]
 margin_left = -566.0
-margin_top = -43.0
+margin_top = 162.714
 margin_right = 559.0
-margin_bottom = 168.0
+margin_bottom = 373.714
 
 [node name="QuitButton" type="TextureButton" parent="."]
 margin_left = -242.0
-margin_top = 388.0
+margin_top = 593.714
 margin_right = 224.0
-margin_bottom = 578.0
+margin_bottom = 783.714
 
 [connection signal="button_up" from="OptionsButton" to="." method="_on_OptionsButton_button_up"]
 [connection signal="button_up" from="PlayButton" to="." method="_on_PlayButton_button_up"]
