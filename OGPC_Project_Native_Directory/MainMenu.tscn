@@ -91,3 +91,4 @@ script = ExtResource( 5 )
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
+bus = "Music"
