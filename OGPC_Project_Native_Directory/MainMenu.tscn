@@ -80,10 +80,10 @@ z_index = 10
 
 [node name="ColorRect" type="ColorRect" parent="Node2D"]
 material = SubResource( 4 )
-margin_left = -3058.0
-margin_top = -1819.0
-margin_right = 3689.0
-margin_bottom = 2313.0
+margin_left = -2960.0
+margin_top = -1769.0
+margin_right = 3787.0
+margin_bottom = 2363.0
 color = Color( 0, 0, 0, 0 )
 
 [node name="SaveFunctionality" type="Node2D" parent="."]
