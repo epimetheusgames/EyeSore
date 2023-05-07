@@ -61,14 +61,10 @@ func _physics_process(delta):
 	# Move position to follow the player on the x axis
 	self.position.x -= x_speed
 	
-	print(state_machine.get_current_node())
-	
 	# if the attack cooldown timer is at 0, start an attack
 	if state_machine.get_current_node() == "Idle" and attack_cooldown_timer.time_left <= 0:
-		print('hello')
 		attack_cooldown_timer.start(4)
 	if attack_cooldown_timer.time_left <= 1 and state_machine.get_current_node() == "Idle":
-		print('hi')
 		var cooldown_to_next_attack = Start_Attack(first_phase_attacks[(randi() % first_phase_attacks.size())])
 
 func Start_Attack(attack_name):
@@ -84,7 +80,6 @@ func Scoop_Fire_Attack():
 	
 	for i in range(3):
 		for j in range(3):
-			print('hieaaaw')
 			var boss_bullet = boss_bullet_file_path.instance()
 				
 			get_node("/root/MainMenuRootNode/Shooting_SFX_Player").play()

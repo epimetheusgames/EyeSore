@@ -66,7 +66,6 @@ func _ready():
 		$Player_Body.respawn_position = spawn_pos.position
 		$Player_Body.position = spawn_pos.position
 		$Player_Body.start_position = spawn_pos.position
-		print($Player_Body.self_position)
 	else: 
 		# Otherwise (first check if we're not in the main menu or something,) 
 		# set the positions to 0,0. This is just for older scenes to still work.
