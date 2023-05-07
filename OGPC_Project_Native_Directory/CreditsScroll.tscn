@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Fonts/PTMono-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://CreditsScroller.gd" type="Script" id=2]
 [ext_resource path="res://OGPC Soundtrack 6.mp3" type="AudioStream" id=3]
-[ext_resource path="res://CoolParticles.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
@@ -17,9 +16,6 @@ margin_top = -7.0
 margin_right = 618.0
 margin_bottom = 371.0
 color = Color( 0.0196078, 0.0901961, 0, 1 )
-
-[node name="CoolParticles" parent="." instance=ExtResource( 4 )]
-position = Vector2( 300, 164 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 anchor_right = 0.06
@@ -71,8 +67,8 @@ Carson Bates
 
 Web Design
 
-Elouan Grimm
 Alejandro Belgique
+Elouan Grimm
 
 
 Public Media
