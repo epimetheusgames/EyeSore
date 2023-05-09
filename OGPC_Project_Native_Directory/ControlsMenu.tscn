@@ -102,12 +102,12 @@ align = 1
 [node name="Label6" type="Label" parent="."]
 modulate = Color( 2, 2, 2, 1 )
 margin_left = 223.0
-margin_top = 250.0
+margin_top = 251.0
 margin_right = 421.0
-margin_bottom = 269.0
+margin_bottom = 270.0
 rect_pivot_offset = Vector2( 99, 19 )
 custom_fonts/font = SubResource( 4 )
-text = "Wires"
+text = "Interact"
 align = 1
 
 [node name="Terminal" parent="." instance=ExtResource( 4 )]

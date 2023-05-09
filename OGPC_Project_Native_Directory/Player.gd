@@ -152,9 +152,6 @@ func _physics_process(delta):
 		position = respawn_position
 		player_health -= 3
 		
-	if Input.is_action_just_pressed("self_destruct"):
-		get_node("/root/MainMenuRootNode/Player_Hurt_Player").play()
-		
 		position = respawn_position
 	
 	# if the player is not moving, start the animation player and play the idle animation, and the rest of the animations have not been implemented yet so if it needs to play those it just stops the animation
@@ -358,18 +355,31 @@ func manage_wires(death_pos_on_tileset, tileset, grass_tileset):
 	var wires = get_tree().get_nodes_in_group("wires")
 	
 	for wire in wires:
-		if wire.get_tileset_coords(1, tileset) == death_pos_on_tileset:
-			var touching_portal = wire.get_touching_portal(0)
-			var touching_checkpoint = wire.get_touching_checkpoint(0)
+		if wire.get_tileset_coords(1, tileset) == death_pos_on_tileset or wire.get_tileset_coords(0, tileset) == death_pos_on_tileset:
+			var touching_portal
+			var touching_checkpoint
 			
+			if wire.get_tileset_coords(0, tileset) == death_pos_on_tileset:
+				touching_portal = wire.get_touching_portal(1)
+				touching_checkpoint = wire.get_touching_checkpoint(1)
+			else:
+				touching_portal = wire.get_touching_portal(0)
+				touching_checkpoint = wire.get_touching_checkpoint(0)
+				
 			if touching_checkpoint:
 				touching_checkpoint.save_checkpoint()
 			
 			elif touching_portal and touching_portal[1]:
-				touching_portal[0].active = not touching_portal[0].active
+				if wire.get_tileset_coords(0, tileset) == death_pos_on_tileset:
+					touching_portal[0].active = not touching_portal[0].active
+				else:
+					touching_portal[0].active = not touching_portal[0].active
 			
 			else:
-				wire.delete_tile_at(0, grass_tileset, true, get_parent().get_parent().deleted_spikes, get_parent().get_parent().deleted_spike_types)
+				if wire.get_tileset_coords(0, tileset) == death_pos_on_tileset:
+					wire.delete_tile_at(1, grass_tileset, true, get_parent().get_parent().deleted_spikes, get_parent().get_parent().deleted_spike_types)
+				else:
+					wire.delete_tile_at(0, grass_tileset, true, get_parent().get_parent().deleted_spikes, get_parent().get_parent().deleted_spike_types)
 
 func _on_Player_Area_area_entered(area):
 	_on_Area2D_body_entered(area)

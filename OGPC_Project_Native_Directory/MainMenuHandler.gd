@@ -7,9 +7,18 @@ onready var VideoMenu = preload("res://VideoMenu.tscn")
 onready var ControlsMenu = preload("res://ControlsMenu.tscn")
 onready var PauseMenu = preload("res://PauseMenu.tscn")
 onready var AccessibilityMenu = preload("res://AccessibilityMenu.tscn")
+onready var LevelSelectMenu = preload("res://Level_Select.tscn")
+onready var Credits = preload("res://CreditsScroll.tscn")
+onready var LogoFade = preload("res://EpimetheusFadin.tscn")
+
+onready var brightness = $SaveFunctionality.get_game_data()[4]["darkness"]
 
 var game_paused = false
 var level_name = "Level2"
+var fade_transition = 0
+var fade_finished = false
+
+export var do_fadin = true
 
 const levels = [
 	preload("res://Levels/AestheticallyPleasingLevel.tscn"),
@@ -50,7 +59,12 @@ const level_names = [
 ]
 
 func _ready():
-	add_child(MenuOptions.instance())
+	if do_fadin:
+		add_child(LogoFade.instance())
+	else:
+		add_child(MenuOptions.instance())
+	
+	Set_Screen_Brightness(brightness)
 	
 	var data = $SaveFunctionality.get_game_data()
 	
@@ -62,10 +76,11 @@ func _ready():
 	$BackgroundMusic.playing = true
 	# Play Main Menu Audio
 	
-func Next_Level(level, data):
+func Next_Level(level, data, temp_level_num = -1):
 	var level_obj = levels[level].instance()
 	level_name = level_obj.name
 	level_obj.set_player_spawnpoint_and_position(data[1], data[2], data[3], data[7], data[8], data[9])
+	level_obj.temp_current_level = temp_level_num
 	Play_Grass_Area_Music()
 	get_node(Get_Level_Name()).queue_free()
 	level_name = level_obj.name
@@ -81,6 +96,10 @@ func Open_Options_Menu(closed_window):
 func Open_Audio_Menu(closed_window):
 	closed_window.queue_free()
 	add_child(AudioMenu.instance())
+	
+func Open_Level_Select_Menu(closed_window):
+	closed_window.queue_free()
+	add_child(LevelSelectMenu.instance())
 
 func Open_Main_Menu(closed_window):
 	closed_window.queue_free()
@@ -150,6 +169,13 @@ func Close_Pause_Menu_To_Main(closed_window):
 	get_tree().paused = false
 	add_child(MenuOptions.instance())
 	
+func Open_Credits(closed_window):
+	closed_window.queue_free()
+	get_node(Get_Level_Name()).queue_free()
+	game_paused = false
+	get_tree().paused = false
+	add_child(Credits.instance())
+	
 func Set_Screen_Brightness(brightness):
 	$Node2D/ColorRect.color = Color(0, 0, 0, brightness)
 		
@@ -167,3 +193,13 @@ func Play_Shooting_SFX_Player():
 
 func Play_Click_SFX():
 	$ClickAudio.play()
+
+func _process(delta):
+	
+	if not get_node("EpimetheusFadin"):
+		if sin(deg2rad(fade_transition)) < 1-$SaveFunctionality.get_game_data()[4]["darkness"]:
+			fade_transition += 1
+			
+			brightness = 1-sin(deg2rad(fade_transition))
+		
+			Set_Screen_Brightness(brightness)

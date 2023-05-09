@@ -22,6 +22,7 @@ var deleted_spike_types = []
 var wire_terminals = [] # this will end up being a list of all the nodes in the wire terminal group so the script can iterate through them and check if the player is in range of any of them
 var in_range_of_wire_terminal = false
 var added_wire = false
+var temp_current_level = -1
 
 onready var wire_scene = preload("res://Wire.tscn")
 

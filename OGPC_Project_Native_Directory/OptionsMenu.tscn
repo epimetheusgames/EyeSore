@@ -41,7 +41,6 @@ glow_intensity = 0.1
 glow_blend_mode = 0
 glow_bicubic_upscale = true
 glow_high_quality = true
-adjustment_enabled = true
 adjustment_saturation = 0.01
 
 [node name="OptionsMenu" type="Node2D"]
@@ -55,48 +54,50 @@ texture = ExtResource( 3 )
 offset = Vector2( 1640.27, 234.06 )
 
 [node name="Title" type="Label" parent="."]
-margin_left = 157.0
-margin_top = -426.0
-margin_right = 1191.0
-margin_bottom = -141.0
+modulate = Color( 0, 2, 1.7, 1 )
+margin_left = -854.0
+margin_top = -313.0
+margin_right = 2149.0
+margin_bottom = -28.0
 custom_fonts/font = SubResource( 9 )
 text = "Settings"
+align = 1
 
 [node name="Label" type="Label" parent="."]
 modulate = Color( 2.00392, 2, 2, 1 )
-margin_left = -2.0
-margin_top = -59.0
-margin_right = 1398.0
-margin_bottom = 146.0
+margin_left = -853.0
+margin_top = 157.0
+margin_right = 2144.0
+margin_bottom = 362.0
 custom_fonts/font = SubResource( 4 )
 text = "Audio"
 align = 1
 
 [node name="Label2" type="Label" parent="."]
-margin_left = -7.0
-margin_top = 146.0
-margin_right = 1393.0
-margin_bottom = 351.0
+margin_left = -858.0
+margin_top = 362.0
+margin_right = 2145.0
+margin_bottom = 567.0
 grow_horizontal = 2
 custom_fonts/font = SubResource( 5 )
 text = "Video"
 align = 1
 
 [node name="Label3" type="Label" parent="."]
-margin_left = -7.0
-margin_top = 342.0
-margin_right = 1393.0
-margin_bottom = 547.0
+margin_left = -851.0
+margin_top = 558.0
+margin_right = 2149.0
+margin_bottom = 763.0
 grow_horizontal = 2
 custom_fonts/font = SubResource( 6 )
 text = "Controls"
 align = 1
 
 [node name="Label5" type="Label" parent="."]
-margin_left = -11.0
-margin_top = 552.0
-margin_right = 1389.0
-margin_bottom = 757.0
+margin_left = -850.0
+margin_top = 768.0
+margin_right = 2150.0
+margin_bottom = 973.0
 custom_fonts/font = SubResource( 8 )
 text = "Back"
 align = 1
@@ -110,28 +111,28 @@ zoom = Vector2( 5, 5 )
 environment = SubResource( 10 )
 
 [node name="BackButton" type="TextureButton" parent="."]
-margin_left = 446.0
-margin_top = 571.0
-margin_right = 911.0
-margin_bottom = 763.0
+margin_left = 430.0
+margin_top = 783.0
+margin_right = 895.0
+margin_bottom = 975.0
 
 [node name="ControlsButton" type="TextureButton" parent="."]
-margin_left = 266.0
-margin_top = 334.0
-margin_right = 1122.0
-margin_bottom = 554.0
+margin_left = 224.0
+margin_top = 550.0
+margin_right = 1080.0
+margin_bottom = 770.0
 
 [node name="VideoButton" type="TextureButton" parent="."]
-margin_left = 410.0
-margin_top = 156.0
-margin_right = 970.0
-margin_bottom = 356.0
+margin_left = 376.0
+margin_top = 372.0
+margin_right = 936.0
+margin_bottom = 572.0
 
 [node name="AudioButton" type="TextureButton" parent="."]
-margin_left = 386.0
-margin_top = -52.0
-margin_right = 996.0
-margin_bottom = 160.0
+margin_left = 343.0
+margin_top = 164.0
+margin_right = 953.0
+margin_bottom = 376.0
 
 [connection signal="button_up" from="BackButton" to="." method="_on_BackButton_button_up"]
 [connection signal="button_up" from="ControlsButton" to="." method="_on_ControlsButton_button_up"]

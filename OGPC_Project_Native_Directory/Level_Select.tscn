@@ -1,0 +1,124 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Save_Data.gd" type="Script" id=1]
+[ext_resource path="res://Level_Select_Manager.gd" type="Script" id=2]
+[ext_resource path="res://Fonts/PTMono-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://MainMenuSprites/OGPC_Main_Menu_Background_Sprite.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=9]
+size = 35
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 40
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=7]
+default_font = SubResource( 6 )
+/fonts/Font = SubResource( 2 )
+LineEdit/styles/normal = SubResource( 3 )
+SpinBox/fonts/font = SubResource( 4 )
+SpinBox/icons/updown = null
+SpinBox/styles/normal = SubResource( 5 )
+
+[sub_resource type="Environment" id=8]
+background_mode = 4
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/2 = true
+glow_levels/4 = true
+glow_levels/6 = true
+glow_levels/7 = true
+glow_intensity = 0.1
+glow_blend_mode = 0
+glow_bicubic_upscale = true
+glow_high_quality = true
+adjustment_enabled = true
+adjustment_saturation = 0.01
+
+[node name="Level_Select" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="OgpcMainMenuBackgroundSprite" type="Sprite" parent="."]
+position = Vector2( 294, 169 )
+scale = Vector2( 3.04386, 3.42188 )
+texture = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 2.75, 2.75, 2.75, 1 )
+margin_left = 1.0
+margin_top = 209.0
+margin_right = 599.0
+margin_bottom = 278.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 9 )
+text = "Play"
+align = 1
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 1.0
+margin_top = 42.0
+margin_right = 599.0
+margin_bottom = 111.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 10 )
+text = "Level Select"
+align = 1
+
+[node name="SpinBox" type="SpinBox" parent="."]
+margin_left = 241.0
+margin_top = 169.0
+margin_right = 373.0
+margin_bottom = 215.0
+theme = SubResource( 7 )
+min_value = 1.0
+value = 7.0
+align = 1
+prefix = "Level"
+
+[node name="Save_Functionality" type="Node2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="PlayButton" type="TextureButton" parent="."]
+margin_left = 225.0
+margin_top = 217.0
+margin_right = 375.0
+margin_bottom = 259.0
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 1.0
+margin_top = 251.0
+margin_right = 599.0
+margin_bottom = 320.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 9 )
+text = "Back"
+align = 1
+
+[node name="BackButton" type="TextureButton" parent="."]
+margin_left = 225.0
+margin_top = 247.0
+margin_right = 376.0
+margin_bottom = 337.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 8 )
+
+[connection signal="button_down" from="PlayButton" to="." method="_on_PlayButton_button_down"]
+[connection signal="button_down" from="BackButton" to="." method="_on_BackButton_button_down"]

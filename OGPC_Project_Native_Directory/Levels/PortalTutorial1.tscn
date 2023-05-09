@@ -70,7 +70,7 @@ moveable = false
 can_connect_with_immoveable = false
 
 [node name="Line2D" parent="Save_Functionality/Wire2" index="0"]
-points = PoolVector2Array( -38, 136, 57, 137 )
+points = PoolVector2Array( -38, 136, 58, 138 )
 
 [node name="Side2" parent="Save_Functionality/Wire2" index="1"]
 margin_left = 16.0

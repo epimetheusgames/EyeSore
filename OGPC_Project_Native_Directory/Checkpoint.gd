@@ -25,6 +25,10 @@ func save_checkpoint():
 	
 	# Activate that boolian/animation more efficient I guess? Not really lol.
 	$AnimatedSprite.animation = "Activated"
+	
+	for checkpoint in get_tree().get_nodes_in_group("checkpoints"):
+		if checkpoint != self:
+			checkpoint.get_node("AnimatedSprite").animation = "Deactivated"
 
 func is_point_inside(point):
 	var rect = Rect2(to_global($ReferenceRect.rect_position), $ReferenceRect.rect_size)

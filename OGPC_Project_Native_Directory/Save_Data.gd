@@ -2,7 +2,6 @@ extends Node2D
 
 var file_name = "user://save1.json"
 var keybind_file_name = "user://keybinds.json"
-onready var pixelated_boss = preload("res://PixelatedBoss.tscn")
 onready var enemy1 = preload("res://Enemy1.tscn")
 onready var enemy2 = preload("res://Enemy2.tscn")
 onready var player = preload("res://Player.tscn")
@@ -47,14 +46,16 @@ const default_keybind_data = {
 
 func next_level():
 	if get_parent().next_level == "end":
-		print("You finished, credits!")
+		get_parent().get_parent().Open_Credits(self)
 	else:
-		data["level"] += 1
-		save_game()
-		get_parent().get_parent().Next_Level(data["level"], get_game_data())
+		if get_parent().temp_current_level == -1:
+			data["level"] += 1
+			save_game()
+			get_parent().get_parent().Next_Level(data["level"], get_game_data())
+		else:
+			get_parent().get_parent().Next_Level(get_parent().temp_current_level + 1, get_game_data(), get_parent().temp_current_level + 1)
 
 func _ready():
-	
 	# Yes this is where the player's respawn pos is set.
 	var spawn_pos = get_node("PlayerSpawnPos")
 	
@@ -65,7 +66,6 @@ func _ready():
 		$Player_Body.respawn_position = spawn_pos.position
 		$Player_Body.position = spawn_pos.position
 		$Player_Body.start_position = spawn_pos.position
-		print($Player_Body.self_position)
 	else: 
 		# Otherwise (first check if we're not in the main menu or something,) 
 		# set the positions to 0,0. This is just for older scenes to still work.
@@ -214,7 +214,7 @@ func save_game():
 	file.close()
 	data["keybinds"] = keybinds
 
-func set_keybinds(keybinds, old_keybinds): # Sets all keybinds to what is in data
+func set_keybinds(keybinds, old_keybinds=null): # Sets all keybinds to what is in data
 	InputMap.erase_action("movement_left")
 	InputMap.erase_action("movement_right")
 	InputMap.erase_action("movement_jump")
