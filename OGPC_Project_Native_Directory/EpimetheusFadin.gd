@@ -9,8 +9,8 @@ func _physics_process(delta):
 		get_parent().Open_Main_Menu(self)
 		return
 	
-	sin_transparency += 0.5
+	sin_transparency += 1.5
 	
 	transparency = sin(deg2rad(sin_transparency))
 	
-	$EpimetheusLogoLarge.modulate = Color(1, 1, 1, (transparency) / 2) 
+	$EpimetheusLogoLarge.modulate = Color(1, 1, 1, (transparency)) 

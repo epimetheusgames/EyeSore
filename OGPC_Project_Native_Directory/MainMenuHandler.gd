@@ -16,6 +16,7 @@ onready var brightness = $SaveFunctionality.get_game_data()[4]["darkness"]
 var game_paused = false
 var level_name = "Level2"
 var fade_transition = 0
+var fade_finished = false
 
 export var do_fadin = true
 
@@ -199,6 +200,6 @@ func _process(delta):
 		if sin(deg2rad(fade_transition)) < 1-$SaveFunctionality.get_game_data()[4]["darkness"]:
 			fade_transition += 1
 			
-		brightness = 1-sin(deg2rad(fade_transition))
+			brightness = 1-sin(deg2rad(fade_transition))
 		
-	Set_Screen_Brightness(brightness)
+			Set_Screen_Brightness(brightness)
