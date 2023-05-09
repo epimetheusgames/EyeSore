@@ -18,7 +18,7 @@ points = PoolVector2Array( 11.7998, 15.796, 4.73394, 15.796, 4.73394, 12.9921, 1
 points = PoolVector2Array( 0, 0, 3.05158, 0, 3.05158, 16, 0, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=8]
-points = PoolVector2Array( 2.98428, 8.63699, 0, 13.4385, 0, 3.00789, 2.8497, 8.09863 )
+points = PoolVector2Array( 2.98428, 8.63699, 0, 9.98286, 0, 6.48358, 2.8497, 8.09863 )
 
 [sub_resource type="ConvexPolygonShape2D" id=17]
 points = PoolVector2Array( 3.38805, 16, 0, 16, 0, 2.15228 )
@@ -39,16 +39,16 @@ points = PoolVector2Array( 9.83231, 0, 0, 2.82425, 0, 0, 9.9669, 0 )
 points = PoolVector2Array( 11.9473, 2.9748, 3.87205, 2.9748, 3.87205, 0.170883, 11.9473, 0.170883 )
 
 [sub_resource type="ConvexPolygonShape2D" id=13]
-points = PoolVector2Array( 12.7454, 16, 16, 1.77114, 15.796, 16, 12.7678, 16 )
+points = PoolVector2Array( 12.7454, 16, 16, 6.83946, 15.796, 16, 12.7678, 16 )
 
 [sub_resource type="ConvexPolygonShape2D" id=14]
 points = PoolVector2Array( 16, 16, 12.6556, 15.985, 12.6556, 0, 16, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=15]
-points = PoolVector2Array( 16, 14.9703, 12.3416, 0, 12.6556, 0, 16, 0 )
+points = PoolVector2Array( 16, 8.48643, 12.3416, 0, 12.6556, 0, 16, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=16]
-points = PoolVector2Array( 13.9567, 7.42569, 16, 3.68083, 16, 13.8871, 13.5529, 8.36781 )
+points = PoolVector2Array( 13.9567, 7.42569, 16, 7.02193, 16, 10.252, 13.5529, 8.36781 )
 
 [resource]
 0/name = "OGPC_Project_Spikes_Tileset-export.png 0"
