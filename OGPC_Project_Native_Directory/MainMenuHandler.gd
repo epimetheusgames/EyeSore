@@ -8,10 +8,16 @@ onready var ControlsMenu = preload("res://ControlsMenu.tscn")
 onready var PauseMenu = preload("res://PauseMenu.tscn")
 onready var AccessibilityMenu = preload("res://AccessibilityMenu.tscn")
 onready var LevelSelectMenu = preload("res://Level_Select.tscn")
-onready var Credits = preload("CreditsScroll.tscn")
+onready var Credits = preload("res://CreditsScroll.tscn")
+onready var LogoFade = preload("res://EpimetheusFadin.tscn")
+
+onready var brightness = $SaveFunctionality.get_game_data()[4]["darkness"]
 
 var game_paused = false
 var level_name = "Level2"
+var fade_transition = 0
+
+export var do_fadin = true
 
 const levels = [
 	preload("res://Levels/AestheticallyPleasingLevel.tscn"),
@@ -52,8 +58,12 @@ const level_names = [
 ]
 
 func _ready():
-	add_child(MenuOptions.instance())
-	Set_Screen_Brightness($SaveFunctionality.get_game_data()[4]["darkness"])
+	if do_fadin:
+		add_child(LogoFade.instance())
+	else:
+		add_child(MenuOptions.instance())
+	
+	Set_Screen_Brightness(brightness)
 	
 	var data = $SaveFunctionality.get_game_data()
 	
@@ -182,3 +192,13 @@ func Play_Shooting_SFX_Player():
 
 func Play_Click_SFX():
 	$ClickAudio.play()
+
+func _process(delta):
+	
+	if not get_node("EpimetheusFadin"):
+		if sin(deg2rad(fade_transition)) < 1-$SaveFunctionality.get_game_data()[4]["darkness"]:
+			fade_transition += 1
+			
+		brightness = 1-sin(deg2rad(fade_transition))
+		
+	Set_Screen_Brightness(brightness)
