@@ -165,7 +165,11 @@ func _on_Side1_button_down():
 
 func _on_Side1_button_up():
 	if moveable and wire_ui:
-		if get_parent().get_parent().is_point_on_connections($Line2D.points[0]) and not get_parent().get_parent().is_another_already_there(0, self) and not get_parent().get_parent().is_another_already_there(1, self):
+		if (get_parent().get_parent().is_point_on_connections($Line2D.points[0]) 
+		   and not get_parent().get_parent().is_another_already_there(0, self) 
+		   and not get_parent().get_parent().is_another_already_there(1, self)
+		   and not (get_parent().get_parent().is_spike_or_grass(get_parent().get_parent().get_pos_on_tilemap($Line2D.points[-1])) == "s"
+		   and get_parent().get_parent().is_spike_or_grass(get_parent().get_parent().get_pos_on_tilemap($Line2D.points[0])) == "s")):
 			run_particles_down_wire(true)
 			
 			if not really_placed_yet:
@@ -187,14 +191,18 @@ func _on_Side1_button_up():
 			side1_pressed = false
 		else:
 			queue_free()
-
+ 
 func _on_Side2_button_down():
 	if moveable and wire_ui:
 		side2_pressed = true
 
 func _on_Side2_button_up():
 	if moveable and wire_ui:
-		if get_parent().get_parent().is_point_on_connections($Line2D.points[-1]) and not get_parent().get_parent().is_another_already_there(1, self) and not get_parent().get_parent().is_another_already_there(0, self):
+		if (get_parent().get_parent().is_point_on_connections($Line2D.points[-1]) 
+		   and not get_parent().get_parent().is_another_already_there(1, self) 
+		   and not get_parent().get_parent().is_another_already_there(0, self) 
+		   and not (get_parent().get_parent().is_spike_or_grass(get_parent().get_parent().get_pos_on_tilemap($Line2D.points[-1])) == "s"
+		   and get_parent().get_parent().is_spike_or_grass(get_parent().get_parent().get_pos_on_tilemap($Line2D.points[0])) == "s")):
 			run_particles_down_wire(true)
 			side2_pressed = false
 		else:
