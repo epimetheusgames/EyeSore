@@ -191,7 +191,7 @@ func _on_Side1_button_up():
 			side1_pressed = false
 		else:
 			queue_free()
-
+ 
 func _on_Side2_button_down():
 	if moveable and wire_ui:
 		side2_pressed = true
