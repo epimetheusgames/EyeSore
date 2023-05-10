@@ -24,7 +24,7 @@ var default_y_move_speed = 3
 var curr_move_speed = default_y_move_speed 
 
 # How fast the boss moves towards the player
-var x_speed = 1.5
+var x_speed = 1.6
 var match_player_y = true
 onready var match_player_y_tween = get_node("Player_Follow_Tween")
 var original_pos = position
@@ -43,29 +43,31 @@ func reset():
 
 func _ready():
 	# Start the attack cooldown timer at the start of the level, and play the spawn animation.
-	attack_cooldown_timer.start(4)
-	state_machine.start("Spawn")
+	self.hide()
+	velocity.x = -40
+	yield(get_tree().create_timer(10), "timeout")
+	Spawn_Boss()
 
 func _physics_process(delta):
-	# Move and slide for velocity, aka movement
-	velocity = move_and_slide(velocity, Vector2.UP)
-	
-	if player_body.position.distance_to(self.position) > 310:
-		x_speed += 0.0085
-	elif player_body.position.distance_to(self.position) < 50 and x_speed >= 1:
-		x_speed -= 0.01
-	
-	
-	self.position.y = (player_body.position.y - 20)
-	
-	# Move position to follow the player on the x axis
-	self.position.x -= x_speed
-	
-	# if the attack cooldown timer is at 0, start an attack
-	if state_machine.get_current_node() == "Idle" and attack_cooldown_timer.time_left <= 0:
-		attack_cooldown_timer.start(4)
-	if attack_cooldown_timer.time_left <= 1 and state_machine.get_current_node() == "Idle":
-		var cooldown_to_next_attack = Start_Attack(first_phase_attacks[(randi() % first_phase_attacks.size())])
+	if state_machine.get_current_node() != "Spawn" and state_machine.is_playing():
+		# Move and slide for velocity, aka movement
+		velocity = move_and_slide(velocity, Vector2.UP)
+		
+		
+		self.position.y = (player_body.position.y - 20)
+		
+		# Move position to follow the player on the x axis
+		self.position.x -= x_speed
+		if player_body.position.distance_to(self.position) > 290:
+			x_speed += 0.009
+		elif player_body.position.distance_to(self.position) < 85 and x_speed >= 1:
+			x_speed -= 0.01
+		
+		# if the attack cooldown timer is at 0, start an attack
+		if state_machine.get_current_node() == "Idle" and attack_cooldown_timer.time_left <= 0:
+			attack_cooldown_timer.start(4)
+		if attack_cooldown_timer.time_left <= 1 and state_machine.get_current_node() == "Idle":
+			var cooldown_to_next_attack = Start_Attack(first_phase_attacks[(randi() % first_phase_attacks.size())])
 
 func Start_Attack(attack_name):
 	if attack_name == "Scoop_Fire":
@@ -94,3 +96,8 @@ func Scoop_Fire_Attack():
 func Cone_Spin_Attack():
 	# go to the correct statemachine node
 	state_machine.travel("Cone_Spin_Attack")
+
+func Spawn_Boss():
+	self.show()
+	attack_cooldown_timer.start(4)
+	state_machine.start("Spawn")

@@ -137,7 +137,7 @@ animation = "Cone_Spin_Attack"
 animation = "Death"
 
 [sub_resource type="AnimationNodeAnimation" id=11]
-animation = "Spawn"
+animation = "Idle"
 
 [sub_resource type="AnimationNodeAnimation" id=37]
 animation = "Scoop_Fire_Attack"
@@ -150,13 +150,13 @@ switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
-switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
 switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=22]
+switch_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=38]
 
@@ -382,6 +382,7 @@ wait_time = 4.0
 
 [node name="Spin_Cone" type="KinematicBody2D" parent="Save_Functionality/Boss_Body"]
 modulate = Color( 1, 1, 1, 0 )
+rotation = 94.2478
 z_index = 2
 
 [node name="Spin_Cone_Sprite" type="Sprite" parent="Save_Functionality/Boss_Body/Spin_Cone"]
@@ -429,7 +430,7 @@ environment = SubResource( 29 )
 position = Vector2( 749, 59 )
 frames = SubResource( 33 )
 animation = "Idle"
-frame = 1
+frame = 2
 playing = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Save_Functionality"]
@@ -438,6 +439,10 @@ volume_db = -8.951
 autoplay = true
 bus = "Music"
 script = ExtResource( 16 )
+
+[node name="Label" type="Label" parent="Save_Functionality"]
+margin_right = 40.0
+margin_bottom = 14.0
 
 [connection signal="area_entered" from="Save_Functionality/Player_Body/Player_Area" to="Save_Functionality/Player_Body" method="_on_Player_Area_area_entered"]
 
