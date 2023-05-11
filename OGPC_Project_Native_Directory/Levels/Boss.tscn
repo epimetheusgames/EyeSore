@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Save_Data.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://IceCreamKidNoBossSpritesheet.png" type="Texture" id=14]
 [ext_resource path="res://IceCreamWallPassed.png" type="Texture" id=15]
 [ext_resource path="res://Levels/AudioFader.gd" type="Script" id=16]
+[ext_resource path="res://Levels/BossSpawnArea.gd" type="Script" id=17]
 
 [sub_resource type="Animation" id=4]
 resource_name = "Cone_Spin_Attack"
@@ -209,7 +210,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=28]
-extents = Vector2( 43.5, 1384 )
+extents = Vector2( 36036.5, 1466.5 )
 
 [sub_resource type="Environment" id=29]
 ambient_light_color = Color( 0.85098, 0.454902, 0.87451, 1 )
@@ -240,6 +241,9 @@ animations = [ {
 "name": "Idle",
 "speed": 2.0
 } ]
+
+[sub_resource type="RectangleShape2D" id=40]
+extents = Vector2( 5.5, 307 )
 
 [node name="Level_Manager" type="Node2D"]
 pause_mode = 1
@@ -278,7 +282,6 @@ current = true
 z_index = 15
 
 [node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="2"]
-visible = false
 position = Vector2( 0, 0 )
 z_index = 15
 
@@ -402,7 +405,8 @@ position = Vector2( 318, -14 )
 script = ExtResource( 13 )
 
 [node name="IceCreamWallColl" type="CollisionShape2D" parent="Save_Functionality/Ice_Cream_Wall_Of_Death"]
-position = Vector2( 36.5, 0 )
+visible = false
+position = Vector2( 36029.5, 82.5 )
 shape = SubResource( 28 )
 __meta__ = {
 "_edit_group_": true
@@ -416,8 +420,8 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 50, 1500 )
 
 [node name="Sprite2" type="Sprite" parent="Save_Functionality/Ice_Cream_Wall_Of_Death"]
-position = Vector2( 1132, -125 )
-scale = Vector2( 1107, 1.25 )
+position = Vector2( 174, -125 )
+scale = Vector2( 149, 1.25 )
 z_index = 6
 texture = ExtResource( 15 )
 region_enabled = true
@@ -430,7 +434,6 @@ environment = SubResource( 29 )
 position = Vector2( 749, 59 )
 frames = SubResource( 33 )
 animation = "Idle"
-frame = 2
 playing = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Save_Functionality"]
@@ -444,6 +447,17 @@ script = ExtResource( 16 )
 margin_right = 40.0
 margin_bottom = 14.0
 
+[node name="PlayerSpawnPos" type="Node2D" parent="Save_Functionality"]
+position = Vector2( 2607, -72 )
+
+[node name="BossSpawnArea" type="Area2D" parent="Save_Functionality"]
+script = ExtResource( 17 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Save_Functionality/BossSpawnArea"]
+position = Vector2( 16.5, -228 )
+shape = SubResource( 40 )
+
 [connection signal="area_entered" from="Save_Functionality/Player_Body/Player_Area" to="Save_Functionality/Player_Body" method="_on_Player_Area_area_entered"]
+[connection signal="body_entered" from="Save_Functionality/BossSpawnArea" to="Save_Functionality/BossSpawnArea" method="_on_BossSpawnArea_body_entered"]
 
 [editable path="Save_Functionality/Player_Body"]
