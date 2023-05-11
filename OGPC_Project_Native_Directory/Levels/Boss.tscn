@@ -448,7 +448,7 @@ margin_right = 40.0
 margin_bottom = 14.0
 
 [node name="PlayerSpawnPos" type="Node2D" parent="Save_Functionality"]
-position = Vector2( 2607, -72 )
+position = Vector2( 791, 63 )
 
 [node name="BossSpawnArea" type="Area2D" parent="Save_Functionality"]
 script = ExtResource( 17 )

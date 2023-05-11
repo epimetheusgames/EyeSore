@@ -36,6 +36,8 @@ export var friction_strength = 20
 var first_phase_attacks = ["Scoop_Fire", "Cone_Spin"]
 var attacking = false
 
+var spawned = false
+
 func reset():
 	attacking = false
 	position = original_pos
@@ -49,10 +51,12 @@ func _ready():
 	Spawn_Boss()
 
 func _physics_process(delta):
-	if state_machine.get_current_node() != "Spawn" and state_machine.is_playing():
+	if state_machine.get_current_node() != "Spawn" and state_machine.is_playing() and spawned:
 		# Move and slide for velocity, aka movement
 		velocity = move_and_slide(velocity, Vector2.UP)
 		
+		var player_direction = (position - get_parent().get_node("Player_Body").position).normalized()
+		rotation = atan2(player_direction.y, player_direction.x)
 		
 		self.position.y = (player_body.position.y - 20)
 		
@@ -101,3 +105,4 @@ func Spawn_Boss():
 	self.show()
 	attack_cooldown_timer.start(4)
 	state_machine.start("Spawn")
+	spawned = true
