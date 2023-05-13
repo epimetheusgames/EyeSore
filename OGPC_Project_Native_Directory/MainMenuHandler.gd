@@ -21,7 +21,6 @@ var fade_finished = false
 export var do_fadin = true
 
 const levels = [
-	preload("res://Levels/AestheticallyPleasingLevel.tscn"),
 	preload("res://Levels/Tutorial1.tscn"),
 	preload("res://Levels/Tutorial2.tscn"),
 	preload("res://Levels/Tutorial_3.tscn"),
@@ -40,7 +39,6 @@ const levels = [
 ]
 
 const level_names = [
-	"res://Levels/AestheticallyPleasingLevel.tscn",
 	"res://Levels/Tutorial1.tscn",
 	"res://Levels/Tutorial2.tscn",
 	"res://Levels/Tutorial_3.tscn",
