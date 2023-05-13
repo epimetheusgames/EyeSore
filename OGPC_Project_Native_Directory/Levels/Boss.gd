@@ -47,25 +47,23 @@ func _ready():
 	# Start the attack cooldown timer at the start of the level, and play the spawn animation.
 	self.hide()
 	velocity.x = -40
-	yield(get_tree().create_timer(10), "timeout")
-	Spawn_Boss()
 
 func _physics_process(delta):
 	if state_machine.get_current_node() != "Spawn" and state_machine.is_playing() and spawned:
 		# Move and slide for velocity, aka movement
 		velocity = move_and_slide(velocity, Vector2.UP)
 		
-		var player_direction = (position - get_parent().get_node("Player_Body").position).normalized()
-		rotation = atan2(player_direction.y, player_direction.x)
+#		var player_direction = (position - get_parent().get_node("Player_Body").position).normalized()
+#		rotation = atan2(player_direction.y, player_direction.x)
 		
 		self.position.y = (player_body.position.y - 20)
 		
 		# Move position to follow the player on the x axis
 		self.position.x -= x_speed
 		if player_body.position.distance_to(self.position) > 290:
-			x_speed += 0.009
+			x_speed += 0.09
 		elif player_body.position.distance_to(self.position) < 85 and x_speed >= 1:
-			x_speed -= 0.01
+			x_speed -= 0.1
 		
 		# if the attack cooldown timer is at 0, start an attack
 		if state_machine.get_current_node() == "Idle" and attack_cooldown_timer.time_left <= 0:

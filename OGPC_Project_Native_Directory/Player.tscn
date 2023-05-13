@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Death_Anim_Transition_Darkness.gd" type="Script" id=1]
 [ext_resource path="res://ProgressBar.tscn" type="PackedScene" id=2]
@@ -10,91 +10,6 @@
 [ext_resource path="res://OGPC_Project_Player_Health_Bar_Improved_Full.png" type="Texture" id=9]
 [ext_resource path="res://OGPC_2022_Player_2_Jumping_Spritesheet.png" type="Texture" id=11]
 [ext_resource path="res://ogpc_project_player_2_spritesheet_new_walk_anim.png" type="Texture" id=12]
-
-[sub_resource type="AtlasTexture" id=105]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=61]
-flags = 1
-atlas = ExtResource( 6 )
-region = Rect2( 96, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=78]
-flags = 1
-atlas = ExtResource( 11 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=79]
-flags = 1
-atlas = ExtResource( 11 )
-region = Rect2( 16, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=80]
-flags = 1
-atlas = ExtResource( 11 )
-region = Rect2( 32, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=87]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=61]
-flags = 1
-atlas = ExtResource( 6 )
-region = Rect2( 96, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=56]
-flags = 1
-atlas = ExtResource( 6 )
-region = Rect2( 16, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=57]
-flags = 1
-atlas = ExtResource( 6 )
-region = Rect2( 32, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=58]
-flags = 1
-atlas = ExtResource( 6 )
-region = Rect2( 48, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=59]
-flags = 1
-atlas = ExtResource( 6 )
-region = Rect2( 64, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=60]
-flags = 1
-atlas = ExtResource( 6 )
-region = Rect2( 80, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=62]
-flags = 1
-atlas = ExtResource( 6 )
-region = Rect2( 112, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=63]
-flags = 1
-atlas = ExtResource( 6 )
-region = Rect2( 128, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=64]
-flags = 1
-atlas = ExtResource( 6 )
-region = Rect2( 144, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=65]
-flags = 1
-atlas = ExtResource( 6 )
-region = Rect2( 160, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=66]
-flags = 1
-atlas = ExtResource( 6 )
-region = Rect2( 176, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=86]
 flags = 1
@@ -156,35 +71,10 @@ flags = 1
 atlas = ExtResource( 12 )
 region = Rect2( 448, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=90]
+[sub_resource type="AtlasTexture" id=61]
 flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 48, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=91]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 64, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=92]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 80, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=78]
-flags = 1
-atlas = ExtResource( 11 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=79]
-flags = 1
-atlas = ExtResource( 11 )
-region = Rect2( 16, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=80]
-flags = 1
-atlas = ExtResource( 11 )
-region = Rect2( 32, 0, 16, 16 )
+atlas = ExtResource( 6 )
+region = Rect2( 96, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=87]
 flags = 1
@@ -201,26 +91,61 @@ flags = 1
 atlas = ExtResource( 12 )
 region = Rect2( 32, 0, 16, 16 )
 
+[sub_resource type="AtlasTexture" id=78]
+flags = 1
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=79]
+flags = 1
+atlas = ExtResource( 11 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=80]
+flags = 1
+atlas = ExtResource( 11 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=90]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=91]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=92]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=105]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 16, 16 )
+
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ SubResource( 105 ) ],
+"frames": [ SubResource( 86 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 103 ), SubResource( 104 ) ],
 "loop": true,
-"name": "Idle_Left",
-"speed": 5.0
+"name": "Walking_Left",
+"speed": 20.0
 }, {
 "frames": [ SubResource( 61 ) ],
 "loop": true,
 "name": "Idle_Right",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 78 ), SubResource( 79 ), SubResource( 80 ) ],
-"loop": false,
-"name": "Jumping_Center",
-"speed": 15.0
-}, {
 "frames": [ SubResource( 87 ), SubResource( 88 ), SubResource( 89 ) ],
 "loop": false,
 "name": "Jumping_Left",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 78 ), SubResource( 79 ), SubResource( 80 ) ],
+"loop": false,
+"name": "Jumping_Center",
 "speed": 15.0
 }, {
 "frames": [ SubResource( 90 ), SubResource( 91 ), SubResource( 92 ) ],
@@ -228,25 +153,10 @@ animations = [ {
 "name": "Jumping_Right",
 "speed": 15.0
 }, {
-"frames": [ SubResource( 86 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 103 ), SubResource( 104 ) ],
+"frames": [ SubResource( 105 ) ],
 "loop": true,
-"name": "Walking_Left",
-"speed": 20.0
-}, {
-"frames": [ SubResource( 90 ), SubResource( 91 ), SubResource( 92 ) ],
-"loop": false,
-"name": "Jumping_Right",
-"speed": 15.0
-}, {
-"frames": [ SubResource( 78 ), SubResource( 79 ), SubResource( 80 ) ],
-"loop": false,
-"name": "Jumping_Center",
-"speed": 15.0
-}, {
-"frames": [ SubResource( 87 ), SubResource( 88 ), SubResource( 89 ) ],
-"loop": false,
-"name": "Jumping_Left",
-"speed": 15.0
+"name": "Idle_Left",
+"speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=93]
