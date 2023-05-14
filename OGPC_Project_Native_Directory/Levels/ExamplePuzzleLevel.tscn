@@ -41,6 +41,9 @@ tile_data = PoolIntArray( 65545, 1, 262146, 131076, 0, 196611, 131084, 0, 196611
 [node name="Player_Body" parent="Save_Functionality" instance=ExtResource( 1 )]
 position = Vector2( -128, 4 )
 
+[node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="1"]
+visible = false
+
 [node name="Checkpoint" parent="Save_Functionality" instance=ExtResource( 5 )]
 position = Vector2( 152, 144 )
 
@@ -104,11 +107,7 @@ position = Vector2( -41, 40 )
 z_index = -5
 
 [node name="Terminal_Sprite" parent="Save_Functionality/Wire_Terminal" index="0"]
-<<<<<<< HEAD
-frame = 4
-=======
 frame = 0
->>>>>>> 23fe348 (Fixed a few things, mainly setting the checkpoint sfx to sfx bus and making level finish things visible (you don't just walk of the map))
 
 [editable path="Save_Functionality/Player_Body"]
 [editable path="Save_Functionality/Wire"]
