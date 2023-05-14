@@ -10,7 +10,7 @@ export var text_list = []
 
 func _process(delta):
 	opacity = sin(deg2rad(sin_val))
-	sin_val += 10
+	sin_val += 1
 
 	$Label.modulate = Color(1, 1, 1, opacity)
 		
