@@ -50,9 +50,6 @@ position = Vector2( -24, -54 )
 [node name="Player_Body" parent="Save_Functionality" instance=ExtResource( 1 )]
 position = Vector2( -128, 4 )
 
-[node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="2"]
-visible = false
-
 [node name="Camera2D" type="Camera2D" parent="Save_Functionality"]
 position = Vector2( -24, -54 )
 current = true
@@ -62,7 +59,7 @@ position = Vector2( -189, -19 )
 scale = Vector2( 1e-05, 1e-05 )
 
 [node name="LevelFinish" parent="Save_Functionality" instance=ExtResource( 7 )]
-position = Vector2( 296, -16 )
+position = Vector2( 251, -16 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Save_Functionality"]
 stream = ExtResource( 9 )

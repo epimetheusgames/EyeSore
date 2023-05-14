@@ -31,6 +31,7 @@ animation = "Deactivated"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
+bus = "SFX"
 
 [node name="Area2D" type="Area2D" parent="."]
 

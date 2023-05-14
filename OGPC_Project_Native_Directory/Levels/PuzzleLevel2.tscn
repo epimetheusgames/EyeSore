@@ -42,9 +42,6 @@ tile_data = PoolIntArray( -786450, 1, 262146, -262147, 1, 0, -262146, 1, 0, -131
 [node name="Player_Body" parent="Save_Functionality" instance=ExtResource( 1 )]
 position = Vector2( -128, 4 )
 
-[node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="2"]
-visible = false
-
 [node name="Camera2D" type="Camera2D" parent="Save_Functionality"]
 position = Vector2( -24, -54 )
 current = true
@@ -68,6 +65,9 @@ position = Vector2( 57, 81 )
 [node name="Checkpoint2" parent="Save_Functionality" instance=ExtResource( 11 )]
 position = Vector2( -280, -192 )
 
+[node name="AnimatedSprite" parent="Save_Functionality/Checkpoint2" index="0"]
+rotation = 3.14159
+
 [node name="Wire" parent="Save_Functionality" instance=ExtResource( 10 )]
 moveable = false
 
@@ -87,6 +87,7 @@ position = Vector2( -152, 8 )
 position = Vector2( -24, -54 )
 
 [editable path="Save_Functionality/Player_Body"]
+[editable path="Save_Functionality/Checkpoint2"]
 [editable path="Save_Functionality/Wire"]
 [editable path="Save_Functionality/Wire2"]
 [editable path="Save_Functionality/WireUIBox"]
