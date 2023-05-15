@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Death_Anim_Transition_Darkness.gd" type="Script" id=1]
 [ext_resource path="res://ProgressBar.tscn" type="PackedScene" id=2]
@@ -10,6 +10,81 @@
 [ext_resource path="res://OGPC_Project_Player_Health_Bar_Improved_Full.png" type="Texture" id=9]
 [ext_resource path="res://OGPC_2022_Player_2_Jumping_Spritesheet.png" type="Texture" id=11]
 [ext_resource path="res://ogpc_project_player_2_spritesheet_new_walk_anim.png" type="Texture" id=12]
+
+[sub_resource type="AtlasTexture" id=116]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=117]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 112, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=118]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 128, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=119]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 144, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=120]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 160, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=121]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 176, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=122]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 192, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=123]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 208, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=124]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 224, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=125]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 240, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=126]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 256, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=127]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 272, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=102]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 416, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=103]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 432, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=104]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 448, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=86]
 flags = 1
@@ -56,41 +131,6 @@ flags = 1
 atlas = ExtResource( 12 )
 region = Rect2( 400, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=102]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 416, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=103]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 432, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=104]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 448, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=61]
-flags = 1
-atlas = ExtResource( 6 )
-region = Rect2( 96, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=87]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=88]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 16, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=89]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 32, 0, 16, 16 )
-
 [sub_resource type="AtlasTexture" id=78]
 flags = 1
 atlas = ExtResource( 11 )
@@ -105,6 +145,11 @@ region = Rect2( 16, 0, 16, 16 )
 flags = 1
 atlas = ExtResource( 11 )
 region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=61]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 96, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=90]
 flags = 1
@@ -121,6 +166,21 @@ flags = 1
 atlas = ExtResource( 12 )
 region = Rect2( 80, 0, 16, 16 )
 
+[sub_resource type="AtlasTexture" id=87]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=88]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=89]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 32, 0, 16, 16 )
+
 [sub_resource type="AtlasTexture" id=105]
 flags = 1
 atlas = ExtResource( 12 )
@@ -128,29 +188,34 @@ region = Rect2( 0, 0, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ SubResource( 86 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 103 ), SubResource( 104 ) ],
+"frames": [ SubResource( 116 ), SubResource( 117 ), SubResource( 118 ), SubResource( 119 ), SubResource( 120 ), SubResource( 121 ), SubResource( 122 ), SubResource( 123 ), SubResource( 124 ), SubResource( 125 ), SubResource( 126 ), SubResource( 127 ) ],
+"loop": true,
+"name": "Walking_Right",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 102 ), SubResource( 103 ), SubResource( 104 ), SubResource( 86 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ) ],
 "loop": true,
 "name": "Walking_Left",
-"speed": 20.0
-}, {
-"frames": [ SubResource( 61 ) ],
-"loop": true,
-"name": "Idle_Right",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 87 ), SubResource( 88 ), SubResource( 89 ) ],
-"loop": false,
-"name": "Jumping_Left",
-"speed": 15.0
+"speed": 8.0
 }, {
 "frames": [ SubResource( 78 ), SubResource( 79 ), SubResource( 80 ) ],
 "loop": false,
 "name": "Jumping_Center",
 "speed": 15.0
 }, {
+"frames": [ SubResource( 61 ) ],
+"loop": true,
+"name": "Idle_Right",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 90 ), SubResource( 91 ), SubResource( 92 ) ],
 "loop": false,
 "name": "Jumping_Right",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 87 ), SubResource( 88 ), SubResource( 89 ) ],
+"loop": false,
+"name": "Jumping_Left",
 "speed": 15.0
 }, {
 "frames": [ SubResource( 105 ) ],
@@ -283,7 +348,7 @@ polygon = PoolVector2Array( -7, 8.06122, 7, 8.06122, 7, -3.16326, 0, -7.2449, -7
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -8 )
 frames = SubResource( 1 )
-animation = "Idle_Left"
+animation = "Walking_Right"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0, -9 )
