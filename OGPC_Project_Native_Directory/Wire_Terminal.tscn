@@ -87,7 +87,6 @@ layer = 128
 margin_right = 169.0
 margin_bottom = 19.0
 custom_fonts/font = SubResource( 11 )
-text = "Press [key] To Use"
 
 [connection signal="body_entered" from="Player_Use_Range" to="." method="_on_Player_Use_Range_body_entered"]
 [connection signal="body_exited" from="Player_Use_Range" to="." method="_on_Player_Use_Range_body_exited"]

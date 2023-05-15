@@ -84,16 +84,7 @@ func _ready():
 # anything that needs to be in a consistent update cycle goes here
 func _physics_process(delta):
 	if Input.is_action_just_pressed("respawn"):
-		# start the timer for respawn to allow the death animation to play
-		$Death_Animation_Timer.start(1.5)
-		# play the death sfx
-		get_node("/root/MainMenuRootNode/Player_Hurt_Player").play()
-		# spawn the player's death particles (just four quadrants of the player that split away from each other when spawned)
-		var death_particles = death_particles_file_path.instance()
-		$Death_Anim_Transition.play_anim()
-		$AnimatedSprite.hide()
-		death_particles.position = self.position
-		get_parent().add_child(death_particles)
+		position = start_position
 	
 	if paused:
 		return

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Level_Script.gd" type="Script" id=2]
 [ext_resource path="res://WireUIBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/CutsceneFadeText.tscn" type="PackedScene" id=4]
+[ext_resource path="res://OGPC Soundtrack 12 (Carson Bates) (1).mp3" type="AudioStream" id=5]
 [ext_resource path="res://GroundTileMap.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Save_Data.gd" type="Script" id=8]
 
@@ -30,9 +31,6 @@ tile_set = null
 cell_size = Vector2( 16, 16 )
 format = 1
 
-[node name="Player_Body" parent="Save_Functionality" instance=ExtResource( 1 )]
-position = Vector2( -128, 4 )
-
 [node name="WireUIBox" parent="Save_Functionality" instance=ExtResource( 3 )]
 position = Vector2( -224, 278 )
 scale = Vector2( 0.5, 0.5 )
@@ -43,6 +41,7 @@ z_index = 50
 current = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Save_Functionality"]
+stream = ExtResource( 5 )
 autoplay = true
 bus = "Music"
 
@@ -51,5 +50,8 @@ position = Vector2( -866, 429 )
 
 [node name="CutsceneFadeText" parent="Save_Functionality" instance=ExtResource( 4 )]
 
-[editable path="Save_Functionality/Player_Body"]
+[node name="Player_Body" parent="Save_Functionality" instance=ExtResource( 1 )]
+position = Vector2( -128, 4 )
+
 [editable path="Save_Functionality/WireUIBox"]
+[editable path="Save_Functionality/Player_Body"]

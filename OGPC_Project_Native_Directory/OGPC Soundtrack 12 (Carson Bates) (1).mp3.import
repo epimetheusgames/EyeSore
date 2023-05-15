@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/OGPC Soundtrack 12 (Carson Bates) (1).mp3-53abe842507bdb48e6efd5b613f22c8e.mp3str"
+
+[deps]
+
+source_file="res://OGPC Soundtrack 12 (Carson Bates) (1).mp3"
+dest_files=[ "res://.import/OGPC Soundtrack 12 (Carson Bates) (1).mp3-53abe842507bdb48e6efd5b613f22c8e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
