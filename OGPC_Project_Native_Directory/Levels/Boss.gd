@@ -26,8 +26,7 @@ var curr_move_speed = default_y_move_speed
 # How fast the boss moves towards the player
 var x_speed = 1.6
 var match_player_y = true
-onready var match_player_y_tween = get_node("Player_Follow_Tween")
-var original_pos = position
+var original_pos = Vector2(400, 32)
 
 export var gravity_strength = 10
 export var friction_strength = 20
@@ -40,13 +39,17 @@ var spawned = false
 
 func reset():
 	attacking = false
-	position = original_pos
+	position = Vector2((player_body.position.x + 170), player_body.position.y)
+	$CollisionShape2D.disabled = false
+	x_speed = 1.1
 	attack_cooldown_timer.start(4)
+	# TODO make it reset asll attributes when going back to spawn so it doesn't end up with a half visible attack element or anything
+	state_machine.travel("Spawn")
 
 func _ready():
 	# Start the attack cooldown timer at the start of the level, and play the spawn animation.
 	self.hide()
-	velocity.x = -40
+	$CollisionShape2D.disabled = true
 
 func _physics_process(delta):
 	if state_machine.get_current_node() != "Spawn" and state_machine.is_playing() and spawned:
@@ -60,9 +63,9 @@ func _physics_process(delta):
 		
 		# Move position to follow the player on the x axis
 		self.position.x -= x_speed
-		if player_body.position.distance_to(self.position) > 290:
+		if player_body.position.distance_to(self.position) > 210:
 			x_speed += 0.09
-		elif player_body.position.distance_to(self.position) < 85 and x_speed >= 1:
+		elif player_body.position.distance_to(self.position) < 110 and x_speed >= 0.5:
 			x_speed -= 0.1
 		
 		# if the attack cooldown timer is at 0, start an attack
@@ -101,6 +104,8 @@ func Cone_Spin_Attack():
 
 func Spawn_Boss():
 	self.show()
+	$CollisionShape2D.disabled = false
 	attack_cooldown_timer.start(4)
-	state_machine.start("Spawn")
+	state_machine.travel("Spawn")
+	velocity.x = -40
 	spawned = true

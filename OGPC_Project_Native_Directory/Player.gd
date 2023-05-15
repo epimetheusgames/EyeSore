@@ -33,6 +33,12 @@ var fastfall = false
 # the Vector2 that holds the player's current respawn position, this is updated when the player touches a checkpoint
 var respawn_position = Vector2(0, 0)
 
+# this variable can be set in specific scenes where you want the player to spawn in a different place the first time, likely for a cutscene that only needs to happen once before a boss or something like that
+var original_spawn_position = respawn_position
+
+#the number of times the player has died in this level so far
+var death_counter = 0
+
 var player_direction = "right"
 
 var self_position = self.position
@@ -79,7 +85,6 @@ var start_position = respawn_position
 func _ready():
 	self.show()
 	$Death_Anim_Transition.stop_anim()
-	respawn_position = position
 
 # anything that needs to be in a consistent update cycle goes here
 func _physics_process(delta):
@@ -144,7 +149,7 @@ func _physics_process(delta):
 				Apply_Gravity()
 	
 	# if the player is below a certain y level, aka below the map, reset the scene (this is a way to kill the player, there are better ways but they take more time)
-	if position.y > 10000:
+	if position.y > 400:
 		# TODO: Reset enemy positions
 		get_parent().get_parent().get_parent().Play_OWIE_Player()
 		position = respawn_position
@@ -313,6 +318,7 @@ func force_death():
 func _on_Death_Animation_Timer_timeout():
 	$AnimatedSprite.show()
 	position = respawn_position
+	
 	$Death_Animation_Timer.stop()
 	$Death_Anim_Transition.stop_anim()
 	

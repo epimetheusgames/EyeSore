@@ -10,8 +10,8 @@ func _ready():
 	self.hide()
 
 func _physics_process(delta):
-	get_parent().get_node("Label").text = boss_body.state_machine.get_current_node()
-	if boss_body.state_machine.get_current_node() != "Spawn" and boss_body.state_machine.is_playing():
+	get_parent().get_node("Label").text = str(boss_body.state_machine.is_playing())
+	if boss_body.state_machine.is_playing():
 		self.show()
 		self.position.x -= speed
 		
@@ -22,3 +22,4 @@ func _physics_process(delta):
 
 func reset():
 	self.position.x = original_pos
+	speed = 1.5
