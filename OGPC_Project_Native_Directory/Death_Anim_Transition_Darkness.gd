@@ -9,7 +9,11 @@ func _ready():
 
 func play_anim():
 	visible = true
+	$Sprite2.visible = true
+	$Sprite.visible = true
 	$Death_Vignette_Player.play("Death_Vignette")
 
 func stop_anim():
 	visible = false
+	$Sprite2.visible = false
+	$Sprite.visible = false

@@ -40,10 +40,10 @@ var spawned = false
 func reset():
 	attacking = false
 	position = Vector2((player_body.position.x + 170), player_body.position.y)
-	$CollisionShape2D.disabled = false
 	x_speed = 1.1
 	attack_cooldown_timer.start(4)
 	# TODO make it reset asll attributes when going back to spawn so it doesn't end up with a half visible attack element or anything
+	spin_cone.modulate.a = 0
 	state_machine.travel("Spawn")
 
 func _ready():

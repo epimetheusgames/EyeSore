@@ -183,7 +183,7 @@ graph_offset = Vector2( -594.792, -18.712 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 0.0194665, 0.0375753 )
+extents = Vector2( 0.0124707, 0.0264201 )
 
 [sub_resource type="AtlasTexture" id=34]
 flags = 1
@@ -208,8 +208,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=28]
-extents = Vector2( 43.5, 1384 )
+[sub_resource type="RectangleShape2D" id=44]
+extents = Vector2( 88, 624 )
 
 [sub_resource type="Environment" id=29]
 ambient_light_color = Color( 0.85098, 0.454902, 0.87451, 1 )
@@ -277,6 +277,9 @@ position = Vector2( 800, 64 )
 
 [node name="Camera2D" parent="Save_Functionality/Player_Body" index="2"]
 current = true
+
+[node name="Death_Anim_Transition" parent="Save_Functionality/Player_Body" index="7"]
+visible = true
 
 [node name="Sprite2" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="1"]
 z_index = 15
@@ -370,6 +373,7 @@ parameters/playback = SubResource( 23 )
 position = Vector2( -20, -8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Save_Functionality/Boss_Body"]
+position = Vector2( -10.5, 9.49993 )
 rotation = -3.14159
 scale = Vector2( 1643.85, 851.62 )
 shape = SubResource( 3 )
@@ -409,23 +413,20 @@ __meta__ = {
 }
 
 [node name="IceCreamWallColl" type="CollisionShape2D" parent="Save_Functionality/Ice_Cream_Wall_Of_Death"]
-visible = false
-position = Vector2( 36029.5, 82.5 )
-shape = SubResource( 28 )
-__meta__ = {
-"_edit_group_": true
-}
+position = Vector2( 80, -128 )
+shape = SubResource( 44 )
 
 [node name="Sprite" type="Sprite" parent="Save_Functionality/Ice_Cream_Wall_Of_Death"]
-position = Vector2( -1.52588e-05, 6.10352e-05 )
+position = Vector2( -1.52588e-05, 25.0001 )
+scale = Vector2( 1, 2 )
 z_index = 6
 texture = ExtResource( 12 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 50, 1500 )
 
 [node name="Sprite2" type="Sprite" parent="Save_Functionality/Ice_Cream_Wall_Of_Death"]
-position = Vector2( 174, -125 )
-scale = Vector2( 149, 1.25 )
+position = Vector2( 480, 25 )
+scale = Vector2( 466, 4 )
 z_index = 6
 texture = ExtResource( 15 )
 region_enabled = true
@@ -438,6 +439,7 @@ environment = SubResource( 29 )
 position = Vector2( 749, 59 )
 frames = SubResource( 33 )
 animation = "Idle"
+frame = 2
 playing = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Save_Functionality"]

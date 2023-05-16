@@ -85,6 +85,8 @@ var start_position = respawn_position
 func _ready():
 	self.show()
 	$Death_Anim_Transition.stop_anim()
+	if get_parent().get_node("Boss_Body"):
+		start_position = Vector2(800, 64)
 
 # anything that needs to be in a consistent update cycle goes here
 func _physics_process(delta):
@@ -149,13 +151,8 @@ func _physics_process(delta):
 				Apply_Gravity()
 	
 	# if the player is below a certain y level, aka below the map, reset the scene (this is a way to kill the player, there are better ways but they take more time)
-	if position.y > 400:
-		# TODO: Reset enemy positions
-		get_parent().get_parent().get_parent().Play_OWIE_Player()
-		position = respawn_position
-		player_health -= 3
-		
-		position = respawn_position
+	if position.y > 320:
+		_on_Area2D_body_entered(get_parent().get_node("Spikes_TileMap"))
 	
 	# if the player is not moving, start the animation player and play the idle animation, and the rest of the animations have not been implemented yet so if it needs to play those it just stops the animation
 	if velocity.x == 0 and is_on_floor() and player_direction == "left":
@@ -287,7 +284,7 @@ func Shockwave_Hit_Player(player_shockwave_bullet_node_self):
 
 func _on_Area2D_body_entered(body):
 	# check if body is spikes and the player is not already dead
-	if ("Spikes" in body.name or "Ice_Cream_Wall_Of_Death" in body.name) and $Death_Animation_Timer.time_left <= 0:
+	if ("Spikes" in body.name or "Ice_Cream_Wall" in body.name) and $Death_Animation_Timer.time_left <= 0:
 		if "Spikes" in body.name:
 			var coords = get_spike_coords(body)
 			manage_wires(coords, body, get_parent().get_node("TileMap"))
@@ -317,6 +314,9 @@ func force_death():
 
 func _on_Death_Animation_Timer_timeout():
 	$AnimatedSprite.show()
+#	if death_counter < 1 and get_parent().get_node("Boss_Body"):
+#		position = Vector2(800, 64)
+#		death_counter += 1
 	position = respawn_position
 	
 	$Death_Animation_Timer.stop()

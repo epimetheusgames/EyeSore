@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Level_Script.gd" type="Script" id=2]
-[ext_resource path="res://WireUIBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/CutsceneFadeText.tscn" type="PackedScene" id=4]
 [ext_resource path="res://OGPC Soundtrack 12 (Carson Bates) (1).mp3" type="AudioStream" id=5]
 [ext_resource path="res://GroundTileMap.tscn" type="PackedScene" id=6]
@@ -21,7 +20,7 @@ script = ExtResource( 8 )
 
 [node name="TileMap" parent="Save_Functionality" instance=ExtResource( 6 )]
 z_index = -1
-tile_data = PoolIntArray( 589816, 14, 0, 589817, 14, 0, 589818, 14, 0, 655352, 14, 0, 655353, 14, 0, 655354, 14, 0, 720888, 14, 0, 720889, 14, 0, 720890, 14, 0, 720891, 14, 0 )
+tile_data = PoolIntArray( 131068, 0, 0, 589816, 14, 0, 589817, 14, 0, 589818, 14, 0, 655352, 14, 0, 655353, 14, 0, 655354, 14, 0, 720888, 14, 0, 720889, 14, 0, 720890, 14, 0, 720891, 14, 0 )
 
 [node name="Spikes_TileMap" parent="Save_Functionality" instance=ExtResource( 6 )]
 z_index = 9
@@ -30,10 +29,6 @@ tile_set = null
 [node name="Connections_TileMap" type="TileMap" parent="Save_Functionality"]
 cell_size = Vector2( 16, 16 )
 format = 1
-
-[node name="WireUIBox" parent="Save_Functionality" instance=ExtResource( 3 )]
-position = Vector2( -224, 278 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="Camera2D" type="Camera2D" parent="Save_Functionality"]
 position = Vector2( 301, 181 )
@@ -51,7 +46,6 @@ position = Vector2( -101, 157 )
 [node name="CutsceneFadeText" parent="Save_Functionality" instance=ExtResource( 4 )]
 
 [node name="Player_Body" parent="Save_Functionality" instance=ExtResource( 1 )]
-position = Vector2( -128, 4 )
+position = Vector2( -55, -3 )
 
-[editable path="Save_Functionality/WireUIBox"]
-[editable path="Save_Functionality/Player_Body"]
+[node name="WireUIBox" type="Node2D" parent="Save_Functionality"]
