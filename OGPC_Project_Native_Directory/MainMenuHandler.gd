@@ -107,7 +107,7 @@ func Open_Level_Select_Menu(closed_window):
 
 func Open_Main_Menu(closed_window):
 	closed_window.queue_free()
-	if $BackgroundMusic.playing == false:
+	if $BackgroundMusic.playing == false and not Get_Level_Name():
 		$BackgroundMusic.play() 
 	$CreditsMusic.stop()
 	if not game_paused:
@@ -132,7 +132,7 @@ func Open_Other(closed_window, opened_window, remove_sounds):
 		$BackgroundMusic.stop()
 		
 func Get_Level_Name():
-	var child_name
+	var child_name = null
 	
 	for child in get_children():
 		if "Level_Manager" in child.name:

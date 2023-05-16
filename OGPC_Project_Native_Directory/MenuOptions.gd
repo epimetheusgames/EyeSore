@@ -34,12 +34,12 @@ func _process(delta):
 		$Label5.modulate = Color(2.75, 2.75, 2.75, 1)
 	
 	if Input.is_action_just_pressed("ui_accept"):
-		get_parent().Play_Click_SFX()
 		buttons_pressed()
 	
 	prev_selected = selected
 
 func buttons_pressed():
+	get_parent().Play_Click_SFX()
 	if selected == 1:
 		var data = $Load_Functionality.get_game_data()
 		var level_path = get_parent().level_names[$Load_Functionality.data["level"]]

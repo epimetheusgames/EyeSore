@@ -11,6 +11,7 @@ func _ready():
 	
 func _process(delta):
 	if ($PlayButton.pressed or Input.is_action_just_pressed("ui_accept")) and selected == 1:
+		get_parent().Play_Click_SFX()
 		var data = $Save_Functionality.get_game_data()
 		var level_path = get_parent().level_names[$SpinBox.value - 1]
 		var level = load(level_path).instance()
@@ -20,6 +21,7 @@ func _process(delta):
 		$Save_Functionality.set_keybinds(data[4], data[4]) 
 		get_parent().Open_Other(self, level, true)
 	elif ($BackButton.pressed or Input.is_action_just_pressed("ui_accept")) and selected == 2:
+		get_parent().Play_Click_SFX()
 		get_parent().Open_Main_Menu(self)
 		
 	if Input.is_action_just_pressed("Just_Arrowkey_Down"):

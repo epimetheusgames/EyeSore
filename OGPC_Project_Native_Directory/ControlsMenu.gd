@@ -11,6 +11,7 @@ func clear_all_except(node):
 				child.selected = false
 
 func exit_menu():
+	get_parent().Play_Click_SFX()
 	for i in range(2): # Okay I have no idea how this works but if I repeat it twice it sets the keybinds correctly but otherwise you have to restart to do it.
 		$SaveFunctionality.save_keybinds(
 			{

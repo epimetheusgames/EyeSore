@@ -10,6 +10,7 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
+		get_parent().Play_Click_SFX()
 		$Save_Functionality.save_video(1 - $Slider.get_value()/100)
 		$Save_Functionality.save_game()
 		get_parent().Open_Options_Menu(self)
@@ -18,6 +19,7 @@ func _process(delta):
 
 
 func _on_TextureButton_button_up():
+	get_parent().Play_Click_SFX()
 	$Save_Functionality.save_video(1 - $Slider.get_value()/100)
 	$Save_Functionality.save_game()
 	get_parent().Open_Options_Menu(self)
