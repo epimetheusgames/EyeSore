@@ -13,6 +13,13 @@ func _process(delta):
 	sin_val += 1
 
 	$Label.modulate = Color(1, 1, 1, opacity)
+	
+	if Input.is_action_just_pressed("ui_accept"):
+		if $Label2.visible:
+			get_parent().next_level()
+		else:
+			$Timer.start()
+			$Label2.visible = true
 		
 	if sin_val % 360 == 0:
 		sin_val = 0
@@ -30,3 +37,7 @@ func _process(delta):
 		
 	$Label.text = text_list[list_ind]
 	
+
+func _on_Timer_timeout():
+		$Timer.stop()
+		$Label2.visible = false
