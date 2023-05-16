@@ -49,9 +49,15 @@ bus = "Music"
 position = Vector2( -101, 157 )
 
 [node name="CutsceneFadeText" parent="Save_Functionality" instance=ExtResource( 4 )]
+text_list = [ "The eye continues to move through the tunnels.", "It struggles, but continues to solve the puzzles.", "After a while, though, it begins to think.", "What is it doing here?", "What has it been sent to do?", "It knows it cannot do anything else.", "While moving between two caves, it has a vision.", "Continue through the caves, it says", "The terminal can change the strings through your monocle.", "Soon you will know your mission.", "The eye, being a simple being, accepts this.", "It will continue to move forward, waiting.", "Eventually it will know, and it is fine with that.", "" ]
+
+[node name="ColorRect" parent="Save_Functionality/CutsceneFadeText" index="0"]
+modulate = Color( 1, 1, 1, 0 )
+color = Color( 0.172549, 0, 0, 0 )
 
 [node name="Player_Body" parent="Save_Functionality" instance=ExtResource( 1 )]
 position = Vector2( -128, 4 )
 
 [editable path="Save_Functionality/WireUIBox"]
+[editable path="Save_Functionality/CutsceneFadeText"]
 [editable path="Save_Functionality/Player_Body"]

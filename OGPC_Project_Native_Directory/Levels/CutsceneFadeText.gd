@@ -9,7 +9,7 @@ var color_rect_brightness = -0.3
 export var text_list = []
 
 func _process(delta):
-	opacity = sin(deg2rad(sin_val - 30) * 0.8)
+	opacity = sin(deg2rad(sin_val - 30) * 0.6)
 	sin_val += 1
 
 	$Label.modulate = Color(1, 1, 1, opacity)
@@ -21,14 +21,12 @@ func _process(delta):
 	if list_ind >= len(text_list):
 		list_ind = len(text_list) - 1
 	
-	if list_ind >= len(text_list) - 1:
+	if list_ind >= len(text_list) - 2:
 		$ColorRect.color = Color(color_rect_brightness, color_rect_brightness, color_rect_brightness)
 		color_rect_brightness += 0.005
 		
 		if color_rect_brightness > 1.3:
 			get_parent().next_level()
-		
-		$Label.modulate = Color(1, 1, 1, 1)
 		
 	$Label.text = text_list[list_ind]
 	

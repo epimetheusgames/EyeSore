@@ -17,7 +17,7 @@ func _process(delta):
 		
 	prev_selected = selected
 		
-	if Input.is_action_just_pressed("Just_Arrowkey_Down") and selected < 4:
+	if Input.is_action_just_pressed("Just_Arrowkey_Down") and selected < 3:
 		selected += 1
 	if Input.is_action_just_pressed("Just_Arrowkey_Up") and selected > 0:
 		selected -= 1

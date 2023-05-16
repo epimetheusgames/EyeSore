@@ -29,6 +29,7 @@ const levels = [
 	preload("res://Levels/PUZZLE5.tscn"),
 	preload("res://Levels/PUZZLE6.tscn"),
 	preload("res://Levels/PUZZLE3.tscn"),
+	preload("res://Levels/Cutscene2.tscn"),
 	preload("res://Levels/ExamplePuzzleLevel.tscn"),
 	preload("res://Levels/PuzzleLevel2.tscn"),
 	preload("res://Levels/PuzzleLevel3.tscn"),
@@ -37,6 +38,7 @@ const levels = [
 	preload("res://Levels/PortalUnmanualTutorial.tscn"),
 	preload("res://Levels/BlockSpikeLevel.tscn"),
 	preload("res://Levels/Boss.tscn"),
+	preload("res://Levels/Credits.tscn"),
 ]
 
 const level_names = [
@@ -48,6 +50,7 @@ const level_names = [
 	"res://Levels/PUZZLE5.tscn",
 	"res://Levels/PUZZLE6.tscn",
 	"res://Levels/PUZZLE3.tscn",
+	"res://Levels/Cutscene2.tscn",
 	"res://Levels/ExamplePuzzleLevel.tscn",
 	"res://Levels/PuzzleLevel2.tscn",
 	"res://Levels/PuzzleLevel3.tscn",
@@ -56,6 +59,7 @@ const level_names = [
 	"res://Levels/PortalUnmanualTutorial.tscn",
 	"res://Levels/BlockSpikeLevel.tscn",
 	"res://Levels/Boss.tscn",
+	"res://Levels/Credits.tscn",
 ]
 
 func _ready():
@@ -103,6 +107,9 @@ func Open_Level_Select_Menu(closed_window):
 
 func Open_Main_Menu(closed_window):
 	closed_window.queue_free()
+	if $BackgroundMusic.playing == false:
+		$BackgroundMusic.play() 
+	$CreditsMusic.stop()
 	if not game_paused:
 		add_child(MenuOptions.instance())
 	else:
@@ -170,10 +177,9 @@ func Close_Pause_Menu_To_Main(closed_window):
 	add_child(MenuOptions.instance())
 	
 func Open_Credits(closed_window):
+	$CreditsMusic.play()
+	$BackgroundMusic.playing = false
 	closed_window.queue_free()
-	get_node(Get_Level_Name()).queue_free()
-	game_paused = false
-	get_tree().paused = false
 	add_child(Credits.instance())
 	
 func Set_Screen_Brightness(brightness):

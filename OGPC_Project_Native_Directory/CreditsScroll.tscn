@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Fonts/PTMono-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://CreditsScroller.gd" type="Script" id=2]
-[ext_resource path="res://OGPC Soundtrack 6.mp3" type="AudioStream" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
@@ -93,8 +92,3 @@ This game is open source! Download source code for free at https://gitlab.com/Th
 
 
 Thank you so much for playing EyeSore!"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-volume_db = -80.0
-autoplay = true

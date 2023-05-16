@@ -3,8 +3,8 @@
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Level_Script.gd" type="Script" id=2]
 [ext_resource path="res://WireUIBox.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Levels/CutsceneFadeText.tscn" type="PackedScene" id=4]
-[ext_resource path="res://OGPC Soundtrack 12 (Carson Bates) (1).mp3" type="AudioStream" id=5]
+[ext_resource path="res://CreditsScroll.tscn" type="PackedScene" id=4]
+[ext_resource path="res://OGPC Soundtrack 7 - Alejandro Belgique.mp3" type="AudioStream" id=5]
 [ext_resource path="res://GroundTileMap.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Save_Data.gd" type="Script" id=8]
 
@@ -40,18 +40,18 @@ position = Vector2( 301, 181 )
 z_index = 50
 current = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Save_Functionality"]
-stream = ExtResource( 5 )
-autoplay = true
-bus = "Music"
-
 [node name="PlayerSpawnPos" type="Node2D" parent="Save_Functionality"]
 position = Vector2( -101, 157 )
 
-[node name="CutsceneFadeText" parent="Save_Functionality" instance=ExtResource( 4 )]
-
 [node name="Player_Body" parent="Save_Functionality" instance=ExtResource( 1 )]
 position = Vector2( -128, 4 )
+
+[node name="CreditsScroll" parent="Save_Functionality" instance=ExtResource( 4 )]
+position = Vector2( -8, -6 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Save_Functionality"]
+stream = ExtResource( 5 )
+autoplay = true
 
 [editable path="Save_Functionality/WireUIBox"]
 [editable path="Save_Functionality/Player_Body"]

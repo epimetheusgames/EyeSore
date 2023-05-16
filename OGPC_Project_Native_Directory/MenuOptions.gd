@@ -5,7 +5,7 @@ var prev_selected = 1
 
 func _process(delta):
 	if Input.is_action_just_pressed("Just_Arrowkey_Down"):
-		if selected < 4:
+		if selected < 5:
 			selected += 1
 	if Input.is_action_just_pressed("Just_Arrowkey_Up"):
 		if selected > 1:
@@ -26,8 +26,12 @@ func _process(delta):
 		$Label2.modulate = Color(1, 1, 1, 1)
 		$Label4.modulate = Color(1, 1, 1, 1)
 	if selected == 4:
+		$Label4.modulate = Color(2.75, 2.75, 2.75, 1) 
 		$Label3.modulate = Color(1, 1, 1, 1)
-		$Label4.modulate = Color(2.75, 2.75, 2.75, 1)
+		$Label5.modulate = Color(1, 1, 1, 1)
+	if selected == 5:
+		$Label4.modulate = Color(1, 1, 1, 1)
+		$Label5.modulate = Color(2.75, 2.75, 2.75, 1)
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		get_parent().Play_Click_SFX()
@@ -49,6 +53,8 @@ func buttons_pressed():
 	if selected == 3:
 		get_parent().Open_Options_Menu(self)
 	if selected == 4:
+		get_parent().Open_Credits(self)
+	if selected == 5:
 		get_tree().quit()
 
 func _on_PlayButton_button_up():
@@ -62,8 +68,12 @@ func _on_LevelSelectButton_button_up():
 func _on_OptionsButton_button_up():
 	selected = 3
 	buttons_pressed()
+	
+func _on_CreditsButton_button_up():
+	selected = 4
+	buttons_pressed()
 
 func _on_QuitButton_button_up():
-	selected = 4
+	selected = 5
 	buttons_pressed()
 

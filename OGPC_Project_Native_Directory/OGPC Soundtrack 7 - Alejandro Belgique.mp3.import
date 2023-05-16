@@ -11,5 +11,5 @@ dest_files=[ "res://.import/OGPC Soundtrack 7 - Alejandro Belgique.mp3-6e7dea6a9
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
