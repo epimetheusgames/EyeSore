@@ -92,30 +92,30 @@ func _ready():
 func _physics_process(delta):
 	if Input.is_action_just_pressed("respawn"):
 		position = start_position
-	
+
 	if paused:
 		return
-	
+
 	# get a float between -1 and 1 of the amount that the player is trying to move in each direction, this is especially nice for controllers becauyse the joysticks can sense a value of how far they are being pushed instead of a keyboard which is just pressed or not pressed, so this allows controller players to move a smaller amount when they move their joystick less, negativenumbers are left, positive are right
 	input.x = Input.get_action_strength("movement_right") - Input.get_action_strength("movement_left")
-	
+
 	if input.x > 0:
 		player_direction = "right"
 	elif input.x < 0:
 		player_direction = "left"
-	
+
 	#if no input is currently being registered, apply friction to slow down the player, and if an input is currently being registered, apply the acceleration for the input
 	if input.x == 0 or $Death_Animation_Timer.time_left > 0:
 		Apply_Friction()
 	else:
 		Apply_Acceleration(input.x, delta)
-	
+
 	# if player is touching ground set ground buffer to max
 	if is_on_floor():
 		ground_buffer = 10
-	
+
 	# if the player is pressing jump and the player is on the ground, jump, and if the player releases the jump button before the apex of the jump, start decelerating the player's y speed by the low_jump_deceleration_speed variable
-	
+
 	if $Death_Animation_Timer.time_left == 0:
 		if Input.is_action_just_pressed("movement_jump") and ground_buffer > 0:
 			# play jump SFX
@@ -124,22 +124,22 @@ func _physics_process(delta):
 			velocity.y -= jump_force
 		elif Input.is_action_just_released("movement_jump") and velocity.y < low_jump_deceleration_speed / 5:
 			velocity.y /= low_jump_deceleration_speed
-	
+
 	# if the player is pressing the down button, set the bool fastfall to true, and if not, set it to false
 	if Input.is_action_pressed("movement_down"):
 		fastfall = true
 	else:
 		fastfall = false
-	
+
 	# this is the line that actually moves the player, is moves the player by the player's velocity, and the Vector2.UP part makes it so that the game can detect when the player is on a wall, floor, or ceiling
 	velocity = move_and_slide(velocity, Vector2.UP)
-	
+
 	# set the current speed variable to velocity.x if the velocity.x is positive, and if it is negative set the current speed variable to the velocity.x converted to a positive by multiplying it by -1
 	if velocity.x >= 0:
 		current_speed = velocity.x
 	elif velocity.x < 0:
 		current_speed = velocity.x * -1
-	
+
 	# don't apply gravity if the player is dead, that way the camera stays in place
 	if $Death_Animation_Timer.time_left == 0:
 		# if the bool fastfall is true, if the player's y velocity is less than the max fall speed * 1.5 apply gravity, this is because if the player is fastfalling we need to increase the max fall speed to allow that. if the player is not fastfalling, we do the same thing but with just the normal max fall speed
@@ -149,11 +149,11 @@ func _physics_process(delta):
 		else:
 			if velocity.y < max_fall_speed:
 				Apply_Gravity()
-	
+
 	# if the player is below a certain y level, aka below the map, reset the scene (this is a way to kill the player, there are better ways but they take more time)
 	if position.y > 320:
 		_on_Area2D_body_entered(get_parent().get_node("Spikes_TileMap"))
-	
+
 	# if the player is not moving, start the animation player and play the idle animation, and the rest of the animations have not been implemented yet so if it needs to play those it just stops the animation
 	if velocity.x == 0 and is_on_floor() and player_direction == "left":
 		$AnimatedSprite.animation = "Idle_Left"
@@ -175,7 +175,7 @@ func _physics_process(delta):
 		$AnimatedSprite.play()
 	else:
 		$AnimatedSprite.stop()
-	
+
 	if is_on_floor() and ground_reset_countdown <= 0 and not $Death_Animation_Timer.time_left > 0:
 		ground_reset_countdown = max_ground_reset_time
 		last_grounded_pos = self.position
@@ -188,15 +188,15 @@ func _physics_process(delta):
 		ground_reset_countdown -= 1
 	elif not is_on_floor():
 		land_sfx_cooldown = false
-	
+
 	# Just so it doesn't reset right if they touch the ground somewhere dangerous
 	# if the countdown has been at a low number because it didn't reset after they
 	# jumped off the previous platform.
 	if not is_on_floor():
 		ground_reset_countdown = max_ground_reset_time
-	
+
 	ground_buffer -= 1
-	
+
 	shockwave_bullet_cooldown_timer -= 1
 
 
@@ -204,20 +204,20 @@ func _physics_process(delta):
 func _process(delta):
 	if paused:
 		return
-	
+
 	self_position = self.position
-	
+
 	if Input.is_action_just_pressed("Shoot_Normal_Bullet"):
 		bullet_type = 0
 		Shoot_Bullet(bullet_type)
 	elif Input.is_action_just_pressed("Shoot_Shockwave_Bullet") and shockwave_bullet_cooldown_timer <= 0:
 		bullet_type = 1
 		Shoot_Bullet(bullet_type)
-		
+
 		shockwave_bullet_cooldown_timer = 30
-	
+
 	$Player_Gun_Base.look_at(get_global_mouse_position())
-	
+
 	Apply_Health_Sprites(player_health)
 
 # if fastfall is false, increase the player's y velocity by the normal gravity strength, and if it is true, increase the player's y velocity by the fastfalling gravity strength
@@ -235,7 +235,7 @@ func Apply_Acceleration(x_input, delta):
 	else:
 		acceleration_speed = 10
 		turnaround_speed = 18
-	
+
 	if input.x * velocity.x >= 0:
 		velocity.x = move_toward(velocity.x, x_input * max_speed, acceleration_speed)
 	else:
@@ -247,9 +247,9 @@ func Apply_Friction():
 	velocity.x = move_toward(velocity.x, 0, friction_strength)
 
 func Shoot_Bullet(bullet_type):
-	
+
 	$Player_Gun_Base.rotation_degrees = int(shoot_direction)
-	
+
 	#if bullet_type == 0:
 	#	var player_normal_bullet = normal_bullet_file_path.instance()
 	#	
@@ -260,11 +260,11 @@ func Shoot_Bullet(bullet_type):
 	#	player_normal_bullet.position = $Player_Gun_Base/Player_Bullet_Position.global_position
 	if bullet_type == 1:
 		var player_shockwave_bullet = shockwave_bullet_file_path.instance()
-		
+
 		get_node("/root/MainMenuRootNode/Shockwave_Shooting_SFX_Player").play()
-		
+
 		get_parent().add_child(player_shockwave_bullet)
-		
+
 		player_shockwave_bullet.position = $Player_Gun_Base/Player_Bullet_Position.global_position
 
 func Apply_Health_Sprites(player_health):
@@ -274,7 +274,7 @@ func Apply_Shockwave_Knockback(self_position, player_shockwave_bullet_node):
 	# this should be able to return a force vector that can be added to the player's velocity to propel them away from the shockwave
 	knockback_direction = (self_position - player_shockwave_bullet_node.position).normalized()
 	knockback_force = shockwave_knockback_strength * knockback_direction
-	
+
 	velocity = knockback_force
 
 func Shockwave_Hit_Player(player_shockwave_bullet_node_self):
@@ -288,14 +288,14 @@ func _on_Area2D_body_entered(body):
 		if "Spikes" in body.name:
 			var coords = get_spike_coords(body)
 			manage_wires(coords, body, get_parent().get_node("TileMap"))
-		
+
 		# Fade out bg music if in boss
 		var bg_music = get_parent().get_node_or_null("AudioStreamPlayer")
 		var boss = get_parent().get_node_or_null("Boss_Body")
-		
+
 		if boss:
 			bg_music.fadeout = true 
-		
+
 		# start the timer for respawn to allow the death animation to play
 		$Death_Animation_Timer.start(1.5)
 		# play the death sfx and hide the player to replace it with the death particles
@@ -306,8 +306,8 @@ func _on_Area2D_body_entered(body):
 		$AnimatedSprite.hide()
 		death_particles.position = self.position
 		get_parent().add_child(death_particles)
-	
-		
+
+
 func force_death():
 	#position = start_position 
 	pass
@@ -318,15 +318,15 @@ func _on_Death_Animation_Timer_timeout():
 #		position = Vector2(800, 64)
 #		death_counter += 1
 	position = respawn_position
-	
+
 	$Death_Animation_Timer.stop()
 	$Death_Anim_Transition.stop_anim()
-	
+
 	# Check if player is in the boss battle
 	var boss = get_parent().get_node_or_null("Boss_Body")
 	var death_wall = get_parent().get_node_or_null("Ice_Cream_Wall_Of_Death")
 	var bg_music = get_parent().get_node_or_null("AudioStreamPlayer")
-	
+
 	if boss:
 		# Reset wall and boss
 		death_wall.reset()
@@ -334,51 +334,51 @@ func _on_Death_Animation_Timer_timeout():
 		bg_music.fadein = true
 		# tring out having the bg music persist in between attempts
 		#bg_music.play()
-	
+
 func get_spike_coords(spike_tileset):
 	var tile_coords = spike_tileset.world_to_map(position)
 	var offsets = [[0, -1], [0, 1], [1, 0], [-1, 0], [-1, -1], [1, 1], [0, 0]]
-	
+
 	for offset in offsets:
 		var offset_coords = [tile_coords.x + offset[0], tile_coords.y + offset[1]]
 		if is_tile_at(offset_coords, spike_tileset):
 			return Vector2(offset_coords[0], offset_coords[1])
-			
+
 func pause():
 	paused = true 
-	
+
 func unpause():
 	paused = false
-	
+
 func is_tile_at(pos, tileset):
 	if tileset.get_cell(pos[0], pos[1]) != -1:
 		return true
 	return false 
-	
+
 func manage_wires(death_pos_on_tileset, tileset, grass_tileset):
 	var wires = get_tree().get_nodes_in_group("wires")
-	
+
 	for wire in wires:
 		if wire.get_tileset_coords(1, tileset) == death_pos_on_tileset or wire.get_tileset_coords(0, tileset) == death_pos_on_tileset:
 			var touching_portal
 			var touching_checkpoint
-			
+
 			if wire.get_tileset_coords(0, tileset) == death_pos_on_tileset:
 				touching_portal = wire.get_touching_portal(1)
 				touching_checkpoint = wire.get_touching_checkpoint(1)
 			else:
 				touching_portal = wire.get_touching_portal(0)
 				touching_checkpoint = wire.get_touching_checkpoint(0)
-				
+
 			if touching_checkpoint:
 				touching_checkpoint.save_checkpoint()
-			
+
 			elif touching_portal and touching_portal[1]:
 				if wire.get_tileset_coords(0, tileset) == death_pos_on_tileset:
 					touching_portal[0].active = not touching_portal[0].active
 				else:
 					touching_portal[0].active = not touching_portal[0].active
-			
+
 			else:
 				if wire.get_tileset_coords(0, tileset) == death_pos_on_tileset:
 					wire.delete_tile_at(1, grass_tileset, true, get_parent().get_parent().deleted_spikes, get_parent().get_parent().deleted_spike_types)

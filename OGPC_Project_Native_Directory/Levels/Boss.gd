@@ -43,6 +43,7 @@ func reset():
 	x_speed = 1.1
 	attack_cooldown_timer.start(4)
 	# TODO make it reset asll attributes when going back to spawn so it doesn't end up with a half visible attack element or anything
+	# Done for spin cone, when attacks are revamped will likely need to do again, also technically doesn't reset spin cone position just modulate so the player can't see it
 	spin_cone.modulate.a = 0
 	state_machine.travel("Spawn")
 
