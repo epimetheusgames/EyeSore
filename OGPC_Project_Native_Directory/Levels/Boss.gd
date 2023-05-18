@@ -24,7 +24,7 @@ var default_y_move_speed = 3
 var curr_move_speed = default_y_move_speed 
 
 # How fast the boss moves towards the player
-var x_speed = 1.6
+var x_speed = 1.4
 var match_player_y = true
 var original_pos = Vector2(400, 32)
 
@@ -40,12 +40,13 @@ var spawned = false
 func reset():
 	attacking = false
 	position = Vector2((player_body.position.x + 170), player_body.position.y)
-	x_speed = 1.1
+	x_speed = 1.2
 	attack_cooldown_timer.start(4)
 	# TODO make it reset asll attributes when going back to spawn so it doesn't end up with a half visible attack element or anything
 	# Done for spin cone, when attacks are revamped will likely need to do again, also technically doesn't reset spin cone position just modulate so the player can't see it
 	spin_cone.modulate.a = 0
-	state_machine.travel("Spawn")
+	state_machine.stop()
+	state_machine.start("Spawn")
 
 func _ready():
 	# Start the attack cooldown timer at the start of the level, and play the spawn animation.
@@ -53,6 +54,8 @@ func _ready():
 	$CollisionShape2D.disabled = true
 
 func _physics_process(delta):
+	$CollisionShape2D.disabled = false
+	
 	if state_machine.get_current_node() != "Spawn" and state_machine.is_playing() and spawned:
 		# Move and slide for velocity, aka movement
 		velocity = move_and_slide(velocity, Vector2.UP)
@@ -60,12 +63,13 @@ func _physics_process(delta):
 #		var player_direction = (position - get_parent().get_node("Player_Body").position).normalized()
 #		rotation = atan2(player_direction.y, player_direction.x)
 		
-		self.position.y = (player_body.position.y - 20)
+		if match_player_y == true:
+			self.position.y = move_toward(self.position.y, (player_body.position.y - 20), 10)
 		
 		# Move position to follow the player on the x axis
 		self.position.x -= x_speed
 		if player_body.position.distance_to(self.position) > 210:
-			x_speed += 0.09
+			x_speed += 0.07
 		elif player_body.position.distance_to(self.position) < 110 and x_speed >= 0.5:
 			x_speed -= 0.1
 		
@@ -87,7 +91,9 @@ func Scoop_Fire_Attack():
 	state_machine.travel("Scoop_Fire_Attack")
 	
 	for i in range(3):
-		for j in range(3):
+		match_player_y = false
+		self.position.y = player_body.position.y - 120 + (i * 20)
+		for j in range(6):
 			var boss_bullet = boss_bullet_file_path.instance()
 				
 			get_node("/root/MainMenuRootNode/Shooting_SFX_Player").play()
@@ -96,16 +102,21 @@ func Scoop_Fire_Attack():
 				
 			boss_bullet.position = $Boss_Gun_Base.global_position
 			
-			yield(get_tree().create_timer(0.2), "timeout")
-		yield(get_tree().create_timer(0.6), "timeout")
+			yield(get_tree().create_timer(0.1), "timeout")
+			self.position.y += 40
+		match_player_y = true
+		yield(get_tree().create_timer(0.9 ), "timeout")
 
 func Cone_Spin_Attack():
 	# go to the correct statemachine node
 	state_machine.travel("Cone_Spin_Attack")
+	print("spin")
+
+func Ice_Cream_Rain_Attack():
+	pass
 
 func Spawn_Boss():
 	self.show()
-	$CollisionShape2D.disabled = false
 	attack_cooldown_timer.start(4)
 	state_machine.travel("Spawn")
 	velocity.x = -40

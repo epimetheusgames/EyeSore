@@ -41,7 +41,7 @@ func loading_edge_case_handler(node, list, item): # Handle edge cases that may h
 			# For an edge case.
 			return 2
 		else:
-			$Save_Functionality/Player_Body.position = player_position
+#			$Save_Functionality/Player_Body.position = player_position
 			$Save_Functionality/Player_Body.player_health = health
 			return 1 # Break out of the loop if it's not an unwanted item because those are already
 			# loaded in. At least that keyword should be triggered outside this function
