@@ -11,7 +11,6 @@ func _ready():
 	$IceCreamWallColl.disabled = true
 
 func _physics_process(delta):
-	get_parent().get_node("Label").text = str(boss_body.state_machine.is_playing())
 	if boss_body.state_machine.is_playing():
 		self.show()
 		$IceCreamWallColl.disabled = false
