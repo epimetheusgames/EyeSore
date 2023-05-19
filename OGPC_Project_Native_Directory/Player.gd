@@ -85,6 +85,7 @@ var start_position = respawn_position
 func _ready():
 	self.show()
 	$Death_Anim_Transition.stop_anim()
+	$Death_Anim_Transition.hide()
 	if get_parent().get_node("Boss_Body"):
 		start_position = Vector2(800, 64)
 
@@ -284,7 +285,7 @@ func Shockwave_Hit_Player(player_shockwave_bullet_node_self):
 
 func _on_Area2D_body_entered(body):
 	# check if body is spikes and the player is not already dead
-	if ("Spikes" in body.name or "Ice_Cream_Wall" in body.name) and $Death_Animation_Timer.time_left <= 0:
+	if ("Spikes" in body.name or "Ice_Cream_Wall" in body.name or "Spin_Cone" in body.name or "Boss_Body" in body.name) and $Death_Animation_Timer.time_left <= 0:
 		if "Spikes" in body.name:
 			var coords = get_spike_coords(body)
 			manage_wires(coords, body, get_parent().get_node("TileMap"))
@@ -303,6 +304,7 @@ func _on_Area2D_body_entered(body):
 		# spawn the player's death particles (just four quadrants of the player that split away from each other when spawned)
 		var death_particles = death_particles_file_path.instance()
 		$Death_Anim_Transition.play_anim()
+		$Death_Anim_Transition.hide()
 		$AnimatedSprite.hide()
 		death_particles.position = self.position
 		get_parent().add_child(death_particles)

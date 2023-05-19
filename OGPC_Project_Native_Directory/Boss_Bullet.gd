@@ -13,6 +13,7 @@ func _physics_process(delta):
 	collision_data = move_and_collide(velocity)
 	
 	if "KinematicCollision2D" in str(collision_data):
+		yield(get_tree().create_timer(0.2), "timeout")
 		self.queue_free()
 
 

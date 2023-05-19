@@ -36,6 +36,66 @@ flags = 1
 atlas = ExtResource( 11 )
 region = Rect2( 32, 0, 16, 16 )
 
+[sub_resource type="AtlasTexture" id=102]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 416, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=103]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 432, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=104]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 448, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=86]
+flags = 1
+atlas = ExtResource( 6 )
+region = Rect2( 192, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=94]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 288, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=95]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 304, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=96]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 320, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=97]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 336, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=98]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 352, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=99]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 368, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=100]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 384, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=101]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 400, 0, 16, 16 )
+
 [sub_resource type="AtlasTexture" id=90]
 flags = 1
 atlas = ExtResource( 12 )
@@ -50,6 +110,21 @@ region = Rect2( 64, 0, 16, 16 )
 flags = 1
 atlas = ExtResource( 12 )
 region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=87]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=88]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=89]
+flags = 1
+atlas = ExtResource( 12 )
+region = Rect2( 32, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=116]
 flags = 1
@@ -111,81 +186,6 @@ flags = 1
 atlas = ExtResource( 12 )
 region = Rect2( 272, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=102]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 416, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=103]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 432, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=104]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 448, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=86]
-flags = 1
-atlas = ExtResource( 6 )
-region = Rect2( 192, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=94]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 288, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=95]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 304, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=96]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 320, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=97]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 336, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=98]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 352, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=99]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 368, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=100]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 384, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=101]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 400, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=87]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=88]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 16, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=89]
-flags = 1
-atlas = ExtResource( 12 )
-region = Rect2( 32, 0, 16, 16 )
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ SubResource( 105 ) ],
@@ -203,25 +203,25 @@ animations = [ {
 "name": "Jumping_Center",
 "speed": 15.0
 }, {
+"frames": [ SubResource( 102 ), SubResource( 103 ), SubResource( 104 ), SubResource( 86 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ) ],
+"loop": true,
+"name": "Walking_Left",
+"speed": 8.0
+}, {
 "frames": [ SubResource( 90 ), SubResource( 91 ), SubResource( 92 ) ],
 "loop": false,
 "name": "Jumping_Right",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 87 ), SubResource( 88 ), SubResource( 89 ) ],
+"loop": false,
+"name": "Jumping_Left",
 "speed": 15.0
 }, {
 "frames": [ SubResource( 116 ), SubResource( 117 ), SubResource( 118 ), SubResource( 119 ), SubResource( 120 ), SubResource( 121 ), SubResource( 122 ), SubResource( 123 ), SubResource( 124 ), SubResource( 125 ), SubResource( 126 ), SubResource( 127 ) ],
 "loop": true,
 "name": "Walking_Right",
 "speed": 8.0
-}, {
-"frames": [ SubResource( 102 ), SubResource( 103 ), SubResource( 104 ), SubResource( 86 ), SubResource( 94 ), SubResource( 95 ), SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ) ],
-"loop": true,
-"name": "Walking_Left",
-"speed": 8.0
-}, {
-"frames": [ SubResource( 87 ), SubResource( 88 ), SubResource( 89 ) ],
-"loop": false,
-"name": "Jumping_Left",
-"speed": 15.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=93]
@@ -230,7 +230,7 @@ height = 3.0
 
 [sub_resource type="Animation" id=106]
 resource_name = "Death_Vignette"
-length = 0.3
+length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:scale")
 tracks/0/interp = 1
@@ -238,10 +238,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 30, 30 ), Vector2( 0.7, 0.7 ) ]
+"values": [ Vector2( 50, 50 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 50, 50 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite2:modulate")
@@ -404,8 +404,6 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Death_Anim_Transition"]
-visible = false
-position = Vector2( 17433, -7085 )
 scale = Vector2( 3, 3 )
 z_index = 1
 texture = ExtResource( 4 )
