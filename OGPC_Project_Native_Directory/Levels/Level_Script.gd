@@ -104,9 +104,10 @@ func _process(delta):
 		if wire.is_selected():
 			any_wires_selected = true 
 
-	if is_wire_ui and Input.is_action_just_pressed("mouse_click") and not any_wires_selected and is_point_on_connections(get_local_mouse_position()):
+	if is_wire_ui and Input.is_action_just_pressed("mouse_click") and not any_wires_selected and is_point_on_connections(get_global_mouse_position()):
 		var already_there = is_another_already_there(1)
 		var already_there_end = is_another_already_there(0)
+		print('hi')
 		
 		if not already_there and not already_there_end:
 			var wire = wire_scene.instance()
@@ -150,6 +151,5 @@ func _process(delta):
 func check_for_in_range_terminals():
 	wire_terminals = get_tree().get_nodes_in_group("Wire_Terminal")
 	for i in wire_terminals:
-		in_range_of_wire_terminal = false
 		if i.is_in_use_range == true:
 			in_range_of_wire_terminal = true

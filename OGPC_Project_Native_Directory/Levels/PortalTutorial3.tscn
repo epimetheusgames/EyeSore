@@ -34,7 +34,7 @@ tile_data = PoolIntArray( -131079, 0, 65537, -131078, 0, 65538, -131077, 0, 6553
 [node name="Spikes_TileMap" parent="Save_Functionality" instance=ExtResource( 6 )]
 z_index = 9
 tile_set = ExtResource( 9 )
-tile_data = PoolIntArray( 458755, 3, 196608 )
+tile_data = PoolIntArray( 65542, 1, 196608, 65546, 2, 0, 65547, 2, 2, 65548, 3, 0, 196606, 1, 0, 131084, 3, 65536, 262142, 1, 65536, 196620, 3, 65536, 327678, 1, 65536, 262156, 3, 65536, 393214, 1, 131072, 327692, 3, 131072, 458755, 3, 196608, 458758, 0, 0, 458759, 0, 1, 458760, 0, 2 )
 
 [node name="Connections_TileMap" type="TileMap" parent="Save_Functionality"]
 tile_set = ExtResource( 4 )
@@ -43,9 +43,6 @@ format = 1
 
 [node name="Player_Body" parent="Save_Functionality" instance=ExtResource( 1 )]
 position = Vector2( -128, 4 )
-
-[node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="2"]
-visible = false
 
 [node name="LevelFinish" parent="Save_Functionality" instance=ExtResource( 10 )]
 position = Vector2( 192, 112 )

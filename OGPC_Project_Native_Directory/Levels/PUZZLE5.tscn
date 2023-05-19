@@ -29,7 +29,7 @@ tile_data = PoolIntArray( -393237, 0, 65537, -393236, 0, 65538, -393235, 0, 6553
 [node name="Spikes_TileMap" parent="Save_Functionality" instance=ExtResource( 5 )]
 z_index = -1
 tile_set = ExtResource( 4 )
-tile_data = PoolIntArray( 65526, 0, 3 )
+tile_data = PoolIntArray( 65526, 0, 3, 524287, 2, 0, 458752, 2, 1, 458753, 2, 1, 458754, 2, 2, 589828, 0, 0, 589829, 0, 2, 720889, 2, 0, 720890, 2, 1, 720891, 2, 1, 720892, 2, 1, 720893, 2, 1, 720894, 2, 2, 655363, 3, 0, 720899, 3, 65536, 786435, 3, 131072 )
 
 [node name="Connections_TileMap" type="TileMap" parent="Save_Functionality"]
 tile_set = ExtResource( 3 )
