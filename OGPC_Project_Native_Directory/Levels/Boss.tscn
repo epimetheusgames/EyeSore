@@ -274,7 +274,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=40]
-extents = Vector2( 208.5, 307 )
+extents = Vector2( 188.5, 281 )
 
 [sub_resource type="AtlasTexture" id=45]
 flags = 1
@@ -292,7 +292,7 @@ animations = [ {
 [node name="Level_Manager" type="Node2D"]
 pause_mode = 1
 script = ExtResource( 5 )
-next_level = "end"
+next_level = "18"
 previous_level = "start"
 current_level_number = 0
 player_camera_level = true
@@ -308,9 +308,6 @@ tile_data = PoolIntArray( -4390956, 0, 65537, -4390955, 0, 65538, -4390954, 0, 6
 z_index = -1
 tile_set = ExtResource( 9 )
 tile_data = PoolIntArray( -1179803, 0, 3, -1179693, 3, 0, -1114264, 1, 196608, -1114157, 3, 65536, -1048734, 3, 0, -1048656, 0, 3, -1048621, 3, 65536, -983198, 3, 131072, -983122, 3, 0, -983119, 1, 0, -983085, 3, 65536, -917659, 2, 0, -917658, 2, 1, -917657, 2, 1, -917656, 2, 2, -917586, 3, 65536, -917583, 1, 65536, -917549, 3, 65536, -852050, 3, 65536, -852047, 1, 65536, -852013, 3, 65536, -786596, 0, 3, -786514, 3, 65536, -786511, 1, 65536, -786477, 3, 65536, -721061, 0, 3, -721058, 0, 3, -720978, 3, 131072, -720975, 1, 65536, -720941, 3, 65536, -655443, 3, 0, -655439, 1, 65536, -655431, 2, 65537, -655405, 3, 65536, -589979, 1, 0, -589958, 0, 3, -589907, 3, 65536, -589903, 1, 65536, -589899, 0, 3, -589869, 3, 65536, -524443, 1, 131072, -524437, 3, 196608, -524405, 3, 0, -524402, 1, 0, -524371, 3, 131072, -524367, 1, 65536, -524333, 3, 65536, -458894, 0, 0, -458893, 0, 2, -458869, 3, 65536, -458866, 1, 65536, -458864, 3, 0, -458861, 1, 0, -458831, 1, 65536, -458797, 3, 65536, -393348, 1, 0, -393346, 3, 0, -393333, 3, 65536, -393330, 1, 65536, -393328, 3, 65536, -393325, 1, 65536, -393322, 3, 0, -393295, 1, 65536, -393290, 1, 0, -393261, 3, 65536, -327812, 1, 131072, -327810, 3, 131072, -327797, 3, 131072, -327794, 1, 131072, -327792, 3, 131072, -327789, 1, 131072, -327786, 3, 131072, -327767, 0, 0, -327766, 0, 1, -327765, 0, 1, -327764, 0, 2, -327759, 1, 65536, -327757, 3, 196608, -327754, 1, 131072, -327725, 3, 65536, -262271, 0, 0, -262270, 0, 1, -262269, 0, 2, -262266, 0, 0, -262265, 0, 2, -262262, 0, 0, -262261, 0, 2, -262258, 0, 0, -262257, 0, 1, -262256, 0, 2, -262253, 0, 0, -262252, 0, 1, -262251, 0, 1, -262250, 0, 2, -262247, 0, 3, -262235, 0, 0, -262234, 0, 1, -262233, 0, 1, -262232, 0, 2, -262223, 1, 65536, -262210, 0, 0, -262209, 0, 2, -262189, 3, 65536, -196732, 1, 0, -196731, 3, 0, -196687, 1, 65536, -196653, 3, 65536, -131196, 1, 131072, -131195, 3, 65536, -131165, 2, 0, -131164, 2, 1, -131163, 2, 1, -131162, 2, 2, -131151, 1, 65536, -131117, 3, 65536, -65661, 1, 0, -65659, 3, 131072, -65615, 1, 65536, -65613, 3, 196608, -65608, 1, 196608, -65590, 1, 196608, -65581, 3, 65536, -125, 1, 65536, -122, 2, 0, -121, 2, 1, -120, 2, 2, -115, 2, 0, -114, 2, 2, -112, 3, 0, -103, 3, 0, -92, 0, 0, -91, 0, 2, -79, 1, 65536, -45, 3, 131072, -34, 3, 0, 65411, 1, 131072, 65424, 3, 65536, 65433, 3, 65536, 65457, 1, 65536, 65476, 0, 0, 65477, 0, 2, 65482, 0, 0, 65483, 0, 2, 65487, 0, 0, 65488, 0, 1, 65489, 0, 2, 65502, 3, 65536, 130954, 0, 3, 130960, 3, 65536, 130969, 3, 65536, 130993, 1, 65536, 131038, 3, 65536, 196495, 1, 0, 196496, 3, 65536, 196505, 3, 65536, 196529, 1, 65536, 196538, 1, 0, 196574, 3, 65536, 262031, 1, 65536, 262032, 3, 65536, 262041, 3, 65536, 262065, 1, 65536, 262074, 1, 131072, 262110, 3, 65536, 327567, 1, 65536, 327568, 3, 65536, 327572, 3, 0, 327577, 3, 65536, 327601, 1, 131072, 327643, 2, 0, 327644, 2, 2, 327646, 3, 65536, 393103, 1, 131072, 393104, 3, 131072, 393107, 1, 196608, 393108, 3, 65536, 393113, 3, 131072, 393122, 2, 0, 393123, 2, 1, 393124, 2, 1, 393125, 2, 2, 393137, 0, 0, 393138, 0, 1, 393139, 0, 2, 393174, 2, 0, 393175, 2, 1, 393176, 2, 1, 393177, 2, 1, 393178, 2, 2, 393182, 3, 65536, 458641, 2, 0, 458642, 2, 2, 458644, 3, 65536, 458684, 1, 196608, 458706, 2, 0, 458707, 2, 1, 458708, 2, 1, 458709, 2, 2, 458718, 3, 131072, 524180, 3, 131072, 589758, 0, 3, 589762, 0, 3, 589766, 0, 3, 589770, 0, 3, 589780, 0, 3, 655277, 1, 196608, 655310, 0, 0, 655311, 0, 1, 655312, 0, 2, 720798, 0, 3 )
-
-[node name="ShadowBackground" parent="Save_Functionality/Spikes_TileMap" instance=ExtResource( 21 )]
-position = Vector2( -757, 573 )
 
 [node name="Connections_TileMap" type="TileMap" parent="Save_Functionality"]
 tile_set = ExtResource( 8 )
@@ -460,7 +457,7 @@ shape = SubResource( 56 )
 [node name="WireUIBox" type="Sprite" parent="Save_Functionality"]
 
 [node name="LevelFinish" parent="Save_Functionality" instance=ExtResource( 11 )]
-position = Vector2( -2560, -128 )
+position = Vector2( -224, 48 )
 
 [node name="Ice_Cream_Wall_Of_Death" type="Area2D" parent="Save_Functionality"]
 position = Vector2( 352, -32 )
@@ -496,7 +493,6 @@ environment = SubResource( 29 )
 position = Vector2( 749, 59 )
 frames = SubResource( 33 )
 animation = "Idle"
-frame = 1
 playing = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Save_Functionality"]
@@ -510,7 +506,7 @@ script = ExtResource( 16 )
 script = ExtResource( 17 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Save_Functionality/BossSpawnArea"]
-position = Vector2( -207.5, -228 )
+position = Vector2( -227.5, -202 )
 shape = SubResource( 40 )
 
 [node name="StartingPlayerSpawnPos" type="Node2D" parent="Save_Functionality"]
@@ -539,6 +535,9 @@ position = Vector2( -1576, 41 )
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="Save_Functionality"]
 position = Vector2( -1696, 11 )
 frames = SubResource( 46 )
+
+[node name="ShadowBackground" parent="Save_Functionality" instance=ExtResource( 21 )]
+position = Vector2( -757, 573 )
 
 [connection signal="area_entered" from="Save_Functionality/Player_Body/Player_Area" to="Save_Functionality/Player_Body" method="_on_Player_Area_area_entered"]
 [connection signal="body_entered" from="Save_Functionality/BossSpawnArea" to="Save_Functionality/BossSpawnArea" method="_on_BossSpawnArea_body_entered"]
