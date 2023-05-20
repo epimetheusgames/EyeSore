@@ -67,7 +67,7 @@ script = ExtResource( 1 )
 [node name="Terminal_Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 9 )
 animation = "Idle"
-frame = 2
+frame = 5
 playing = true
 
 [node name="Terminal_Background_Sprite" type="Sprite" parent="."]

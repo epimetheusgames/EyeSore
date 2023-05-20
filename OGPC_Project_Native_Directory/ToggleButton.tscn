@@ -8,6 +8,11 @@ flags = 1
 atlas = ExtResource( 1 )
 region = Rect2( 48, 0, 16, 16 )
 
+[sub_resource type="AtlasTexture" id=18]
+flags = 1
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 16, 16 )
+
 [sub_resource type="AtlasTexture" id=14]
 flags = 1
 atlas = ExtResource( 1 )
@@ -27,11 +32,6 @@ region = Rect2( 32, 0, 16, 16 )
 flags = 1
 atlas = ExtResource( 1 )
 region = Rect2( 48, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=18]
-flags = 1
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=19]
 flags = 1
@@ -60,15 +60,15 @@ animations = [ {
 "name": "Pressed",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
-"loop": false,
-"name": "Pressing",
-"speed": 20.0
-}, {
 "frames": [ SubResource( 18 ) ],
 "loop": true,
 "name": "Unpressed",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"loop": false,
+"name": "Pressing",
+"speed": 20.0
 }, {
 "frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
 "loop": false,

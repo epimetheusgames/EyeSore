@@ -69,10 +69,11 @@ func _physics_process(delta):
 			self.position.y = move_toward(self.position.y, (player_body.position.y - 20), 10)
 		
 		# Move position to follow the player on the x axis
-		self.position.x -= x_speed
+		if self.position.x > -2380:
+			self.position.x -= x_speed
 		if player_body.position.distance_to(self.position) > 320:
 			x_speed += 0.009
-		elif player_body.position.distance_to(self.position) < 290 and x_speed >= 0.52:
+		elif player_body.position.distance_to(self.position) < 300 and x_speed >= 0.2:
 			x_speed -= 0.02
 		
 		# if the attack cooldown timer is at 0, start an attack
@@ -82,12 +83,13 @@ func _physics_process(delta):
 			var cooldown_to_next_attack = Start_Attack(first_phase_attacks[(randi() % first_phase_attacks.size())])
 
 func Start_Attack(attack_name):
-	if attack_name == "Scoop_Fire":
-		Scoop_Fire_Attack()
-	elif attack_name == "Cone_Spin":
-		Cone_Spin_Attack()
-	elif attack_name == "Ice_Cream_Blinding_Vignette":
-		Ice_Cream_Blinding_Vignette()
+	if self.position.x > -2500:
+		if attack_name == "Scoop_Fire":
+			Scoop_Fire_Attack()
+		elif attack_name == "Cone_Spin":
+			Cone_Spin_Attack()
+		elif attack_name == "Ice_Cream_Blinding_Vignette":
+			Ice_Cream_Blinding_Vignette()
 	
 	randomize()
 

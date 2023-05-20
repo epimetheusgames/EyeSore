@@ -14,7 +14,8 @@ func _physics_process(delta):
 	if boss_body.state_machine.is_playing():
 		self.show()
 		$IceCreamWallColl.disabled = false
-		self.position.x -= speed
+		if self.position.x > -2380:
+			self.position.x -= speed
 		
 		if player_body.position.distance_to(self.position) > 400:
 			speed += 0.007

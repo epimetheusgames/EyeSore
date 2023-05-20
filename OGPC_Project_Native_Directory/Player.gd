@@ -92,7 +92,12 @@ func _ready():
 # anything that needs to be in a consistent update cycle goes here
 func _physics_process(delta):
 	if Input.is_action_just_pressed("respawn"):
+		var boss = get_parent().get_node_or_null("Boss_Body")
+		var ice_cream_wall = get_parent().get_node_or_null("Ice_Cream_Wall_Of_Death")
 		position = start_position
+		if boss != null:
+			boss.reset()
+			ice_cream_wall.reset()
 
 	if paused:
 		return
@@ -294,9 +299,10 @@ func _on_Area2D_body_entered(body):
 		# Fade out bg music if in boss
 		var bg_music = get_parent().get_node_or_null("AudioStreamPlayer")
 		var boss = get_parent().get_node_or_null("Boss_Body")
+		var death_wall = get_parent().get_node_or_null("Ice_Cream_Wall_Of_Death")
 
 		if boss:
-			bg_music.fadeout = true 
+			bg_music.fadeout = true
 
 		# start the timer for respawn to allow the death animation to play
 		$Death_Animation_Timer.start(1.5)
