@@ -326,10 +326,7 @@ position = Vector2( 800, 64 )
 [node name="Camera2D" parent="Save_Functionality/Player_Body" index="2"]
 current = true
 
-[node name="Death_Anim_Transition" parent="Save_Functionality/Player_Body" index="7"]
-visible = true
-
-[node name="Sprite2" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="1"]
+[node name="Sprite2" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="0"]
 z_index = 15
 
 [node name="Sprite" parent="Save_Functionality/Player_Body/Death_Anim_Transition" index="2"]
