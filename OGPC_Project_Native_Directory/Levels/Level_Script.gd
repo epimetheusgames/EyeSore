@@ -107,7 +107,6 @@ func _process(delta):
 	if is_wire_ui and Input.is_action_just_pressed("mouse_click") and not any_wires_selected and is_point_on_connections(get_global_mouse_position()):
 		var already_there = is_another_already_there(1)
 		var already_there_end = is_another_already_there(0)
-		print('hi')
 		
 		if not already_there and not already_there_end:
 			var wire = wire_scene.instance()
@@ -118,6 +117,9 @@ func _process(delta):
 		
 	if Input.is_action_just_pressed("switch_wire_ui") and can_wire_ui and in_range_of_wire_terminal:
 		is_wire_ui = not is_wire_ui
+		var text = get_node_or_null("Save_Functionality/ConnectWiresLayer")
+		if text:
+			text.visible = not text.visible
 			
 	elif Input.is_action_just_pressed("switch_wire_ui") and is_wire_ui == true:
 		is_wire_ui = false

@@ -211,9 +211,10 @@ func _process(delta):
 	if Input.is_action_just_pressed("Shoot_Normal_Bullet"):
 		bullet_type = 0
 		Shoot_Bullet(bullet_type)
-	elif Input.is_action_just_pressed("Shoot_Shockwave_Bullet") and shockwave_bullet_cooldown_timer <= 0:
-		bullet_type = 1
-		Shoot_Bullet(bullet_type)
+#	elif Input.is_action_just_pressed("Shoot_Shockwave_Bullet") and shockwave_bullet_cooldown_timer <= 0:
+#		bullet_type = 1
+#		Shoot_Bullet(bullet_type)
+
 
 		shockwave_bullet_cooldown_timer = 30
 
