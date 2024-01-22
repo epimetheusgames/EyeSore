@@ -1,15 +1,19 @@
 
 
-# OGPC Season 16-EyeSore
+# OGPC Season 16 EyeSore
 
-This document corresponds to all ideas related to EyeSore (Epimetheus Games’ submission to OGPC Season 16)
+Play online at https://epimetheusgamesogpc.itch.io/eyesore
 
 ## Roles
 
 Alejandro: Music at OGPC Music Eyesore Music 
+
 Elouan: UI Design, Level Design
+
 Ranier: Art
+
 Noah & Carson: General Game Design And Programming
+
 ## Music
 
 Original Soundtrack:
